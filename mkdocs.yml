@@ -1,0 +1,27 @@
+site_name: XenForo 2.0 Documentation
+site_description: Developer Documentation for XenForo 2.0.
+site_author: XenForo Ltd.
+
+theme: readthedocs
+theme_dir: xf2
+extra_css: [extra.css]
+
+pages:
+- Getting started: index.md
+- Add-on structure: add-on-structure.md
+- Development tools: development-tools.md
+- General concepts: general-concepts.md
+- Routing basics: routing-basics.md
+- Controller basics: controller-basics.md
+- Entities, finders, and repositories: entities-finders-repositories.md
+- Let's build an add-on: lets-build-an-add-on.md
+
+#repo_url: https://github.com/chrisdeeming/xfdocs/
+#edit_uri: edit/master/docs/
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: 
+
+copyright: <a href="https://xenforo.com/" target="_blank">Development documentation for XenForo&trade; 2.0 &copy;2017 XenForo Ltd.</a>
