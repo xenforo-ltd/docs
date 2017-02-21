@@ -20,10 +20,10 @@ To enable development mode, add the following lines to your `config.php` file:
 
 ```php
 $config['development']['enabled'] = true;
-$config['development']['defaultAddon'] = 'SomeCompany/MyAddOn';
+$config['development']['defaultAddOn'] = 'SomeCompany/MyAddOn';
 ```
 
-The `defaultAddon` value is optional, but adding that will automatically populate the specified add-on in the XF Admin CP when creating new content which will be associated to an add-on.
+The `defaultAddOn` value is optional, but adding that will automatically populate the specified add-on in the XF Admin CP when creating new content which will be associated to an add-on.
 
 In addition to the above, you may find it necessary to add some additional configuration, especially if you are using more than one XF installation.
 
