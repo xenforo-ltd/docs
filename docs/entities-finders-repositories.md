@@ -278,7 +278,7 @@ FROM `xf_user`
 WHERE (`xf_user`.`user_id` = 1)"
 ```
 
-You probably won't need it very often, but it can be useful if the finder isn't quite returning the results you expected. Read more about the `dumpSimple` method in the [Dump a variable](../development-tools/#dump-a-variable) section.
+You probably won't need it very often, but it can be useful if the finder isn't quite returning the results you expected. Read more about the `dumpSimple` method in the [Dump a variable](/development-tools/#dump-a-variable) section.
  
 ### Custom finder methods
 
@@ -303,7 +303,7 @@ $users = $finder->isRecentlyActive(20)->order('message_count', 'DESC')->limit(10
 
 This query, which earlier just returned 10 users in descending message count order, will now return the 10 users in that order who have been recently active in the last 20 days.
 
-Even though for a lot of entity types a finder class doesn't exist, it is still possible to extend these non existent classes in the same way as mentioned in the [Extending classes](../development-tools/#extending-classes) section.
+Even though for a lot of entity types a finder class doesn't exist, it is still possible to extend these non existent classes in the same way as mentioned in the [Extending classes](/development-tools/#extending-classes) section.
 
 ## The Entity system
 

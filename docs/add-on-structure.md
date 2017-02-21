@@ -99,7 +99,7 @@ ensure that an add-on has complete and consistent data before allowing an add-on
 
 ### _output directory
 
-The `_output` directory is not required for a successful installation of an add-on, and shouldn't be included when releasing the add-on. This directory is purely for development purposes and is only used if development mode is enabled (see [Enabling development mode](../development-tools/#enabling-development-mode)).
+The `_output` directory is not required for a successful installation of an add-on, and shouldn't be included when releasing the add-on. This directory is purely for development purposes and is only used if development mode is enabled (see [Enabling development mode](/development-tools/#enabling-development-mode)).
 
 Each item of add-on data is stored in a separate file. Mostly they are stored as JSON files, but in the case of phrases they are stored as TXT files and for templates they are stored as HTML/CSS/LESS files. All template types are editable in the filesystem directly, and changes made to these files are written back to the database automatically on load.
 

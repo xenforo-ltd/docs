@@ -67,7 +67,7 @@ In XF2 we have removed these events in favour of a specific system called "Class
 
 This clearly cuts down on some of the boilerplate required to extend classes, and also provides a dedicated UI for viewing and managing these extensions. Let's look at the process by extending the public `Member` controller, and adding a new action which displays a simple message.
 
-The first thing to do is to create an add-on. We previously outlined how to do that using the `xf-addon:create` command [here](../development-tools/#creating-a-new-add-on). For this example, we'll assume you created an add-on with an ID and title of "Demo".
+The first thing to do is to create an add-on. We previously outlined how to do that using the `xf-addon:create` command [here](/development-tools/#creating-a-new-add-on). For this example, we'll assume you created an add-on with an ID and title of "Demo".
 
 You will now have an addon.json file for this add-on in the following location `src/addons/Demo/addon.json`.
 
@@ -116,11 +116,11 @@ class Member extends XFCP_Member
 }
 ```
 
-We talk more about controllers, actions, and replies in the [Controller basics](../controller-basics) pages, so don't particularly worry about understanding this right now.
+We talk more about controllers, actions, and replies in the [Controller basics](/controller-basics) pages, so don't particularly worry about understanding this right now.
 
 Now we've added some code to our extended controller, let's see it in action. Simply enter the following URL (relative to your board URL): `index.php?members/hello-world`. You should now see a "Hello world!" message displayed!
 
-As mentioned earlier, it is also possible to override existing methods within a class. For example, if we changed `actionHelloWorld()` with `actionIndex()` then you would no longer have a "Notable members" list, it would instead display the "Hello world!" message! This isn't quite the right way to extend an existing controller action (or any class method, in fact) but we go into more detail about that in the [Modifying a controller action reply (properly)](../controller-basics/#modifying-a-controller-action-reply-properly) section. 
+As mentioned earlier, it is also possible to override existing methods within a class. For example, if we changed `actionHelloWorld()` with `actionIndex()` then you would no longer have a "Notable members" list, it would instead display the "Hello world!" message! This isn't quite the right way to extend an existing controller action (or any class method, in fact) but we go into more detail about that in the [Modifying a controller action reply (properly)](/controller-basics/#modifying-a-controller-action-reply-properly) section. 
 
 ## Type hinting
 
