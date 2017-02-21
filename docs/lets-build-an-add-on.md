@@ -1290,4 +1290,4 @@ Thankfully, this can be done with a single CLI command! Just execute the command
     **Release written successfully.**
 
 
-So, with that, that concludes our demo add-on! If you would like to download the source code for this add-on, built using the very commands demonstrated above, click here: [Demo-Portal-1.0.0 Alpha.zip](../files/Demo-Portal-1.0.0 Alpha.zip).
+So, with that, that concludes our demo add-on! If you would like to download the source code for this add-on, built using the very commands demonstrated above, click here: [Demo-Portal-1.0.0 Alpha.zip](/files/Demo-Portal-1.0.0 Alpha.zip).
