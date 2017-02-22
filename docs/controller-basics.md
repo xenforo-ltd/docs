@@ -48,7 +48,7 @@ Hello world!
 
 This reply is returned when you wish to redirect a user to a different URL after they have completed some sort of action.
 
-A common use case here is after a user has submitted data through a form you may wish to redirect them to a different page, for example returning a user to a list of items. A redirect reply takes a 
+A common use case here is after a user has submitted data through a form you may wish to redirect them to a different page, for example returning a user to a list of items. 
 
 Here's an example of a typical controller action that performs a redirect:
 
