@@ -377,9 +377,6 @@ footer div[role=contentinfo] a {
     padding: 0 6px;
   }
 }
-.hljs .hljs-preprocessor {
-  color: #141414;
-}
 .hljs .hljs-string,
 .hljs .hljs-tag .hljs-value,
 .hljs .hljs-phpdoc,
