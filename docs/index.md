@@ -65,11 +65,12 @@ Once extracted you will see a directory named `upload`. You need to go into
 that directory and upload the files and directories to your server's web root. This would usually be in a directory named
 `public_html`, `htdocs` or `www`.
 
-## Creating config.php
+## Creating src/config.php
 
-If using the CLI to install XF 2.0, you will need to create the config.php file manually. To do this, find the `src` 
-directory within the XF 2.0 files you uploaded to your server and create a new file named config.php and populate it 
-with the host, port, username, password and database name for your MySQL server.
+If using the CLI to install XF 2.0, you will need to create the config.php file manually. To do this, enter the `src` directory within the XF 2.0 files you uploaded to your server. Create a new file named config.php and populate it with the host, port, username, password and database name for your MySQL server.
+
+!!! note
+	Make sure you create the config file in within the `src` directory. The `library` directory is only used for legacy purposes.
 
 Once finished, it should look like the following:
 
