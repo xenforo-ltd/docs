@@ -389,8 +389,6 @@ protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Ent
 }
 ```
 
-[//]: # (TODO: We need to write a section about the FormAction object in more detail)
-
 Using the `FormAction` object allows us to have various extension points into the process that runs during the course of a typical form submission. It isn't available for all controller actions. It is much more prevalent in the Admin CP, for example, which often follow a simple CRUD model (Create, Read, Update, Delete). A lot of other processes within XF happen inside a service object, which usually has specific extension points related to the service that is running. This particular usage of the `FormAction` object is somewhat different to what you would usually encounter. Saving a node is a somewhat different process, because as well as working with the node entity, you'll also be working with an associated type of node, e.g. a forum entity. We do have access to the form action object in this method, though, so we should use it. We've used it here to add a specific behaviour to the "setup" phase of the process. Namely, when the `FormAction` object's `run()` method is called, it will run through the various phases in a specific order. It doesn't matter which order those behaviors were added to the object in, they will still run in the order `setup`, `validate`, `apply`, `complete`.
 
 The code we added above lets us set our `demo_portal_auto_feature` column in the forum entity to whatever value is stored for the `demo_portal_auto_feature` input which we added to the forum edit page. It should now be possible to test that all of this works. Simply edit a forum of your choice and check the checkbox. You should be able to observe two things. First, when you go back into edit that forum, the checkbox should now be checked. Second, if you look in the xf_forum table for the forum you just edited, the `demo_portal_auto_feature` field should now be set to 1. Keep this value enabled for this forum, as we will eventually be automatically featuring threads from that forum.
@@ -1214,7 +1212,7 @@ Once we have detected that we are "leaving" the visible state, we can then just 
 
 This would only cover the situation whereby the thread is soft deleted or sent to the approval queue. We also need to cover the situation where the thread is permanently deleted.
 
-For this, we need another listener, this time for the `entity_post_delete` event. So, add that using the same callback class, and this time a method name of `threadPostDelete`. Add the following code to the listener class:
+For this, we need another listener, this time for the `entity_post_delete` event. So, add that using the same callback class, and this time a method name of `threadEntityPostDelete`. Add the following code to the listener class:
 
 ```php
 public static function threadEntityPostDelete(\XF\Mvc\Entity\Entity $entity)

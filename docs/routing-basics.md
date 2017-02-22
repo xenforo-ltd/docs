@@ -41,9 +41,7 @@ It's interesting to note at this point that the important part of a profile URL 
 The above format indicates that it's an integer based parameter. For building an outgoing link, we pull the integer from the user_id key of the data passed in. If a username key is passed into the data, it will be "slugified" and prepended to the integer ID like you see in the URL to your profile. For matching an incoming URL, this gets turned into a regular expression that matches the integer parameter format.
  
 `:page` is a shortcut for generating the page-123 part of a link. In this case, it looks for the page in the link parameters. If found, it's put in the URL and then removed from the params. For incoming parsing, if matched (it can be empty), it will add the page number to the parameters passed to a controller.
- 
-!!! note "TODO"
-    Expand on route formats.
+
  
 ## Route parameters
  
