@@ -92,12 +92,26 @@ If you are using MySQL 5.5 and above and you wish to have full unicode support (
 $config['fullUnicode'] = true;
 ```
 
+## A note on file permissions
+
+
+When the CLI is involved, this situation gets trickier as there are now potentially two users that need to be able to write to the files. As such, it's important to take steps to avoid problems writing to these files. Here are a few options.
+
+1. Use the same user for the CLI and the web server. This may take the form of you switching to the web server user before running any installation or upgrade command (or any other that will write files).
+2. If available, consider applying ACLs to the `data` and `internal_data` directories. This concept varies by OS and configuration, but the general idea is described [here](http://symfony.com/doc/current/setup/file_permissions.html).
+3. Force specific permissions on what is written by PHP. This can be done via the src/config.php file with a line like this: `$config['chmodWritableValue'] = 0666;` This approach is potentially the simplest for development purposes.
+
+Note that if you are developing add-ons, you may potentially have other locations that need to be written to by the CLI and web server users. Notably, this includes the `_output` directory within add-ons. In this situation, having your web server run as your CLI user may cause the least friction. If you go down any other route, you may need to ensure that your web server can write to your entire XenForo installation; this is not recommended in production.
+
 ## Installation
 
-The recommended way to install XF 2.0 is via the new CLI system. A lot of development processes can only be performed 
+The current way to install XF 2.0 is via the new CLI system. A lot of development processes can only be performed 
 using the CLI so let's get stuck into using it to install XF 2.0. To run these commands, you will need access to a 
 terminal/shell, the php CLI command and the current working directory should be the root of where you uploaded the 
 XF 2.0 files.
+
+!!! warning
+	To eliminate file permission problems, we recommend running the installer as the same user that PHP runs as via your web server. If you don't do this, you should take steps to ensure that permissions are set correctly. See the above section for more details.
 
 To start the install, just enter the below command:
 
