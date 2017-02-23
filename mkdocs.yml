@@ -16,7 +16,7 @@ pages:
 - Entities, finders, and repositories: entities-finders-repositories.md
 - Let's build an add-on: lets-build-an-add-on.md
 
-#repo_url: https://github.com/chrisdeeming/xfdocs/
+#repo_url: https://github.com/xenforo-ltd/xfdocs/
 #edit_uri: edit/master/docs/
 
 markdown_extensions:

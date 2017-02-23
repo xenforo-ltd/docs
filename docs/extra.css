@@ -377,3 +377,60 @@ footer div[role=contentinfo] a {
     padding: 0 6px;
   }
 }
+.hljs .hljs-string,
+.hljs .hljs-tag .hljs-value,
+.hljs .hljs-phpdoc,
+.hljs .hljs-dartdoc,
+.hljs .tex .hljs-formula {
+  color: #a11;
+}
+.hljs .hljs-comment,
+.hljs .diff .hljs-header,
+.hljs .hljs-javadoc,
+.hljs .hljs-preprocessor,
+.hljs .hljs-pragma,
+.hljs .hljs-pi,
+.hljs .hljs-doctype,
+.hljs .hljs-shebang,
+.hljs .hljs-cdata {
+  color: #a50;
+}
+.hljs .hljs-keyword,
+.hljs .css .rule .hljs-keyword,
+.hljs .hljs-winutils,
+.hljs .nginx .hljs-title,
+.hljs .hljs-subst,
+.hljs .hljs-request,
+.hljs .hljs-status {
+  color: #708;
+}
+.hljs .hljs-number,
+.hljs .hljs-hexcolor,
+.hljs .ruby .hljs-constant {
+  color: #164;
+}
+.hljs .hljs-attribute,
+.hljs .hljs-variable,
+.hljs .lisp .hljs-body,
+.hljs .hljs-name,
+.hljs .hljs-built_in {
+  color: #05a;
+}
+.hljs .hljs-regexp {
+  color: #00c;
+}
+.hljs .hljs-symbol,
+.hljs .ruby .hljs-symbol .hljs-string,
+.hljs .lisp .hljs-keyword,
+.hljs .clojure .hljs-keyword,
+.hljs .scheme .hljs-keyword,
+.hljs .tex .hljs-special,
+.hljs .hljs-prompt {
+  color: #708;
+}
+.hljs .hljs-deletion {
+  color: #d44;
+}
+.hljs .hljs-addition {
+  color: #292;
+}
