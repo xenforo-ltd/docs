@@ -93,7 +93,7 @@ it will be saved to your `_releases` directory named `<ADDON ID>-<VERSION STRING
 
 There are actually quite a few development related commands, but only the two most important ones are being covered here.
 
-To use any of these commands, you must have <a href="#enabling-development-mode">development mode</a> enabled in your 
+To use any of these commands, you must have [development mode](#enabling-development-mode) enabled in your 
 `config.php` file.
 
 !!! warning

@@ -2,7 +2,7 @@ At a basic level, Controllers are the code that is executed when you visit a pag
  
 When a user clicks a link, the requested URL is routed to a specific controller and controller action. See [Routing basics](/routing-basics). For example, in XF if you click a URL like `index.php?conversations/add` you will be routed to the `XF\Pub\Controller\Conversation` controller and to the `add` action.
  
-If you look at this class in the file system (see <a href="/general-concepts/#autoloader">Autoloader</a> for a description of how classes and file paths map to each other) you will notice that there are a number of methods named with a prefix of `action`. All of these methods indicate a specific controller action. So, to see the code involved when viewing the conversations/add page mentioned above, look in this file for `public function actionAdd()`.
+If you look at this class in the file system (see [Autoloader](/general-concepts/#autoloader) for a description of how classes and file paths map to each other) you will notice that there are a number of methods named with a prefix of `action`. All of these methods indicate a specific controller action. So, to see the code involved when viewing the conversations/add page mentioned above, look in this file for `public function actionAdd()`.
 
 XF controllers are responsible for returning a reply object which generally consist of one of the following types:
 
@@ -102,7 +102,7 @@ public function actionException()
 }
 ```
 
-Exception replies only accept a single argument, and actually that argument must be some other form of Reply object, such as an <a href="#error-reply">Error reply</a>. This particular example throws an exception, and the entire controller code at that point will stop, and a standard error will be displayed.
+Exception replies only accept a single argument, and actually that argument must be some other form of Reply object, such as an [Error reply](#error-reply). This particular example throws an exception, and the entire controller code at that point will stop, and a standard error will be displayed.
 
 Note that exception replies must be "thrown" using `throw` rather than being "returned" with `return`.
 
