@@ -94,6 +94,7 @@ $config['fullUnicode'] = true;
 
 ## A note on file permissions
 
+XenForo will need to write files to specific locations while running. In normal operation, this is limited to the `data` and `internal_data` directories (and their sub-directories). These file writes will be triggered by things like attachment uploads, so they will normally be triggered by the user PHP as running as within your web server. Therefore, it is necessary to ensure that permissions are set in these directories so that the web server can write to them. You will need to do this before installation can begin.
 
 When the CLI is involved, this situation gets trickier as there are now potentially two users that need to be able to write to the files. As such, it's important to take steps to avoid problems writing to these files. Here are a few options.
 
