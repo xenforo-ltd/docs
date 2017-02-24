@@ -90,7 +90,7 @@ $users = $finder->limit(10)->fetch();
 
 This example will query 10 records from the xf_user table, and it will return them as an `ArrayCollection` object. This is a special object which acts similarly to an array, in that it is traversable (you can loop through it) and it has some special methods that can tell you the total number of entries it has, grouping by certain values, or other array like operations such as filtering, merging, getting the first or last entry etc.
 
-Finder queries generally should be expected to all columns from a table, so there's no specific equivalent to fetch a single value from a single column from a single row or an array of values from a single columns.
+Finder queries generally should be expected to retrieve all columns from a table, so there's no specific equivalent to fetch only certain values certain columns.
 
 Instead, to get a single value, you would just fetch one entity and read the value directly from that:
 
