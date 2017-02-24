@@ -123,3 +123,23 @@ You will be asked a number of questions, such as the initial administrator usern
 the XF 2.0 database tables and master data will be imported.
 
 XF 2.0 is now installed!
+
+## Reinstallation
+
+Occasionally it may be necessary to reinstall XF2. This is particularly true during the Development Preview stage which does not support upgrading. If you are ready to do a reinstall, download the new files (if applicable) as per the [Downloading XF 2.0](#downloading-xf-20) section above. It should generally be possible to just merge and overwrite your existing files. If you're doing a full clean re-install, you may want to save a copy of your config.php file or re-create it as per the instructions in the [Creating src/config.php](#creating-srcconfigphp).
+
+Before uploading the new files, you should delete the contents of your `data`, `internal_data` and `src/addons/XF` directories.
+
+Finally, you will just need to start the installation, similar to above. You will need to use the `--clear` option which will delete all of the existing xf_ tables.
+
+!!! terminal
+    *$* php cmd.php xf:install --clear
+    
+Once the re-install has been completed, you should now be able to log back on.
+
+If you have been developing add-ons, and you have chosen to keep or backup your existing `src/addons` directory, you can restore your add-on data with the [Import development output](/development-tools/#import-development-output) command.
+
+!!! warning
+    Be careful if you choose to back up and restore your `src/addons` directory. The `XF` directory within contains the XF master data, and should not be restored from a backup to ensure you always have the most up to date version of the files.
+    
+    Performing a reinstall in this way is a destructive operation and it will remove all data you have created. Additionally, bear in mind that only tables with the `xf_` prefix are cleared. This is a significant reason for the recommendation that all tables, even for add-ons, should be prefixed with `xf_`.
