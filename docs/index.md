@@ -128,7 +128,7 @@ XF 2.0 is now installed!
 
 Occasionally it may be necessary to reinstall XF2. This is particularly true during the Development Preview stage which does not support upgrading. If you are ready to do a reinstall, download the new files (if applicable) as per the [Downloading XF 2.0](#downloading-xf-20) section above. It should generally be possible to just merge and overwrite your existing files. If you're doing a full clean re-install, you may want to save a copy of your config.php file or re-create it as per the instructions in the [Creating src/config.php](#creating-srcconfigphp).
 
-Before uploading the new files, you should delete the contents of your `data`, `internal_data` and `src/addons/XF` directories.
+Before uploading the new files, you should delete the contents of your `data` and `internal_data` directories.
 
 Finally, you will just need to start the installation, similar to above. You will need to use the `--clear` option which will delete all of the existing xf_ tables.
 
