@@ -143,3 +143,37 @@ If you have been developing add-ons, and you have chosen to keep or backup your 
     Be careful if you choose to back up and restore your `src/addons` directory. The `XF` directory within contains the XF master data, and should not be restored from a backup to ensure you always have the most up to date version of the files.
     
     Performing a reinstall in this way is a destructive operation and it will remove all data you have created. Additionally, bear in mind that only tables with the `xf_` prefix are cleared. This is a significant reason for the recommendation that all tables, even for add-ons, should be prefixed with `xf_`.
+    
+## Verifying file integrity
+
+When you install XF2, we perform a file integrity check in the installation. If necessary, and you can't otherwise perform the check via the page in the Admin CP, you can run the CLI command to perform that check.
+ 
+!!! terminal
+    *$* php cmd.php xf:file-check <ADDON ID>
+    
+If you wish to do a file health check on all files, including XF itself, just omit the `<ADDON ID>` argument. For XF only, just use `XF` in place of the argument, or for a specific add-on, just specify the add-on ID you wish to check.
+    
+## Add-on management commands
+
+In addition to the above commands for installing XF2, there are also several commands for managing add-ons.
+
+### Add-on install
+
+!!! terminal
+    *$* php cmd.php xf:addon-install <ADDON ID>
+    
+Installs the specified add-on, as long as it is available, and passes the file health check.
+
+### Add-on upgrade
+
+!!! terminal
+    *$* php cmd.php xf:addon-upgrade <ADDON ID>
+    
+Upgrades the specified add-on, as long as it is upgradeable, and passes the file health check.
+
+### Add-on uninstall
+
+!!! terminal
+    *$* php cmd.php xf:addon-uninstall <ADDON ID>
+    
+Uninstalls the specified add-on, as long as it is uninstallable.

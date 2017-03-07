@@ -31,7 +31,7 @@ If you have a simple add-on ID, e.g. `Demo`, the files for your add-on will be s
 If you have a vendor based add-on ID, e.g. `SomeVendor/Demo`, the files will be stored in the following location: 
 `src/addons/SomeVendor/Demo`.
 
-The add-on ID you choose will also become your class namespace prefix (see [Namespaces](./general-concepts/#namespaces) for more information).
+The add-on ID you choose will also become your class namespace prefix (see [Namespaces](/general-concepts/#namespaces) for more information).
 
 ## Recommended version string format
 
@@ -118,29 +118,26 @@ class Setup extends \XF\AddOn\AbstractSetup
 {
 	public function install(array $stepParams = [])
 	{
-		$this->db()->query("
-		    CREATE TABLE xf_demo (
-		        demo_id INT(11) UNSIGNED NOT NULL
-		    )
-		");
+		$this->schemaManager()->createTable('xf_demo', function(\XF\Db\Schema\Create $table)
+		{
+			$table->addColumn('demo_id', 'int');
+		});
 	}
 	
 	public function upgrade(array $stepParams = [])
 	{
 		if ($this->addOn->version_id < 1000170)
 		{
-			$this->db()->query("
-			    ALTER TABLE xf_demo
-			    ADD foo VARCHAR(10) NOT NULL DEFAULT '' 
-			");
+			$this->schemaManager()->alterTable('xf_demo', function(\XF\Db\Schema\Alter $table)
+			{
+				$table->addColumn('foo', 'varchar', 10)->setDefault('');
+			});
 		}
 	}
 	
 	public function uninstall(array $stepParams = [])
 	{
-        $this->db()->query("
-            DROP TABLE xf_demo
-        ");
+		$this->schemaManager()->dropTable('xf_demo');
 	}
 }
 ```

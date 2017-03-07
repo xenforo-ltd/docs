@@ -13,9 +13,9 @@ Throughout the add-on we will use the add-on ID of `Demo/Portal`. The first thin
     
     **Enter a title:** Demo/Portal
     
-    **Enter a version string:** 1.0.0 Alpha
-    
     **Enter a version ID:** 1000010
+    
+    ** Version string set to: 1.0.0 Alpha **
     
     **Should this add-on be enabled? (y/n)** y
     
@@ -69,6 +69,9 @@ Well, strictly speaking, the class has already been created and written out to `
 
 namespace Demo\Portal;
 
+use XF\Db\Schema\Alter;
+use XF\Db\Schema\Create;
+
 class Setup extends \XF\AddOn\AbstractSetup
 {
 	use \XF\AddOn\StepRunnerInstallTrait;
@@ -86,6 +89,9 @@ The StepRunner traits here are going to handle the process of cycling through al
 
 namespace Demo\Portal;
 
+use XF\Db\Schema\Alter;
+use XF\Db\Schema\Create;
+
 class Setup extends \XF\AddOn\AbstractSetup
 {
 	use \XF\AddOn\StepRunnerInstallTrait;
@@ -94,10 +100,10 @@ class Setup extends \XF\AddOn\AbstractSetup
 
 	public function installStep1()
 	{
-		$this->query("
-			ALTER TABLE xf_forum
-			ADD demo_portal_auto_feature TINYINT(3) UNSIGNED NOT NULL DEFAULT 0
-		");
+		$this->schemaManager()->alterTable('xf_forum', function(Alter $table)
+		{
+			$table->addColumn('demo_portal_auto_feature', 'tinyint')->setDefault(0);
+		});
 	}
 }
 ```
@@ -109,10 +115,10 @@ While we're here, we might as well add another step to the installer. For brevit
 ```php
 public function installStep2()
 {
-    $this->query("
-        ALTER TABLE xf_thread
-        ADD demo_portal_featured TINYINT(3) UNSIGNED NOT NULL DEFAULT 0
-    ");
+    $this->schemaManager()->alterTable('xf_thread', function(Alter $table)
+    {
+        $table->addColumn('demo_portal_featured', 'tinyint')->setDefault(0);
+    });
 }
 ```
 
@@ -123,17 +129,12 @@ Speaking of which, we should add that table now. This time directly below `insta
 ```php
 public function installStep3()
 {
-	$db = $this->db();
-	$schemaManager = $db->getSchemaManager();
-	$defaultTableConfig = $schemaManager->getTableConfigSql();
-
-	$this->query("
-		CREATE TABLE xf_demo_portal_featured_thread (
-			thread_id INT(10) UNSIGNED NOT NULL,
-			featured_date INT(10) UNSIGNED NOT NULL,
-			PRIMARY KEY (thread_id)
-		) {$defaultTableConfig}
-	");
+    $this->schemaManager()->createTable('xf_demo_portal_featured_thread', function(Create $table)
+    {
+        $table->addColumn('thread_id', 'int');
+        $table->addColumn('featured_date', 'int');
+        $table->addPrimaryKey('thread_id');
+    });
 }
 ```
 
@@ -143,8 +144,6 @@ This step is going to create the new table. This table will be used to keep a lo
     Don't forget to execute the queries yourself!
 
 The same principles apply here in terms of naming. A significant difference is that all tables should additionally be prefixed with `xf_`. The reason for this is so that if a clean XF install is performed, we can remove all tables with the `xf_` prefix, including those created by add-ons.
-
-The final thing to note here is that we use the `SchemaManager` to help tell us what the default table config should be, which may vary depending on whether full unicode support is enabled.
 
 ## Extending the forum entity
 
@@ -985,25 +984,32 @@ For the sake of simplicity, we'll just duplicate the widgets that are currently 
 ```php
 public function installStep4()
 {
-	$this->query("
-		INSERT INTO xf_widget
-			(widget_key, definition_id, position_id, display_order, active, options)
-		VALUES
-			('demo_portal_view_members_online',		'members_online',		'demo_portal_view_sidebar',	20, 	1, '{\"limit\":50,\"staffOnline\":true,\"followedOnline\":true}'),
-			('demo_portal_view_new_posts',			'new_posts',			'demo_portal_view_sidebar',	30, 	1, '{\"limit\":5,\"filter\":\"unread\"}'),
-			('demo_portal_view_new_profile_posts',	'new_profile_posts',	'demo_portal_view_sidebar',	40, 	1, '{\"limit\":5}'),
-			('demo_portal_view_board_totals',		'board_totals',			'demo_portal_view_sidebar',	50,		1, '[]'),
-			('demo_portal_view_share_page',			'share_page',			'demo_portal_view_sidebar',	60, 	1, '{\"vertical\":true,\"counter\":true}')
-	");
-	
-	\XF::runOnce('widgetCacheRebuild', function()
-	{
-		\XF::repository('XF:Widget')->rebuildWidgetCache();
-	});
+    $this->createWidget('demo_portal_view_members_online', 'members_online', [
+        'position_id' => 'demo_portal_view_sidebar',
+        'display_order' => 10
+    ]);
+
+    $this->createWidget('demo_portal_view_new_posts', 'new_posts', [
+        'position_id' => 'demo_portal_view_sidebar',
+        'display_order' => 20
+    ]);
+
+    $this->createWidget('demo_portal_view_new_profile_posts', 'new_profile_posts', [
+        'position_id' => 'demo_portal_view_sidebar',
+        'display_order' => 30
+    ]);
+
+    $this->createWidget('demo_portal_view_board_totals', 'board_totals', [
+        'position_id' => 'demo_portal_view_sidebar',
+        'display_order' => 40
+    ]);
+
+    $this->createWidget('demo_portal_view_share_page', 'share_page', [
+        'position_id' => 'demo_portal_view_sidebar',
+        'display_order' => 50
+    ]);
 }
 ```
-
-Aside from inserting the queries, we also call upon the Widget repository to rebuild the widget cache; without this, the widgets will not be visible after install.
 
 ## Implementing permissions & optimizations
 
@@ -1236,25 +1242,23 @@ We're going to create 3 new methods which correspond to our first 3 install step
 ```php
 public function uninstallStep1()
 {
-	$this->query("
-		ALTER TABLE xf_forum
-		DROP demo_portal_auto_feature
-	");
+	$this->schemaManager()->alterTable('xf_forum', function(Alter $table)
+	{
+		$table->dropColumns('demo_portal_auto_feature');
+	});
 }
 
 public function uninstallStep2()
 {
-	$this->query("
-		ALTER TABLE xf_thread
-		DROP demo_portal_featured
-	");
+	$this->schemaManager()->alterTable('xf_thread', function(Alter $table)
+	{
+		$table->dropColumns('demo_portal_featured');
+	});
 }
 
 public function uninstallStep3()
 {
-	$this->query("
-		DROP TABLE xf_demo_portal_featured_thread
-	");
+	$this->schemaManager()->dropTable('xf_demo_portal_featured_thread');
 }
 ```
 

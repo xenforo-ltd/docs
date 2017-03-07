@@ -58,8 +58,8 @@ The `xf-addon:create` command is how to initially set up and create a new add-on
 
 * Enter an ID for this add-on
 * Enter a title
-* Enter a version string (e.g. 1.0.0 Alpha)
 * Enter a version ID (e.g. 1000010)
+* Enter a version string (e.g. 1.0.0 Alpha)
 
 You will then be given the option to create the add-on and write out its addon.json file, and asked some questions about  whether you want to add a Setup.php file.
 
@@ -76,18 +76,28 @@ your `hashes.json` file.
 !!! terminal
     *$* php cmd.php xf-addon:export <ADDON ID>
 
-This command is what you will use to export all of your add-on's data to XML files inside the `_data` 
-directory. After exporting the files, it will automatically run the `xf-addon:write-hashes` command to ensure your 
-hashes are up to date. It exports the data from what is currently in the database (rather than from the development output files).
+This command is what you will use to export all of your add-on's data to XML files inside the `_data` directory. After exporting the files, it will automatically run the `xf-addon:write-hashes` command to ensure your hashes are up to date. It exports the data from what is currently in the database (rather than from the development output files).
 
 ### Build a release
 
 !!! terminal
     *$* php cmd.php xf-addon:build-release <ADDON ID>
 
-When you run this command, it will first run the `xf-addon:export` command, which in turn runs the `xf-addon:write-hashes` 
-command before then collecting all of your files together and writing them to a ZIP file. Once the ZIP has been created 
-it will be saved to your `_releases` directory named `<ADDON ID>-<VERSION STRING>.zip`.
+When you run this command, it will first run the `xf-addon:export` command, which in turn runs the `xf-addon:write-hashes` command before then collecting all of your files together and writing them to a ZIP file. Once the ZIP has been created it will be saved to your `_releases` directory named `<ADDON ID>-<VERSION STRING>.zip`.
+
+### Bump your add-on version
+
+!!! terminal
+    *$* php cmd.php xf-addon:bump-version <ADDON ID> --version-id 1020370 --version-string 1.2.3
+    
+This command takes the add-on ID for your add-on, the new version ID and the new version string. This enables you to bump the version of your add-on in a single step, without having to perform upgrades and rebuilds yourself. The options above are optional, and if they are not provided you will be prompted for them. If you only specify the version ID, we will try and infer the correct version string from that automatically if it matches our [Recommended version ID format](/add-on-structure/#recommended-version-id-format). Once the command completes, it updates the `addon.json` file automatically and the database with the correct version details.
+
+### Sync your addon.json to the database
+ 
+!!! terminal
+    *$* php cmd.php xf-addon:sync-json <ADDON ID>
+     
+Sometimes you might prefer to edit the JSON file directly with certain details. This could be the version, or a new icon, or a change of title or description. Changing the JSON in this way can cause the add-on system to believe there are pending changes or that the add-on is upgradeable. A rebuild or upgrade can be a destructive operation if you haven't yet exported your current data. Therefore, running this command is recommended as a way of importing that data in without affecting your existing data.
 
 ## Development commands
 
