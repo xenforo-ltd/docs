@@ -63,27 +63,19 @@ The `xf-addon:create` command is how to initially set up and create a new add-on
 
 You will then be given the option to create the add-on and write out its addon.json file, and asked some questions about  whether you want to add a Setup.php file.
 
-### Write hashes.json file
-
-!!! terminal
-    *$* php cmd.php xf-addon:write-hashes <ADDON ID>
-
-This command will loop through all of the files which belong to your add-on, calculate a hash of the file and add it to 
-your `hashes.json` file.
-
 ### Export _data .XML files
 
 !!! terminal
     *$* php cmd.php xf-addon:export <ADDON ID>
 
-This command is what you will use to export all of your add-on's data to XML files inside the `_data` directory. After exporting the files, it will automatically run the `xf-addon:write-hashes` command to ensure your hashes are up to date. It exports the data from what is currently in the database (rather than from the development output files).
+This command is what you will use to export all of your add-on's data to XML files inside the `_data` directory. It exports the data from what is currently in the database (rather than from the development output files).
 
 ### Build a release
 
 !!! terminal
     *$* php cmd.php xf-addon:build-release <ADDON ID>
 
-When you run this command, it will first run the `xf-addon:export` command, which in turn runs the `xf-addon:write-hashes` command before then collecting all of your files together and writing them to a ZIP file. Once the ZIP has been created it will be saved to your `_releases` directory named `<ADDON ID>-<VERSION STRING>.zip`.
+When you run this command, it will first run the `xf-addon:export` command before then collecting all of your files together and writing them to a ZIP file. The ZIP will also include the updated `hashes.json` file. Once the ZIP has been created it will be saved to your `_releases` directory named `<ADDON ID>-<VERSION STRING>.zip`.
 
 ### Bump your add-on version
 

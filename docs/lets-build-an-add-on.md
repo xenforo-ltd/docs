@@ -29,10 +29,6 @@ Throughout the add-on we will use the add-on ID of `Demo/Portal`. The first thin
     
     **The Setup.php file was successfully written out to ../src/addons/Demo/Portal/Setup.php**
     
-    **Writing hashes...**
-    
-    **Hashes written successfully to ../src/addons/Demo/Portal/hashes.json**
-    
 The add-on has now been created, you will now find that you have a new directory in the `src/addons` directory, and you will find the add-on in the "Installed add-ons" list of the Admin CP.
 
 One of the file that has been created is the `addon.json` file, which currently looks like this:
@@ -1250,10 +1246,6 @@ Thankfully, this can be done with a single CLI command! Just execute the command
     10/10 [============================] 100%
     
     **Written successfully.**
-    
-    **Writing hashes...**
-    
-    **Hashes written successfully to ../src/addons/Demo/Portal/hashes.json**
     
     **Building release ZIP.**
     
