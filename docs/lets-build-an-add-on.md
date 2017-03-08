@@ -352,12 +352,6 @@ class Forum extends XFCP_Forum
 {
 	
 }
-
-// ******************** FOR IDE AUTO COMPLETE ********************
-if (false)
-{
-	class XFCP_Forum extends \XF\Admin\Controller\Forum {}
-}
 ```
 
 See [Extending classes](/general-concepts/#extending-classes) and [Type hinting](/general-concepts/#type-hinting) for more information.
@@ -409,12 +403,6 @@ class Creator extends XFCP_Creator
 {
 
 }
-
-// ******************** FOR IDE AUTO COMPLETE ********************
-if (false)
-{
-	class XFCP_Creator extends \XF\Service\Thread\Creator {}
-}
 ```
 
 While we're here we will also create another extension. The base will be `XF\Pub\Controller\Forum` and the extension class will be `Demo\Portal\XF\Pub\Controller\Forum`.  Creating the following code in the path `src/addons/Demo/Portal/XF/Pub/Controller/Forum.php` and click "Save":
@@ -427,12 +415,6 @@ namespace Demo\Portal\XF\Pub\Controller;
 class Forum extends XFCP_Forum
 {
 	
-}
-
-// ******************** FOR IDE AUTO COMPLETE ********************
-if (false)
-{
-	class XFCP_Forum extends \XF\Pub\Controller\Forum {}
 }
 ```
 
@@ -625,8 +607,8 @@ At this stage, we're not going to worry about modifying the base finder we've re
 				/>
 			</div>
 			<div class="block-footer">
-			    <a href="{{ link('threads', $thread) }}">Continue reading...</a>
-            </div>
+				<a href="{{ link('threads', $thread) }}">Continue reading...</a>
+			</div>
 		</div>
 	</div>
 </xf:macro>
@@ -644,16 +626,22 @@ At this stage, we're not going to worry about modifying the base finder we've re
 							<div class="contentRow-main contentRow-main--close">
 								<ul class="listInline listInline--bullet u-muted">
 									<li><xf:username user="{$thread.User}" /></li>
-									<li><xf:date time="{$featuredThread.featured_date}" /></li>
+									<li>
+										<xf:if is="$xf.options.demoPortalDefaultSort == 'featured_date'">
+											<xf:date time="{$featuredThread.featured_date}" />
+										<xf:else />
+											<xf:date time="{$thread.post_date}" />
+										</xf:if>
+									</li>
 									<li><a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a></li>
-									<li>{{ phrase('replies') }}: {$thread.reply_count|number}</li>
+									<li>{{ phrase('replies:') }} {$thread.reply_count|number}</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 					<div class="message-userContent lbContainer js-lbContainer"
 						 data-lb-id="post-{$post.post_id}"
-						 data-lb-caption-desc="{{ $post.User ? $post.User.username : $post.username }}, {{ date_time($post.post_date) }}"
+						 data-lb-caption-desc="{{ $post.User ? $post.User.username : $post.username }} &middot; {{ date_time($post.post_date) }}"
 					>
 						<blockquote class="message-body">
 							{{ bb_code($post.message, 'post', $post.User, {
@@ -750,12 +738,6 @@ class Thread extends XFCP_Thread
 		return true;
 	}
 }
-
-// ******************** FOR IDE AUTO COMPLETE ********************
-if (false)
-{
-	class XFCP_Thread extends \XF\Entity\Thread {}
-}
 ```
 
 Ok, so, we haven't exactly done much here of value, yet. All the `canFeatureUnfeature()` method does is return `true` right now. Later on, we will implement some proper permissions and add them here.
@@ -806,12 +788,6 @@ class Editor extends XFCP_Editor
 		return $thread;
 	}
 }
-
-// ******************** FOR IDE AUTO COMPLETE ********************
-if (false)
-{
-	class XFCP_Editor extends \XF\Service\Thread\Editor {}
-}
 ```
 
 This is a little bit more involved than the code in the creator service. For example, there may be situations where a thread is edited, and the user has no permission to edit the thread, and therefore we don't show the checkboxes. In these cases, we do not want to automatically assume the thread should be unfeatured. As the class `$featureThread` property defaults to `null` we can use this so that essentially the property has three states. In this case `null` will mean "no change", `true` will mean we feature the thread and `false` will mean we unfeature it.
@@ -840,12 +816,6 @@ class Thread extends XFCP_Thread
 
 		return $editor;
 	}
-}
-
-// ******************** FOR IDE AUTO COMPLETE ********************
-if (false)
-{
-	class XFCP_Thread extends \XF\Pub\Controller\Thread {}
 }
 ```
 
