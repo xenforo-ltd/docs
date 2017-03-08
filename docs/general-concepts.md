@@ -145,26 +145,6 @@ The type hint above the repository call now tells the IDE that `$repo` relates t
 
 Type hinting is especially useful when extending classes, too. A potential problem with our class extension methods are that essentially your classes don't extend the original class you want to extend, but instead this is proxied through a class that doesn't actually exist, e.g. `XFCP_Member` such as in the [example above](#extending-classes).
 
-One trick we can do here is to add some unreachable code to the class. That is, code which exists in the class, but which PHP will never be able to actually execute. Let's look at the revised extended class with that added in:
+To rectify this issue, we automatically generate a file named `extension_hint.php` and store that in your `_output` directory.
 
-```php
-<?php
-
-namespace Demo\XF\Pub\Controller;
-
-class Member extends XFCP_Member
-{
-	public function actionHelloWorld()
-	{
-		return $this->message('Hello world!');
-	}
-}
-
-// ******************** FOR IDE AUTO COMPLETE ********************
-if (false)
-{
-	class XFCP_Member extends \XF\Pub\Controller\Member {}
-}
-```
-
-We've basically now added a reference that the IDE can read, but PHP can't (which is good, otherwise this would potentially break things!), so that the IDE now understands that when we use `$this` inside any of the methods in this extended class that it can suggest and autocomplete methods and properties available in the Member controller or one of its parents.
+This adds a reference that the IDE can read but PHP can't so that the IDE now understands that when we use `$this` inside any of the methods in this extended class that it can suggest and autocomplete methods and properties available in the Member controller or one of its parents.
