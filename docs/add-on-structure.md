@@ -80,10 +80,7 @@ Including this file is mandatory.
 `hashes.json` is the new way to add support for the File health check system, and the best part is -- it's generated 
 automatically!
 
-As part of the add-on export and build process (more on that later) we will do a quick inventory of all your add-on's 
-files and write the calculated hash of the file contents.
-
-Including this file is mandatory and add-on installation will be blocked without it.
+As part of the build process (more on that later) we will do a quick inventory of all your add-on's files and write the calculated hash of the file contents.
 
 ### Setup.php file
 
