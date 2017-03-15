@@ -945,35 +945,30 @@ To add this position to the template, simply add the following below the `<xf:ti
 
 Of course we still won't see a sidebar until we add some widgets to it. Widgets themselves are not assigned to add-ons, so the widgets you create for this position, if you wish to ship some configured widgets by default, will need to be added to the Setup class.
 
-For the sake of simplicity, we'll just duplicate the widgets that are currently assigned to the `forum_overview_sidebar` position (by default). So, we'll add those to a new `installStep4()` method into the Setup class:
+For the sake of simplicity, we'll just duplicate the widgets that are currently assigned to the `forum_list_sidebar` position (by default). So, we'll add those to a new `installStep4()` method into the Setup class:
 
 ```php
 public function installStep4()
 {
-    $this->createWidget('demo_portal_view_members_online', 'members_online', [
-        'position_id' => 'demo_portal_view_sidebar',
-        'display_order' => 10
-    ]);
+	$this->createWidget('demo_portal_view_members_online', 'members_online', [
+		'positions' => ['demo_portal_view_sidebar' => 10]
+	]);
 
-    $this->createWidget('demo_portal_view_new_posts', 'new_posts', [
-        'position_id' => 'demo_portal_view_sidebar',
-        'display_order' => 20
-    ]);
+	$this->createWidget('demo_portal_view_new_posts', 'new_posts', [
+		'positions' => ['demo_portal_view_sidebar' => 20]
+	]);
 
-    $this->createWidget('demo_portal_view_new_profile_posts', 'new_profile_posts', [
-        'position_id' => 'demo_portal_view_sidebar',
-        'display_order' => 30
-    ]);
+	$this->createWidget('demo_portal_view_new_profile_posts', 'new_profile_posts', [
+		'positions' => ['demo_portal_view_sidebar' => 30]
+	]);
 
-    $this->createWidget('demo_portal_view_board_totals', 'board_totals', [
-        'position_id' => 'demo_portal_view_sidebar',
-        'display_order' => 40
-    ]);
+	$this->createWidget('demo_portal_view_forum_statistics', 'forum_statistics', [
+		'positions' => ['demo_portal_view_sidebar' => 40]
+	]);
 
-    $this->createWidget('demo_portal_view_share_page', 'share_page', [
-        'position_id' => 'demo_portal_view_sidebar',
-        'display_order' => 50
-    ]);
+	$this->createWidget('demo_portal_view_share_page', 'share_page', [
+		'positions' => ['demo_portal_view_sidebar' => 50]
+	]);
 }
 ```
 
