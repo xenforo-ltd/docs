@@ -123,30 +123,16 @@ input[type]:focus {
   color: #84653d;
 }
 .wy-body-for-nav .wy-nav-content .admonition.terminal {
-  border: solid #185886;
-  border-width: 30px 2px 2px;
-  border-radius: 3px 3px 0 0;
   position: relative;
   line-height: 24px;
-  margin: 24px 0;
-}
-.wy-body-for-nav .wy-nav-content .admonition.terminal::before {
-  background-color: #bcdef5;
-  border-radius: 50%;
-  box-shadow: 0 0 0 2px #bcdef5, 1.5em 0 0 2px #bcdef5, 3em 0 0 2px #bcdef5;
-  content: '';
-  display: block;
-  height: .5em;
-  left: 10px;
-  position: absolute;
-  top: -1.1em;
-  width: .5em;
+  margin: 0;
+  margin-bottom: 24px;
 }
 .wy-body-for-nav .wy-nav-content .admonition.terminal .admonition-title {
   display: none;
 }
 .wy-body-for-nav .wy-nav-content .admonition.terminal p {
-  background: #333;
+  background: #0f3652;
   padding: 5px;
   margin: 0;
   border: 0;

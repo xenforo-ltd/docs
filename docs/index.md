@@ -149,31 +149,38 @@ If you have been developing add-ons, and you have chosen to keep or backup your 
 When you install XF2, we perform a file integrity check in the installation. If necessary, and you can't otherwise perform the check via the page in the Admin CP, you can run the CLI command to perform that check.
  
 !!! terminal
-    *$* php cmd.php xf:file-check <ADDON ID>
+    *$* php cmd.php xf:file-check _[addon_id]_
     
-If you wish to do a file health check on all files, including XF itself, just omit the `<ADDON ID>` argument. For XF only, just use `XF` in place of the argument, or for a specific add-on, just specify the add-on ID you wish to check.
+If you wish to do a file health check on all files, including XF itself, just omit the `[addon_id]` argument. For XF only, just use `XF` in place of the argument, or for a specific add-on, just specify the add-on ID you wish to check.
     
 ## Add-on management commands
 
 In addition to the above commands for installing XF2, there are also several commands for managing add-ons.
 
-### Add-on install
+### Install
 
 !!! terminal
-    *$* php cmd.php xf:addon-install <ADDON ID>
+    *$* php cmd.php xf:addon-install _[addon_id]_
     
-Installs the specified add-on, as long as it is available, and passes the file health check.
+Installs the specified add-on, as long as it is available, and passes the file health check. If development output is available, you will be asked to confirm if you wish to use that for the installation, instead of the exported data XML files.
 
-### Add-on upgrade
+### Upgrade
 
 !!! terminal
-    *$* php cmd.php xf:addon-upgrade <ADDON ID>
+    *$* php cmd.php xf:addon-upgrade _[addon_id]_
     
-Upgrades the specified add-on, as long as it is upgradeable, and passes the file health check.
+Upgrades the specified add-on, as long as it is upgradeable, and passes the file health check. Can optionally perform import from development output.
 
-### Add-on uninstall
+### Rebuild
 
 !!! terminal
-    *$* php cmd.php xf:addon-uninstall <ADDON ID>
+    *$* php cmd.php xf:addon-rebuild _[addon_id]_
+    
+Rebuilds the master data for the specified add-on, as long as it is rebuildable, and passes the file health check. This re-imports the add-on's data. Can optionally perform import from development output.
+
+### Uninstall
+
+!!! terminal
+    *$* php cmd.php xf:addon-uninstall _[addon_id]_
     
 Uninstalls the specified add-on, as long as it is uninstallable.

@@ -66,30 +66,63 @@ You will then be given the option to create the add-on and write out its addon.j
 ### Export _data .XML files
 
 !!! terminal
-    *$* php cmd.php xf-addon:export <ADDON ID>
+    *$* php cmd.php xf-addon:export _[addon_id]_
 
 This command is what you will use to export all of your add-on's data to XML files inside the `_data` directory. It exports the data from what is currently in the database (rather than from the development output files).
-
-### Build a release
-
-!!! terminal
-    *$* php cmd.php xf-addon:build-release <ADDON ID>
-
-When you run this command, it will first run the `xf-addon:export` command before then collecting all of your files together and writing them to a ZIP file. The ZIP will also include the updated `hashes.json` file. Once the ZIP has been created it will be saved to your `_releases` directory named `<ADDON ID>-<VERSION STRING>.zip`.
 
 ### Bump your add-on version
 
 !!! terminal
-    *$* php cmd.php xf-addon:bump-version <ADDON ID> --version-id 1020370 --version-string 1.2.3
+    *$* php cmd.php xf-addon:bump-version _[addon_id]_ --version-id 1020370 --version-string 1.2.3
     
 This command takes the add-on ID for your add-on, the new version ID and the new version string. This enables you to bump the version of your add-on in a single step, without having to perform upgrades and rebuilds yourself. The options above are optional, and if they are not provided you will be prompted for them. If you only specify the version ID, we will try and infer the correct version string from that automatically if it matches our [Recommended version ID format](/add-on-structure/#recommended-version-id-format). Once the command completes, it updates the `addon.json` file automatically and the database with the correct version details.
 
 ### Sync your addon.json to the database
  
 !!! terminal
-    *$* php cmd.php xf-addon:sync-json <ADDON ID>
+    *$* php cmd.php xf-addon:sync-json _[addon_id]_
      
 Sometimes you might prefer to edit the JSON file directly with certain details. This could be the version, or a new icon, or a change of title or description. Changing the JSON in this way can cause the add-on system to believe there are pending changes or that the add-on is upgradeable. A rebuild or upgrade can be a destructive operation if you haven't yet exported your current data. Therefore, running this command is recommended as a way of importing that data in without affecting your existing data.
+
+## Building an add-on release
+
+Once all of the hard work has been done, it's a shame to have to go through a number of other processes before you can actually release it. Even the process of collecting all of the files into the correct place and creating the ZIP file manually can be time consuming and prone to errors. We can take care of that automatically, including generating the `hashes.json` file, with one simple command. 
+
+!!! terminal
+    *$* php cmd.php xf-addon:build-release _[addon_id]_
+
+When you run this command, it will first run the `xf-addon:export` command before then collecting all of your files together into a temporary `_build` directory and writing them to a ZIP file. The finished ZIP will also include the `hashes.json` file. Once the ZIP has been created it will be saved to your `_releases` directory named and named `<ADDON ID>-<VERSION STRING>.zip`.
+
+### Customizing the build process
+
+Aside from just creating the release ZIP there may be additional files you wish to include in your ZIP, other more advanced build processes you want to run such as minifying or concatenating JS or running certain shell commands. All of this can be taken care of in your `build.json` file. This is a typical `build.json` file:
+
+```json
+{
+	"additional_files": [
+		"js/demo/portal"
+	],
+	"minify": [
+		"js/demo/portal/a.js",
+		"js/demo/portal/b.js"
+	],
+	"rollup": {
+		"js/demo/portal/ab-rollup.js": [
+			"js/demo/portal/a.min.js",
+			"js/demo/portal/b.min.js"
+		]
+	},
+	"exec": [
+		"echo '{title} version {version_string} ({version_id}) has been built successfully!' > 'src/addons/Demo/Portal/_build/built.txt'"
+	]
+}
+```
+
+If you have assets, such as JavaScript, which need to be served outside of your add-on directory, you can tell the build process to copy files or directories using the `additional_files` array within `build.json`.
+ 
+If you ship some JS files with your add-on, you may want to minify those files for performance reasons. You can specify which files you want to minify right inside your `build.json`. You can list these as an array or you can just specify it as `'*'` which will just minify everything in your `js` directory as long as that path has JS files within it after copying the additional files to the build. Any files minified will automatically have a suffix of `.min.js` instead of `.js` and the original files will still be in the package.
+
+You may prefer to have a single, larger, 
 
 ## Development commands
 
@@ -106,7 +139,7 @@ To use any of these commands, you must have [development mode](#enabling-develop
 ### Import development output
 
 !!! terminal
-    *$* php cmd.php xf-dev:import --addon <ADDON ID>
+    *$* php cmd.php xf-dev:import --addon _[addon_id]_
 
 Running this command will import all of the development output files from your add-on `_output` directory into the 
 database.
@@ -114,7 +147,7 @@ database.
 ### Export development output
 
 !!! terminal
-    *$* php cmd.php xf-dev:export --addon <ADDON ID>
+    *$* php cmd.php xf-dev:export --addon _[addon_id]_
 
 This will export all data currently associated to your add-on in the database to files within your 
 `_output` directory.
