@@ -122,7 +122,9 @@ If you have assets, such as JavaScript, which need to be served outside of your 
  
 If you ship some JS files with your add-on, you may want to minify those files for performance reasons. You can specify which files you want to minify right inside your `build.json`. You can list these as an array or you can just specify it as `'*'` which will just minify everything in your `js` directory as long as that path has JS files within it after copying the additional files to the build. Any files minified will automatically have a suffix of `.min.js` instead of `.js` and the original files will still be in the package.
 
-You may prefer to have a single, larger, 
+You may prefer to roll up your multiple JS files into a single file. If you do, you can use the `rollup` array to define that. The key is the resulting combined filename, and the items within that array are the paths to the JS files that will be combined into a single file.
+
+Finally, you may have certain processes that need to be run just before the package is built and finalised. This could be any combination of things. Ultimately, if it is a command that can be run from the shell (including PHP scripts) then you can specify it here. The example above is of course fairly useless, but it does at least demonstrate that certain placeholders can be used. These placeholders are replaced with scalar values you can get from the `XF\AddOn\AddOn` object which is generally any value available in the `addon.json` file, or the `AddOn` entity. 
 
 ## Development commands
 
