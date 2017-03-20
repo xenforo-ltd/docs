@@ -1,14 +1,5 @@
 {% extends "base.html" %}
 
-{%- block styles %}
-	<link rel="stylesheet" href="{{ base_url }}/css/theme.css" type="text/css" />
-	<link rel="stylesheet" href="{{ base_url }}/css/theme_extra.css" type="text/css" />
-	<link rel="stylesheet" href="{{ base_url }}/css/highlight.css">
-	{%- for path in extra_css %}
-		<link href="{{ path }}/?{{ build_date_utc|urlencode }}" rel="stylesheet">
-	{%- endfor %}
-{%- endblock %}
-
 {% block content %}
 	<h1>{{ page.title }}</h1>
 	{{ page.content }}
