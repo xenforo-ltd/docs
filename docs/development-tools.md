@@ -118,7 +118,7 @@ Aside from just creating the release ZIP there may be additional files you wish 
 }
 ```
 
-If you have assets, such as JavaScript, which need to be served outside of your add-on directory, you can tell the build process to copy files or directories using the `additional_files` array within `build.json`.
+If you have assets, such as JavaScript, which need to be served outside of your add-on directory, you can tell the build process to copy files or directories using the `additional_files` array within `build.json`. During development it isn't always feasible to keep files outside of your add-on directory, so if you prefer, you can keep the files in your add-on `_files` directory instead. When copying the additional files, we will check there first.
  
 If you ship some JS files with your add-on, you may want to minify those files for performance reasons. You can specify which files you want to minify right inside your `build.json`. You can list these as an array or you can just specify it as `'*'` which will just minify everything in your `js` directory as long as that path has JS files within it after copying the additional files to the build. Any files minified will automatically have a suffix of `.min.js` instead of `.js` and the original files will still be in the package.
 
