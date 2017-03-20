@@ -335,24 +335,12 @@ input[type]:focus {
   text-decoration: none !important;
   background-color: #edf6fd !important;
 }
-footer {
-  background: #0f3652;
-  border-top: 1px solid #0c2b41;
-  color: #bcdef5;
-  margin: 10px -20px -10px;
-  padding: 0 10px;
-  padding-top: 6px;
-  padding-bottom: 10px;
-}
 footer p {
   margin-bottom: 0;
 }
 footer div[role=contentinfo] p {
   font-size: 11px;
   text-align: center;
-}
-footer div[role=contentinfo] a {
-  color: #bcdef5;
 }
 @media (max-width: 650px) {
   .wy-body-for-nav .wy-nav-content {
