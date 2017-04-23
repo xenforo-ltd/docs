@@ -765,19 +765,23 @@ class Editor extends XFCP_Editor
 		if ($this->featureThread !== null && $thread->discussion_state == 'visible')
 		{
 			/** @var \Demo\Portal\Entity\FeaturedThread $featuredThread */
-			$featuredThread = $thread->getRelationOrDefault('FeaturedThread');
+			$featuredThread = $thread->getRelationOrDefault('FeaturedThread', false);
 
 			if ($this->featureThread)
 			{
-				$featuredThread->save();
-
-				$thread->fastUpdate('demo_portal_featured', true);
+				if (!$featuredThread->exists())
+				{
+					$featuredThread->save();
+					$thread->fastUpdate('demo_portal_featured', true);
+				}
 			}
 			else
 			{
-				$featuredThread->delete();
-
-				$thread->fastUpdate('demo_portal_featured', false);
+				if ($featuredThread->exists())
+				{
+					$featuredThread->delete();
+					$thread->fastUpdate('demo_portal_featured', false);
+				}
 			}
 		}
 
