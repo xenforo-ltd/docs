@@ -75,12 +75,12 @@ There are a number of other useful commands relating to designer mode:
 
 ### Export from database
 
-This command is automatically run when designer mode is enabled on a template, but if for some reason you would like to overwrite the file system copy with what is currently in the database, then you can run the following command:
+This command is usually automatically run when designer mode is enabled on a style, but if for some reason you would like to overwrite the file system copy with what is currently in the database, then you can run the following command:
 
 !!! terminal
     *$* php cmd.php xf-designer:export _[designer_mode_id]_
     
-It's also possible to export only specific types, e.g. `xf-designer-export-templates`.
+It's also possible to export only specific types, e.g. `xf-designer:export-templates`.
 
 ### Import from file system
 
@@ -89,7 +89,7 @@ This command will overwrite the database copy of the style with what is on the f
 !!! terminal
     *$* php cmd.php xf-designer:import _[designer_mode_id]_
     
-It's also possible to import only specific types, e.g. `xf-designer-import-templates`.
+It's also possible to import only specific types, e.g. `xf-designer:import-templates`.
 
 ### Sync templates
 
