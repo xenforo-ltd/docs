@@ -250,9 +250,13 @@ input[type]:focus {
 .wy-menu-vertical li > span:hover {
   background: rgba(0, 0, 0, 0.05);
 }
+.wy-menu-vertical li > a.toctree-l3,
+.wy-menu-vertical li > span.toctree-l3 {
+  padding-left: 2.0em !important;
+}
 .wy-menu-vertical li > a.toctree-l4,
 .wy-menu-vertical li > span.toctree-l4 {
-  padding-left: 1.5em;
+  padding-left: 3.0em !important;
 }
 .wy-menu-vertical li.current {
   background: none;
