@@ -84,6 +84,20 @@ This command takes the add-on ID for your add-on, the new version ID and the new
      
 Sometimes you might prefer to edit the JSON file directly with certain details. This could be the version, or a new icon, or a change of title or description. Changing the JSON in this way can cause the add-on system to believe there are pending changes or that the add-on is upgradeable. A rebuild or upgrade can be a destructive operation if you haven't yet exported your current data. Therefore, running this command is recommended as a way of importing that data in without affecting your existing data.
 
+### Validate your addon.json file
+
+!!! terminal
+    *$* php cmd.php xf-addon:validate-json _[addon_id]_
+    
+If you'd like to check your JSON file contains the correct content and in the correct format, you can now validate it. The validator will check that the content can be decoded, that it contains all of the correct required fields (such as title and version ID) and also checks for the presence of the optional keys (such as description and icon). If any keys are missing, you will be offered to have the issues fixed for you. We also check to see if there are any unexpected fields within the JSON file. These may be deliberate or represent typos. You can run the command manually or the command will be run automatically while building your release.
+
+### Run a specific Setup step
+
+!!! terminal
+    *$* php cmd.php xf-addon:validate-json _[addon_id]_ _[install|upgrade|uninstall]_ --step [step] --ver [version_id]
+    
+Sometimes it's useful to check your Setup steps function correctly, without needing to uninstall/reinstall. This command allows you to pick a specific type of step (install, upgrade or uninstall) and a specific step so that the associated Setup class method can be executed, e.g. `xf-addon:setup-step <addon_id> install 6` would run the `installStep6()` method. It works for upgrades, too, but for those you will also need a version ID passed in with the `--ver` option. This command will only work with Setup classes that are built using the default `StepRunner` traits.
+
 ## Building an add-on release
 
 Once all of the hard work has been done, it's a shame to have to go through a number of other processes before you can actually release it. Even the process of collecting all of the files into the correct place and creating the ZIP file manually can be time consuming and prone to errors. We can take care of that automatically, including generating the `hashes.json` file, with one simple command. 
