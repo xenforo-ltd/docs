@@ -417,7 +417,7 @@ In the `_preSave()` example we fetch and cache the new display group ID for a us
 
 ## Repositories
 
-Repositories are a new concept for XF2, but you might not be blamed for comparing them to the "Model" objects from XF1. We don't have a model object in XF1 because we have much better places and ways to fetch and write data to the database. So, rather than having a massive class which contains all of the queries your add-on needs, and all of the various different ways to manipulate those queries, we have the finder which adds a lot more flexibility.
+Repositories are a new concept for XF2, but you might not be blamed for comparing them to the "Model" objects from XF1. We don't have a model object in XF2 because we have much better places and ways to fetch and write data to the database. So, rather than having a massive class which contains all of the queries your add-on needs, and all of the various different ways to manipulate those queries, we have the finder which adds a lot more flexibility.
 
 It's also worth bearing in mind that in XF1 the Model objects were a bit of a "dumping ground" for so many things. Many of which are now redundant. For example, in XF1 all of the permission rebuilding code was in the permission model. In XF2, we have specific services and objects which handle this.
 
