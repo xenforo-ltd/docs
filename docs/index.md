@@ -52,7 +52,7 @@ Setting things up yourself is more complicated, but tends to give you more contr
 
 A pre-built stack is the likely the easiest way to go. There are many of them out there and they may vary in feature set,
 performance and reliability. Bitnami maintain a number of stacks, including [LAMP](https://bitnami.com/stack/lamp),
-[MAMP](https://bitnami.com/stack/mamp>) and [WAMP](https://bitnami.com/stack/wamp) stacks for use on Linux, Mac and
+[MAMP](https://bitnami.com/stack/mamp) and [WAMP](https://bitnami.com/stack/wamp) stacks for use on Linux, Mac and
 Windows respectively. They all include a fully configured installation of Apache, MySQL and PHP and include PhpMyAdmin for
 managing MySQL.
 
