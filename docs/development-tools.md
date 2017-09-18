@@ -93,10 +93,24 @@ If you'd like to check your JSON file contains the correct content and in the co
 
 ### Run a specific Setup step
 
+Sometimes it's useful to check that your Setup class steps function correctly, without having to go through the process of uninstalling and reinstalling.
+
+There are three commands which help with this. These commands will only work with Setup classes that are built using the default `StepRunner` traits.
+
+#### Run an install step 
+
 !!! terminal
-    *$* php cmd.php xf-addon:validate-json _[addon_id]_ _[install|upgrade|uninstall]_ --step [step] --ver [version_id]
+    *$* php cmd.php xf-addon:install-step _[addon_id]_ _[step]_ 
     
-Sometimes it's useful to check your Setup steps function correctly, without needing to uninstall/reinstall. This command allows you to pick a specific type of step (install, upgrade or uninstall) and a specific step so that the associated Setup class method can be executed, e.g. `xf-addon:setup-step <addon_id> install 6` would run the `installStep6()` method. It works for upgrades, too, but for those you will also need a version ID passed in with the `--ver` option. This command will only work with Setup classes that are built using the default `StepRunner` traits.
+#### Run an upgrade step
+
+!!! terminal
+    *$* php cmd.php xf-addon:upgrade-step _[addon_id]_ _[version]_ _[step]_
+    
+#### Run an uninstall step 
+
+!!! terminal
+    *$* php cmd.php xf-addon:uninstall-step _[addon_id]_ _[step]_
 
 ## Building an add-on release
 
