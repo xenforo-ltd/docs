@@ -565,8 +565,6 @@ At this stage, we're not going to worry about modifying the base finder we've re
 			arg-featuredThread="{$featuredThread}"
 		/>
 	</xf:foreach>
-
-	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}" link="portal" wrapperclass="block" />
 <xf:else />
 	<div class="blockMessage">No threads have been featured yet.</div>
 </xf:if>
@@ -604,13 +602,7 @@ At this stage, we're not going to worry about modifying the base finder we've re
 							<div class="contentRow-main contentRow-main--close">
 								<ul class="listInline listInline--bullet u-muted">
 									<li><xf:username user="{$thread.User}" /></li>
-									<li>
-										<xf:if is="$xf.options.demoPortalDefaultSort == 'featured_date'">
-											<xf:date time="{$featuredThread.featured_date}" />
-										<xf:else />
-											<xf:date time="{$thread.post_date}" />
-										</xf:if>
-									</li>
+									<li><xf:date time="{$featuredThread.featured_date}" /></li>
 									<li><a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a></li>
 									<li>{{ phrase('replies:') }} {$thread.reply_count|number}</li>
 								</ul>
