@@ -31,7 +31,7 @@ Throughout the add-on we will use the add-on ID of `Demo/Portal`. The first thin
     
 The add-on has now been created, you will now find that you have a new directory in the `src/addons` directory, and you will find the add-on in the "Installed add-ons" list of the Admin CP.
 
-One of the file that has been created is the `addon.json` file, which currently looks like this:
+One of the files that has been created is the `addon.json` file, which currently looks like this:
 
 ```json
 {
@@ -143,7 +143,7 @@ The same principles apply here in terms of naming. A significant difference is t
 
 ## Extending the forum entity
 
-So far we've added a column to the `xf_forum`, it's now time to extend the Forum entity structure. We need to do this so that the entity knows about our new column, and so that data can be read from and written to it via the entity.
+So far we've added a column to the `xf_forum` table, it's now time to extend the Forum entity structure. We need to do this so that the entity knows about our new column, and so that data can be read from and written to it via the entity.
 
 !!! note
     The following steps will require [Development mode](/development-tools/#enabling-development-mode) to be enabled. Remember to set `Demo/Portal` as the `defaultAddOn` value in `config.php`.
@@ -285,49 +285,31 @@ In the "Modification key" field, type "demo_portal_forum_edit". This is a unique
 
 The "Description" field should contain some text to help you identify the purpose of this modification when looking down the template modifications list. Something like "Adds auto feature checkbox to the forum_edit template" should suffice.
 
-When you entered the template name in the "Template" field, you may notice that a preview of the template contents was displayed. We need to use this to identify the preferred place for our checkbox. The location we'll choose certainly isn't the easiest to match, but we'll go with adding our new checkbox to directly below the `require_prefix` checkbox, which looks like this:
+When you entered the template name in the "Template" field, you may notice that a preview of the template contents was displayed. We need to use this to identify the preferred place for our checkbox. While viewing the forum edit page, you may notice there's a series of checkboxes and this looks like a reasonable location.
 
-```html
-<xf:checkboxrow label="" name="require_prefix" value="{$forum.require_prefix}">
-    <xf:option value="1" label="{{ phrase('require_users_to_select_prefix') }}">
-        <xf:hint>{{ phrase('if_selected_users_required_select_prefix_for_thread') }}</xf:hint>
-    </xf:option>
-</xf:checkboxrow>
-```
-
-To match this, we're going to need to do a "Regular expression" search, so select that radio button. In the "Find" field we will match that with:
+The simplest way to place a checkbox in this section is to do a simple replacement on the top checkbox, so in the "Find" field add:
 
 ```plain
-/<xf:checkboxrow label="" name="require_prefix"[^>]*>.*<\/xf:checkboxrow>/sU
+<xf:option name="allow_posting"
 ```
 
 And in the replace field:
 
 ```html
+<xf:option name="demo_portal_auto_feature" selected="$forum.demo_portal_auto_feature"
+	label="Automatically feature threads in this forum"
+	hint="If selected, any new threads posted in this forum will be automatically featured." />
 $0
-<xf:include template="demo_portal_forum_edit" />
 ```
 
-In short, the regular expression matches the entirety of the `<xf:checkboxrow>` tag and appends our template (which we will create shortly) to it. We are not actually removing what we have matched because the `$0` in the replace field is inserting the matched text.
+We don't need to worry about creating phrases, yet, we can pick those up later. Notice that the name attribute matches the name of the column we created earlier, and more significantly, the checked state of the checkbox row also reads the newly added column from the forum entity.
 
-We can use the "Test" button to check the replacement is working as expected. When the test button is clicked, an overlay with the modified template will appear. If all goes well, a green area should be highlighted with the `<xf:include>` tag we want to add.
+When we save the template modification later, if the contents of the find field matches any part of the template then it will be replaced with the contents of the replace field. We are not actually removing what we have matched because the `$0` in the replace field is re-inserting the matched text.
+
+We can use the "Test" button to check the replacement is working as expected. When the test button is clicked, an overlay with the modified template will appear. If all goes well, a green area should be highlighted with the new code we want to add.
 
 !!! note
-    A detailed explanation of working with regular expressions is beyond the scope for this guide, but there are lots of resources online which may help.
-    
-To create the template, you just need to create a file named `demo_portal_forum_edit.html` in the `src/addons/Demo/Portal/_output/templates/admin` directory. It should contain the following contents:
-
-```html
-<hr class="formRowSep" />
-
-<xf:checkboxrow label="" name="demo_portal_auto_feature" value="{$forum.demo_portal_auto_feature}">
-	<xf:option value="1" label="Automatically feature threads in this forum">
-		<xf:hint>If selected, any new threads posted in this forum will be automatically featured.</xf:hint>
-	</xf:option>
-</xf:checkboxrow>
-```
-
-We don't need to worry about creating phrases, yet, we can pick those up later. Notice that the name attribute matches the name of the column we created earlier, and more significantly, the value of the checkbox row also reads the newly added column from the forum entity.
+    This is a fairly simple replacement. For more advanced matching, you can also use the "Regular expression" type. A detailed explanation of working with regular expressions is beyond the scope for this guide, but there are lots of resources online which may help.
 
 Finally, click save to save your template modification. If all has gone well, when you return to the template modifications list, you will see the log summary is displaying <span style="color: green; font-weight: 700;">1</span> / 0 / <span style="color: red;">0</span> therefore indicating that the modification successfully applied one time. An even better indicator that it has worked as planned is to go to the "Nodes" page listed under "Forums" in the Admin CP, and edit an existing forum. Our newly added template modification should now appear.
 
@@ -583,8 +565,6 @@ At this stage, we're not going to worry about modifying the base finder we've re
 			arg-featuredThread="{$featuredThread}"
 		/>
 	</xf:foreach>
-
-	<xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}" link="portal" wrapperclass="block" />
 <xf:else />
 	<div class="blockMessage">No threads have been featured yet.</div>
 </xf:if>
@@ -622,13 +602,7 @@ At this stage, we're not going to worry about modifying the base finder we've re
 							<div class="contentRow-main contentRow-main--close">
 								<ul class="listInline listInline--bullet u-muted">
 									<li><xf:username user="{$thread.User}" /></li>
-									<li>
-										<xf:if is="$xf.options.demoPortalDefaultSort == 'featured_date'">
-											<xf:date time="{$featuredThread.featured_date}" />
-										<xf:else />
-											<xf:date time="{$thread.post_date}" />
-										</xf:if>
-									</li>
+									<li><xf:date time="{$featuredThread.featured_date}" /></li>
 									<li><a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a></li>
 									<li>{{ phrase('replies:') }} {$thread.reply_count|number}</li>
 								</ul>
