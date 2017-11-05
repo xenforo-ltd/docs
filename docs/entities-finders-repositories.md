@@ -89,7 +89,7 @@ Similar to the example in the previous section, as well as passing up to two con
 ```php
 $finder = \XF::finder('XF:User');
 $users = $finder->whereOr([
-    ['user_state', '<>' 'valid'],
+    ['user_state', '<>', 'valid'],
     ['message_count', 0],
     ['is_banned', 1]
 ])->fetch();
