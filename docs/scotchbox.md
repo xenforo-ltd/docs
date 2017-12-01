@@ -50,6 +50,28 @@ You will be able to visit your new web server in your web browser at the followi
  
  If you want your XenForo to be installed at `http://192.168.33.10/xenforo`, you should place the contents of the `upload` folder from the XenForo package into `/Users/{username}/MyServer/public/xenforo`.
  
+## Stopping and restarting the server
+ 
+You can stop the Scotch Box server at any time by running
+
+```
+cd /Users/{username}/MyServer
+vagrant halt
+```
+
+... and you can restart it by running
+
+```
+cd /Users/{username}/MyServer
+vagrant up
+
+```
+
+!!!Note
+	Although Vagrant / Scotch Box will automatically shut down when you reboot your computer, it will not automatically start up again.
+	
+	Whenever you reboot, you will need to run the `vagrant up` command again in order to use the server.
+ 
 ## Offical documentation
 
 This guide is derived from the official Scotch Box documentation, which is located at <https://box.scotch.io>
