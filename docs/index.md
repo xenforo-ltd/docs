@@ -46,12 +46,22 @@ The requirements for running XF 2.0 have changed since XF 1.5. The recommended r
 It's often more convenient to set up a local web server for development. There are generally two approaches for this:
 
 1. Install Apache (or nginx), MySQL (or MariaDB) and PHP yourself.
-2. Install a pre-built stack.
+1. Install a pre-built virtual machine
+1. Install a pre-built stack.
 
 Setting things up yourself is more complicated, but tends to give you more control over how everything is set up.
 
-A pre-built stack is the likely the easiest way to go. There are many of them out there and they may vary in feature set,
-performance and reliability. Bitnami maintain a number of stacks, including [LAMP](https://bitnami.com/stack/lamp),
+### Pre-built virtual machine
+
+There are a variety of pre-built virtual machines available on the Internet, which provide the advantage of having all of the necessary services to run XenForo neatly packaged into one place, without having to install and maintain them directly on your own computer.
+
+Some of the XenForo developers use a virtual machine called [Scotch Box](https://box.scotch.io/), which includes everything you need to run XenForo with zero configuration required. We have a [step-by-step guide](scotchbox.md) to getting a XenForo development server up and running - you can have a working virtual web and database server up and running in just a few minutes by running a handful of commands.
+
+[Installing Scotch Box for use with XenForo](scotchbox.md)
+
+### Pre-built stack
+
+There are many pre-built stacks out there and they may vary in feature set, performance and reliability. Bitnami maintain a number of stacks, including [LAMP](https://bitnami.com/stack/lamp),
 [MAMP](https://bitnami.com/stack/mamp) and [WAMP](https://bitnami.com/stack/wamp) stacks for use on Linux, Mac and
 Windows respectively. They all include a fully configured installation of Apache, MySQL and PHP and include PhpMyAdmin for
 managing MySQL.
