@@ -89,4 +89,4 @@ While the basic Scotch Box requires some additional configuration (which is hand
 
 To run Scotch Box Pro, purchase it from the Scotch Box Pro website, then run the *git clone* command provided as part of the instructions you will receive post-purchase.
 
-You can now install using the same instructions as above, with the single exception that you should download [this custom Vagrantfile](scotch-box-pro/Vagrantfile) instead of the one listed in the instructions for Scotch Box.
+You can now install using the same instructions as above, with the single exception that you should download [this custom Vagrantfile](files/scotchboxpro/Vagrantfile) instead of the one listed in the instructions for Scotch Box.
