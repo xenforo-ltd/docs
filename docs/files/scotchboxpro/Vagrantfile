@@ -1,0 +1,24 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$bootstrap = <<SCRIPT
+sudo apt-get install -y php-xdebug
+# add the proper xdebug config
+sudo echo -e "zend_extension=xdebug.so\nxdebug.show_error_trace = 1\nxdebug.remote_enable=on\nxdebug.remote_connect_back=on\nxdebug.remote_host=192.168.33.10" > /etc/php/7.0/mods-available/xdebug.ini
+sudo service apache2 restart
+# create a database for XenForo
+mysql -uroot -proot -e 'create database xenforo'
+SCRIPT
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "scotch/box-pro"
+  config.vm.hostname = "scotchbox"
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
+
+# Optional NFS. Make sure to remove other synced_folder line too
+#config.vm.synced_folder ".", "/var/www", :nfs => { :mount_options => ["dmode=777","fmode=666"] }
+
+end

@@ -1,5 +1,7 @@
 The following is a description of how to install the excellent [Scotch Box](https://box.scotch.io/) onto your own computer, in order to have a fully operational development environment for XenForo in just a few minutes with a handful of simple commands.
 
+XenForo has a custom Scotch Box config, which provides everything you need to run XenForo, including a debugger and a performance-enhancing data cache.
+
 Scotch Box runs within a [VirtualBox](https://www.virtualbox.org/) / [Vagrant](https://www.vagrantup.com/) environment.
 
 ## Installing Scotch Box
@@ -23,7 +25,9 @@ Once you have chosen a location, follow these steps:
 	git clone https://github.com/scotch-io/scotch-box /Users/{username}/MyServer
 	```
 
-1. Once the clone process is complete, run the following commands:
+1. Once the clone process is complete, download this custom **Vagrantfile** and overwrite the Vagrantfile that has been created at */Users/{username}/MyServer/Vagrantfile: [Download custom Vagrantfile](files/scotchbox/Vagrantfile).
+
+1. When the custom Vagrantfile is in place, run the following commands:
 
 	```
 	cd /Users/{username}/MyServer
@@ -31,6 +35,9 @@ Once you have chosen a location, follow these steps:
 	```
 
 Your Scotch Box virtual machine is now created and ready to use.
+
+!!!Note
+	Scotch Box also provides a '[Scotch Box Pro](https://box.scotch.io/pro/)' version of their virtual machine for a reasonable purchase price. If you prefer to run Scotch Box Pro, refer to the [section below describing the differences between configuring and running Scotch Box and Scotch Box Pro](#scotch-box-pro). 
 
 ## Where do the files go?
 
@@ -76,43 +83,10 @@ vagrant up
 
 This guide is derived from the official Scotch Box documentation, which is located at <https://box.scotch.io>
 
-## Installing Xdebug (optional)
+## Scotch Box Pro
 
-If you go down the Scotch Box route, you may want to install a debugger to allow you to set break points both in your code and that of XenForo itself, to diagnose problems or just to see how the execution flow works. [Xdebug](https://xdebug.org) by Derick Rethans is an excellent tool for the job.
+While the basic Scotch Box requires some additional configuration (which is handed through the custom Vagrantfile) in order to run XenForo 2, [Scotch Box Pro](https://box.scotch.io/pro/) requires no additional configuration, and is ready to run XenForo 2 without downloading extra packages.
 
-!!!Note
-	If you just want to run your server and have no interest in a debugger, the rest of this document can be ignored.
+To run Scotch Box Pro, purchase it from the Scotch Box Pro website, then run the *git clone* command provided as part of the instructions you will receive post-purchase.
 
-Scotch Box does not come packaged with Xdebug, but it can be installed into a working Scotch Box with minimal effort.
-
-1. Log in to your Scotch Box via SSH with the following commands:
-
-	```
-	cd /Users/{username}/MyServer
-	vagrant ssh
-	```
-	
-1. Once logged in, run the following commands:
-
-	```
-	sudo apt-get install php-xdebug
-	sudo nano /etc/php/7.0/mods-available/xdebug.ini
-	```
-	
-1. This will open a text editor where you can configure Xdebug. Add the following text to the xdebug.ini file, then save it:
-
-	```
-	zend_extension=xdebug.so
-	xdebug.show_error_trace = 1
-	xdebug.remote_enable=on
-	xdebug.remote_connect_back=on
-	xdebug.remote_host=192.168.33.10
-	``` 
-	
-1. Finally, restart the Apache web server with the following command:
-
-	```
-	sudo apachectl graceful
-	```
-
-Your virtual machine now has a fully operational debugger, which you can access through your IDE.
+You can now install using the same instructions as above, with the single exception that you should download [this custom Vagrantfile](scotch-box-pro/Vagrantfile) instead of the one listed in the instructions for Scotch Box.

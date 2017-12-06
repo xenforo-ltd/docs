@@ -1,0 +1,39 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$bootstrap = <<SCRIPT
+# This installs php7.1
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
+sudo apt-get install -y php7.1 php7.1-xml php7.1-mysql php7.1-curl php7.1-mbstring php7.1-gd php7.1-bcmath php7.1-bz2 php7.1-enchant php7.1-imap php7.1-intl php7.1-mcrypt php7.1-pspell php7.1-zip php7.1-odbc php7.1-xdebug
+# add the proper xdebug config
+sudo echo -e "zend_extension=xdebug.so\nxdebug.show_error_trace = 1\nxdebug.remote_enable=on\nxdebug.remote_connect_back=on\nxdebug.remote_host=192.168.33.10" > /etc/php/7.1/mods-available/xdebug.ini
+# This enables Apache to run php7.1
+sudo a2dismod php7.0
+sudo a2enmod php7.1
+sudo service apache2 restart
+# create a database for XenForo
+mysql -uroot -proot -e 'create database xenforo'
+SCRIPT
+
+Vagrant.configure("2") do |config|
+
+    # This is Scotch Box 3.0 (the free version)
+    # _________________________________________
+    # If you want PHP7, MySQL 5.7, Ubuntu 16.04, Build Scripts (customize your own boxes in minutes)...
+    # ... an NGINX version, PHPUnit, Yarn, WebPack, improved email testing with MailHog...
+    # ... generally Higher versions of things, Ruby (via RVM), Node (via NVM), WebPack ready, and more.
+
+    # Just go to https://box.scotch.io/pro
+    # Your support will help keep this project alive!
+
+    config.vm.box = "scotch/box"
+    config.vm.provision :shell, inline: $bootstrap
+    config.vm.network "private_network", ip: "192.168.33.10"
+    config.vm.hostname = "scotchbox"
+    config.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
+
+    # Optional NFS. Make sure to remove other synced_folder line too
+    #config.vm.synced_folder ".", "/var/www", :nfs => { :mount_options => ["dmode=777","fmode=666"] }
+
+end
