@@ -87,7 +87,7 @@ And also let's look at a typical create table query:
 $db = \XF::db();
 $sm = $db->getSchemaManager();
 
-$defaultTableConfig = $schemaManager->getTableConfigSql();
+$defaultTableConfig = $sm->getTableConfigSql();
 
 $db->query("
     CREATE TABLE xf_some_table (
