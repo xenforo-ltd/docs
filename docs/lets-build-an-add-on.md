@@ -410,7 +410,7 @@ public function setFeatureThread($featureThread)
 Going back to our newly extended forum controller, we will now extend the method that sets up the creator service, and opt in to featuring if the forum entity has the necessary value set. Remember, before extending a method, we need to know what it is expected to return (if anything), and ensure we call the parent method. If the parent method does return something, then it is this which we should return after our code has finished. The `setupThreadCreate()` method in this case returns the set up creator service, so we will start this off as follows:
  
 ```php
-public function setupThreadCreate(\XF\Entity\Forum $forum)
+protected function setupThreadCreate(\XF\Entity\Forum $forum)
 {
     /** @var \Demo\Portal\XF\Service\Thread\Creator $creator */
 	$creator = parent::setupThreadCreate($forum);
