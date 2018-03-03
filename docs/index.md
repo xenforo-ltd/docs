@@ -11,10 +11,10 @@ Although XenForo 2.0 adds a lot of improvements for your forums and its members,
 been put into improving the underlying framework of XenForo. You can read more information about these changes in
 the following threads:
 
- * <a href="https://xf2demo.xenforo.com/threads/whats-new-for-developers-in-xenforo-2-part-1.1297/" target="_blank">
+ * <a href="https://xenforo.com/community/threads/xenforo-2-0-development-updates-from-xf2demo.139565/post-1205086" target="_blank">
  	What's new for developers in XenForo 2 (part 1)
    </a>
- * <a href="https://xf2demo.xenforo.com/threads/whats-new-for-developers-in-xenforo-2-part-2.1409/" target="_blank">
+ * <a href="https://xenforo.com/community/threads/xenforo-2-0-development-updates-from-xf2demo.139565/post-1205088" target="_blank">
  	What's new for developers in XenForo 2 (part 2)
    </a>
  
