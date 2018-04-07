@@ -19,7 +19,7 @@ pages:
 - Designing styles: designing-styles.md
 - 'Appendix: Scotch Box': scotchbox.md
 
-repo_url: https://github.com/xenforo-ltd/xfdocs/
+repo_url: https://github.com/xenforo-ltd/docs/
 edit_uri: edit/master/docs/
 
 markdown_extensions:
