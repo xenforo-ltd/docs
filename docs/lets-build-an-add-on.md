@@ -136,10 +136,14 @@ public function installStep3()
 
 This step is going to create the new table. This table will be used to keep a log of all of the threads that have been featured, and when they were featured.
 
-!!! note
-    Don't forget to execute the queries yourself!
-
 The same principles apply here in terms of naming. A significant difference is that all tables should additionally be prefixed with `xf_`. The reason for this is so that if a clean XF install is performed, we can remove all tables with the `xf_` prefix, including those created by add-ons.
+
+One of the simplest things to forget when adding the code which adds various schema changes is to forget to apply the schema changes yourself. You can run install/upgrade steps using a CLI command. In this case, execute the following commands:
+
+!!! terminal
+    *$* php cmd.php xf-addon:install-step Demo/Portal 1
+    *$* php cmd.php xf-addon:install-step Demo/Portal 2
+    *$* php cmd.php xf-addon:install-step Demo/Portal 3
 
 ## Extending the forum entity
 
