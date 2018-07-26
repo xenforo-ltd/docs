@@ -33,7 +33,7 @@ Similarly, to get an array of values from a single column, you can use the `pluc
 
 ```php
 $finder = \XF::finder('XF:User');
-$usernames = $finder->limit(10)->fetch()->pluckFrom('username');
+$usernames = $finder->limit(10)->pluckFrom('username')->fetch();
 ```
 
 So far we've seen the Finder apply somewhat simple where and limit constraints. So let's look at the Finder in more detail, including a bit more detail about the `where` method itself.
