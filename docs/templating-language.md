@@ -45,7 +45,7 @@ At its simplest, a macro can be defined with a `name` attribute and the content 
 !!! note
 	When you're using a macro in multiple files, it's best practice to put the macro in it's own template.
 
-### Macro Arguments
+#### Macro Arguments
 ```html
 <xf:macro
     name="my_macro_name"
@@ -62,7 +62,7 @@ This value would be overridden if the macro was called with the message argument
 !!! note
 	Whilst it's not necessary to set a default value for an argument, it's best practice to add a default value anyway as this will prevent a template error.
 
-## Including & Using Macros
+### Including & Using Macros
 ```html
 <xf:macro template="my_macro_template" name="my_macro_name" />
 ```
@@ -71,7 +71,7 @@ At it's simplest, you include a macro by setting the `name` attribute and leavin
 !!! note
 	When using a macro tag, you should use the self-closing form of the tag to allow someone to more easily distinguish the difference between a definition and usage of a macro.
 
-### Macro Arguments
+#### Macro Arguments
 You can also provide arguments to the macro:
 
 ```html
