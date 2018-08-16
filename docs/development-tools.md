@@ -3,12 +3,12 @@ XF2 provides developers with a number of built in tools you can use to expedite 
 ## Debug mode
 
 Debug mode can be enabled in your `config.php` which will allow you to access certain development tools in the Admin CP (such as creating routes, permissions, admin navigation etd.) and it will also enable an output at the bottom of every page which details how long the page took to process, how many queries were executed to render the page and how much memory was used. A tooltip containing information about the current controller, action and template name is available on hover. You can also click on the time output and this will give you a detailed look at exactly what queries ran and the stack trace that led to that query being executed.
- 
+
  You can enable debug mode by adding the following to `config.php`:
- 
+
 ```php
 $config['debug'] = true;
-``` 
+```
 
 ## Enabling development mode
 
@@ -74,21 +74,24 @@ This command is what you will use to export all of your add-on's data to XML fil
 
 !!! terminal
     *$* php cmd.php xf-addon:bump-version _[addon_id]_ --version-id 1020370 --version-string 1.2.3
-    
+
+!!! note
+	If your version string contains spaces, you'll need to surround it with quotes.
+
 This command takes the add-on ID for your add-on, the new version ID and the new version string. This enables you to bump the version of your add-on in a single step, without having to perform upgrades and rebuilds yourself. The options above are optional, and if they are not provided you will be prompted for them. If you only specify the version ID, we will try and infer the correct version string from that automatically if it matches our [Recommended version ID format](/add-on-structure/#recommended-version-id-format). Once the command completes, it updates the `addon.json` file automatically and the database with the correct version details.
 
 ### Sync your addon.json to the database
- 
+
 !!! terminal
     *$* php cmd.php xf-addon:sync-json _[addon_id]_
-     
+
 Sometimes you might prefer to edit the JSON file directly with certain details. This could be the version, or a new icon, or a change of title or description. Changing the JSON in this way can cause the add-on system to believe there are pending changes or that the add-on is upgradeable. A rebuild or upgrade can be a destructive operation if you haven't yet exported your current data. Therefore, running this command is recommended as a way of importing that data in without affecting your existing data.
 
 ### Validate your addon.json file
 
 !!! terminal
     *$* php cmd.php xf-addon:validate-json _[addon_id]_
-    
+
 If you'd like to check your JSON file contains the correct content and in the correct format, you can now validate it. The validator will check that the content can be decoded, that it contains all of the correct required fields (such as title and version ID) and also checks for the presence of the optional keys (such as description and icon). If any keys are missing, you will be offered to have the issues fixed for you. We also check to see if there are any unexpected fields within the JSON file. These may be deliberate or represent typos. You can run the command manually or the command will be run automatically while building your release.
 
 ### Run a specific Setup step
@@ -97,24 +100,24 @@ Sometimes it's useful to check that your Setup class steps function correctly, w
 
 There are three commands which help with this. These commands will only work with Setup classes that are built using the default `StepRunner` traits.
 
-#### Run an install step 
+#### Run an install step
 
 !!! terminal
-    *$* php cmd.php xf-addon:install-step _[addon_id]_ _[step]_ 
-    
+    *$* php cmd.php xf-addon:install-step _[addon_id]_ _[step]_
+
 #### Run an upgrade step
 
 !!! terminal
     *$* php cmd.php xf-addon:upgrade-step _[addon_id]_ _[version]_ _[step]_
-    
-#### Run an uninstall step 
+
+#### Run an uninstall step
 
 !!! terminal
     *$* php cmd.php xf-addon:uninstall-step _[addon_id]_ _[step]_
 
 ## Building an add-on release
 
-Once all of the hard work has been done, it's a shame to have to go through a number of other processes before you can actually release it. Even the process of collecting all of the files into the correct place and creating the ZIP file manually can be time consuming and prone to errors. We can take care of that automatically, including generating the `hashes.json` file, with one simple command. 
+Once all of the hard work has been done, it's a shame to have to go through a number of other processes before you can actually release it. Even the process of collecting all of the files into the correct place and creating the ZIP file manually can be time consuming and prone to errors. We can take care of that automatically, including generating the `hashes.json` file, with one simple command.
 
 !!! terminal
     *$* php cmd.php xf-addon:build-release _[addon_id]_
@@ -147,23 +150,23 @@ Aside from just creating the release ZIP there may be additional files you wish 
 ```
 
 If you have assets, such as JavaScript, which need to be served outside of your add-on directory, you can tell the build process to copy files or directories using the `additional_files` array within `build.json`. During development it isn't always feasible to keep files outside of your add-on directory, so if you prefer, you can keep the files in your add-on `_files` directory instead. When copying the additional files, we will check there first.
- 
+
 If you ship some JS files with your add-on, you may want to minify those files for performance reasons. You can specify which files you want to minify right inside your `build.json`. You can list these as an array or you can just specify it as `'*'` which will just minify everything in your `js` directory as long as that path has JS files within it after copying the additional files to the build. Any files minified will automatically have a suffix of `.min.js` instead of `.js` and the original files will still be in the package.
 
 You may prefer to roll up your multiple JS files into a single file. If you do, you can use the `rollup` array to define that. The key is the resulting combined filename, and the items within that array are the paths to the JS files that will be combined into a single file.
 
-Finally, you may have certain processes that need to be run just before the package is built and finalised. This could be any combination of things. Ultimately, if it is a command that can be run from the shell (including PHP scripts) then you can specify it here. The example above is of course fairly useless, but it does at least demonstrate that certain placeholders can be used. These placeholders are replaced with scalar values you can get from the `XF\AddOn\AddOn` object which is generally any value available in the `addon.json` file, or the `AddOn` entity. 
+Finally, you may have certain processes that need to be run just before the package is built and finalised. This could be any combination of things. Ultimately, if it is a command that can be run from the shell (including PHP scripts) then you can specify it here. The example above is of course fairly useless, but it does at least demonstrate that certain placeholders can be used. These placeholders are replaced with scalar values you can get from the `XF\AddOn\AddOn` object which is generally any value available in the `addon.json` file, or the `AddOn` entity.
 
 ## Development commands
 
 There are actually quite a few development related commands, but only the two most important ones are being covered here.
 
-To use any of these commands, you must have [development mode](#enabling-development-mode) enabled in your 
+To use any of these commands, you must have [development mode](#enabling-development-mode) enabled in your
 `config.php` file.
 
 !!! warning
-	Both of the following commands can potentially cause data loss if there is a situation whereby the database and `_output` 
-	directory become out of sync. It is always recommended to use a VCS (Version Control System) such as 
+	Both of the following commands can potentially cause data loss if there is a situation whereby the database and `_output`
+	directory become out of sync. It is always recommended to use a VCS (Version Control System) such as
 	[GitHub](https://github.com) to mitigate the impact of such mistakes.
 
 ### Import development output
@@ -171,7 +174,7 @@ To use any of these commands, you must have [development mode](#enabling-develop
 !!! terminal
     *$* php cmd.php xf-dev:import --addon _[addon_id]_
 
-Running this command will import all of the development output files from your add-on `_output` directory into the 
+Running this command will import all of the development output files from your add-on `_output` directory into the
 database.
 
 ### Export development output
@@ -179,13 +182,13 @@ database.
 !!! terminal
     *$* php cmd.php xf-dev:export --addon _[addon_id]_
 
-This will export all data currently associated to your add-on in the database to files within your 
+This will export all data currently associated to your add-on in the database to files within your
 `_output` directory.
 
 ## Debugging code
 
 It should be possible to set up your favourite debugger tool (XDebug, Zend Debugger etc.) to work with XF2. Though, sometimes, debugging code can be as rudimentary as just quickly seeing what value (or value type) a variable holds at a given time.
- 
+
 ### Dump a variable
 
 PHP of course has a tool built-in to handle this. You'll likely know it as `var_dump()`. XF ships with two replacements for this:
