@@ -319,7 +319,7 @@ Finally, click save to save your template modification. If all has gone well, wh
 
 ## Extending the forum save process
 
-We have our column, we have a UI to pass an input to that column, now we have to handle saving data to that column. We will do this by extending the Forum controller and extending a special method which is called when a node and its data are saved. First, let's create a "Class extension" which can be found under the "Development" entry in the Admin CP. Click "Add new extension".
+We have our column, we have a UI to pass an input to that column, now we have to handle saving data to that column. We will do this by extending the Forum controller and extending a special method which is called when a node and its data are saved. First, let's create a "Class extension" which can be found under the "Development" entry in the Admin CP. Click "Add class extension".
 
 Here we need to specify a "Base class name" which is the name of the class we are extending, which in this case will be `XF\Admin\Controller\Forum`. And we need to specify a "Extension class name" which is the class which will extend the base class. Enter this as `Demo\Portal\XF\Admin\Controller\Forum`. We should create that class before clicking Save.
 
