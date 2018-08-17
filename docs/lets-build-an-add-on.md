@@ -237,7 +237,7 @@ public static function threadEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc
 }
 ```
 
-This code is almost identical to what we added to the forum entity structure; really the only difference is the column name. But, we do need to add something else. We should create an entity relation so that, later on, should we need to access the featured thread entity (which we create in the next section). Below the `$structure->columns` line add:
+This code is almost identical to what we added to the forum entity structure; really the only difference is the column name. But, we do need to add something else. We should create an entity relation so that, later on, should we need to access the featured thread entity (which we create in the next section) we can do so easily with a finder query. Below the `$structure->columns` line add:
 
 ```php
 $structure->relations['FeaturedThread'] = [
