@@ -11,23 +11,22 @@ Throughout the add-on we will use the add-on ID of `Demo/Portal`. The first thin
 
     **Enter an ID for this add-on:** Demo/Portal
 
-    **Enter a title:** Demo/Portal
+    **Enter a title:** Demo - Portal
 
-    **Enter a version ID:** 1000010
+    **Enter a version ID:** This integer will be used for internal variable comparisons.  
+    Each release of your addon should increase this number:  1000010
 
-    ** Version string set to: 1.0.0 Alpha **
+    Version string set to: 1.0.0 Alpha
 
-    **Should this add-on be enabled? (y/n)** y
+    **Does this add-on supersede a XenForo 1 add-on? (y/n)** n
 
-    **Add-on created successfully. Should the addon.json file be written out to ../src/addons/Demo/Portal/addon.json? (y/n)** y
-
-    **The addon.json file was successfully written out to ../src/addons/Demo/Portal/addon.json**
+    The addon.json file was successfully written out to /var/www/src/addons/Demo/Portal/addon.json
 
     **Does your add-on need a Setup file? (y/n)** y
 
     **Does your Setup need to support running multiple steps? (y/n)** y
 
-    **The Setup.php file was successfully written out to ../src/addons/Demo/Portal/Setup.php**
+    The Setup.php file was successfully written out to /var/www/src/addons/Demo/Portal/Setup.php
 
 The add-on has now been created, you will now find that you have a new directory in the `src/addons` directory, and you will find the add-on in the "Installed add-ons" list of the Admin CP.
 
@@ -35,26 +34,43 @@ One of the files that has been created is the `addon.json` file, which currently
 
 ```json
 {
+    "legacy_addon_id": "",
     "title": "Demo - Portal",
+    "description": "",
+    "version_id": 1000010,
     "version_string": "1.0.0 Alpha",
-    "version_id": 1000010
+    "dev": "",
+    "dev_url": "",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": [],
+    "icon": ""
 }
 ```
 
-Let's expand on that a little bit:
+Let's fill in some of these details:
 
 ```json
 {
+    "legacy_addon_id": "",
     "title": "Demo - Portal",
     "description": "Add-on which will display featured threads on the forum home page.",
-    "version_string": "1.0.0 Alpha",
     "version_id": 1000010,
+    "version_string": "1.0.0 Alpha",
     "dev": "You!",
-    "icon": "fa-code"
+    "dev_url": "",
+    "faq_url": "",
+    "support_url": "",
+    "extra_urls": [],
+    "require": [],
+    "icon": "fa-home"
 }
 ```
 
-This is still pretty basic, but we have now added a description, the developer's name and specified that we want to display an icon. The icon can either be a path (relative to your add-on root) or the name of a [FontAwesome icon](http://fontawesome.io/icons/) as we've done here.
+We have now added a `description`, the developer's name (`dev`) and specified that we want to display an icon (`icon`). The icon can either be a path (relative to your add-on root) or the name of a [Font Awesome icon](http://fontawesome.io/icons/) as we've done here.
+
+As we're not superceding a XenForo 1 addon, we can disregard `legacy_addon_id`. For a full explaination of all of the properties in the `addon.json` file, refer to the [Add-on structure section](../add-on-structure/#addonjson-file).
 
 ## Creating the Setup class
 
