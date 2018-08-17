@@ -153,9 +153,35 @@ The else and else-if tags are used in conjunction with the if tag to conditional
 
 As you can see, once a condition has been met, the rest of the if statement is ignored. (So, in this case, if the user is an Administrator, the top `xf:if` section is run but then the rest of the if statement is ignored.)
 
-### ForEach tag
+### For-each tag
 
+The for-each tag allows you to loop over an array of items, printing a block of HTML for each item.
 
+```html
+<xf:set var="$names" value="{{ ['Patrick', 'Theresa', 'Kimball', 'Wayne', 'Grace'] }}" />
+
+<xf:foreach loop="$names" value="$name" i="$i">
+	<p>Hello there, {$name}. This is name number {$i}.</p>
+</xf:foreach>
+```
+
+The for-each tag takes the following attributes:
+
+- `loop` - The array to loop over.
+- `value` - A variable name to use within the loop, containing the current array item.
+- `i` -  A variable name to use in the loop for the current index.
+
+#### Example Output
+
+> Hello there, Patrick. This is name number 1.
+>
+> Hello there, Theresa. This is name number 2.
+>
+> Hello there, Kimball. This is name number 3.
+>
+> Hello there, Wayne. This is name number 4.
+>
+> Hello there, Grace. This is name number 5.
 
 ## Template tags
 
