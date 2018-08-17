@@ -10,7 +10,7 @@ pages:
 # Overview
 - Getting started: index.md
 # Site Administrators (or common)
-- Templating Language: templating-language.md
+- Template syntax: template-syntax.md
 # Developers
 - Add-on structure: add-on-structure.md
 - Development tools: development-tools.md

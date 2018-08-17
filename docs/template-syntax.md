@@ -17,8 +17,8 @@ you will find a great deal more peace in your life.
 </xf:comment>
 ```
 
-### Template Macros
-Template Macros are a very powerful aspect of the XenForo template syntax.
+### Template macros
+Template macros are a very powerful aspect of the XenForo template syntax.
 
 You should generally use a macro any place you would use a function or subroutine in a programming language.
 For non-programmers, I'd summarize this as: **either** use a macro any place you want to produce the same thing multiple times in multiple different files **or** to produce something different under different circumstances (this would probably make more sense if you check the guide on defining a macro).
@@ -26,7 +26,7 @@ For non-programmers, I'd summarize this as: **either** use a macro any place you
 !!! warning
 	For readability reasons, you should not use a macro tag as a variable. You should instead use the Set tag and treat the variable as you would any template variable.
 
-#### Defining a Macro
+#### Defining a macro
 ```html
 <xf:macro
     name="my_macro_name">
@@ -40,7 +40,7 @@ At its simplest, a macro can be defined with a `name` attribute and the content 
 !!! note
 	When you're using a macro in multiple files, it's best practice to put the macro in it's own template.
 
-##### Macro Arguments
+##### Macro arguments
 ```html
 <xf:macro
     name="my_macro_name"
@@ -56,7 +56,7 @@ This value would be overridden if the macro was called with the message argument
 
 Sometimes it's necessary to mark an argument as required. This can be done by setting the argument value to `!` in the macro definition.
 
-#### Including & Using Macros
+#### Including & using macros
 ```html
 <xf:macro template="my_macro_template" name="my_macro_name" />
 ```
@@ -65,7 +65,7 @@ At it's simplest, you include a macro by setting the `name` attribute and leavin
 !!! note
 	When using a macro tag, you should use the self-closing form of the tag to allow someone to more easily distinguish the difference between a definition and usage of a macro.
 
-##### Macro Arguments
+##### Macro arguments
 You can also provide arguments to the macro:
 
 ```html
@@ -77,10 +77,10 @@ Where `argName` is the name of the macro argument.
 !!! note
 	You should use `lowerCamelCase` for your macro argument names.
 
-## Template Tags
-### Avatar Tag
+## Template tags
+### Avatar tag
 
-Inserts a user's avatar in the page of the template tag.
+Inserts a user's avatar in the page.
 
 <xf:avatar  user="{$xf.visitor}"  size="o"  canonical="true"  />
 
@@ -93,7 +93,7 @@ The avatar tag takes the following attributes:
 -   `forcetype` - Can be used to force getting the `gravatar` or `custom` avatars by setting the value to either of those.
 -   `defaultname` - The username to use if the `user` attribute contains an invalid user.
 
-#### Image Sizes
+#### Image sizes
 
 If an avatar of invalid size is provided, the code will fallback to size '`s`'.
 
@@ -103,7 +103,7 @@ If an avatar of invalid size is provided, the code will fallback to size '`s`'.
 -   `m` - `96px`
 -   `s` - `48px`
 
-### Breadcrumb Tag
+### Breadcrumb tag
 
 Modifies the page breadcrumb.
 ```html
@@ -115,7 +115,7 @@ The breadcrumb tag takes the following attributes:
 
 The value of the tag can be used to set the name of the final element in the breadcrumb.
 
-#### Alternative Uses
+#### Alternative uses
 ```html
 <xf:breadcrumb source="$category.getBreadcrumbs(false)" />
 ```
@@ -126,7 +126,7 @@ The `source` parameter essentially takes an array of objects with `href` and `va
 !!! note
 	If you want to change the root breadcrumb, you can change the "Root breadcrumb" option in the "Basic board information" options section.
 
-### Button Tag
+### Button tag
 
 Adds a button element with the appropriate classes and optionally an icon.
 ```html
@@ -136,7 +136,7 @@ The button tag takes the following attributes:
 
 -   `icon` - The icon class to apply to the button. (See button icons)
 
-#### Button Icons
+#### Button icons
 
 By default, XenForo buttons support the following icons (created with CSS):
 
@@ -188,7 +188,7 @@ By default, XenForo buttons support the following icons (created with CSS):
 -   `lock`
 -   `unlock`
 
-### Callback Tag
+### Callback tag
 
 Executes a PHP Callback method.
 ```html
@@ -200,7 +200,7 @@ The callback tag takes the following attributes:
 -   `method` - The method to run. (See callback methods)
 -   `params` - An array of parameters to provide to the method.
 
-#### Callback Methods
+#### Callback methods
 
 For a method to be considered a callback method, it must be named appropriately or it will throw an error '`callback_method_x_does_not_appear_to_indicate_read_only`'. For it to be considered read-only, the method name must begin with one of the following prefixes:
 
@@ -227,7 +227,7 @@ For a method to be considered a callback method, it must be named appropriately 
 -   `verify`
 -   `view`
 
-### CSS Tag
+### CSS tag
 
 Includes a CSS or LESS template file.
 ```html
@@ -237,7 +237,7 @@ The CSS tag takes the following attributes:
 
 -   `src` - The CSS or LESS template file to include.
 
-#### Alternative Uses
+#### Alternative uses
 ```html
 <xf:css>
 html, body {
@@ -247,13 +247,13 @@ html, body {
 ```
 If the CSS tag is not empty, anything in the tag will be converted into inline CSS.
 
-#### Further Notes
+#### Further notes
 
 > For [CSS], forget about calling them as files. Copy and paste them into new templates.
 
 Chris D, XenForo developer **Source**: [https://xenforo.com/community/threads/including-external-library-js-and-css.136153/post-1185631](https://xenforo.com/community/threads/including-external-library-js-and-css.136153/post-1185631)
 
-### JS Tag
+### JS tag
 
 Includes a JavaScript file.
 ```html
@@ -270,7 +270,7 @@ The JS tag takes the following attributes:
 !!! warning
 	The `src` tag cannot be used in conjunction with either the `prod` or `dev` tags.
 
-#### Alternative Uses
+#### Alternative uses
 ```html
 <xf:js>
 alert("The truth hurts, I know. It's biologically based actually.");
@@ -278,13 +278,13 @@ alert("The truth hurts, I know. It's biologically based actually.");
 ```
 If the JS tag is not empty, anything in the tag will be converted to inline JS.
 
-#### Further Notes
+#### Further notes
 
 JavaScript files are served relative to the `/js` directory. Although not recommended, you can also include external resources with this tag.
 
 A good example of this tag is in the `editor` template.
 
-### Set Tag
+### Set tag
 
 The set tag allows you to create a reference to another variable or create a new variable. You should use the set tag anywhere you would use a variable in a programming language.
 ```html
@@ -302,7 +302,7 @@ The set tag takes the following attributes:
 -   `var` - The name of the variable you wish to define (essentially, the alias).
 -   `value` - A variable to reference to or a variable value.
 
-#### Alternative Uses
+#### Alternative uses
 ```html
 <xf:set  var="$myVariableName">
 My Variable Value!
@@ -315,25 +315,25 @@ When the `value` attribute is not provided, and the tag is not empty, the variab
 	When you use the Set tag in this form, the value will be escaped and the resulting value will be a string.
 	The `value` attribute, whilst not supporting HTML or HTML-like tags does not have this limitation.
 
-### Sidebar Tag
+### Sidebar tag
 
 See [Sectioned Tags](#sectioned-tags).
 
-### SideNav Tag
+### SideNav tag
 
 See [Sectioned Tags](#sectioned-tags).
 
-### Title Tag
+### Title tag
 
 Sets the page's title, both on the page in the `h1` tag and in the browser tab.
 ```html
 <xf:title>{{ phrase('my_page_title') }}</xf:title>
 ```
-#### Further Notes
+#### Further notes
 
 Whilst the title can, of course, be hardcoded, it is **highly recommended** that you use a phrase, both for internationalization and for the added customizability on the site administrator's end.
 
-### Widget Tag
+### Widget tag
 
 Includes a widget in the page, or adds a widget to a widget position.
 ```html
@@ -350,7 +350,7 @@ The widget tag takes the following attributes:
 !!! warning
 	The `class` tag cannot be used in conjunction with the `key` tag.
 
-### UserActivity Tag
+### UserActivity tag
 
 Displays the status of a user, in terms of their last action and when that action occurred.
 ```html
@@ -366,7 +366,7 @@ The UserActivity tag takes the following attributes:
 
 The format is **[Activity Name]**  **· [Time]**
 
-### UserBanners Tag
+### UserBanners tag
 
 Displays the user's banners in a horizontal list.
 ```html
@@ -382,7 +382,7 @@ The UserBanners tag takes the following attributes:
 
 An example result of the UserBanners tag.
 
-### UserBlurb Tag
+### UserBlurb tag
 
 Displays a one-line summary of a user's profile.
 ```html
@@ -398,7 +398,7 @@ The UserBlurb tag takes the following attributes:
 
 The format is **[Role / Custom Title] · Age · Location**
 
-### Username Tag
+### Username tag
 
 Displays the user's username, optionally with a tool-tip.
 ```html
@@ -413,7 +413,7 @@ The Username tag takes the following attributes:
 !!! warning
 	The tool-tip will not be displayed if an `href` is set, as it won't work and might be misleading to users.
 
-### UserTitle Tag
+### UserTitle tag
 
 Displays the user's title.
 ```html
@@ -423,7 +423,7 @@ The UserTitle tag takes the following attributes:
 
 -   `user` - The XenForo User Object to display the user title of.
 
-### Sectioned Tags
+### Sectioned tags
 
 Sectioned Tags all call the function `modifySectionedHtml`.
 The HTML element that they change is simply the tag name. So the `sidebar` tag will modify the sidebar HTML, etc.
@@ -434,11 +434,11 @@ The HTML element that they change is simply the tag name. So the `sidebar` tag w
  <h1>My Magical Sidebar!</h1>
 </xf:sidebar>
 ```
-#### Common Attributes
+#### Common attributes
 
--   `mode` - The mode of the modification. (See Modification Modes)
+-   `mode` - The mode of the modification. (See Modification modes)
 
-#### Modification Modes
+#### Modification modes
 
 By default, the modification mode is `replace`. (i.e. if the attribute is not specified.)
 
