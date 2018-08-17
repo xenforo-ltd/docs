@@ -66,14 +66,141 @@ add-on and display information about it in the Admin CP. At minimum, your `addon
 {
     "title": "My Add-on by Some Company",
     "version_string": "2.0.0",
-    "version_id": 2000070
+    "version_id": 2000070,
+    "dev": "Some Company"
 }
 ```
 
-A basic file will be created for you automatically when creating the add-on. It supports a lot more besides the example 
-above, but we'll go into that in more detail later.
+A basic file will be created for you automatically when creating the add-on.
 
-Including this file is mandatory.
+Including a valid `addon.json` file is mandatory for your addon to be recognized but you can always [validate your addon.json file](../development-tools/#validate-your-addonjson-file).
+
+#### Properties
+<table>
+<thead>
+<th>Property</th>
+<th>Description</th>
+</thead>
+<tbody>
+<tr>
+<td><code>legacy_addon_id</code></td>
+<td>Used to enable automatic handling of addon ID changes when upgrading from XenForo 1 to XenForo 2.</td>
+</tr>
+
+<tr>
+<td><code>title</code></td>
+<td>The title of the addon. This will show in the Admin Panel.</td>
+</tr>
+
+<tr>
+<td><code>description</code></td>
+<td>A description of the addon. This will show in the Admin Panel.</td>
+</tr>
+
+<tr>
+<td><code>version_id</code></td>
+<td>The internal ID used by XenForo to track updates to your addon. This must be incremented every release.</td>
+</tr>
+
+<tr>
+<td><code>version_string</code></td>
+<td>The human-readable addon version. This will show in the Admin Panel instead of the <code>version_id</code> property.</td>
+</tr>
+
+<tr>
+<td><code>dev</code></td>
+<td>The name of the developer of the addon. This will show in the Admin Panel.</td>
+</tr>
+
+<tr>
+<td><code>dev_url</code></td>
+<td>If set, the developer's name will show in the Admin Panel as a hyperlink, with this as the target (href).</td>
+</tr>
+
+<tr>
+<td><code>faq_url</code></td>
+<td>If set, an FAQ hyperlink will show in the Admin Panel, with this as the target (href).</td>
+</tr>
+
+<tr>
+<td><code>support_url</code></td>
+<td>If set, a support hyperlink will show in the Admin Panel, with this as the target (href).</td>
+</tr>
+
+<tr>
+<td><code>extra_urls</code></td>
+<td>This allows you to display links to other things related to the add-on (perhaps a bug reports link, a manual - whatever you like).<br>An array of JSON objects, where the key is the link text and the value is the link target (href).</td>
+</tr>
+
+<tr>
+<td><code>require</code></td>
+<td>A set of requirements that need to be met for XenForo to allow installation of the addon. See <a href="#the-requirements-property">'The requirements property'</a> for more information.</td>
+</tr>
+
+<tr>
+<td><code>icon</code></td>
+<td>The icon of the resource. This can be a Font Awesome icon name (e.g. <code>fa-shopping-bag</code>, or the path to an image file.)</td>
+</tr>
+
+</tbody>
+</table>
+
+##### The requirements property
+The require property is the standard way of blocking an add-on install or upgrade if the environment doesn't support or meet the requirements.  
+You can use it to require other add-ons to be installed first, certain PHP extensions to be present or enabled and/or to enforce a minimum PHP version.
+
+Here's an example snippet:
+```json
+...
+  "require": {
+      "XF": [2000010, "XenForo 2.0.0+"],
+      "php": ["5.4.0", "PHP 5.4.0+"],
+      "php-ext/json": ["*", "JSON extension"]
+  }
+...
+```
+
+Each requirement, is a named array:
+
+- The name of the array is the product ID (e.g. `XF` or `php`).  
+- The first array element is the version of the product (e.g. `2000010` or `5.4.0`). You can use use `*` to refer to any version of the product.  
+- The second element is the human-readable text of that requirement and this is what's used in messages (e.g. `XenForo 2.0.0+` or `PHP 5.4.0+`).
+
+Here's a summary of the supported product IDs:
+<table>
+<thead>
+<th>Product/Requirement Name</th>
+<th>Refers to...</th>
+<th>Value</th>
+</thead>
+<tbody>
+
+<tr>
+<td><code>XF</code></td>
+<td>The XenForo installation version.</td>
+<td>The XenForo version ID, for example <code>200010</code>.<br>You can get your current XenForo version by checking the  top of the <code>/src/XF.php</code> file for the <code>$versionId</code> definion or by printing the value of <code>\XF::$versionId</code>.</td>
+</tr>
+
+<tr>
+<td><code>php</code></td>
+<td>The PHP version.</td>
+<td>The PHP version, for example <code>5.4.0</code>.<br>It's recommended that you keep this as low as possible; updating a PHP version can be quite a complex task - especially if other add-ons conflict with newer PHP versions.</td>
+</tr>
+
+<tr>
+<td><code>php-ext/(extension name)</code></td>
+<td>A PHP extension - where <code>(extension name)</code> is the name of the extension.</td>
+<td>The PHP extension version.<br>This is checked using the PHP <code>version_compare</code> function, so it even works for version strings in the official full PHP format like <code>7.1.19-1+ubuntu16.04.1+deb.sury.org+1</code>.</td>
+</tr>
+
+<tr>
+<td><code>(any addon ID)</code></td>
+<td>Any XenForo addon such as <code>Demo/Addon</code>.<br>If you're unsure about an addon's ID, check it's <code>addon.json</code> file.</td>
+<td>The addon version ID.<br>You can refer to the <a href="#recommended-version-id-format">Recommended version ID format</a> for more information.</td>
+</tr>
+
+</tbody>
+</table>
 
 ### hashes.json file
 
