@@ -970,6 +970,11 @@ public function installStep4()
 }
 ```
 
+And, of course, don't forget to run this setup step for yourself:
+
+!!! terminal
+    *$* php cmd.php xf-addon:install-step Demo/Portal 4
+
 ## Implementing permissions & optimizations
 
 Right now, we are displaying all featured threads in the portal, regardless of whether the visitor has permission to view them or not. This isn't ideal; there may be use cases where you want to feature threads from certain restricted forums, and only have those visible by the users who can normally view that forum.
