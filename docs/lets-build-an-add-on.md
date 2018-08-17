@@ -81,18 +81,28 @@ Well, strictly speaking, the class has already been created and written out to `
 
 namespace Demo\Portal;
 
-use XF\Db\Schema\Alter;
-use XF\Db\Schema\Create;
+use XF\AddOn\AbstractSetup;
+use XF\AddOn\StepRunnerInstallTrait;
+use XF\AddOn\StepRunnerUninstallTrait;
+use XF\AddOn\StepRunnerUpgradeTrait;
 
-class Setup extends \XF\AddOn\AbstractSetup
+class Setup extends AbstractSetup
 {
-	use \XF\AddOn\StepRunnerInstallTrait;
-	use \XF\AddOn\StepRunnerUpgradeTrait;
-	use \XF\AddOn\StepRunnerUninstallTrait;
+        use StepRunnerInstallTrait;
+        use StepRunnerUpgradeTrait;
+        use StepRunnerUninstallTrait;
 }
 ```
 
 We talked a little bit already about the Setup class. We're going to be breaking the install, upgrade and uninstall processes into separate steps.
+
+Let's start by importing some useful Schema classes. If you want to learn more about them, you can refer to the [Managing the Schema section.](../managing-the-schema/).  
+Just after the last `use` declaration, add the following:
+
+```php
+use XF\Db\Schema\Alter;
+use XF\Db\Schema\Create;
+```
 
 The StepRunner traits here are going to handle the process of cycling through all of the available steps, so all we have to do is start creating those steps. We'll start by adding some code to create a new column in the `xf_forum` table:
 
@@ -101,14 +111,16 @@ The StepRunner traits here are going to handle the process of cycling through al
 
 namespace Demo\Portal;
 
+use XF\AddOn\AbstractSetup;
+use XF\AddOn\StepRunnerInstallTrait;
+use XF\AddOn\StepRunnerUninstallTrait;
+use XF\AddOn\StepRunnerUpgradeTrait;
+
 use XF\Db\Schema\Alter;
 use XF\Db\Schema\Create;
 
 class Setup extends \XF\AddOn\AbstractSetup
 {
-	use \XF\AddOn\StepRunnerInstallTrait;
-	use \XF\AddOn\StepRunnerUpgradeTrait;
-	use \XF\AddOn\StepRunnerUninstallTrait;
 
 	public function installStep1()
 	{
@@ -118,6 +130,7 @@ class Setup extends \XF\AddOn\AbstractSetup
 		});
 	}
 }
+
 ```
 
 This column is being added to the `xf_forum` table so that we can set certain forums up to have threads automatically featured when they are created. The naming here is significant; columns added to core XF tables should always be prefixed. This serves two important purposes. The first being that there is less risk of conflicts happening with duplicate column names, in case XF or another add-on has reason to add that column in the future. The second being that it helps more easily identify which columns belong to which add-ons in case some issues arise in the future.
