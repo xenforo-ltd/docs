@@ -1,3 +1,5 @@
+Welcome to XenForo 2!
+
 This documentation aims to get you started with XenForo 2.0 development. Pre-requisites for this documentation assume you
 will be familiar with, amongst other things, PHP and MySQL. It is not essential to have experience with a previous
 version of XenForo, but it would be an advantage.
@@ -17,7 +19,7 @@ the following threads:
  * <a href="https://xenforo.com/community/threads/xenforo-2-0-development-updates-from-xf2demo.139565/post-1205088" target="_blank">
  	What's new for developers in XenForo 2 (part 2)
    </a>
- 
+
 ## Getting started
 
 Getting started with XF development is easy. You just need to download the files, upload them to a web server and
@@ -116,9 +118,9 @@ Note that if you are developing add-ons, you may potentially have other location
 
 ## Installation
 
-The current way to install XF 2.0 is via the new CLI system. A lot of development processes can only be performed 
-using the CLI so let's get stuck into using it to install XF 2.0. To run these commands, you will need access to a 
-terminal/shell, the php CLI command and the current working directory should be the root of where you uploaded the 
+The current way to install XF 2.0 is via the new CLI system. A lot of development processes can only be performed
+using the CLI so let's get stuck into using it to install XF 2.0. To run these commands, you will need access to a
+terminal/shell, the php CLI command and the current working directory should be the root of where you uploaded the
 XF 2.0 files.
 
 !!! warning
@@ -129,7 +131,7 @@ To start the install, just enter the below command:
 !!! terminal
     *$* php cmd.php xf:install
 
-You will be asked a number of questions, such as the initial administrator username and password, board title. After this, 
+You will be asked a number of questions, such as the initial administrator username and password, board title. After this,
 the XF 2.0 database tables and master data will be imported.
 
 XF 2.0 is now installed!
@@ -144,25 +146,25 @@ Finally, you will just need to start the installation, similar to above. You wil
 
 !!! terminal
     *$* php cmd.php xf:install --clear
-    
+
 Once the re-install has been completed, you should now be able to log back on.
 
 If you have been developing add-ons, and you have chosen to keep or backup your existing `src/addons` directory, you can restore your add-on data with the [Import development output](/development-tools/#import-development-output) command.
 
 !!! warning
     Be careful if you choose to back up and restore your `src/addons` directory. The `XF` directory within contains the XF master data, and should not be restored from a backup to ensure you always have the most up to date version of the files.
-    
+
     Performing a reinstall in this way is a destructive operation and it will remove all data you have created. Additionally, bear in mind that only tables with the `xf_` prefix are cleared. This is a significant reason for the recommendation that all tables, even for add-ons, should be prefixed with `xf_`.
-    
+
 ## Verifying file integrity
 
 When you install XF2, we perform a file integrity check in the installation. If necessary, and you can't otherwise perform the check via the page in the Admin CP, you can run the CLI command to perform that check.
- 
+
 !!! terminal
     *$* php cmd.php xf:file-check _[addon_id]_
-    
+
 If you wish to do a file health check on all files, including XF itself, just omit the `[addon_id]` argument. For XF only, just use `XF` in place of the argument, or for a specific add-on, just specify the add-on ID you wish to check.
-    
+
 ## Add-on management commands
 
 In addition to the above commands for installing XF2, there are also several commands for managing add-ons.
@@ -171,26 +173,26 @@ In addition to the above commands for installing XF2, there are also several com
 
 !!! terminal
     *$* php cmd.php xf:addon-install _[addon_id]_
-    
+
 Installs the specified add-on, as long as it is available, and passes the file health check. If development output is available, you will be asked to confirm if you wish to use that for the installation, instead of the exported data XML files.
 
 ### Upgrade
 
 !!! terminal
     *$* php cmd.php xf:addon-upgrade _[addon_id]_
-    
+
 Upgrades the specified add-on, as long as it is upgradeable, and passes the file health check. Can optionally perform import from development output.
 
 ### Rebuild
 
 !!! terminal
     *$* php cmd.php xf:addon-rebuild _[addon_id]_
-    
+
 Rebuilds the master data for the specified add-on, as long as it is rebuildable, and passes the file health check. This re-imports the add-on's data. Can optionally perform import from development output.
 
 ### Uninstall
 
 !!! terminal
     *$* php cmd.php xf:addon-uninstall _[addon_id]_
-    
+
 Uninstalls the specified add-on, as long as it is uninstallable.

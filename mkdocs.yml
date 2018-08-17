@@ -7,7 +7,11 @@ theme_dir: xf2
 extra_css: [extra.css]
 
 pages:
+# Overview
 - Getting started: index.md
+# Site Administrators (or common)
+- Template syntax: template-syntax.md
+# Developers
 - Add-on structure: add-on-structure.md
 - Development tools: development-tools.md
 - General concepts: general-concepts.md
@@ -16,7 +20,9 @@ pages:
 - Entities, finders, and repositories: entities-finders-repositories.md
 - Managing the schema: managing-the-schema.md
 - Let's build an add-on: lets-build-an-add-on.md
+# Designers
 - Designing styles: designing-styles.md
+# Appendix(es)
 - 'Appendix: Scotch Box': scotchbox.md
 
 repo_url: https://github.com/xenforo-ltd/docs/
