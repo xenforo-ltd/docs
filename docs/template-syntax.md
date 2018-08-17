@@ -1,12 +1,12 @@
 The XenForo 2 template syntax is a powerful tool for both developers and forum administrators, giving you complete control over the layout of your XenForo pages.
 
-### Best practices
+## Best practices
 - XenForo tags, by convention, are `lowercase`.
 - All XenForo tags are prefixed with the `xf:` namespace.
 
-### Useful information
+## Useful information
 
-#### Commenting up your templates
+### Commenting up your templates
 If you want to comment out some template code (or an inspirational message) that you don't want viewable in the final page source, you can use the `xf:comment` tag.
 
 ```html
@@ -17,7 +17,19 @@ you will find a great deal more peace in your life.
 </xf:comment>
 ```
 
-### Template macros
+### Including another template in a template
+
+The `xf:include` tag allows you to include a different template in your current template.
+
+```html
+<xf:include template="my_template" />
+```
+
+Simply set the `template  ` attribute to the name of the template you want to include.
+
+
+
+## Template macros
 Template macros are a very powerful aspect of the XenForo template syntax.
 
 You should generally use a macro any place you would use a function or subroutine in a programming language.
@@ -26,7 +38,7 @@ For non-programmers, I'd summarize this as: **either** use a macro any place you
 !!! warning
 	For readability reasons, you should not use a macro tag as a variable. You should instead use the Set tag and treat the variable as you would any template variable.
 
-#### Defining a macro
+### Defining a macro
 ```html
 <xf:macro
     name="my_macro_name">
@@ -40,7 +52,7 @@ At its simplest, a macro can be defined with a `name` attribute and the content 
 !!! note
 	When you're using a macro in multiple files, it's best practice to put the macro in it's own template.
 
-##### Macro arguments
+#### Macro arguments
 ```html
 <xf:macro
     name="my_macro_name"
@@ -56,7 +68,7 @@ This value would be overridden if the macro was called with the message argument
 
 Sometimes it's necessary to mark an argument as required. This can be done by setting the argument value to `!` in the macro definition.
 
-#### Including & using macros
+### Including & using macros
 ```html
 <xf:macro template="my_macro_template" name="my_macro_name" />
 ```
@@ -65,7 +77,7 @@ At it's simplest, you include a macro by setting the `name` attribute and leavin
 !!! note
 	When using a macro tag, you should use the self-closing form of the tag to allow someone to more easily distinguish the difference between a definition and usage of a macro.
 
-##### Macro arguments
+#### Macro arguments
 You can also provide arguments to the macro:
 
 ```html
@@ -77,12 +89,83 @@ Where `argName` is the name of the macro argument.
 !!! note
 	You should use `lowerCamelCase` for your macro argument names.
 
+## Template control structures
+
+The XenForo 2 template syntax supports certain control structures to make certain tasks easier to achieve.
+
+### If tag
+
+The if template tag can be used to conditionally display some HTML or a part of a template.
+
+```html
+<!-- Shows content only if a user is signed in... -->
+<xf:if is="$xf.visitor.user_id">
+	<!-- Do something... -->
+</xf:if>
+```
+
+The if tag takes the following attributes:
+
+- `is` - The condition which, when met, the tags contents should be shown.
+
+#### Conditions
+
+The `is` attribute supports a few logical operators:
+
+- `OR` - Used to link alternative conditions. (Alternatives: `||`)
+- `AND` - Used to link additional conditions. (Alternatives: `&&`)
+- `!` - Place before a condition to invert it. (Known as: 'not') 
+- `XOR` - Returns true if only one of two conditions is true. (Known as: Exclusive OR)
+
+### Else/Else-If tag
+
+The else and else-if tags are used in conjunction with the if tag to conditionally display HTML in the way that the name suggests.
+
+**Example usage of else:**
+
+```html
+<xf:if is="$xf.visitor.is_admin">
+	<!-- Content here will only be shown to Administrators... -->
+<xf:else />
+    <!-- Content here will be shown to anyone who is not an Administrator! -->
+</xf:if>
+```
+
+**Example usage of else-if:**
+
+```html
+<xf:if is="$xf.visitor.is_admin">
+    
+	<!-- Content here will only be shown to Administrators... -->
+    
+<xf:elseif is="$xf.visitor.is_moderator" />
+    <!--
+		Content here will only be shown to Moderators
+		(excluding users who are also Administrators).
+	-->
+<xf:else />
+    <!-- 
+		Content here will be shown to anyone who is not
+		an Administrator, or a Moderator.
+	-->
+</xf:if>
+```
+
+As you can see, once a condition has been met, the rest of the if statement is ignored. (So, in this case, if the user is an Administrator, the top `xf:if` section is run but then the rest of the if statement is ignored.)
+
+### ForEach tag
+
+
+
 ## Template tags
+
 ### Avatar tag
 
 Inserts a user's avatar in the page.
 
-<xf:avatar  user="{$xf.visitor}"  size="o"  canonical="true"  />
+```html
+<xf:avatar user="{$xf.visitor}" size="o" canonical="true" />
+```
 
 The avatar tag takes the following attributes:
 
@@ -107,7 +190,7 @@ If an avatar of invalid size is provided, the code will fallback to size '`s`'.
 
 Modifies the page breadcrumb.
 ```html
-<xf:breadcrumb  href="{{ link('my_page') }}">{{ phrase('my_page_name') }}</xf:breadcrumb>
+<xf:breadcrumb href="{{ link('my_page') }}">{{ phrase('my_page_name') }}</xf:breadcrumb>
 ```
 The breadcrumb tag takes the following attributes:
 
@@ -130,7 +213,7 @@ The `source` parameter essentially takes an array of objects with `href` and `va
 
 Adds a button element with the appropriate classes and optionally an icon.
 ```html
-<xf:button  icon="save"></xf:button>
+<xf:button icon="save"></xf:button>
 ```
 The button tag takes the following attributes:
 
@@ -192,7 +275,7 @@ By default, XenForo buttons support the following icons (created with CSS):
 
 Executes a PHP Callback method.
 ```html
-<xf:callback  class="Vendor\Addon\Class"  method="getX"  params="['abc']"></xf:callback>
+<xf:callback class="Vendor\Addon\Class" method="getX" params="['abc']"></xf:callback>
 ```
 The callback tag takes the following attributes:
 
@@ -231,7 +314,7 @@ For a method to be considered a callback method, it must be named appropriately 
 
 Includes a CSS or LESS template file.
 ```html
-<xf:css  src="mycss_file.css"  />
+<xf:css src="mycss_file.css"  />
 ```
 The CSS tag takes the following attributes:
 
@@ -257,7 +340,7 @@ Chris D, XenForo developer **Source**: [https://xenforo.com/community/threads/in
 
 Includes a JavaScript file.
 ```html
-<xf:js  src="myaddon/vendor/scripts/myjs_file.js"  />
+<xf:js src="myaddon/vendor/scripts/myjs_file.js"  />
 ```
 The JS tag takes the following attributes:
 
@@ -288,7 +371,7 @@ A good example of this tag is in the `editor` template.
 
 The set tag allows you to create a reference to another variable or create a new variable. You should use the set tag anywhere you would use a variable in a programming language.
 ```html
-<xf:set  var="$visitor"  value="{$xf.visitor}"  />
+<xf:set var="$visitor" value="{$xf.visitor}" />
 ```
 
 !!! warning
@@ -304,7 +387,7 @@ The set tag takes the following attributes:
 
 #### Alternative uses
 ```html
-<xf:set  var="$myVariableName">
+<xf:set var="$myVariableName">
 My Variable Value!
 This could be a callback, or simply a group of phrases.
 </xf:set>
@@ -314,6 +397,25 @@ When the `value` attribute is not provided, and the tag is not empty, the variab
 !!! warning
 	When you use the Set tag in this form, the value will be escaped and the resulting value will be a string.
 	The `value` attribute, whilst not supporting HTML or HTML-like tags does not have this limitation.
+
+### Likes tag
+
+Displays the number of likes on a post and a few of the users who've liked the post.
+
+```html
+<xf:likes content="{$post}" url="" />
+```
+
+The likes tag takes the following attributes:
+
+- `content` - The `XF\Entity\Post` or `XF\Entity\ProfilePost` entity to display the 'likes' text for.
+- `url` - The URL to display when the 'likes' text is clicked.
+
+#### Format
+
+> You, tlisbon, kcho and 2 others
+
+The format is [👍 `abc` and x others] (where the 👍 'thumbs up' emoji represents the 'likes' icon and `abc` represents the usernames of the last three users who liked the post.)
 
 ### Sidebar tag
 
@@ -337,7 +439,7 @@ Whilst the title can, of course, be hardcoded, it is **highly recommended** that
 
 Includes a widget in the page, or adds a widget to a widget position.
 ```html
-<xf:widget  key="widget_name"  />
+<xf:widget key="widget_name" />
 ```
 The widget tag takes the following attributes:
 
@@ -354,7 +456,7 @@ The widget tag takes the following attributes:
 
 Displays the status of a user, in terms of their last action and when that action occurred.
 ```html
-<xf:useractivity  user="{$xf.visitor}"  />
+<xf:useractivity user="{$xf.visitor}" />
 ```
 The UserActivity tag takes the following attributes:
 
@@ -370,7 +472,7 @@ The format is **[Activity Name]**  **· [Time]**
 
 Displays the user's banners in a horizontal list.
 ```html
-<xf:userbanners  user="{$xf.visitor}"  />
+<xf:userbanners user="{$xf.visitor}" />
 ```
 The UserBanners tag takes the following attributes:
 
@@ -386,7 +488,7 @@ An example result of the UserBanners tag.
 
 Displays a one-line summary of a user's profile.
 ```html
-<xf:userblurb  user="${xf.visitor}"  />
+<xf:userblurb user="${xf.visitor}" />
 ```
 The UserBlurb tag takes the following attributes:
 
@@ -402,7 +504,7 @@ The format is **[Role / Custom Title] · Age · Location**
 
 Displays the user's username, optionally with a tool-tip.
 ```html
-<xf:username  user="{$xf.visitor.username}"  notooltip="true"  />
+<xf:username user="{$xf.visitor.username}" notooltip="true" />
 ```
 The Username tag takes the following attributes:
 
@@ -417,7 +519,7 @@ The Username tag takes the following attributes:
 
 Displays the user's title.
 ```html
-<xf:usertitle  user="{$xf.visitor}"  />
+<xf:usertitle user="{$xf.visitor}" />
 ```
 The UserTitle tag takes the following attributes:
 
