@@ -1171,7 +1171,7 @@ if ($entity->isUpdate())
 }
 ```
 
-We've unfeaturd threads before, but this time we want to make that conditional on the state of the thread. We can detect state changes using the `isStateChanged` method. This will return either `enter` or `leave` for the column name and value passed in. For example, if the `discussion_state` changes from `visible` to `deleted` then the method will return `leave` in the example above.
+We've unfeatured threads before, but this time we want to make that conditional on the state of the thread. We can detect state changes using the `isStateChanged` method. This will return either `enter` or `leave` for the column name and value passed in. For example, if the `discussion_state` changes from `visible` to `deleted` then the method will return `leave` in the example above.
 
 Once we have detected that we are "leaving" the visible state, we can then just make sure we have a featured thread relation, and delete it, and update the cached value.
 
