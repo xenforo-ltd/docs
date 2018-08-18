@@ -96,15 +96,15 @@ class Setup extends AbstractSetup
 
 We talked a little bit already about the Setup class. We're going to be breaking the install, upgrade and uninstall processes into separate steps.
 
-Let's start by importing some useful Schema classes. If you want to learn more about them, you can refer to the [Managing the Schema section.](../managing-the-schema/).  
-Just after the last `use` declaration, add the following:
+Let's start by importing some useful Schema classes. If you want to learn more about them, you can refer to the [Managing the Schema section](../managing-the-schema/).  
+Just after the last `use` declaration, add the following lines:
 
 ```php
 use XF\Db\Schema\Alter;
 use XF\Db\Schema\Create;
 ```
 
-The StepRunner traits here are going to handle the process of cycling through all of the available steps, so all we have to do is start creating those steps. We'll start by adding some code to create a new column in the `xf_forum` table:
+The StepRunner traits here are going to handle the process of cycling through all of the available steps, so all we have to do is start creating those steps. We'll begin by adding some code to create a new column in the `xf_forum` table:
 
 ```php
 <?php
