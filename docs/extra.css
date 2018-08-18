@@ -45,9 +45,6 @@ legend {
   font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
   line-height: 1.4;
 }
-h2 {
-  border-bottom: 1px solid #afafaf;
-}
 a {
   color: #2577b1;
   text-decoration: none;
@@ -210,19 +207,19 @@ input[type]:focus {
 }
 .wy-side-nav-search input[type=text]:not(:focus)::-webkit-input-placeholder {
   color: inherit;
-  opacity: 0.7;
+  opacity: .7;
 }
 .wy-side-nav-search input[type=text]:not(:focus)::-moz-placeholder {
   color: inherit;
-  opacity: 0.7;
+  opacity: .7;
 }
 .wy-side-nav-search input[type=text]:not(:focus):-moz-placeholder {
   color: inherit;
-  opacity: 0.7;
+  opacity: .7;
 }
 .wy-side-nav-search input[type=text]:not(:focus):-ms-input-placeholder {
   color: inherit;
-  opacity: 0.7;
+  opacity: .7;
 }
 .wy-menu-vertical .subnav a {
   padding: 10px;
@@ -255,11 +252,11 @@ input[type]:focus {
 }
 .wy-menu-vertical li > a.toctree-l3,
 .wy-menu-vertical li > span.toctree-l3 {
-  padding-left: 2em !important;
+  padding-left: 2.0em !important;
 }
 .wy-menu-vertical li > a.toctree-l4,
 .wy-menu-vertical li > span.toctree-l4 {
-  padding-left: 3em !important;
+  padding-left: 3.0em !important;
 }
 .wy-menu-vertical li.current {
   background: none;
