@@ -81,34 +81,46 @@ Well, strictly speaking, the class has already been created and written out to `
 
 namespace Demo\Portal;
 
-use XF\Db\Schema\Alter;
-use XF\Db\Schema\Create;
+use XF\AddOn\AbstractSetup;
+use XF\AddOn\StepRunnerInstallTrait;
+use XF\AddOn\StepRunnerUninstallTrait;
+use XF\AddOn\StepRunnerUpgradeTrait;
 
-class Setup extends \XF\AddOn\AbstractSetup
+class Setup extends AbstractSetup
 {
-	use \XF\AddOn\StepRunnerInstallTrait;
-	use \XF\AddOn\StepRunnerUpgradeTrait;
-	use \XF\AddOn\StepRunnerUninstallTrait;
+        use StepRunnerInstallTrait;
+        use StepRunnerUpgradeTrait;
+        use StepRunnerUninstallTrait;
 }
 ```
 
 We talked a little bit already about the Setup class. We're going to be breaking the install, upgrade and uninstall processes into separate steps.
 
-The StepRunner traits here are going to handle the process of cycling through all of the available steps, so all we have to do is start creating those steps. We'll start by adding some code to create a new column in the `xf_forum` table:
+Let's start by importing some useful Schema classes. If you want to learn more about them, you can refer to the [Managing the Schema section](../managing-the-schema/).  
+Just after the last `use` declaration, add the following lines:
+
+```php
+use XF\Db\Schema\Alter;
+use XF\Db\Schema\Create;
+```
+
+The StepRunner traits here are going to handle the process of cycling through all of the available steps, so all we have to do is start creating those steps. We'll begin by adding some code to create a new column in the `xf_forum` table:
 
 ```php
 <?php
 
 namespace Demo\Portal;
 
+use XF\AddOn\AbstractSetup;
+use XF\AddOn\StepRunnerInstallTrait;
+use XF\AddOn\StepRunnerUninstallTrait;
+use XF\AddOn\StepRunnerUpgradeTrait;
+
 use XF\Db\Schema\Alter;
 use XF\Db\Schema\Create;
 
 class Setup extends \XF\AddOn\AbstractSetup
 {
-	use \XF\AddOn\StepRunnerInstallTrait;
-	use \XF\AddOn\StepRunnerUpgradeTrait;
-	use \XF\AddOn\StepRunnerUninstallTrait;
 
 	public function installStep1()
 	{
@@ -118,6 +130,7 @@ class Setup extends \XF\AddOn\AbstractSetup
 		});
 	}
 }
+
 ```
 
 This column is being added to the `xf_forum` table so that we can set certain forums up to have threads automatically featured when they are created. The naming here is significant; columns added to core XF tables should always be prefixed. This serves two important purposes. The first being that there is less risk of conflicts happening with duplicate column names, in case XF or another add-on has reason to add that column in the future. The second being that it helps more easily identify which columns belong to which add-ons in case some issues arise in the future.
@@ -237,7 +250,7 @@ public static function threadEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc
 }
 ```
 
-This code is almost identical to what we added to the forum entity structure; really the only difference is the column name. But, we do need to add something else. We should create an entity relation so that, later on, should we need to access the featured thread entity (which we create in the next section). Below the `$structure->columns` line add:
+This code is almost identical to what we added to the forum entity structure; really the only difference is the column name. But, we do need to add something else. We should create an entity relation so that, later on, should we need to access the featured thread entity (which we create in the next section) we can do so easily with a finder query. Below the `$structure->columns` line add:
 
 ```php
 $structure->relations['FeaturedThread'] = [
@@ -970,6 +983,11 @@ public function installStep4()
 }
 ```
 
+And, of course, don't forget to run this setup step for yourself:
+
+!!! terminal
+    *$* php cmd.php xf-addon:install-step Demo/Portal 4
+
 ## Implementing permissions & optimizations
 
 Right now, we are displaying all featured threads in the portal, regardless of whether the visitor has permission to view them or not. This isn't ideal; there may be use cases where you want to feature threads from certain restricted forums, and only have those visible by the users who can normally view that forum.
@@ -1171,7 +1189,7 @@ if ($entity->isUpdate())
 }
 ```
 
-We've unfeaturd threads before, but this time we want to make that conditional on the state of the thread. We can detect state changes using the `isStateChanged` method. This will return either `enter` or `leave` for the column name and value passed in. For example, if the `discussion_state` changes from `visible` to `deleted` then the method will return `leave` in the example above.
+We've unfeatured threads before, but this time we want to make that conditional on the state of the thread. We can detect state changes using the `isStateChanged` method. This will return either `enter` or `leave` for the column name and value passed in. For example, if the `discussion_state` changes from `visible` to `deleted` then the method will return `leave` in the example above.
 
 Once we have detected that we are "leaving" the visible state, we can then just make sure we have a featured thread relation, and delete it, and update the cached value.
 
