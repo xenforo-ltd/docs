@@ -2,7 +2,7 @@
 
 If you're reading this, **THANK YOU** for considering helping us improve and expand our developer documentation 👍
 
-There's three important things to note about documentation, generally:
+There are three important things to note about documentation, generally:
 
 1. It's the **best** thing ever. We already have a massive pool of talent within the [XenForo community](https://xenforo.com/community) and a considerable number of them got to where they are today with almost no documentation at all! Not everyone can learn a new code language / framework in this way, and so this documentation is important so the massive pool of talent only gets bigger and better.
 2. It's the **worst** thing ever. At least for some people. Some developers **hate** writing documentation. It's time consuming and not easy.
