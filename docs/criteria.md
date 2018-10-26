@@ -36,8 +36,7 @@ Criterion is a user selectable predefined condition.
 
 **Why selectable?** Because admins/users can select them (remember trophy creation process).
 
-**Why predefined?** Because XenForo already knows how to handle them (using methods in the Criteria classes).
-
+**Why predefined?** Because XenForo already knows how to handle them (using criteria classes methods).
 
 Every criterion consists of two parts: **rule** and (optionally) **data**.
 
@@ -83,7 +82,7 @@ As you can see, criterion is simply a checkbox with optional input fields inside
 -   `value="criterion_1_rule"` and `value="criterion_2_rule"` are, obviously, the rules of criteria.
 
 !!! note
-    Keep in mind that `criterion_1/2_rule` in `name` attributes may not have to be criteria rules! These are just names for input containers. You can easily write `<xf:option name="foo[bar][rule]" value="criterion_rule" />` and it will work correctly. The criterion name will be `criterion_rule`, not `bar`.
+    Keep in mind that `criterion_1/2_rule` in `name` attributes may not have to be criteria rules! These are just names for input containers. You can easily write `<xf:option name="foo[bar][rule]" value="criterion_rule" />` and it will work correctly. The criterion rule will be `criterion_rule`, not `bar`.
 
 ### (Optionally) Storing selected criteria
 
