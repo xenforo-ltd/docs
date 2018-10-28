@@ -258,6 +258,217 @@ public static function criteriaTemplateData(array &$templateData)
 }
 ```
 
+## "helper_criteria" template
+ 
+Whenever you as addon maker want to get a target user/admin a way to select User/Page/other addon's criteria (or even all at once), you can simply use `helper_criteria`.
+
+In short, `helpter_criteria` is an admin template that allows to use criteria types checkbox-based interface in multiply places without copy-pasting the same code.
+
+`helper_criteria` contains macros of **two** types: `*criteria_name*_tabs` and `*criteria_name*_panes` for every criteria type. Example: `user_tabs` and `user_panes` macros for User criteria type.
+
+### Tabs
+
+Tabs are used to distinguish different criteria types within the template they are used:
+
+![Criteria tabs demonstration.](files/images/helper_criteria_tabs_example.png)
+
+When using tabs, the first one often contains fields/options that are not related to criteria. Then goes criteria tabs.
+
+In the image above, the first tab contains options for notice. First two tabs in the red box are related to User criteria type. The last one is related to Page criteria type.
+
+Tabs in `helper_criteria` are grouped under criteria types macros:
+
+```html
+<xf:macro name="foo_tabs" arg-container="" arg-active="">
+	<xf:set var="$tabs">
+		<a class="tabs-tab{{ $active == 'foo' ? ' is-active' : '' }}"
+			role="tab" tabindex="0" aria-controls="{{ unique_id('criteriaFoo') }}">Foo criteria</a>
+        <a class="tabs-tab{{ $active == 'foo_extra' ? ' is-active' : '' }}"
+           role="tab" tabindex="0" aria-controls="{{ unique_id('criteriaFooExtra') }}">Foo criteria extra</a>
+	</xf:set>
+	<xf:if is="$container">
+		<div class="tabs" role="tablist">
+			{$tabs|raw}
+		</div>
+	<xf:else />
+		{$tabs|raw}
+	</xf:if>
+</xf:macro>
+```
+
+In the code above, `foo` is a criteria type. It has two tabs, one for general foo criteria and another for extra foo criteria.
+
+### Panes
+
+Panes simply contain criteria.
+
+Just like tabs, panes in `helper_criteria` are grouped under criteria types macros:
+
+```html
+<xf:macro name="foo_panes" arg-container="" arg-active="" arg-criteria="!" arg-data="!">
+	<xf:set var="$panes">
+		<li class="{{ $active == 'foo' ? ' is-active' : '' }}" role="tabpanel" id="{{ unique_id('criteriaFoo') }}">
+
+			<xf:checkboxrow label="Criteria group 1">
+				<xf:option name="foo_criteria[criterion_1_rule][rule]" value="criterion_1_rule" ... />
+			    <xf:option name="foo_criteria[criterion_2_rule][rule]" value="criterion_2_rule" ... />
+			</xf:checkboxrow>
+			
+			<xf:checkboxrow label="Criteria group 2">
+                <xf:option name="foo_criteria[criterion_3_rule][rule]" value="criterion_3_rule" ... />
+                <xf:option name="foo_criteria[criterion_4_rule][rule]" value="criterion_4_rule" ... />
+            </xf:checkboxrow>
+
+		</li>
+	</xf:set>
+
+	<xf:if is="$container">
+		<ul class="tabPanes">
+			{$panes|raw}
+		</ul>
+	<xf:else />
+		{$panes|raw}
+	</xf:if>
+</xf:macro>
+```
+
+### Using "helper_criteria"
+
+To use "helper_criteria" functionality, you need to include its macros.
+
+#### Preparing data
+
+This section can be skipped if you **don't have** your selected criteria saved somewhere in database or the criteria type you want to use **does't** require any extra data.
+
+First of all, you need to retrieve saved selected criteria and create a criteria object from them. In this section, we will be using Page criteria as an example:
+
+```php
+$savedCriteria = /* Retrieve it somehow... */
+
+// Criteria object
+$criteria = $this->app()->criteria('XF:Page', $savedCriteria)->getCriteriaForTemplate();
+
+// Criteria extra data
+$criteriaData = $criteria->getExtraTemplateData();
+
+$viewParams = [
+    /* ... */
+    'criteria' => $criteria,
+    'criteriaData' => $criteriaData
+];
+    
+return $this->view(/* ... */, $viewParams);
+```
+
+#### Including without tabs
+
+To include criteria without tabs you need to use an `<xf:macro...` tag with `arg-container` attribute set to `0`:
+
+```html
+<xf:macro template="helper_criteria" name="page_panes" arg-container="0" arg-criteria="{$criteria}" arg-data="{$criteriaData}" />
+```
+
+If you don't have saved criteria, you can just pass empty array `{{ [] }}` to an `arg-criteria` attribute. Don't forget to replace `page` in `page_panes` to the name of criteria type you want to use.
+
+Keep in mind that all criteria is wrapped with `<li>` tag so you will need to apply some CSS styling (`list-style-type: none;` for example).
+
+#### With tabs
+
+In order to use criteria tabs, you will need to organise the page. Stick to the following example structure:
+
+```html
+<xf:form ... class="block">
+	<div class="block-container">
+	    
+	    <!-- Tabs -->
+		<h2 class="block-tabHeader tabs hScroller" data-xf-init="h-scroller tabs" role="tablist">
+			<span class="hScroller-scroll">
+			    <!-- Main tab where fields/options are located -->
+				<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="MAIN_TAB_ID">Main tab title</a>
+				
+				<!-- Criteria tabs -->
+				<xf:macro template="helper_criteria" name="page_tabs" arg-userTabTitle="Custom tab name (optionally)" />
+			</span>
+		</h2>
+
+        <!-- Panes -->
+		<ul class="block-body tabPanes">
+		    <!-- Main pane -->
+			<li class="is-active" role="tabpanel" id="MAIN_TAB_ID">
+				<!-- Fields and options -->
+			</li>
+
+            <!-- Criteria panes -->
+			<xf:macro template="helper_criteria" name="page_panes"
+				arg-criteria="{$criteria}"
+				arg-data="{$criteriaData}" />
+		</ul>
+
+		<xf:submitrow sticky="true" icon="save" />
+	</div>
+</xf:form>
+```
+
+Again, if you don't have any saved or even don't suppose to have it, pass `{{ [] }}` to an `arg-criteria` attribute.
+
+### Adding custom criteria type to "helper_criteria"
+
+If you want to add a custom criteria type to `helper_criteira` template, you will need to create a template modification of `helper_criteria` template.
+
+Go to "Appearance > Template modifications" in ACP, switch to "Admin" tab and hit "Add template modification" button.
+
+We want to add our tab and pane at the very bottom of the template so switch "Search type" to "Regular expression".
+
+Type `/$/` in "Find" field.
+
+Finally, add the tab and the pane macros code in "Replace" field. Example:
+
+```html
+<xf:macro name="foo_tabs" arg-container="" arg-active="">
+	<xf:set var="$tabs">
+		<a class="tabs-tab{{ $active == 'foo' ? ' is-active' : '' }}"
+			role="tab" tabindex="0" aria-controls="{{ unique_id('criteriaFoo') }}">Foo criteria</a>
+        <a class="tabs-tab{{ $active == 'foo_extra' ? ' is-active' : '' }}"
+           role="tab" tabindex="0" aria-controls="{{ unique_id('criteriaFooExtra') }}">Foo criteria extra</a>
+	</xf:set>
+	<xf:if is="$container">
+		<div class="tabs" role="tablist">
+			{$tabs|raw}
+		</div>
+	<xf:else />
+		{$tabs|raw}
+	</xf:if>
+</xf:macro>
+
+<xf:macro name="foo_panes" arg-container="" arg-active="" arg-criteria="!" arg-data="!">
+	<xf:set var="$panes">
+		<li class="{{ $active == 'foo' ? ' is-active' : '' }}" role="tabpanel" id="{{ unique_id('criteriaFoo') }}">
+
+			<xf:checkboxrow label="Criteria group 1">
+				<xf:option name="foo_criteria[criterion_1_rule][rule]" value="criterion_1_rule" ... />
+			    <xf:option name="foo_criteria[criterion_2_rule][rule]" value="criterion_2_rule" ... />
+			</xf:checkboxrow>
+			
+			<xf:checkboxrow label="Criteria group 2">
+                <xf:option name="foo_criteria[criterion_3_rule][rule]" value="criterion_3_rule" ... />
+                <xf:option name="foo_criteria[criterion_4_rule][rule]" value="criterion_4_rule" ... />
+            </xf:checkboxrow>
+
+		</li>
+	</xf:set>
+
+	<xf:if is="$container">
+		<ul class="tabPanes">
+			{$panes|raw}
+		</ul>
+	<xf:else />
+		{$panes|raw}
+	</xf:if>
+</xf:macro>
+```
+
+Now, you can use your criteria everywhere (see ["Using helper_criteria"](#using-helper_criteria)).
+
 ## Custom User/Page criterion example
 
 Let's say we want to create a criterion for checking whether our user has X or more likes on single message or not.
@@ -465,15 +676,7 @@ class Post extends AbstractCriteria
 }
 ```
 
-### 2.0.X versions
-
-If you a writing an addon for XenForo below 2.1 and you custom criteria **in not working** with User entity, [you will need to](https://xenforo.com/community/threads/abstractcriteria-is-not-abstract.155316/) write a custom variation of `isMatched()`, `isUnknownMatched()` and `isSpecialMatched()` methods because they require a User entity argument:
-
-```php
-public function isMatched(\XF\Entity\User $user) { ... }
-protected function isUnknownMatched($rule, array $data, \XF\Entity\User $user) { ... }
-protected function isSpecialMatched($rule, array $data, \XF\Entity\User $user) { ... }
-```
+`isMatched(...)` method used to call `_match` methods we just created accepts only User entity, we are to write a custom variation of `isMatched()`, `isUnknownMatched()` and `isSpecialMatched()` methods.
 
 Since we are creating Post criteria, we need to create our own `isMatchedPost()` method:
 
@@ -531,6 +734,11 @@ protected function isUnknownMatchedPost($rule, array $data, \XF\Entity\Post $pos
     return false;
 }
 ```
+
+We simply used `isMatched(...)` method code replacing `$user` variable of User entity type with `$post` variable of Post entity type.
+
+As we do not plan to handle special and unknown criteria we return null in `isSpecialMatchedPost` and `false` in `isUnknownMathcedPost` methods.
+
 
 ### Template
 
