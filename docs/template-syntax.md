@@ -160,14 +160,15 @@ The for-each tag allows you to loop over an array of items, printing a block of 
 ```html
 <xf:set var="$names" value="{{ ['Patrick', 'Theresa', 'Kimball', 'Wayne', 'Grace'] }}" />
 
-<xf:foreach loop="$names" value="$name" i="$i">
-	<p>Hello there, {$name}. This is name number {$i}.</p>
+<xf:foreach loop="$names" key="$key" value="$name" i="$i">
+	<p>Hello there, {$name}. This is name number {$i}. Array key of this element: {$key}</p>
 </xf:foreach>
 ```
 
 The for-each tag takes the following attributes:
 
 - `loop` - The array to loop over.
+- `key` - A variable name to use in the loop to get current element's array key. Can be integer (ordinary array) or string (associative array).
 - `value` - A variable name to use within the loop, containing the current array item.
 - `i` -  A variable name to use in the loop for the current index.
 
