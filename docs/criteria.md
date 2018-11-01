@@ -89,10 +89,10 @@ As you can see, criterion is simply a checkbox with optional input fields inside
 Inside the controller, the criteria form data from the previous section can be filtered, serialized and saved in database columns of `mediumblob` type for better days:
 
 ```php
-$fooCriteriaInput = $this->filter('foo_criteria', 'array');
-$barCriteriaInput = $this->filter('bar_criteria', 'array');
-
-$form->basicEntitySave($bazEntity, [$fooCriteriaInput, $barCriteriaInput]);
+$form->basicEntitySave($bazEntity, [
+	'foo_criteria' => $fooCriteriaInput,
+	'bar_criteria' => $barCriteriaInput
+]);
 ```
 
 The example `$bazEntity` structure:
@@ -105,8 +105,8 @@ public static function getStructure(Structure $structure)
     $structure->primaryKey = 'baz_id';
     $structure->columns = [
         'baz_id' => ['type' => self::UINT, 'autoIncrement' => true],
-        'foo_criteria' => ['type' => self::SERIALIZED_ARRAY, 'default' => [], 'required' => 'please_select_criteria_that_must_be_met'],
-        'bar_criteria' => ['type' => self::SERIALIZED_ARRAY, 'default' => []]
+        'foo_criteria' => ['type' => self::JSON_ARRAY, 'default' => [], 'required' => 'please_select_criteria_that_must_be_met'],
+        'bar_criteria' => ['type' => self::JSON_ARRAY, 'default' => []]
     ];
 
     return $structure;
