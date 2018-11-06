@@ -18,6 +18,7 @@ pages:
 - Routing basics: routing-basics.md
 - Controller basics: controller-basics.md
 - Entities, finders, and repositories: entities-finders-repositories.md
+- Criteria: criteria.md
 - Managing the schema: managing-the-schema.md
 - Let's build an add-on: lets-build-an-add-on.md
 # Designers
