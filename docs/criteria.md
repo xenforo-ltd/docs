@@ -86,9 +86,12 @@ As you can see, criterion is simply a checkbox with optional input fields inside
 
 ### (Optionally) Storing selected criteria
 
-Inside the controller, the criteria form data from the previous section can be filtered, serialized and saved in database columns of `mediumblob` type for better days:
+Inside the controller, the criteria form data from the previous section can be filtered, encoded and saved in database columns of `mediumblob` type for better days:
 
 ```php
+$fooCriteriaInput = $this->filter('foo_criteria', 'array');
+$barCriteriaInput = $this->filter('bar_criteria', 'array');
+
 $form->basicEntitySave($bazEntity, [
 	'foo_criteria' => $fooCriteriaInput,
 	'bar_criteria' => $barCriteriaInput
