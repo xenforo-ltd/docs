@@ -286,7 +286,7 @@ We need to use this to define the entity structure which represents our new `xf_
 public static function getStructure(Structure $structure)
 {
 	$structure->table = 'xf_demo_portal_featured_thread';
-	$structure->shortName = 'XF:FeaturedThread';
+	$structure->shortName = 'Demo\Portal:FeaturedThread';
 	$structure->primaryKey = 'thread_id';
 	$structure->columns = [
 		'thread_id' => ['type' => self::UINT, 'required' => true],
