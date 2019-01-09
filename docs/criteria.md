@@ -264,7 +264,7 @@ public static function criteriaTemplateData(array &$templateData)
  
 Whenever you as addon maker want to get a target user/admin a way to select User/Page/other addon's criteria (or even all at once), you can simply use `helper_criteria`.
 
-In short, `helpter_criteria` is an admin template that allows to use criteria types checkbox-based interface in multiply places without copy-pasting the same code.
+In short, `helper_criteria` is an admin template that allows to use criteria types checkbox-based interface in multiply places without copy-pasting the same code.
 
 `helper_criteria` contains macros of **two** types: `*criteria_name*_tabs` and `*criteria_name*_panes` for every criteria type. Example: `user_tabs` and `user_panes` macros for User criteria type.
 
