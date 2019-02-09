@@ -70,7 +70,7 @@ Let's fill in some of these details:
 
 We have now added a `description`, the developer's name (`dev`) and specified that we want to display an icon (`icon`). The icon can either be a path (relative to your add-on root) or the name of a [Font Awesome icon](http://fontawesome.io/icons/) as we've done here.
 
-As we're not superceding a XenForo 1 addon, we can disregard `legacy_addon_id`. For a full explaination of all of the properties in the `addon.json` file, refer to the [Add-on structure section](../add-on-structure/#addonjson-file).
+As we're not superceding a XenForo 1 addon, we can disregard `legacy_addon_id`. For a full explaination of all of the properties in the `addon.json` file, refer to the [Add-on structure section](./add-on-structure/#addonjson-file).
 
 ## Creating the Setup class
 
@@ -96,7 +96,7 @@ class Setup extends AbstractSetup
 
 We talked a little bit already about the Setup class. We're going to be breaking the install, upgrade and uninstall processes into separate steps.
 
-Let's start by importing some useful Schema classes. If you want to learn more about them, you can refer to the [Managing the Schema section](../managing-the-schema/).  
+Let's start by importing some useful Schema classes. If you want to learn more about them, you can refer to the [Managing the Schema section](./managing-the-schema/).  
 Just after the last `use` declaration, add the following lines:
 
 ```php
