@@ -1003,7 +1003,7 @@ To start, go to the Portal controller, and change this line:
 To:
 
 ```php
-->limitByPage($page, $perPage * 3);
+->limit($perPage * 3);
 ```
 
 And below that, add:
@@ -1014,7 +1014,7 @@ $featuredThreads = $finder->fetch()
 	{
 		return ($featuredThread->Thread->canView());
 	})
-	->slice(0, $perPage, true);
+	->sliceToPage($page, $perPage);
 ```
 
 Finally change:
