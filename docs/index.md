@@ -116,6 +116,23 @@ When the CLI is involved, this situation gets trickier as there are now potentia
 
 Note that if you are developing add-ons, you may potentially have other locations that need to be written to by the CLI and web server users. Notably, this includes the `_output` directory within add-ons. In this situation, having your web server run as your CLI user may cause the least friction. If you go down any other route, you may need to ensure that your web server can write to your entire XenForo installation; this is not recommended in production.
 
+## Preventing frequent logout for `dynamic IP/multi-wan` users
+
+As XenForo session is normally bound to your IP address, if your IP is dynamic from ISP or you are using multi-wan load balancer, you will get loggout frequently. [This post](https://xenforo.com/community/threads/sessions-invalidate-if-ip-changes.148759/post-1275033) explains how you can prevent that by adding this to your `config.php` file:
+```php
+$c->extend('session', function(\XF\Session\Session $session)
+{
+   $session->setConfig([
+        'ipv4CidrMatch' => 0,
+        'ipv6CidrMatch' => 0
+    ]);
+   return $session;
+});
+```
+
+⚠ Warning: Advised only for localhost/test/dev sites. Not for production.
+
+
 ## Installation
 
 The current way to install XF 2.0 is via the new CLI system. A lot of development processes can only be performed
