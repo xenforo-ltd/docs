@@ -60,14 +60,14 @@ Bearing in mind that a style represents components which are modified within tha
  To mark a template as modified within a style, you can do it in the usual way by editing it in the Admin CP. Templates and style properties modified in the Admin CP will automatically be written out to the file system if designer mode is enabled. However, it would likely be more convenient to modify or "touch" a template using a CLI command:
  
 !!! terminal
-    *$* php cmd.php xf-designer:touch_template _[designer_mode_id]_ _[template_type:template_title]_
+    *$* php cmd.php xf-designer:touch-template _[designer_mode_id]_ _[template_type:template_title]_
     
 As long as the specified template exists in a parent or the master style, it will be copied to the current style and output to the file system. You can then modify the template directly in the file system.
 
 If you would like to create an entirely custom template in your style (that doesn't exist in any other style within the tree), you can use the same command but you would just pass the `--custom` option:
 
 !!! terminal
-    *$* php cmd.php xf-designer:touch_template _[designer_mode_id]_ _[template_type:template_title]_ --custom
+    *$* php cmd.php xf-designer:touch-template _[designer_mode_id]_ _[template_type:template_title]_ --custom
     
 ## Other useful commands
 
