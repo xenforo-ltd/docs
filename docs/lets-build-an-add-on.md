@@ -121,6 +121,9 @@ use XF\Db\Schema\Create;
 
 class Setup extends \XF\AddOn\AbstractSetup
 {
+	use StepRunnerInstallTrait;
+	use StepRunnerUpgradeTrait;
+	use StepRunnerUninstallTrait;
 
 	public function installStep1()
 	{
