@@ -41,7 +41,7 @@ The requirements for running XF 2.0 have changed since XF 1.5. The recommended r
 * MySQL: 5.5+
 * PHP extensions: MySQLi, GD (with JPEG support), PCRE, SPL, SimpleXML, DOM, JSON, iconv, ctype, cURL
 
-[Download the requirements test script.](/files/xenforo2-requirements-test.zip)
+[Download the requirements test script.](https://xenforo.com/purchase/requirements-zip)
 
 ## Setting up a local server
 
