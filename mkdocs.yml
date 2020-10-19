@@ -17,6 +17,12 @@ pages:
 - Managing the schema: managing-the-schema.md
 - Let's build an add-on: lets-build-an-add-on.md
 - Designing styles: designing-styles.md
+<<<<<<< Updated upstream
+=======
+# Appendix(es)
+- 'Appendix: Scotch Box': scotchbox.md
+- 'Appendix: Code Examples': code-examples.md
+>>>>>>> Stashed changes
 
 #repo_url: https://github.com/xenforo-ltd/xfdocs/
 #edit_uri: edit/master/docs/
