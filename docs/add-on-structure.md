@@ -73,7 +73,7 @@ add-on and display information about it in the Admin CP. At minimum, your `addon
 
 A basic file will be created for you automatically when creating the add-on.
 
-Including a valid `addon.json` file is mandatory for your addon to be recognized but you can always [validate your addon.json file](../development-tools/#validate-your-addonjson-file).
+Including a valid `addon.json` file is mandatory for your addon to be recognized but you can always [validate your addon.json file](/development-tools/#validate-your-addonjson-file).
 
 #### Properties
 <table>
