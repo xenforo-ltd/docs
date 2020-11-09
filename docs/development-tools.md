@@ -41,6 +41,23 @@ $config['cookie']['prefix'] = 'anything_';
 
 If you're using two or more XF installs on the same domain, you may experience issues with cookies being overwritten, which is caused by the installations sharing the same cookie prefix. It's therefore recommended to ensure you change the cookie prefix for each XF install you have set up. Without doing that, you will experience issues, for example, getting logged out of one XF install when logging into another.
 
+## Preventing frequent logout for users with a dynamic IP
+
+XenForo sessions are usually bound to your IP address. If your IP address is dynamic or you are using a VPN, proxy or load balancer, you may get loggout frequently. You can prevent this by adding the following to your `src/config.php` file:
+```php
+$c->extend('session', function(\XF\Session\Session $session)
+{
+   $session->setConfig([
+        'ipv4CidrMatch' => 0,
+        'ipv6CidrMatch' => 0
+    ]);
+   return $session;
+});
+```
+
+!!! warning
+    You should never apply the above code to the config of a live/production site.
+
 ## Development commands
 
 XF 2.0 ships with a number of general development and add-on CLI commands which are aimed to help you develop more efficiently or even possibly automate/script some common processes.
