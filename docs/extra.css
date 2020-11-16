@@ -2,11 +2,12 @@
   box-sizing: border-box;
 }
 body {
-  font: 15px / 1.4 sans-serif;
-  font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
+  font: 17px / 1.4 sans-serif;
+  font-family: 'Nunito sans', sans-serif;
 }
 p {
-  font: 15px / 1.4 sans-serif;
+  font: 17px / 1.4 sans-serif;
+  font-family: 'Nunito sans', sans-serif;
   margin: 0;
   margin-bottom: 24px;
 }
@@ -42,7 +43,7 @@ h4,
 h5,
 h6,
 legend {
-  font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
+  font-family: 'Nunito sans', sans-serif;
   line-height: 1.4;
 }
 a {
@@ -78,6 +79,12 @@ input[type]:focus {
   color: #000000;
   outline: 0;
 }
+
+
+
+
+
+
 .wy-body-for-nav .wy-nav-content-wrap {
   background: #eeeeee;
 }
@@ -97,12 +104,11 @@ input[type]:focus {
 .wy-body-for-nav .wy-nav-content div[role=main] {
   background: #fefefe;
   color: #141414;
-  border: 1px solid;
-  border-color: #e4e4e4 #dcdcdc #d2d2d2;
-  border-radius: 4px;
+  border: none;
+  border-radius: 20px;
 }
 .wy-body-for-nav .wy-nav-content div[role=main] .section {
-  padding: 6px 10px;
+  padding: 20px;
 }
 .wy-body-for-nav .wy-nav-content .admonition .admonition-title {
   margin-bottom: 0;
@@ -291,7 +297,7 @@ input[type]:focus {
   padding-left: 1.5em;
 }
 .rst-versions {
-  font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
+  font-family: 'Nunito sans', sans-serif;
   border-top: 0;
 }
 .rst-versions .rst-current-version {
@@ -311,7 +317,7 @@ input[type]:focus {
   border: 1px solid transparent;
   border-radius: 4px;
   line-height: 1.4;
-  font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
+  font-family: 'Nunito sans', sans-serif;
   box-shadow: none;
   -webkit-transition: background-color 0.2s ease;
   transition: background-color 0.2s ease;
@@ -411,4 +417,60 @@ footer div[role=contentinfo] p {
 }
 .hljs .hljs-addition {
   color: #292;
+}
+
+.rst-content img {
+  border: solid 1px #a5cae4;
+  margin: 0 10%;
+  max-width: 80%;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+  -moz-box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+  -khtml-box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+}
+
+/*.wy-body-for-nav .wy-nav-content div[role=main]
+{
+  background: linear-gradient(180deg, #2577b1, #fefefe 100px);
+}*/
+
+h1
+{
+  color: #2577b1;
+}
+
+h2, h3, h4, h5, h6
+{
+  margin-top: 2em;
+}
+
+.rst-content .admonition,
+.rst-content pre code
+{
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,.2);
+}
+
+.rst-content .admonition-title
+{
+  padding: 12px;
+  font-size: 19px;
+}
+
+.rst-content pre code
+{
+  border: none;
+  font-size: 14px;
+}
+
+.rst-content li + li
+{
+  margin-top: 0.5em;
 }

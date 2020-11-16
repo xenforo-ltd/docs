@@ -4,9 +4,9 @@ site_author: XenForo Ltd.
 
 theme: readthedocs
 theme_dir: xf2
-extra_css: [extra.css]
+extra_css: [ 'https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap','extra.css' ]
 
-pages:
+nav:
 # Overview
 - Getting started: index.md
 # Site Administrators (or common)
@@ -25,6 +25,7 @@ pages:
 # Designers
 - Designing styles: designing-styles.md
 # Appendix(es)
+- 'Appendix: Windows Dev': windows-dev.md
 - 'Appendix: Scotch Box': scotchbox.md
 
 repo_url: https://github.com/xenforo-ltd/docs/
