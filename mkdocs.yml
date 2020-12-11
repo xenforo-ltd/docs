@@ -37,4 +37,4 @@ markdown_extensions:
   - toc:
       permalink: 
 
-copyright: <a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&reg; &copy; 2010-2020 XenForo Ltd.</a>
+copyright: <a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&reg; &copy;2010-2020 XenForo Ltd.</a>
