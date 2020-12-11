@@ -1,3 +1,5 @@
+# Add-on structure
+
 In previous versions of XF, there were very few standards and conventions surrounding add-on development. We have done 
 a lot to change that in XF 2.0. Let's look at some of the changes:
 

@@ -1,3 +1,5 @@
+# Scotchbox
+
 The following is a description of how to install the excellent [Scotch Box](https://box.scotch.io/) onto your own computer, in order to have a fully operational development environment for XenForo in just a few minutes with a handful of simple commands.
 
 XenForo has a custom Scotch Box config, which provides everything you need to run XenForo, including a debugger and a performance-enhancing data cache.

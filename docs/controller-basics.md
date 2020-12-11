@@ -1,3 +1,5 @@
+# Controller basics 
+
 At a basic level, Controllers are the code that is executed when you visit a page within XF. Controllers are generally responsible for handling user input and passing that user input to the appropriate place which, generally, would be to perform some sort of database action (Model) or load visual content (View).
  
 When a user clicks a link, the requested URL is routed to a specific controller and controller action. See [Routing basics](/routing-basics). For example, in XF if you click a URL like `index.php?conversations/add` you will be routed to the `XF\Pub\Controller\Conversation` controller and to the `add` action.

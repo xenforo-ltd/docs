@@ -1,3 +1,5 @@
+# Development tools
+
 XF2 provides developers with a number of built in tools you can use to expedite development of add-ons and we'll go through some of these below.
 
 ## Debug mode

@@ -1,3 +1,5 @@
+# REST API
+
 In XenForo 2.1, a REST API was added. This allows you to programmatically interact with many areas of a XenForo installation.
 
 Accessing the API requires generating a key via the admin control panel. There is no unauthenticated access to the API and users cannot generate their own keys to access the API at this time.

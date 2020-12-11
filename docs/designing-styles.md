@@ -1,3 +1,5 @@
+# Designing styles
+
 In XF2 we have introduced an all new way to build and edit styles called "Designer mode". Designer mode is a collection of CLI tools that allow you to modify certain templates within a style directly on the file system. It also outputs various metadata and information about style properties which is useful for version control and collaboration.
 
 ## Enabling designer mode

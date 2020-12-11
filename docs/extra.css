@@ -2,11 +2,12 @@
   box-sizing: border-box;
 }
 body {
-  font: 15px / 1.4 sans-serif;
-  font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
+  font: 17px / 1.4 sans-serif;
+  font-family: 'Nunito sans', sans-serif;
 }
 p {
-  font: 15px / 1.4 sans-serif;
+  font: 17px / 1.4 sans-serif;
+  font-family: 'Nunito sans', sans-serif;
   margin: 0;
   margin-bottom: 24px;
 }
@@ -42,7 +43,7 @@ h4,
 h5,
 h6,
 legend {
-  font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
+  font-family: 'Nunito sans', sans-serif;
   line-height: 1.4;
 }
 a {
@@ -78,6 +79,12 @@ input[type]:focus {
   color: #000000;
   outline: 0;
 }
+
+
+
+
+
+
 .wy-body-for-nav .wy-nav-content-wrap {
   background: #eeeeee;
 }
@@ -97,12 +104,11 @@ input[type]:focus {
 .wy-body-for-nav .wy-nav-content div[role=main] {
   background: #fefefe;
   color: #141414;
-  border: 1px solid;
-  border-color: #e4e4e4 #dcdcdc #d2d2d2;
-  border-radius: 4px;
+  border: none;
+  border-radius: 20px;
 }
 .wy-body-for-nav .wy-nav-content div[role=main] .section {
-  padding: 6px 10px;
+  padding: 20px;
 }
 .wy-body-for-nav .wy-nav-content .admonition .admonition-title {
   margin-bottom: 0;
@@ -170,11 +176,13 @@ input[type]:focus {
 }
 .wy-nav-side {
   background: #185886;
+
 }
 .wy-side-nav-search {
   background: #185886;
+  background: #0f3652;
   color: #bcdef5;
-  border-bottom: #154d75 1px solid;
+  /*border-bottom: #154d75 1px solid;*/
   margin-bottom: 0;
 }
 .wy-side-nav-search > a {
@@ -221,7 +229,96 @@ input[type]:focus {
   color: inherit;
   opacity: .7;
 }
-.wy-menu-vertical .subnav a {
+
+/* new for mkdocs 1.1.2 */
+
+footer
+{
+  font-size: 10px;
+  text-align: center;
+}
+
+.wy-menu-vertical
+{
+  font: 15px / 1.4 'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
+}
+
+.wy-menu-vertical header, .wy-menu-vertical p.caption {
+  text-transform: none;
+  font-size: 12px;
+  font-weight: 700 !important;
+  color: #ececec;
+  background: linear-gradient(to bottom, transparent, #154d75);
+}
+
+.wy-menu-vertical a
+{
+  color: #bcdef5 !important;
+  font-size: 12px !important;
+}
+
+.wy-menu-vertical li,
+.wy-menu-vertical li > a,
+.wy-menu-vertical li.toctree-l1 > a.current
+{
+  background: none !important;
+}
+
+.wy-menu-vertical li,
+.wy-menu-vertical li > a
+{
+  font-weight: normal !important;
+}
+
+.wy-menu-vertical li > a
+{
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+.wy-menu-vertical a.current,
+.wy-menu-vertical a:hover
+{
+  background: rgba(0,0,0,.1) !important;
+}
+
+.wy-menu-vertical span.toctree-expand
+{
+  color: white !important;
+}
+
+.wy-menu-vertical li.current a {
+  color: #bcdef5;
+}
+
+.wy-menu-vertical li.on a, .wy-menu-vertical li.current > a {
+  background: none;
+}
+
+/* L1 */
+.wy-menu-vertical li.toctree-l1 > a
+{
+  padding: 20px 1.618em !important;
+  font-weight: 300 !important;
+  font-size: 17px !important;
+  border-top: 1px solid #154d75 !important;
+}
+
+.wy-menu-vertical ul.current > li.toctree-l1.current {
+  background: linear-gradient(to bottom, #124163 0%, #154d75 100%) !important;
+  box-shadow: inset 0 -10px 15px -10px rgba(0, 0, 0, 0.3), inset 0 10px 15px -10px rgba(0, 0, 0, 0.3);
+}
+
+.wy-menu-vertical li.toctree-l1.current > a {
+  border-top: none;
+  border-bottom: none;
+}
+
+
+/* end new */
+
+
+/*.wy-menu-vertical .subnav a {
   padding: 10px;
 }
 .wy-menu-vertical .subnav li.current > ul li a {
@@ -289,9 +386,13 @@ input[type]:focus {
 }
 .wy-menu-vertical li.current a.toctree-l4 {
   padding-left: 1.5em;
-}
+}*/
+
+
+
+
 .rst-versions {
-  font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
+  font-family: 'Nunito sans', sans-serif;
   border-top: 0;
 }
 .rst-versions .rst-current-version {
@@ -303,15 +404,15 @@ input[type]:focus {
 .rst-footer-buttons .btn {
   display: inline-block;
   text-align: center;
-  font-size: 13px;
+  font-size: 15px;
   text-decoration: none;
   outline: 0;
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 10px 20px;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 10px;
   line-height: 1.4;
-  font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
+  font-family: 'Nunito sans', sans-serif;
   box-shadow: none;
   -webkit-transition: background-color 0.2s ease;
   transition: background-color 0.2s ease;
@@ -411,4 +512,104 @@ footer div[role=contentinfo] p {
 }
 .hljs .hljs-addition {
   color: #292;
+}
+
+.rst-content img {
+  border: solid 1px #a5cae4;
+  margin: 0 10%;
+  max-width: 80%;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+  -moz-box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+  -khtml-box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+}
+
+/*.wy-body-for-nav .wy-nav-content div[role=main]
+{
+  background: linear-gradient(180deg, #2577b1, #fefefe 100px);
+}*/
+
+h1
+{
+  color: #2577b1;
+}
+
+h2, h3, h4, h5, h6
+{
+  margin-top: 2em;
+}
+
+.rst-content .admonition,
+.rst-content pre code,
+.rst-content blockquote
+{
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,.2);
+}
+
+.rst-content blockquote
+{
+  width: 90%;
+}
+
+.rst-content blockquote p
+{
+  margin-bottom: 0;
+  font-style: italic;
+  font-size: 90%;
+}
+
+.rst-content .admonition-title
+{
+  padding: 12px;
+  font-size: 19px;
+}
+
+.rst-content pre code
+{
+  border: none;
+  font-size: 14px;
+}
+
+.rst-content li + li
+{
+  margin-top: 0.5em;
+}
+
+.rst-content img
+{
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,.2);
+}
+
+/* this is a test - xf2manual */
+
+.rst-content .bbMediaWrapper
+{
+  width: 560px;
+  max-width: 100%;
+  margin: 0;
+}
+
+.rst-content .bbMediaWrapper-inner
+{
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.rst-content .bbMediaWrapper-inner iframe
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

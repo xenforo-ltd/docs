@@ -1,3 +1,5 @@
+# Entities, finders and repositories
+
 There are a number of ways to interact with data within XF2. In XF1 this was mostly geared towards writing out raw SQL statements inside Model files. The approach in XF2 has moved away from this, and we have added a number of new ways in its place. We'll first look at the preferred method for performing database queries - the finder.
 
 ## The Finder

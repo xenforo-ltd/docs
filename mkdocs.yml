@@ -1,31 +1,34 @@
-site_name: XenForo 2.0 Documentation
-site_description: Developer Documentation for XenForo 2.0.
+site_name: XenForo 2 Dev Docs
+site_description: Developer Documentation for XenForo 2.x
 site_author: XenForo Ltd.
 
 theme: readthedocs
-theme_dir: xf2
-extra_css: [extra.css]
+custom_dir: xf2
+extra_css:
+  - 'https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap'
+  - 'extra.css'
 
-pages:
-# Overview
-- Getting started: index.md
-# Site Administrators (or common)
-- Template syntax: template-syntax.md
-- REST API: rest-api.md
-# Developers
-- Add-on structure: add-on-structure.md
-- Development tools: development-tools.md
-- General concepts: general-concepts.md
-- Routing basics: routing-basics.md
-- Controller basics: controller-basics.md
-- Entities, finders, and repositories: entities-finders-repositories.md
-- Criteria: criteria.md
-- Managing the schema: managing-the-schema.md
-- Let's build an add-on: lets-build-an-add-on.md
-# Designers
-- Designing styles: designing-styles.md
-# Appendix(es)
-- 'Appendix: Scotch Box': scotchbox.md
+nav:
+- Overview:
+  - Getting started: index.md
+- Site Administrators (or common):
+  - Template syntax: template-syntax.md
+  - REST API: rest-api.md
+- Developers:
+  - Add-on structure: add-on-structure.md
+  - Development tools: development-tools.md
+  - General concepts: general-concepts.md
+  - Routing basics: routing-basics.md
+  - Controller basics: controller-basics.md
+  - Entities, finders, and repositories: entities-finders-repositories.md
+  - Criteria: criteria.md
+  - Managing the schema: managing-the-schema.md
+  - Let's build an add-on: lets-build-an-add-on.md
+- Designers:
+  - Designing styles: designing-styles.md
+  - Template syntax: template-syntax.md
+- Appendix(es):
+  - 'Appendix: Scotch Box': scotchbox.md
 
 repo_url: https://github.com/xenforo-ltd/docs/
 edit_uri: edit/master/docs/
@@ -35,4 +38,4 @@ markdown_extensions:
   - toc:
       permalink: 
 
-copyright: <a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a>
+copyright: <a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&reg; 2.x &copy;2010-2020 XenForo Ltd.</a>
