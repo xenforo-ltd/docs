@@ -8,26 +8,27 @@ extra_css:
   - 'https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap'
   - 'extra.css'
 
-pages:
-# Overview
-- Getting started: index.md
-# Site Administrators (or common)
-- Template syntax: template-syntax.md
-- REST API: rest-api.md
-# Developers
-- Add-on structure: add-on-structure.md
-- Development tools: development-tools.md
-- General concepts: general-concepts.md
-- Routing basics: routing-basics.md
-- Controller basics: controller-basics.md
-- Entities, finders, and repositories: entities-finders-repositories.md
-- Criteria: criteria.md
-- Managing the schema: managing-the-schema.md
-- Let's build an add-on: lets-build-an-add-on.md
-# Designers
-- Designing styles: designing-styles.md
-# Appendix(es)
-- 'Appendix: Scotch Box': scotchbox.md
+nav:
+- Overview:
+  - Getting started: index.md
+- Site Administrators (or common):
+  - Template syntax: template-syntax.md
+  - REST API: rest-api.md
+- Developers:
+  - Add-on structure: add-on-structure.md
+  - Development tools: development-tools.md
+  - General concepts: general-concepts.md
+  - Routing basics: routing-basics.md
+  - Controller basics: controller-basics.md
+  - Entities, finders, and repositories: entities-finders-repositories.md
+  - Criteria: criteria.md
+  - Managing the schema: managing-the-schema.md
+  - Let's build an add-on: lets-build-an-add-on.md
+- Designers:
+  - Designing styles: designing-styles.md
+  - Template syntax: template-syntax.md
+- Appendix(es):
+  - 'Appendix: Scotch Box': scotchbox.md
 
 repo_url: https://github.com/xenforo-ltd/docs/
 edit_uri: edit/master/docs/
