@@ -1,3 +1,5 @@
+# General concepts
+
 The following sections go into detail about some of the general systems and concepts you will come across while developing a XenForo add-on. If you are familiar with XenForo 1.x development, then a lot of these concepts will seem familiar to you, though it's worth reviewing them as there are some excellent new tools and features to help you develop add-ons.
 
 ## Vendor components

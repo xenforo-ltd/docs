@@ -3,8 +3,10 @@ site_description: Developer Documentation for XenForo 2.0.
 site_author: XenForo Ltd.
 
 theme: readthedocs
-theme_dir: xf2
-extra_css: [extra.css]
+custom_dir: xf2
+extra_css:
+  - 'https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap'
+  - 'extra.css'
 
 pages:
 # Overview
@@ -35,4 +37,4 @@ markdown_extensions:
   - toc:
       permalink: 
 
-copyright: <a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a>
+copyright: <a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&reg; &copy; 2010-2020 XenForo Ltd.</a>

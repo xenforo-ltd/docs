@@ -1,4 +1,4 @@
-Welcome to XenForo 2!
+# Welcome to XenForo 2!
 
 This documentation aims to get you started with XenForo 2.0 development. Pre-requisites for this documentation assume you
 will be familiar with, amongst other things, PHP and MySQL. It is not essential to have experience with a previous

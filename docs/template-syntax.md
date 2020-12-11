@@ -1,3 +1,5 @@
+# Template syntax
+
 The XenForo 2 template syntax is a powerful tool for both developers and forum administrators, giving you complete control over the layout of your XenForo pages.
 
 ## Best practices
