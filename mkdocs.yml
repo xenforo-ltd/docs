@@ -28,7 +28,8 @@ nav:
   - Designing styles: designing-styles.md
   - Template syntax: template-syntax.md
 - Appendix(es):
-  - 'Appendix: Scotch Box': scotchbox.md
+    - Windows Dev Environment: windows-dev.md
+    - Scotch Box: scotchbox.md
 
 repo_url: https://github.com/xenforo-ltd/docs/
 edit_uri: edit/master/docs/
