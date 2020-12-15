@@ -177,3 +177,5 @@ It is beyond the scope of this tutorial to go into detail about how to use a Ste
 * [XenForo requirements script](https://xenforo.com/purchase/requirements-zip)
 * [XenForo](https://xenforo.com/purchase/)
 * [Video of this process](https://youtu.be/-1TOCDbmZmg)
+
+<!-- test -->
