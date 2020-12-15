@@ -187,7 +187,9 @@ input[type]:focus {
 }
 .wy-side-nav-search > a {
   color: inherit;
-  font-size: 18px;
+  font-size: 17px;
+  font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', sans-serif;
+  font-weight: 300 !important;
 }
 .wy-side-nav-search input[type=text] {
   background-color: #f7fbfe;
@@ -246,9 +248,9 @@ footer
 .wy-menu-vertical header, .wy-menu-vertical p.caption {
   text-transform: none;
   font-size: 12px;
-  font-weight: 700 !important;
+  font-weight: 300 !important;
   color: #ececec;
-  background: linear-gradient(to bottom, transparent, #154d75);
+  background: linear-gradient(180deg, #185886, #154d75);
 }
 
 .wy-menu-vertical a
@@ -400,6 +402,9 @@ footer
 }
 .rst-versions .rst-current-version a {
   line-height: 1.4;
+}
+.rst-footer-buttons {
+  text-align: left;
 }
 .rst-footer-buttons .btn {
   display: inline-block;
