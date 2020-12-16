@@ -114,6 +114,7 @@ To do so, enter `@builtin php` into the search box at the top of the extensions 
 You will need to install a selection of extensions to enable the advanced functionality that makes VS Code into a great development environment.
 
 Use the search box to locate and install the following extensions:
+
 * PHP Intelephense
 * PHP Debug
 * Visual Studio Intellicode
