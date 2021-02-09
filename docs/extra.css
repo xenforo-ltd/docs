@@ -133,12 +133,12 @@ input[type]:focus {
   line-height: 24px;
   margin: 0;
   margin-bottom: 24px;
+  background: linear-gradient(0deg, #10456b, #0f3652);
 }
 .wy-body-for-nav .wy-nav-content .admonition.terminal .admonition-title {
   display: none;
 }
 .wy-body-for-nav .wy-nav-content .admonition.terminal p {
-  background: #0f3652;
   padding: 5px;
   margin: 0;
   border: 0;
@@ -581,6 +581,11 @@ h2, h3, h4, h5, h6
 {
   border: none;
   font-size: 14px;
+}
+
+.rst-content pre code.apachecnf
+{
+  background: linear-gradient(135deg, #edf6fd, #bcdef5);
 }
 
 .rst-content li + li
