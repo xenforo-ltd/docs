@@ -599,6 +599,15 @@ h2, h3, h4, h5, h6
   box-shadow: 5px 5px 15px rgba(0,0,0,.2);
 }
 
+.rst-content img[alt^="Screenshot:"]
+{
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: 100%;
+  margin: 0;
+}
+
 /* this is a test - xf2manual */
 
 .rst-content .bbMediaWrapper

@@ -4,16 +4,15 @@ To get the most out of the XenForo framework, you'll want to have a local webser
 
 Thankfully, these requirements are now simple to meet and won't cost you anything.
 
-The following document and accompanying video will guide you step-by-step to installing everything you need to get started on a Macintosh running macOS 11 *Big Sur*.
+This document and its accompanying video will help you to get started on a Macintosh running macOS 11 *Big Sur* or later. If you want to skip the explanations, you can skip the document and just read the [summary](#summary).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kiFqrd_dHz8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+---
 
 As a bonus, this approach will allow you to run **multiple versions of PHP *at the same time***, so you could run instances of XenForo 1.5 on PHP 5.6, XenForo 2.1 on PHP 7.4 and XenForo 2.2 on PHP 8.0 if you wanted to, **without** having to manually switch the PHP version whenever you want to access a particular version. More on that later.
 
 !!! note
 	You must be logged into macOS with a user account with administrative privileges in order to complete the steps in this document.
-
-
 
 ## Homebrew
 [Homebrew](https://brew.sh) is a package manager for macOS that provides a relatively easy way to install all the components you need to run a local web and database server. It can do a lot more than that too, but that's beyond the scope of this document.
@@ -94,6 +93,8 @@ Again, this will take a few minutes to download and install all the necessary so
 !!! note
 	At the time of writing, ImageMagick does not work properly with PHP 8, but I've left the command in place as this may have changed by the time you are running the commands.
 
+![Screenshot: macOS running XenForo, being debugged by Xdebug with Visual Studio Code](files/images/macos-debugging.jpg)
+
 ## Configuring
 
 As far as possible, we are going to try to minimise the amount of changes we make to the default configuration files for each software component, and instead have the server look at additional configuration files with our own specific instructions in them.
@@ -108,16 +109,16 @@ We now need to get MariaDB up and running.
 In your terminal window, enter the following commands:
 
 !!! terminal
-	brew services start mariadb
+	brew services start mariadb;
 
-	sudo /usr/local/bin/mysql_upgrade
+	sudo /usr/local/bin/mysql_upgrade;
 
 You will be asked the MySQL root password - there isn't one yet, so just press enter when prompted.
 
 Next up:
 
 !!! terminal
-	sudo /usr/local/bin/mysql_secure_installation
+	sudo /usr/local/bin/mysql_secure_installation;
 
 You can press enter to accept the defaults for most of the questions this script will ask, except for the root password, which you will need to set. As this is only a development installation, a password of `root` is fine.
 
@@ -141,6 +142,7 @@ Group staff
 
 Listen 80
 ServerName localhost
+Timeout 3600
 
 LoadModule vhost_alias_module lib/httpd/modules/mod_vhost_alias.so
 LoadModule rewrite_module lib/httpd/modules/mod_rewrite.so
@@ -224,6 +226,10 @@ xdebug.client_port = 9000
 [imagick]
 extension = "imagick.so"
 ```
+
+!!! warning
+	At the time of writing, ImageMagick does not work properly with PHP 8. If you receive errors when trying to `pecl install imagick` for PHP 8 (above) then you will need to comment-out the `extension = "imagick.so"` line from the PHP 8 php-dev.ini, by adding a leading semi-colon.
+
 ---
 
 #### Fast CGI (php-fpm)
@@ -326,6 +332,8 @@ With those files in place, refreshing the PHP info pages for any of those PHP ve
 
 You can now liberally sprinkle these .htaccess files across your `www` directory to have any directory select any version of PHP you choose.
 
+![Screenshot: Three versions of PHP running concurrently through the Apache webserver](files/images/macos-php-versions.png)
+
 !!! note
 	The `.htaccess` files within the [downloadable zip](files/info.zip) have the `SetHandler` directive commented-out, you will need to remove the leading `#` from that line before the directive will operate.
 
@@ -337,20 +345,104 @@ Check out our section on [Visual Studio Code and how to use it with Xdebug](vsco
 
 ## Links to resources
 
-* [Homebrew](https://brew.sh)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Xdebug](https://xdebug.org/wizard)
-* [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc?hl=en)
-* [Video of this process](https://youtu.be/-1TOCDbmZmg)
+* [TablePlus](https://tableplus.io/)
+* [Homebrew](https://brew.sh)
+* [Xdebug](https://xdebug.org)
+* [XdebugToggle for Safari](https://apps.apple.com/gb/app/xdebugtoggle/id1437227804?mt=12)
+* [Video of this process](https://youtu.be/kiFqrd_dHz8)
 
+## Summary
 
-5638Y4493P
-EBZJF2BAZN
-ZTNWK9X676
-GFETLM6DEY
-8XXFNBBAJZ
-MAAKP4ZFCA
-HAAW57CXF7
-WXAXWENFZ8
-ZGDJM9SHRT
-SYPKLBH5XT
+### Terminal command summary
+
+```bash
+# install macOS command line development tools
+sudo xcode-select --install;
+
+# install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)";
+
+# additional homebrew package sources
+brew tap elastic/tap;
+brew tap shivammathur/php;
+
+# install homebrew packages
+brew install pkg-config mariadb httpd mailhog imagemagick elastic/tap/elasticsearch-full;
+
+# install php 5.6
+brew install shivammathur/php/php@5.6;
+pecl install xdebug-2.5.5;
+printf "\n" | pecl install imagick;
+
+# install php 7.4
+brew install shivammathur/php/php@7.4;
+pecl install xdebug;
+printf "\n" | pecl install imagick;
+
+# install php 8.0
+shivammathur/php/php@8.0;
+pecl install xdebug;
+# this command fails with PHP 8.0 a the time of writing
+printf "\n" | pecl install imagick;
+
+# start and setup mariadb
+brew services start mariadb;
+sudo /usr/local/bin/mysql_upgrade;
+sudo /usr/local/bin/mysql_secure_installation;
+
+#
+# Edit config files for Apache and PHP at this point,
+# see the 'Configuration summary' below
+#
+
+# start the rest of the services
+brew services start elasticsearch-full;
+brew services start php@5.6;
+brew services start php@7.4;
+brew services start php@8.0;
+brew services start httpd;
+```
+
+### Configuration summary
+
+#### Make the following edits
+
+Edit the following files as described:
+
+At the end of `/usr/local/etc/httpd/httpd.conf`, add
+```apacheconf
+Include /usr/local/etc/httpd/extra/httpd-dev.conf
+``` 
+Within `/usr/local/etc/php/`, edit the files `5.6/php.ini`, `7.4/php.ini` and `8.0/php,ini`, find the *imagick.so* and *xdebug.so* extension lines at the top of the file and if either exists, comment them out as follows:
+```ini
+; extension="imagick.so"
+; zend_extension="xdebug.so"
+```
+
+At the end of `/usr/local/etc/php/5.6/php-fpm.conf`, add
+```apacheconf
+include=/usr/local/etc/php/5.6/php-fpm.d/*.conf
+```
+
+#### Add the following files
+
+Download the linked files and place them in the noted directories, creating the containing directory if it does not already exist, and replacing instances of my username `kier` with your own macOS username. Find your own username by running `whoami` in a terminal:
+
+1. `/usr/local/etc/httpd/extra/`[`httpd-dev.conf`](files/macos/httpd/httpd-dev.conf)
+1. `/usr/local/etc/php/5.6/conf.d/`[`php-dev.ini`](files/macos/php56/php-dev.ini)
+1. `/usr/local/etc/php/5.6/php-fpm.d/`[`x.conf`](files/macos/php56/x.conf)
+1. `/usr/local/etc/php/7.4/conf.d/`[`php-dev.ini`](files/macos/php74/php-dev.ini)
+1. `/usr/local/etc/php/7.4/php-fpm.d/`[`x.conf`](files/macos/php74/x.conf)
+1. `/usr/local/etc/php/8.0/conf.d/`[`php-dev.ini`](files/macos/php80/php-dev.ini)
+1. `/usr/local/etc/php/8.0/php-fpm.d/`[`x.conf`](files/macos/php80/x.conf)
+
+### PHP-version-targeting .htaccess files
+
+The following files can be placed inside a directory on your webserver to have all PHP files within that folder use a particular version of PHP.
+
+Rename the files from `htaccess.txt` to `.htaccess` after placing them in their destination folder.
+
+1. PHP 5.6 [`.htaccess`](files/php56/htaccess.txt)
+1. PHP 7.4 [`.htaccess`](files/php74/htaccess.txt)
+1. PHP 8.0 [`.htaccess`](files/php80/htaccess.txt)
