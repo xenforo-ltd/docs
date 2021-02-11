@@ -303,7 +303,7 @@ If you visit any of these locations using your browser, you will see **PHP 8.0**
 !!! note
 	Because we placed the `www` directory inside your `Documents` folder, which gives some advantages like potentially automatically backing-up your www folder to iCloud, it will also cause some slightly irritating permission prompts when Apache and each version of PHP first tries to access the www directory. Just watch for the prompts and confirm them when they appear.
 
-Next, create a `.htaccess` file in each php version directory alongside the `index.php` file, and add the following contents:
+Next, create a `.htaccess` file in each php version directory alongside the `info.php` file, and add the following contents:
 
 ### .htaccess for PHP 5.6
 ```apacheconf
