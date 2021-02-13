@@ -443,6 +443,6 @@ The following files can be placed inside a directory on your webserver to have a
 
 Rename the files from `htaccess.txt` to `.htaccess` after placing them in their destination folder.
 
-1. PHP 5.6 [`.htaccess`](files/php56/htaccess.txt)
-1. PHP 7.4 [`.htaccess`](files/php74/htaccess.txt)
-1. PHP 8.0 [`.htaccess`](files/php80/htaccess.txt)
+1. PHP 5.6 [`.htaccess`](files/macos/php56/htaccess.txt)
+1. PHP 7.4 [`.htaccess`](files/macos/php74/htaccess.txt)
+1. PHP 8.0 [`.htaccess`](files/macos/php80/htaccess.txt)
