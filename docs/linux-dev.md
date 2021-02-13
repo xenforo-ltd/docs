@@ -204,6 +204,7 @@ Everything should now be running, so you can follow [the instructions to work wi
 
 ## Links to resources
 
+* [dev.sury.org for PHP packages](https://deb.sury.org)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [TablePlus](https://tableplus.io/)
 * [Xdebug](https://xdebug.org)
