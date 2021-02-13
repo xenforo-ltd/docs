@@ -106,7 +106,7 @@ In this script, accept the defaults for everything, but ensure that you *do* set
 Next, run the MySQL client with `sudo`:
 
 !!! terminal
-	mysql -uroot -p
+	sudo mysql -uroot -p
 
 And after you have a working SQL prompt, enter the following queries:
 
