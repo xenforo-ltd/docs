@@ -449,3 +449,24 @@ Rename the files from `htaccess.txt` to `.htaccess` after placing them in their 
 1. PHP 5.6 [`.htaccess`](files/macos/php56/htaccess.txt)
 1. PHP 7.4 [`.htaccess`](files/macos/php74/htaccess.txt)
 1. PHP 8.0 [`.htaccess`](files/macos/php80/htaccess.txt)
+
+## Note for CJK users
+
+It has been pointed out that [MariaDB does not work particularly well with CJK languages](https://xenforo.com/community/threads/developer-ide-and-server-software-setup-guides.191195/post-1499966). If CJK support is important in your development process, you should replace commands referencing `mariadb` with `mysql`, which will cause MySQL 8.0 to be installed instead.
+
+Specifically, the commands that should change are:
+```bash
+# install packages including MariaDB:
+brew install pkg-config mariadb httpd mailhog imagemagick elastic/tap/elasticsearch-full shivammathur/php/php@5.6 shivammathur/php/php@7.4 shivammathur/php/php@8.0;
+
+# install packages using MySQL instead:
+brew install pkg-config mysql httpd mailhog imagemagick elastic/tap/elasticsearch-full shivammathur/php/php@5.6 shivammathur/php/php@7.4 shivammathur/php/php@8.0;
+
+# start MariaDB service
+brew services start mariadb
+
+# start MySQL service instead
+brew services start mysql
+```
+
+![Screenshot: XenForo admin control panel reporting MySQL installed instead of MariaDB](files/images/server-report.png)
