@@ -7,6 +7,7 @@ Thankfully, these requirements are now simple to meet and won't cost you anythin
 The following document and accompanying video will guide you step-by-step to installing everything you need to get started on a system based on Ubuntu Linux.
 
 <div class="video-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/yzWzKjtvUIw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+---
 
 As with our [macOS development environment](macos-dev.md), this configuration will allow you to run **multiple versions of PHP *at the same time***, so you could run instances of XenForo 1.5 on PHP 5.6, XenForo 2.1 on PHP 7.4 and XenForo 2.2 on PHP 8.0 if you wanted to, **without** having to manually switch the PHP version whenever you want to access a particular version.
 

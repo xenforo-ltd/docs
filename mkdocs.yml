@@ -29,8 +29,8 @@ nav:
   - Template syntax: template-syntax.md
 - Appendix(es):
     - macOS Dev Environment: macos-dev.md
-    - Windows Dev Environment: windows-dev.md
     - Linux Dev Environment: linux-dev.md
+    - Windows Dev Environment: windows-dev.md
     - Visual Studio Code and Xdebug: vscode.md
     - Scotch Box: scotchbox.md
 
