@@ -6,13 +6,15 @@ Thankfully, these requirements are now simple to meet and won't cost you anythin
 
 The following document and accompanying video will guide you step-by-step to installing everything you need to get started on a system based on Ubuntu Linux.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yzWzKjtvUIw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="video-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/yzWzKjtvUIw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 As with our [macOS development environment](macos-dev.md), this configuration will allow you to run **multiple versions of PHP *at the same time***, so you could run instances of XenForo 1.5 on PHP 5.6, XenForo 2.1 on PHP 7.4 and XenForo 2.2 on PHP 8.0 if you wanted to, **without** having to manually switch the PHP version whenever you want to access a particular version.
 
-Much of the explanation for what we're doing here can be found in our [macOS guide](macos-dev.md), so this document will be fairly short and to the point.
+Much of the explanation for what we're doing here can be found in our [macOS guide](macos-dev.md), so this document will be fairly short and to the point. If you'd like to just grab the install script then proceed straight to [configuring](#configuring), do so [here](files/linux/install-ubuntu.sh).
 
-## Apt
+![Screenshot: Ubuntu Linux running XenForo, being debugged by Xdebug with Visual Studio Code](files/images/linux-debugging.jpg)
+
+## Installing with Apt
 
 This tutorial is based on an [Ubuntu](https://ubuntu.com) or [Debian](https://debian.org) system, but the principles can be applied to any Linux distribution that makes historical PHP packages available.
 
@@ -92,7 +94,11 @@ sudo apt install mariadb-server -y
 !!! note
 	Given the presence of the `for` loops in this script, I'd suggest you save the contents of the box above into a script called `install.sh`, then `chmod 700 install.sh` to make it executable, and run it in a terminal.
 
-## Configure MariaDB
+## Configuring
+
+With all the packages installed, we need to configure them to our needs.
+
+### MariaDB
 
 MariaDB / MySQL needs a little more work after it's installed.
 
@@ -118,7 +124,7 @@ FLUSH PRIVILEGES ;
 
 You can now exit mysql, and you won't need to run the MySQL client with `sudo` any more.
 
-## Configure Apache
+### Apache
 
 We're going to keep all of our Apache configuration in one file.
 
@@ -148,11 +154,11 @@ Those instances of `/home/kier/Documents/www` will need to be replaced with wher
 
 Make sure the directory exists before you start the Apache service.
 
-## Configure PHP
+### PHP
 
 We don't need to change much from the default Ubuntu/Debian configuration for PHP, except for some Xdebug directives and instructions for how to run php-fpm.
 
-### Xdebug
+#### Xdebug
 
 Edit `/etc/php/5.6/mods-available/xdebug.ini` and give it the following contents for Xdebug 2.5.5:
 
@@ -172,7 +178,7 @@ xdebug.discover_client_host = 1
 xdebug.client_port = 9000
 ```
 
-### php-fpm
+#### php-fpm
 
 Taking the PHP version number, removing the decimal point and adding the resulting integer to 9000, so that 5.6 becomes 9056 and 8.0 becomes 9080, create a file called `x.conf` in `/etc/php/(version)/fpm/pool.d/x.conf` for PHP versions 5.6, 7.4 and 8.0.
 
@@ -202,6 +208,8 @@ sudo systemctl restart php5.6-fpm
 
 Everything should now be running, so you can follow [the instructions to work with multiple simultaneous PHP versions from the macOS guide](macos-dev.md#selecting-a-php-version), placing the files in the `www` directory you specified in your Apache configuration.
 
+![Screenshot: Three versions of PHP running concurrently through the Apache webserver](files/images/linux-php-versions.png)
+
 ## Links to resources
 
 * [dev.sury.org for PHP packages](https://deb.sury.org)
@@ -210,3 +218,44 @@ Everything should now be running, so you can follow [the instructions to work wi
 * [Xdebug](https://xdebug.org)
 * [Xdebug Helper for Firefox](https://addons.mozilla.org/en-GB/firefox/addon/xdebug-helper-for-firefox/)
 * [Video of this process](https://youtu.be/yzWzKjtvUIw)
+
+---
+## Summary
+
+### Terminal commands
+
+Run the installation commands for [Ubuntu](files/linux/install-ubuntu.sh) or [Debian](files/linux/install-debian.sh) 
+
+### Configure MariaDB / MySQL
+
+Run the [mysql client as root with sudo](#mariadb), then execute SQL queries to disable plugin-based authentication for MySQL.
+
+### Edit Apache VirtualHost
+
+Edit `/etc/apache2/sites-available/000-default.conf` to include [custom configuration](#apache).
+
+### Replace the following files
+
+1. `/etc/php/5.6/mods-available/`[`xdebug.ini`](files/linux/php56/xdebug.ini)
+1. `/etc/php/7.4/mods-available/`[`xdebug.ini`](files/linux/php74/xdebug.ini)
+1. `/etc/php/8.0/mods-available/`[`xdebug.ini`](files/linux/php80/xdebug.ini)
+
+### Add the following files
+
+1. `/etc/php/5.6/fpm/pool.d/`[`x.conf`](files/linux/php56/x.conf)
+1. `/etc/php/7.4/fpm/pool.d/`[`x.conf`](files/linux/php74/x.conf)
+1. `/etc/php/8.0/fpm/pool.d/`[`x.conf`](files/linux/php80/x.conf)
+
+### Restart services
+
+Use `sudo systemctl restart ` for `elasticsearch`, `mariadb`, `apache2`, `php8.0-fpm`, `php7.4-fpm` and `php5.6-fpm`.
+
+### PHP-version-targeting .htaccess files
+
+The following files can be placed inside a directory on your webserver to have all PHP files within that folder use a particular version of PHP.
+
+Rename the files from `htaccess.txt` to `.htaccess` after placing them in their destination folder.
+
+1. PHP 5.6 [`.htaccess`](files/macos/php56/htaccess.txt)
+1. PHP 7.4 [`.htaccess`](files/macos/php74/htaccess.txt)
+1. PHP 8.0 [`.htaccess`](files/macos/php80/htaccess.txt)

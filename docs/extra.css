@@ -583,11 +583,6 @@ h2, h3, h4, h5, h6
   font-size: 14px;
 }
 
-.rst-content pre code.apachecnf
-{
-  background: linear-gradient(135deg, #edf6fd, #bcdef5);
-}
-
 .rst-content li + li
 {
   margin-top: 0.5em;
@@ -606,6 +601,22 @@ h2, h3, h4, h5, h6
   box-shadow: none;
   max-width: 100%;
   margin: 0;
+}
+
+.rst-content .video-wrapper
+{
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.rst-content .video-wrapper iframe
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* this is a test - xf2manual */
@@ -631,4 +642,12 @@ h2, h3, h4, h5, h6
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+
+.rst-content pre code.apacheconf,
+.rst-content pre code.ini,
+.rst-content pre code.bash
+{
+  background: linear-gradient(135deg, #edf6fd, white);
 }

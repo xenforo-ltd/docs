@@ -6,7 +6,7 @@ Thankfully, these requirements are now simple to meet and won't cost you anythin
 
 This document and its accompanying video will help you to get started on a Macintosh running macOS 11 *Big Sur* or later. If you want to skip the explanations, you can skip the document and just read the [summary](#summary).
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kiFqrd_dHz8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="video-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/kiFqrd_dHz8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 ---
 
 As a bonus, this approach will allow you to run **multiple versions of PHP *at the same time***, so you could run instances of XenForo 1.5 on PHP 5.6, XenForo 2.1 on PHP 7.4 and XenForo 2.2 on PHP 8.0 if you wanted to, **without** having to manually switch the PHP version whenever you want to access a particular version. More on that later.
@@ -31,8 +31,9 @@ To get Homebrew installed, we need to grab some developer tools from Apple.
 
 Open a **Terminal** window on your Mac and enter the following command:
 
-!!! terminal
-	sudo xcode-select --install;
+```bash
+sudo xcode-select --install;
+```
 
 This will prompt you for your password on the command line, and will then open an installation window that will allow you to download and install the tools.
 
@@ -43,8 +44,9 @@ This will prompt you for your password on the command line, and will then open a
 
 In your terminal window, enter the following command:
 
-!!! terminal
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)";
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)";
+```
 
 Watch the output and confirm as necessary.
 
@@ -56,12 +58,11 @@ Now it's time to use Homebrew to install some packages. We are going to give Hom
 
 The following command will install three versions of [PHP](https://www.php.net) , the [Apache HTTP Server](http://httpd.apache.org),  [MariaDB](https://mariadb.com) (which we will be using as our [MySQL](https://www.mysql.com) engine), [ElasticSearch](https://www.elastic.co), [MailHog](https://github.com/mailhog/MailHog) and [ImageMagick](https://imagemagick.org). 
 
-!!! terminal
-	brew tap elastic/tap;
-
-	brew tap shivammathur/php;
-
-	brew install pkg-config mariadb httpd mailhog imagemagick elastic/tap/elasticsearch-full shivammathur/php/php@5.6 shivammathur/php/php@7.4 shivammathur/php/php@8.0;
+```bash
+brew tap elastic/tap;
+brew tap shivammathur/php;
+brew install pkg-config mariadb httpd mailhog imagemagick elastic/tap/elasticsearch-full shivammathur/php/php@5.6 shivammathur/php/php@7.4 shivammathur/php/php@8.0;
+```
 
 This command will take a few minutes to complete, as there is a lot of software to install here, but all good things come to those who wait...
 
@@ -71,22 +72,23 @@ As I said earlier, this process will provide the ability to run several versions
 
 Run the following commands in order to deploy [Xdebug](https://xdebug.org) and ImageMagick into each version of PHP you installed.
 
-!!! terminal
-	brew unlink php;
+```bash
+brew unlink php;
 
-	brew link --force php@5.6;
-	pecl install xdebug-2.5.5;
-	printf "\n" | pecl install imagick;
-	brew unlink php@5.6;
-	
-	brew link --force php@7.4;
-	pecl install xdebug;
-	printf "\n" | pecl install imagick;
-	brew unlink php@7.4;
-	
-	brew link --force php@8.0;
-	pecl install xdebug;
-	printf "\n" | pecl install imagick;
+brew link --force php@5.6;
+pecl install xdebug-2.5.5;
+printf "\n" | pecl install imagick;
+brew unlink php@5.6;
+
+brew link --force php@7.4;
+pecl install xdebug;
+printf "\n" | pecl install imagick;
+brew unlink php@7.4;
+
+brew link --force php@8.0;
+pecl install xdebug;
+printf "\n" | pecl install imagick;
+```
 
 Again, this will take a few minutes to download and install all the necessary software.
 
@@ -108,17 +110,18 @@ We now need to get MariaDB up and running.
 
 In your terminal window, enter the following commands:
 
-!!! terminal
-	brew services start mariadb;
-
-	sudo /usr/local/bin/mysql_upgrade;
+```bash
+brew services start mariadb;
+sudo /usr/local/bin/mysql_upgrade;
+```
 
 You will be asked the MySQL root password - there isn't one yet, so just press enter when prompted.
 
 Next up:
 
-!!! terminal
-	sudo /usr/local/bin/mysql_secure_installation;
+```bash
+sudo /usr/local/bin/mysql_secure_installation;
+```
 
 You can press enter to accept the defaults for most of the questions this script will ask, except for the root password, which you will need to set. As this is only a development installation, a password of `root` is fine.
 
@@ -262,16 +265,13 @@ include=/usr/local/etc/php/5.6/php-fpm.d/*.conf
 
 Now that all that has been configured, we can start the servers and instruct them to load at system startup.
 
-!!! terminal
-	brew services start elasticsearch-full;
-
-	brew services start php@5.6;
-
-	brew services start php@7.4;
-
-	brew services start php@8.0;
-
-	brew services start httpd;
+```bash
+brew services start elasticsearch-full;
+brew services start php@5.6;
+brew services start php@7.4;
+brew services start php@8.0;
+brew services start httpd;
+```
 
 ## Selecting a PHP version
 
@@ -352,11 +352,14 @@ Check out our section on [Visual Studio Code and how to use it with Xdebug](vsco
 * [XdebugToggle for Safari](https://apps.apple.com/gb/app/xdebugtoggle/id1437227804?mt=12)
 * [Video of this process](https://youtu.be/kiFqrd_dHz8)
 
+---
 ## Summary
 
 ### Terminal command summary
 
 ```bash
+#!/bin/bash
+
 # install macOS command line development tools
 sudo xcode-select --install;
 

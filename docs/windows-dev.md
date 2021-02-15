@@ -6,7 +6,7 @@ Thankfully, these requirements are now simple to meet and won't cost you anythin
 
 The following document and accompanying video will guide you step-by-step to installing everything you need to get started on a Windows machine.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-1TOCDbmZmg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="video-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/-1TOCDbmZmg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 ## Laragon
 
