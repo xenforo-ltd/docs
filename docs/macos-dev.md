@@ -56,7 +56,9 @@ Now it's time to use Homebrew to install some packages. We are going to give Hom
 
 ### PHP, Apache, MariaDB, ElasticSearch, Mailhog, ImageMagick
 
-The following command will install three versions of [PHP](https://www.php.net) , the [Apache HTTP Server](http://httpd.apache.org),  [MariaDB](https://mariadb.com) (which we will be using as our [MySQL](https://www.mysql.com) engine), [ElasticSearch](https://www.elastic.co), [MailHog](https://github.com/mailhog/MailHog) and [ImageMagick](https://imagemagick.org). 
+The following command will install three versions of [PHP](https://www.php.net) , the [Apache HTTP Server](http://httpd.apache.org),  [MariaDB](https://mariadb.com) (which we will be using as our [MySQL](https://www.mysql.com) engine), [ElasticSearch](https://www.elastic.co), [MailHog](https://github.com/mailhog/MailHog) and [ImageMagick](https://imagemagick.org).
+
+If you would rather install [MySQL](https://www.mysql.com) than [MariaDB](https://mariadb.com), [read this note](#note-for-cjk-users).
 
 ```bash
 brew tap elastic/tap;
