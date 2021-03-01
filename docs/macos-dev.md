@@ -388,7 +388,7 @@ printf "\n" | pecl install imagick;
 # install php 8.0
 brew install shivammathur/php/php@8.0;
 pecl install xdebug;
-# this command fails with PHP 8.0 a the time of writing
+# this command fails with PHP 8.0 at the time of writing
 printf "\n" | pecl install imagick;
 
 # start and setup mariadb
