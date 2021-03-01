@@ -45,7 +45,7 @@ Once you know the URL to access the API and have a key, you can begin to make re
 
 All API responses will be returned in JSON format, except in cases where a binary file is specifically requested (such as when downloading an attachment). Errors will always return a response code in the 400 range. Successful requests will return a 200 code. While not commonly used, redirects will return a 300-range code.
 
-Requests bodies must be sent using the `application/x-www-form-urlencoded` encoding or, if a file is being uploaded,  the `multipart/form-data` encoding. Parameters may also be passed via the query string.
+Requests bodies must be sent using the `application/x-www-form-urlencoded` encoding or, if a file is being uploaded,  the `multipart/form-data` encoding. Parameters may also be passed via the query string, although for non-GET requests we **strongly** recommend passing parameters via the request body.
 
 All request data must use the UTF-8 character set.
 
