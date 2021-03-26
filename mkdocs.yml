@@ -1,5 +1,5 @@
-site_name: XenForo 2.0 Documentation
-site_description: Developer Documentation for XenForo 2.0.
+site_name: XenForo 2 Documentation
+site_description: Developer Documentation for XenForo 2.
 site_author: XenForo Ltd.
 
 theme: readthedocs
@@ -35,11 +35,11 @@ nav:
     - Scotch Box: scotchbox.md
 
 repo_url: https://github.com/xenforo-ltd/docs/
-edit_uri: edit/master/docs/
+edit_uri: edit/main/docs/
 
 markdown_extensions:
   - admonition
   - toc:
       permalink: 
 
-copyright: <a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&reg; 2.x &copy;2010-2020 XenForo Ltd.</a>
+copyright: <a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&reg; 2.x &copy;2010-2021 XenForo Ltd.</a>
