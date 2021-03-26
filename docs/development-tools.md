@@ -97,7 +97,7 @@ This command is what you will use to export all of your add-on's data to XML fil
 !!! note
 	If your version string contains spaces, you'll need to surround it with quotes.
 
-This command takes the add-on ID for your add-on, the new version ID and the new version string. This enables you to bump the version of your add-on in a single step, without having to perform upgrades and rebuilds yourself. The options above are optional, and if they are not provided you will be prompted for them. If you only specify the version ID, we will try and infer the correct version string from that automatically if it matches our [Recommended version ID format](/add-on-structure/#recommended-version-id-format). Once the command completes, it updates the `addon.json` file automatically and the database with the correct version details.
+This command takes the add-on ID for your add-on, the new version ID and the new version string. This enables you to bump the version of your add-on in a single step, without having to perform upgrades and rebuilds yourself. The options above are optional, and if they are not provided you will be prompted for them. If you only specify the version ID, we will try and infer the correct version string from that automatically if it matches our [Recommended version ID format](add-on-structure.md#recommended-version-id-format). Once the command completes, it updates the `addon.json` file automatically and the database with the correct version details.
 
 ### Sync your addon.json to the database
 

@@ -2,9 +2,9 @@
 
 At a basic level, Controllers are the code that is executed when you visit a page within XF. Controllers are generally responsible for handling user input and passing that user input to the appropriate place which, generally, would be to perform some sort of database action (Model) or load visual content (View).
  
-When a user clicks a link, the requested URL is routed to a specific controller and controller action. See [Routing basics](/routing-basics). For example, in XF if you click a URL like `index.php?conversations/add` you will be routed to the `XF\Pub\Controller\Conversation` controller and to the `add` action.
+When a user clicks a link, the requested URL is routed to a specific controller and controller action. See [Routing basics](routing-basics.md). For example, in XF if you click a URL like `index.php?conversations/add` you will be routed to the `XF\Pub\Controller\Conversation` controller and to the `add` action.
  
-If you look at this class in the file system (see [Autoloader](/general-concepts/#autoloader) for a description of how classes and file paths map to each other) you will notice that there are a number of methods named with a prefix of `action`. All of these methods indicate a specific controller action. So, to see the code involved when viewing the conversations/add page mentioned above, look in this file for `public function actionAdd()`.
+If you look at this class in the file system (see [Autoloader](general-concepts.md#autoloader) for a description of how classes and file paths map to each other) you will notice that there are a number of methods named with a prefix of `action`. All of these methods indicate a specific controller action. So, to see the code involved when viewing the conversations/add page mentioned above, look in this file for `public function actionAdd()`.
 
 XF controllers are responsible for returning a reply object which generally consist of one of the following types:
 
@@ -28,7 +28,7 @@ public function actionExample()
 }
 ```
 
-The first argument is the short class name for a specific View class. This class may or may not exist (often it won't need to exist, we'll cover view classes more later) but it should have a roughly unique name for the controller and action. As with other [Short class names](/general-concepts/#short-class-names), the particular short class name above will resolve to `Demo\Pub\View\Example`. Again, `Pub` is inferred automatically from the controller type.
+The first argument is the short class name for a specific View class. This class may or may not exist (often it won't need to exist, we'll cover view classes more later) but it should have a roughly unique name for the controller and action. As with other [Short class names](general-concepts.md#short-class-names), the particular short class name above will resolve to `Demo\Pub\View\Example`. Again, `Pub` is inferred automatically from the controller type.
 
 The second argument is the template name. In this case, we're looking for a template named `demo_example`.
 
@@ -132,7 +132,7 @@ The reroute reply also supports a third argument which allows various parameters
 
 ## Modifying a controller action reply (properly)
 
-In the [Extending classes](/general-concepts/#extending-classes) section, we've already seen how simple it is to extend a class, but extra care needs to be taken when extending a controller action that already exists.
+In the [Extending classes](general-concepts.md#extending-classes) section, we've already seen how simple it is to extend a class, but extra care needs to be taken when extending a controller action that already exists.
 
 Unless you have a specific need to override an existing action entirely, and replace it with something new (which is generally not recommended), instead you should be modifying the existing reply of the parent class. That is done quite simply, as an example let's modify the view reply from the [View reply](#view-reply) example above.
 

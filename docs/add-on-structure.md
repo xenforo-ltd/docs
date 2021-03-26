@@ -33,7 +33,7 @@ If you have a simple add-on ID, e.g. `Demo`, the files for your add-on will be s
 If you have a vendor based add-on ID, e.g. `SomeVendor/Demo`, the files will be stored in the following location: 
 `src/addons/SomeVendor/Demo`.
 
-The add-on ID you choose will also become your class namespace prefix (see [Namespaces](/general-concepts/#namespaces) for more information).
+The add-on ID you choose will also become your class namespace prefix (see [Namespaces](general-concepts.md#namespaces) for more information).
 
 ## Recommended version string format
 
@@ -75,7 +75,7 @@ add-on and display information about it in the Admin CP. At minimum, your `addon
 
 A basic file will be created for you automatically when creating the add-on.
 
-Including a valid `addon.json` file is mandatory for your addon to be recognized but you can always [validate your addon.json file](/development-tools/#validate-your-addonjson-file).
+Including a valid `addon.json` file is mandatory for your addon to be recognized but you can always [validate your addon.json file](development-tools.md#validate-your-addonjson-file).
 
 #### Properties
 <table>
@@ -225,7 +225,7 @@ ensure that an add-on has complete and consistent data before allowing an add-on
 
 ### _output directory
 
-The `_output` directory is not required for a successful installation of an add-on, and shouldn't be included when releasing the add-on. This directory is purely for development purposes and is only used if development mode is enabled (see [Enabling development mode](/development-tools/#enabling-development-mode)).
+The `_output` directory is not required for a successful installation of an add-on, and shouldn't be included when releasing the add-on. This directory is purely for development purposes and is only used if development mode is enabled (see [Enabling development mode](development-tools.md#enabling-development-mode)).
 
 Each item of add-on data is stored in a separate file. Mostly they are stored as JSON files, but in the case of phrases they are stored as TXT files and for templates they are stored as HTML/CSS/LESS files. All template types are editable in the filesystem directly, and changes made to these files are written back to the database automatically on load.
 

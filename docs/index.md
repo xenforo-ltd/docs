@@ -149,7 +149,7 @@ Finally, you will just need to start the installation, similar to above. You wil
 
 Once the re-install has been completed, you should now be able to log back on.
 
-If you have been developing add-ons, and you have chosen to keep or backup your existing `src/addons` directory, you can restore your add-on data with the [Import development output](/development-tools/#import-development-output) command.
+If you have been developing add-ons, and you have chosen to keep or backup your existing `src/addons` directory, you can restore your add-on data with the [Import development output](development-tools.md#import-development-output) command.
 
 !!! warning
     Be careful if you choose to back up and restore your `src/addons` directory. The `XF` directory within contains the XF master data, and should not be restored from a backup to ensure you always have the most up to date version of the files.
