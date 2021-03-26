@@ -1,6 +1,7 @@
 site_name: XenForo 2 Documentation
 site_description: Developer Documentation for XenForo 2.
 site_author: XenForo Ltd.
+site_favicon: xenforo-favicon.png
 
 theme: readthedocs
 custom_dir: xf2
