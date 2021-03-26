@@ -20,13 +20,13 @@ In the case of the account route, the section context doesn't necessarily apply 
  
 ### Controller
 
-This is the class name of the Controller that should be called when a request matches this route. In the case of the "account/" route, we have `XF:Account` specified. This will load the Account controller. (See [Short class names](/docs/dev/general-concepts/#short-class-names) for more information). The code for this is located in the following location `src/XF/Pub/Controller/Account.php`. Notice how short class names are able to resolve to an "infix" as well as a prefix (XF) and a suffix (Account). In this case, the infix for this controller (Pub) is inferred from the Account route type (public).
+This is the class name of the Controller that should be called when a request matches this route. In the case of the "account/" route, we have `XF:Account` specified. This will load the Account controller. (See [Short class names](../general-concepts/#short-class-names) for more information). The code for this is located in the following location `src/XF/Pub/Controller/Account.php`. Notice how short class names are able to resolve to an "infix" as well as a prefix (XF) and a suffix (Account). In this case, the infix for this controller (Pub) is inferred from the Account route type (public).
 
 ## Controller actions
 
 Above we explained how a route is matched to a specific controller, but we don't yet know how a specific action within that controller is called. Controllers are essentially classes that contain a number of action methods and it is the part of the URL after the [route prefix](#route-prefix) which indicates the controller action. Given a URL of `index.php?account/account-details`, you should be routed to the class `XF\Pub\Controller\Account` and the method named `actionAccountDetails()`. If a route does not specify an action, then the method called is simply `actionIndex()`.
 
-You can read more about controllers in the [Controller basics](/docs/dev/controller-basics) section.
+You can read more about controllers in the [Controller basics](../controller-basics) section.
 
 ## A more advanced example (route formats)
 
