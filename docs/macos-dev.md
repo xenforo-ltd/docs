@@ -488,6 +488,6 @@ make
 make install
 ```
 
-Assuming no problems occurred, this should have placed a newly-build `imagick.so` into the correct modules directory, namely `/usr/local/lib/php/pecl/[php 8 build number]/imagick.so`.
+Assuming no problems occurred, this should have placed a newly-built `imagick.so` into the correct modules directory, namely `/usr/local/lib/php/pecl/20200930/imagick.so`, where `20200930` represents the build number of your version of PHP 8.
 
 At this point, the `extension = "imagick.so"` directive in your `/usr/local/etc/php/8.0/conf.d/php-dev.ini` file will automatically find the correct extension when you start PHP 8.
