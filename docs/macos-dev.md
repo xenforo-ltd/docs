@@ -233,7 +233,7 @@ extension = "imagick.so"
 ```
 
 !!! warning
-	At the time of writing, ImageMagick does not work properly with PHP 8. If you receive errors when trying to `pecl install imagick` for PHP 8 (above) then you will need to comment-out the `extension = "imagick.so"` line from the PHP 8 php-dev.ini, by adding a leading semi-colon.
+	At the time of writing, `pecl install imagick` does not work properly with PHP 8. If you receive errors when trying to run this command, and you don't want to [build the imagick extension manually](#build-imagick-manually), then you will need to comment-out the `extension = "imagick.so"` line from the PHP 8 php-dev.ini, by adding a leading semi-colon.
 
 ---
 
