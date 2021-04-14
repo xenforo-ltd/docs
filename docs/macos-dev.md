@@ -95,7 +95,7 @@ printf "\n" | pecl install imagick;
 Again, this will take a few minutes to download and install all the necessary software.
 
 !!! note
-	At the time of writing, ImageMagick does not work properly with PHP 8, but I've left the command in place as this may have changed by the time you are running the commands.
+	At the time of writing, ImageMagick does not work properly with PHP 8, but I've left the command in place as this may have changed by the time you are running the commands. If the `pecl install imagick` command fails for PHP 8, you can [manually build the imagick extension](#build-imagick-manually).
 
 ![Screenshot: macOS running XenForo, being debugged by Xdebug with Visual Studio Code](files/images/macos-debugging.jpg)
 
@@ -472,3 +472,22 @@ brew services start mysql
 ```
 
 ![Screenshot: XenForo admin control panel reporting MySQL installed instead of MariaDB](files/images/server-report.png)
+
+## Build imagick manually
+
+In the event that the standard `pecl install imagick` command fails for PHP 8, which it does at the time of writing, it is possible to install the `imagick.so` extension by building it manually, which is not as arduous as it may sound.
+
+Find a place on your workstation in which to work - I tend to create a directory called `/usr/local/build` for this purpose, and `cd` to that directory. Once there, run the following commands:
+
+```bash
+brew link --force --overwrite php@8.0
+git clone https://github.com/Imagick/imagick
+cd imagick
+phpize && ./configure
+make
+make install
+```
+
+Assuming no problems occurred, this should have placed a newly-build `imagick.so` into the correct modules directory, namely `/usr/local/lib/php/pecl/[php 8 build number]/imagick.so`.
+
+At this point, the `extension = "imagick.so"` directive in your `/usr/local/etc/php/8.0/conf.d/php-dev.ini` file will automatically find the correct extension when you start PHP 8.
