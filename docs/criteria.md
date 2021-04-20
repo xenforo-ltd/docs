@@ -44,7 +44,7 @@ Every criterion consists of two parts: **rule** and (optionally) **data**.
 
 ### Rule
 
-The criterion rule is simply a sting in [snake case](https://en.wikipedia.org/wiki/Snake_case) (words_are_separated_with_underscore_character).
+The criterion rule is simply a string in [snake case](https://en.wikipedia.org/wiki/Snake_case) (words_are_separated_with_underscore_character).
 
 It has two essential purposes:
 
@@ -55,9 +55,9 @@ It has two essential purposes:
 
 It is just an optional array of additional criterion data. For example, "User has posted at least X messages" criterion has a data array with one element: a number of messages.
 
-## How criteria system works
+## How the criteria system works
 
-In this sections, we describe how criteria system works from A to Z.
+In this sections, we describe how the criteria system works from A to Z.
 
 ### Template
 
