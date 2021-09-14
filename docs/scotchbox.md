@@ -27,7 +27,7 @@ Once you have chosen a location, follow these steps:
 	git clone https://github.com/scotch-io/scotch-box /Users/{username}/MyServer
 	```
 
-1. Once the clone process is complete, download this custom **Vagrantfile** and overwrite the Vagrantfile that has been created at */Users/{username}/MyServer/Vagrantfile: [Download custom Vagrantfile](/files/scotchbox/Vagrantfile).
+1. Once the clone process is complete, download this custom **Vagrantfile** and overwrite the Vagrantfile that has been created at */Users/{username}/MyServer/Vagrantfile: [Download custom Vagrantfile](../files/scotchbox/Vagrantfile).
 
 1. When the custom Vagrantfile is in place, run the following commands:
 
@@ -91,4 +91,4 @@ While the basic Scotch Box requires some additional configuration (which is hand
 
 To run Scotch Box Pro, purchase it from the Scotch Box Pro website, then run the *git clone* command provided as part of the instructions you will receive post-purchase.
 
-You can now install using the same instructions as above, with the single exception that you should download [this custom Vagrantfile](/files/scotchboxpro/Vagrantfile) instead of the one listed in the instructions for Scotch Box.
+You can now install using the same instructions as above, with the single exception that you should download [this custom Vagrantfile](../files/scotchboxpro/Vagrantfile) instead of the one listed in the instructions for Scotch Box.
