@@ -12,16 +12,16 @@ These guidelines aim to set out some of the processes involved in editing our do
 
 #### Table of contents
 
-* [Getting started with MkDocs](#getting-started-with-mkdocs)
-  * [What is MkDocs?](#what-is-mkdocs)
-  * [Great, but what is Markdown?](#great-but-what-is-markdown)
-  * [Installing MkDocs](#installing-mkdocs)
-  * [Using MkDocs](#using-mkdocs)
-* [Documentation structure](#documentation-structure)
-* [Modifying existing pages/sections](#modifying-existing-pages-sections)
-* [Adding new pages/sections](#adding-new-pages-sections)
-* [Submitting your changes](#submitting-your-changes)
-* [General guidelines](#general-guidelines)
+- [Getting started with MkDocs](#getting-started-with-mkdocs)
+  - [What is MkDocs?](#what-is-mkdocs)
+  - [Great, but what is Markdown?](#great-but-what-is-markdown)
+  - [Installing MkDocs](#installing-mkdocs)
+  - [Using MkDocs](#using-mkdocs)
+- [Documentation structure](#documentation-structure)
+- [Modifying existing pages/sections](#modifying-existing-pages-sections)
+- [Adding new pages/sections](#adding-new-pages-sections)
+- [Submitting your changes](#submitting-your-changes)
+- [General guidelines](#general-guidelines)
 
 ## Getting started with MkDocs
 
@@ -33,7 +33,7 @@ Not only that, but editing the documentation is as simple as adding or editing f
 
 ### Great, but what is Markdown?
 
-Well, generally awesome is what it is 😁 
+Well, generally awesome is what it is 😁
 
 > Markdown is a text-to-HTML conversion tool for web writers. Markdown allows you to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML).
 
@@ -43,9 +43,9 @@ To put it another way, it's simply a way to write plain text and later have it c
 
 MkDocs can be installed using a variety of OS package managers, and this is the recommended approach to installing it.
 
-* [Homebrew](http://brew.sh/) (macOS)
-* [Chocolatey](https://chocolatey.org/) (Windows)
-* [yum](http://yum.baseurl.org/), [apt-get](https://help.ubuntu.com/community/AptGet/Howto), [DNF](http://dnf.readthedocs.io/en/latest/index.html) (Linux)
+- [Homebrew](http://brew.sh/) (macOS)
+- [Chocolatey](https://chocolatey.org/) (Windows)
+- [yum](http://yum.baseurl.org/), [apt-get](https://help.ubuntu.com/community/AptGet/Howto), [DNF](http://dnf.readthedocs.io/en/latest/index.html) (Linux)
 
 You can also find some more detailed instructions [here](http://www.mkdocs.org/#installation).
 
@@ -108,7 +108,7 @@ We do not want to impose too many rules as a barrier to updating our documentati
 3. Similarly, changes to the config `docs/mkdocs.yml` file or changes to the styling of the documentation will not be accepted.
 4. Any content submitted should be written in English and not contain any content that would not circumvent our usual [rules for user generated content](https://xenforo.com/community/help/terms/).
 5. Finally, by submitting changes to the documentation you:
-    1. agree that changes you submit can be included in our published documentation
-    2. agree that once the changes are approved they can in the future be modified or removed by us or another contributor if that becomes necessary
-    3. agree not to contest any subsequent modification or removal of content you have submitted
-    4. agree that the documentation content you submit will ultimately be owned by XenForo Ltd.
+   1. agree that changes you submit can be included in our published documentation
+   2. agree that once the changes are approved they can in the future be modified or removed by us or another contributor if that becomes necessary
+   3. agree not to contest any subsequent modification or removal of content you have submitted
+   4. agree that the documentation content you submit will ultimately be owned by XenForo Ltd.
