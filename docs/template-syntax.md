@@ -176,15 +176,15 @@ The for-each tag takes the following attributes:
 
 #### Example Output
 
-> Hello there, Patrick. This is name number 1.
+> Hello there, Patrick. This is name number 1. Array key of this element: 0
 >
-> Hello there, Theresa. This is name number 2.
+> Hello there, Theresa. This is name number 2. Array key of this element: 1
 >
-> Hello there, Kimball. This is name number 3.
+> Hello there, Kimball. This is name number 3. Array key of this element: 2
 >
-> Hello there, Wayne. This is name number 4.
+> Hello there, Wayne. This is name number 4. Array key of this element: 3
 >
-> Hello there, Grace. This is name number 5.
+> Hello there, Grace. This is name number 5. Array key of this element: 4
 
 ## Template tags
 
