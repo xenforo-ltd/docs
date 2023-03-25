@@ -1,0 +1,28 @@
+:root>*,
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: hsl(205 70% 31%);
+  --md-primary-fg-color--light: hsl(205 70% 31%);
+  --md-primary-fg-color--dark: hsl(205 70% 31%);
+  --md-primary-bg-color: hsl(204 74% 85%);
+  --md-primary-bg-color--light: hsl(204 74% 85% / 0.7);
+
+  --md-accent-fg-color: hsl(205 70% 31%);
+  --md-accent-fg-color--transparent: hsl(205 70% 31% / 0.1);
+
+  --md-typeset-color: hsl(0 0% 8%);
+  --md-typeset-a-color: hsl(205 65% 42%);
+
+  --md-footer-fg-color: hsl(206 80% 96%);
+  --md-footer-fg-color--light: hsl(206 80% 96% / 0.7);
+  --md-footer-fg-color--lighter: hsl(206 80% 96% / 0.45);
+  --md-footer-bg-color: hsl(205 69% 19%);
+  --md-footer-bg-color--dark: hsl(205 69% 19% / 0.5);
+}
+
+.md-logo {
+  width: 11.5rem;
+}
+
+.md-logo:hover {
+  opacity: 1;
+}

@@ -1,46 +1,70 @@
-site_name: XenForo 2 Documentation
-site_description: Developer Documentation for XenForo 2.
+site_name: XenForo Developer Documentation
+site_description: Developer Documentation for XenForo
 site_author: XenForo Ltd.
-site_favicon: xenforo-favicon.png
-
-theme: readthedocs
-custom_dir: xf2
-extra_css:
-  - 'https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap'
-  - 'extra.css'
+site_url: https://xenforo.com/docs/dev/
+copyright: <a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo<sup>&reg;</sup> &copy; 2010-2023 XenForo Ltd.</a>
 
 nav:
-- Overview:
-  - Getting started: index.md
-- Site Administrators (or common):
-  - Template syntax: template-syntax.md
-  - REST API: rest-api.md
-- Developers:
-  - Add-on structure: add-on-structure.md
-  - Development tools: development-tools.md
-  - General concepts: general-concepts.md
-  - Routing basics: routing-basics.md
-  - Controller basics: controller-basics.md
-  - Entities, finders, and repositories: entities-finders-repositories.md
-  - Criteria: criteria.md
-  - Managing the schema: managing-the-schema.md
-  - Let's build an add-on: lets-build-an-add-on.md
-- Designers:
-  - Designing styles: designing-styles.md
-  - Template syntax: template-syntax.md
-- Appendix(es):
-    - macOS Dev Environment: macos-dev.md
-    - Linux Dev Environment: linux-dev.md
-    - Windows Dev Environment: windows-dev.md
-    - Visual Studio Code and Xdebug: vscode.md
-    - Scotch Box: scotchbox.md
+  - Overview:
+      - Getting started: index.md
+  - Site Administrators (or common):
+      - Template syntax: template-syntax.md
+      - REST API: rest-api.md
+  - Developers:
+      - Add-on structure: add-on-structure.md
+      - Development tools: development-tools.md
+      - General concepts: general-concepts.md
+      - Routing basics: routing-basics.md
+      - Controller basics: controller-basics.md
+      - Entities, finders, and repositories: entities-finders-repositories.md
+      - Criteria: criteria.md
+      - Managing the schema: managing-the-schema.md
+      - Let's build an add-on: lets-build-an-add-on.md
+  - Designers:
+      - Designing styles: designing-styles.md
+      - Template syntax: template-syntax.md
+  - Appendix(es):
+      - macOS Dev Environment: macos-dev.md
+      - Linux Dev Environment: linux-dev.md
+      - Windows Dev Environment: windows-dev.md
+      - Visual Studio Code and Xdebug: vscode.md
+      - Scotch Box: scotchbox.md
 
-repo_url: https://github.com/xenforo-ltd/docs/
-edit_uri: edit/main/docs/
+theme:
+  name: material
+  font:
+    text: Nunito Sans
+    code: JetBrains Mono
+  logo: images/logo.svg
+  favicon: images/favicon.png
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - content.action.edit
+    - content.code.copy
+    - navigation.footer
+    - navigation.instant
+    - navigation.tracking
+    - search.share
+    - toc.follow
+
+extra_css:
+  - css/extra.css
 
 markdown_extensions:
   - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
   - toc:
-      permalink: 
+      permalink: "#"
 
-copyright: <a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&reg; 2.x &copy;2010-2021 XenForo Ltd.</a>
+repo_name: xenforo-ltd/docs
+repo_url: https://github.com/xenforo-ltd/docs/
+edit_uri: edit/main/docs/
+
+extra:
+  generator: false
