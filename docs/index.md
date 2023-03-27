@@ -53,13 +53,11 @@ It's often more convenient to set up a local web server for development. There a
 
 Setting things up yourself is more complicated, but tends to give you more control over how everything is set up.
 
-### Pre-built virtual machine
+Luckily, we have created some walkthroughs on how to setup a local dev environment for your favourite OS:
 
-There are a variety of pre-built virtual machines available on the Internet, which provide the advantage of having all of the necessary services to run XenForo neatly packaged into one place, without having to install and maintain them directly on your own computer.
-
-Some of the XenForo developers use a virtual machine called [Scotch Box](https://box.scotch.io/), which includes everything you need to run XenForo with zero configuration required. We have a [step-by-step guide](scotchbox.md) to getting a XenForo development server up and running - you can have a working virtual web and database server up and running in just a few minutes by running a handful of commands.
-
-[Installing Scotch Box for use with XenForo](scotchbox.md)
+* [macOS Dev Environment](macos-dev.md)
+* [Linux Dev Environment](linux-dev.md)
+* [Windows Dev Environment](windows-dev.md)
 
 ### Pre-built stack
 
