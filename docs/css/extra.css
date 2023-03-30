@@ -26,3 +26,8 @@
 .md-logo:hover {
   opacity: 1;
 }
+
+th:first-of-type,
+td:first-of-type {
+  white-space: nowrap;
+}
