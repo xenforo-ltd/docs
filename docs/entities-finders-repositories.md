@@ -204,7 +204,7 @@ $finder = \XF::finder('XF:User')
 
 This will output something similar to:
 
-```plain
+```title="Dump"
 string(67) "SELECT `xf_user`.*
 FROM `xf_user`
 WHERE (`xf_user`.`user_id` = 1)"

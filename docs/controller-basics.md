@@ -42,7 +42,7 @@ So, if we had the following contents in the `demo_example` template:
 
 The template would output the following:
 
-```plain
+```html
 Hello world!
 ```
 

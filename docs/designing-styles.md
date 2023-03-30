@@ -6,13 +6,13 @@ In XF2 we have introduced an all new way to build and edit styles called "Design
 
 The first step to enabling designer mode is to enable it in `config.php`:
 
-```php
+```php title="src/config.php"
 $config['designer']['enabled'] = true;
 ```
 
 Optionally, you can also specify a different path for designer mode files to exist on the file system. The following represents the default location. To change the location, add the below to your `config.php` and modify the path accordingly:
 
-```php
+```php title="src/config.php"
 $config['designer']['basePath'] = 'src/styles';
 ```
 

@@ -24,7 +24,7 @@ For example, if you want to create a new class in a file named `src/addons/Demo/
 
 Throughout XF we use [namespaces](http://php.net/manual/en/language.namespaces.rationale.php) so that we can reference classes in the same namespace more succinctly. It is recommended that all add-ons also use namespaces. In the above example we talked about a class named `Demo\Setup`. Using namespaces, the class would actually be named simply `Setup` but the namespace will be set to `Demo`. As a more concrete example, we also talked above about a class named `Demo\Entity\Thing`. Let's see what the PHP code would look like for this class:
 
-```php
+```php title="src/addons/Demo/Entity/Thing.php"
 <?php
 
 namespace Demo\Entity;
@@ -85,7 +85,7 @@ The extended class needs to exist before we add the class extension to the Admin
 
 The initial contents of your PHP file, should be as follows:
 
-```php
+```php title="src/addons/Demo/XF/Pub/Controller/Member.php"
 <?php
 
 namespace Demo\XF\Pub\Controller;
@@ -104,7 +104,7 @@ All you need to do is enter the base class name (`XF\Pub\Controller\Member`) in 
 
 Your class extension should now be active, but currently, not doing anything. To make something happen, we need to either override an existing method within this class by creating a method of the same name as an existing one, or adding a new method entirely. Let's do the latter:
 
-```php
+```php title="src/addons/Demo/XF/Pub/Controller/Member.php"
 <?php
 
 namespace Demo\XF\Pub\Controller;

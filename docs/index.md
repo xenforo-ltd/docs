@@ -84,7 +84,7 @@ If using the CLI to install XF 2.0, you will need to create the config.php file 
 
 Once finished, it should look like the following:
 
-```php
+```php title="src/config.php"
 <?php
 
 $config['db']['host'] = 'localhost';
@@ -98,7 +98,7 @@ You're now ready to install!
 
 If you are using MySQL 5.5 and above and you wish to have full unicode support (for things like emoji) you should also add the following before install:
 
-```php
+```php title="src/config.php"
 $config['fullUnicode'] = true;
 ```
 

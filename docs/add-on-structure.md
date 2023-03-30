@@ -64,7 +64,7 @@ There are a number of files and directories within an add-on's directory that ha
 `addon.json` is a file which contains a number of pieces of information which are required to help XF 2.0 identify the 
 add-on and display information about it in the Admin CP. At minimum, your `addon.json` file should look like this:
 
-```json
+```json title="addon.json"
 {
     "title": "My Add-on by Some Company",
     "version_string": "2.0.0",
@@ -152,7 +152,7 @@ The require property is the standard way of blocking an add-on install or upgrad
 You can use it to require other add-ons to be installed first, certain PHP extensions to be present or enabled and/or to enforce a minimum PHP version.
 
 Here's an example snippet:
-```json
+```json title="addon.json"
 ...
   "require": {
       "XF": [2000010, "XenForo 2.0.0+"],
@@ -235,7 +235,7 @@ To create a Setup class for your add-on, all you need to do is create a file nam
 
 The Setup class should extend `\XF\AddOn\AbstractSetup` which requires, at minimum, to implement `install()`, `upgrade()` and `uninstall()` methods. Here's what a simple add-on Setup class might look like:
 
-```php
+```php title="Setup.php"
 <?php
 
 namespace Demo;

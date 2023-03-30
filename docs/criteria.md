@@ -200,9 +200,7 @@ When XenForo decides to check, whether to award a user with a trophy or not, it 
 
 Since both of selected criteria are User criteria, XenForo addresses the User criteria class and tries to find such methods in it:
 
-```php
-// XF/Criteria/User.php
-
+```php title="src/XF/Criteria/User.php"
 //...
 protected function _matchLikeCount(array $data, \XF\Entity\User $user)
 {

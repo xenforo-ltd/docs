@@ -8,7 +8,7 @@ Debug mode can be enabled in your `config.php` which will allow you to access ce
 
  You can enable debug mode by adding the following to `config.php`:
 
-```php
+```php title="src/config.php"
 $config['debug'] = true;
 ```
 
@@ -20,7 +20,7 @@ Enabling development mode, also enables [debug mode](#debug-mode) automatically.
 
 To enable development mode, add the following lines to your `config.php` file:
 
-```php
+```php title="src/config.php"
 $config['development']['enabled'] = true;
 $config['development']['defaultAddOn'] = 'SomeCompany/MyAddOn';
 ```
@@ -29,7 +29,7 @@ The `defaultAddOn` value is optional, but adding that will automatically populat
 
 In addition to the above, you may find it necessary to add some additional configuration, especially if you are using more than one XF installation.
 
-```php
+```php title="src/config.php"
 $config['enableMail'] = false;
 ```
 
@@ -37,7 +37,7 @@ This will disable all mail from being sent from your board. This is especially i
 
 As an alternative to disabling mail directly, you may want to consider using a service such as [MailTrap.io](https://mailtrap.io). This provides you with a free mailbox that will receive all emails sent from your board, which is very useful for testing any emails your new add-on may be sending.
 
-```php
+```php title="src/config.php"
 $config['cookie']['prefix'] = 'anything_';
 ```
 
@@ -46,7 +46,7 @@ If you're using two or more XF installs on the same domain, you may experience i
 ## Preventing frequent logout for users with a dynamic IP
 
 XenForo sessions are usually bound to your IP address. If your IP address is dynamic or you are using a VPN, proxy or load balancer, you may get loggout frequently. You can prevent this by adding the following to your `src/config.php` file:
-```php
+```php title="src/config.php"
 $c->extend('session', function(\XF\Session\Session $session)
 {
    $session->setConfig([
@@ -147,7 +147,7 @@ When you run this command, it will first run the `xf-addon:export` command befor
 
 Aside from just creating the release ZIP there may be additional files you wish to include in your ZIP, other more advanced build processes you want to run such as minifying or concatenating JS or running certain shell commands. All of this can be taken care of in your `build.json` file. This is a typical `build.json` file:
 
-```json
+```json title="build.json"
 {
 	"additional_files": [
 		"js/demo/portal"
@@ -219,7 +219,7 @@ PHP of course has a tool built-in to handle this. You'll likely know it as `var_
 
 The simple version mostly just dumps out the value of a variable in plain text. For example, if you just use it to dump the value of an array, you will see an output at the top of the page like this:
 
-```plain
+```title="Dump"
 array(2) {
   ["user_id"] => int(1)
   ["username"] => string(5) "Admin"

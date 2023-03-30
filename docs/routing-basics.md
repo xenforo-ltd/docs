@@ -33,8 +33,8 @@ You can read more about controllers in the [Controller basics](controller-basics
 Let's look at the `members/` route. This route is still pretty simple, like the `account/` route, but it has an additional field populated; the "Route format". To understand how that works, look at your own user profile on the front end. The URL of that profile will look something like this `index.php?members/your-name.1`. Specifically, take note of the `your-name.1` part. This is the part we're attempting to match using the "Route format".
 
 The "Route format" allows us to extract data from a request URL, so we can pass that information into the controller action so that the action can load specific information; in this case it loads the details for the requested user profile. It also helps us build links from data passed in. Here's the syntax:
- 
-```plain
+
+```title="Route format"
 :int<user_id,username>/:page
 ```
  
@@ -57,7 +57,7 @@ $userId = $params->user_id;
  
 It is also possible to split routes into further sub-names. You can see this in action by looking at the `members/following` route. In this example, `following` is the sub-name to the route `members`. Ordinarily, a URL which looks like `index.php?members/following`, the `following` part would indicate the action, and simply match against the normal `members/` route. However, if there's a route that matches the prefix "members" and the "sub-name" following, it will be used instead. This is true here, so it builds a link like the following:
 
-```plain
+```title="Route format"
 members/:int<user_id,username>/following/:page
 ```
 

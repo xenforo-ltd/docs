@@ -34,7 +34,7 @@ The add-on has now been created, you will now find that you have a new directory
 
 One of the files that has been created is the `addon.json` file, which currently looks like this:
 
-```json
+```json title="src/addons/Demo/Portal/addon.json"
 {
     "legacy_addon_id": "",
     "title": "Demo - Portal",
@@ -53,7 +53,7 @@ One of the files that has been created is the `addon.json` file, which currently
 
 Let's fill in some of these details:
 
-```json
+```json title="src/addons/Demo/Portal/addon.json"
 {
     "legacy_addon_id": "",
     "title": "Demo - Portal",
@@ -78,7 +78,7 @@ As we're not superceding a XenForo 1 addon, we can disregard `legacy_addon_id`. 
 
 Well, strictly speaking, the class has already been created and written out to `Setup.php` but right now it doesn't really do anything. We've basically got a skeleton class for it which looks like this:
 
-```php
+```php title="src/addons/Demo/Portal/Setup.php"
 <?php
 
 namespace Demo\Portal;
@@ -101,14 +101,14 @@ We talked a little bit already about the Setup class. We're going to be breaking
 Let's start by importing some useful Schema classes. If you want to learn more about them, you can refer to the [Managing the Schema section](managing-the-schema.md).  
 Just after the last `use` declaration, add the following lines:
 
-```php
+```php title="src/addons/Demo/Portal/Setup.php"
 use XF\Db\Schema\Alter;
 use XF\Db\Schema\Create;
 ```
 
 The StepRunner traits here are going to handle the process of cycling through all of the available steps, so all we have to do is start creating those steps. We'll begin by adding some code to create a new column in the `xf_forum` table:
 
-```php
+```php title="src/addons/Demo/Portal/Setup.php"
 <?php
 
 namespace Demo\Portal;
@@ -142,7 +142,7 @@ This column is being added to the `xf_forum` table so that we can set certain fo
 
 While we're here, we might as well add another step to the installer. For brevity, we'll just display the new code, rather than the entire class. It should be placed directly below the `installStep1()` method:
 
-```php
+```php title="src/addons/Demo/Portal/Setup.php"
 public function installStep2()
 {
     $this->schemaManager()->alterTable('xf_thread', function(Alter $table)
@@ -156,7 +156,7 @@ This step, similar to the step above, will add a new column this time to the `xf
 
 Speaking of which, we should add that table now. This time directly below `installStep2()`:
 
-```php
+```php title="src/addons/Demo/Portal/Setup.php"
 public function installStep3()
 {
     $this->schemaManager()->createTable('xf_demo_portal_featured_thread', function(Create $table)
@@ -198,7 +198,7 @@ It's worth adding a description to explain what this listener is for, as this wi
 
 Before we click "Save" we need to actually create the Listener class. So create a new file named `Listener.php` in `src/addons/Demo/Portal`. The contents of this file should be as follows, initially. We know the arguments this function requires from the documentation below the code event selector.
 
-```php
+```php title="src/addons/Demo/Portal/Listener.php"
 <?php
 
 namespace Demo\Portal;
@@ -220,7 +220,7 @@ This code won't actually do anything yet, but now is a good time to save the cod
 
 Before we add some functional code to our new function, now might be a good time to see how the development output system works. Check out the new directories and files added to your add-on directory. Specifically there is a new JSON file in the `_output/code_event_listeners` directory, which should look like this:
 
-```json
+```json title="src/addons/Demo/Portal/_output/code_event_listeners/entity_structure_[hash].json"
 {
     "event_id": "entity_structure",
     "execute_order": 10,
@@ -236,7 +236,7 @@ Whenever changes are made to the listener this file will update automatically.
 
 Right, let's add some more code. Back inside the `Listener` class, add the following to the `forumEntityStructure` function:
 
-```php
+```php title="src/addons/Demo/Portal/Listener.php"
 $structure->columns['demo_portal_auto_feature'] = ['type' => Entity::BOOL, 'default' => false];
 ```
 
@@ -248,7 +248,7 @@ Again, as we have added a new column to the xf_thread table, we should make the 
 
 Head back to "Add code event listener" and listen to `entity_structure` again. The "Event hint" this time will be `XF\Entity\Thread`. We can use the same callback class as before (`Demo\Portal\Listener`) but this time the method will be named `threadEntityStructure`. Add a description similar to before. Before saving, we should add the code, directly below the `forumEntityStructure` function:
 
-```php
+```php title="src/addons/Demo/Portal/Listener.php"
 public static function threadEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc\Entity\Structure &$structure)
 {
 	$structure->columns['demo_portal_featured'] = ['type' => Entity::BOOL, 'default' => false];
@@ -257,7 +257,7 @@ public static function threadEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc
 
 This code is almost identical to what we added to the forum entity structure; really the only difference is the column name. But, we do need to add something else. We should create an entity relation so that, later on, should we need to access the featured thread entity (which we create in the next section) we can do so easily with a finder query. Below the `$structure->columns` line add:
 
-```php
+```php title="src/addons/Demo/Portal/Listener.php"
 $structure->relations['FeaturedThread'] = [
 	'entity' => 'Demo\Portal:FeaturedThread',
 	'type' => Entity::TO_ONE,
@@ -272,7 +272,7 @@ See [Relations](entities-finders-repositories.md#relations) for more information
 
 Above in `installStep3()` we created a new table. We are going to need to create an entity to interact with and create new records in this table. Because this is a brand new entity we don't need to do anything other than create the class inside `src/addons/Demo/Portal/Entity/FeaturedThread.php`, the skeleton for which will look like this:
 
-```php
+```php title="src/addons/Demo/Portal/Entity/FeaturedThread.php"
 <?php
 
 namespace Demo\Portal\Entity;
@@ -287,7 +287,7 @@ class FeaturedThread extends \XF\Mvc\Entity\Entity
 
 We need to use this to define the entity structure which represents our new `xf_demo_portal_featured_thread` table which we created earlier. The structure for this entity should look like this:
 
-```php
+```php title="src/addons/Demo/Portal/Entity/FeaturedThread.php"
 public static function getStructure(Structure $structure)
 {
 	$structure->table = 'xf_demo_portal_featured_thread';
@@ -327,13 +327,13 @@ When you entered the template name in the "Template" field, you may notice that 
 
 The simplest way to place a checkbox in this section is to do a simple replacement on the top checkbox, so in the "Find" field add:
 
-```plain
+```html title="Find"
 <xf:option name="allow_posting"
 ```
 
 And in the replace field:
 
-```html
+```html title="Replace"
 <xf:option name="demo_portal_auto_feature" selected="$forum.demo_portal_auto_feature"
 	label="Automatically feature threads in this forum"
 	hint="If selected, any new threads posted in this forum will be automatically featured." />
@@ -359,7 +359,7 @@ Here we need to specify a "Base class name" which is the name of the class we ar
 
 Create a new file in `src/addons/Demo/Portal/XF/Admin/Controller` named `Forum.php`. This might seem like quite a long path, but we recommend a path like this for extended classes. It enables you to more easily identify the files that represent extended classes by virtue of the fact that they are in a directory of the same name as the extended "add-on" ID (in this case `XF`). It also makes it clear exactly which class has been extended as the directory structure follows the same path as the default class. The contents of the file should, for now, look like this:
 
-```php
+```php title="src/addons/Demo/Portal/XF/Admin/Controller/Forum.php"
 <?php
 
 namespace Demo\Portal\XF\Admin\Controller;
@@ -374,7 +374,7 @@ See [Extending classes](general-concepts.md#extending-classes) and [Type hinting
 
 Click save to save the Class extension. Now we can add some code. The particular method we need to extend is a protected function called `saveTypeData`. When extending any existing method in any class, it is important to inspect the original method for a couple of reasons. The first being we want to make sure the arguments we use in the extended method, match that of the method we're extending. The second being that we need to know what this method actually does. For example, should the method be returning something of a particular type, or a certain object? This is certainly the case in most controller actions as we mentioned in the [Modifying a controller action reply (properly)](controller-basics.md#modifying-a-controller-action-reply-properly) section. However, although this method is within a controller, it isn't actually a controller action itself. In fact, this particular method is a "void" method; it isn't expected to return anything. However, we should always ensure we call the parent method in our extended method so let's just add the new method itself, without the new code we need to add:
 
-```php
+```php title="src/addons/Demo/Portal/XF/Admin/Controller/Forum.php"
 protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Entity\AbstractNode $data)
 {
 	parent::saveTypeData($form, $node, $data);
@@ -386,7 +386,7 @@ protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Ent
 
 So, right now, we've extended that method, and our extension should be called, but right now it isn't doing anything other than calling its parent method. We now need to get the value of the input from the forum edit page and apply that to the `$data` entity (which in this case is the Forum entity).
 
-```php
+```php title="src/addons/Demo/Portal/XF/Admin/Controller/Forum.php"
 protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Entity\AbstractNode $data)
 {
 	parent::saveTypeData($form, $node, $data);
@@ -410,7 +410,7 @@ In XF2, we make heavy use of Service objects. These typically take a "setup and 
 
 This time, the base class will be `XF\Service\Thread\Creator` and the extension class will be `Demo\Portal\XF\Service\Thread\Creator` and, as usual, this new class will look something like the code below. Create that code in the path `src/addons/Demo/Portal/XF/Service/Thread/Creator.php` then click "Save" to create the extension.
 
-```php
+```php title="src/addons/Demo/Portal/XF/Service/Thread/Creator.php"
 <?php
 
 namespace Demo\Portal\XF\Service\Thread;
@@ -423,7 +423,7 @@ class Creator extends XFCP_Creator
 
 While we're here we will also create another extension. The base will be `XF\Pub\Controller\Forum` and the extension class will be `Demo\Portal\XF\Pub\Controller\Forum`.  Creating the following code in the path `src/addons/Demo/Portal/XF/Pub/Controller/Forum.php` and click "Save":
 
-```php
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/Forum.php"
 <?php
 
 namespace Demo\Portal\XF\Pub\Controller;
@@ -436,7 +436,7 @@ class Forum extends XFCP_Forum
 
 We're ultimately going to extend the `_save()` method in our extended thread creator object so we can feature our thread after it has been created. To fit in with the "setup and go" approach, we will create a method which can be used to indicate whether the thread should be created as featured, or not. For this, we need two things; a class property to store the value (it defaults to null) and a public method to allow that property to be set.
 
-```php
+```php title="src/addons/Demo/Portal/XF/Service/Thread/Creator.php"
 protected $featureThread;
 
 public function setFeatureThread($featureThread)
@@ -447,7 +447,7 @@ public function setFeatureThread($featureThread)
 
 Going back to our newly extended forum controller, we will now extend the method that sets up the creator service, and opt in to featuring if the forum entity has the necessary value set. Remember, before extending a method, we need to know what it is expected to return (if anything), and ensure we call the parent method. If the parent method does return something, then it is this which we should return after our code has finished. The `setupThreadCreate()` method in this case returns the set up creator service, so we will start this off as follows:
 
-```php
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/Forum.php"
 protected function setupThreadCreate(\XF\Entity\Forum $forum)
 {
     /** @var \Demo\Portal\XF\Service\Thread\Creator $creator */
@@ -461,7 +461,7 @@ As expected, this doesn't actually do anything; the extended code is called, but
 
 In between the `$creator` line and the `return` line, add:
 
-```php
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/Forum.php"
 if ($forum->demo_portal_auto_feature)
 {
 	$creator->setFeatureThread(true);
@@ -470,7 +470,7 @@ if ($forum->demo_portal_auto_feature)
 
 We can now add the `_save()` method to the extended creator class:
 
-```php
+```php title="src/addons/Demo/Portal/XF/Service/Thread/Creator.php"
 protected function _save()
 {
 	$thread = parent::_save();
@@ -481,7 +481,7 @@ protected function _save()
 
 To make sure this thread gets featured, in between the `$thread` line and the `return` line we just need to add:
 
-```php
+```php title="src/addons/Demo/Portal/XF/Service/Thread/Creator.php"
 if ($this->featureThread && $thread->discussion_state == 'visible')
 {
     /** @var \Demo\Portal\Entity\FeaturedThread $featuredThread */
@@ -506,7 +506,7 @@ To do this we need a new public route. Go to the Admin CP and under "Development
 
  We should now create that controller at the path `src/addons/Demo/Portal/Pub/Controller/Portal.php` with the following basic contents:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 <?php
 
 namespace Demo\Portal\Pub\Controller;
@@ -519,7 +519,7 @@ class Portal extends \XF\Pub\Controller\AbstractController
 
 We want our portal to be displayed to people when they visit the `index.php?portal` page. This URL doesn't have an "action" part - just the route prefix we just created. With that in mind, the code we need to add to display the portal page, should be in the `actionIndex()` method. The basic code we will need in that is:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 public function actionIndex()
 {
 	$viewParams = [];
@@ -531,7 +531,7 @@ Now, this won't exactly work, yet, because we haven't created the template, yet,
 
 As was mentioned in the [View reply](controller-basics.md#view-reply) section, the first argument is a view class, but we don't need to actually create this class. This class could be extended by other add-ons, if necessary, even if it doesn't exist. The second argument is the template, which we need to create now in the path `src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html`. That template, for now, should simply contain the following:
 
-```html
+```html title="src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html"
 <xf:title>Portal</xf:title>
 ```
 
@@ -539,7 +539,7 @@ If we now visit the portal page, the template error will be gone, and although w
 
 Now, it's time to start adding the code which will display a list of featured threads. The first step to this is to create a repository for some of our common base finder queries. So, create a new file in the path `src/addons/Demo/Portal/Repository/FeaturedThread.php` and add the following code:
 
-```php
+```php title="src/addons/Demo/Portal/Repository/FeaturedThread.php"
 <?php
 
 namespace Demo\Portal\Repository;
@@ -581,7 +581,7 @@ This doesn't return the results of this query. This returns the finder object it
 
 Let's now use that in our `actionIndex()` method inside our portal controller. Change the existing `$viewParams = [];` line to the following:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 /** @var \Demo\Portal\Repository\FeaturedThread $repo */
 $repo = $this->repository('Demo\Portal:FeaturedThread');
 
@@ -594,7 +594,7 @@ $viewParams = [
 
 At this stage, we're not going to worry about modifying the base finder we've retrieved from the repo. Instead, let's start to actually see some results, and update the demo_portal_view template as follows (after the `<xf:title>` tags):
 
-```html
+```html title="src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html"
 <xf:if is="$featuredThreads is not empty">
 	<xf:foreach loop="$featuredThreads" value="$featuredThread">
 		<xf:macro name="thread_block"
@@ -681,7 +681,7 @@ To do this, we should use a code event listener to change the URL to our portal 
 
 The code for this new method should be fairly simple:
 
-```php
+```php title="src/addons/Demo/Portal/Listener.php"
 public static function homePageUrl(&$homePageUrl, \XF\Mvc\Router $router)
 {
 	$homePageUrl = $router->buildLink('canonical:portal');
@@ -702,13 +702,13 @@ To achieve this, we will add a template modification to a specific macro, and th
 
 First step then is a new template modification. So go to "Add template modification" (make sure the "Public" tab is selected on the "Template modifications" list). This time the template we are modifying is `helper_thread_options`, we'll use `demo_portal_helper_thread_options` as the key and you can write a reasonable description. We can actually do a "Simple replacement" here so leave that radio selected and in the "Find" field add:
 
-```html
+```html title="Find"
 <xf:if is="$thread.canLockUnlock()">
 ```
 
 In the "Replace" field add:
 
-```html
+```html title="Replace"
 <xf:if is="($thread.isInsert() AND !$thread.Forum.demo_portal_auto_feature AND $thread.canFeatureUnfeature())
 	OR ($thread.isUpdate() && $thread.canFeatureUnfeature())"
 >
@@ -734,7 +734,7 @@ Back to the template code we just added to the modification; you may have notice
 
 To add this method, we need a new class extension for the `XF\Entity\Thread` entity. So, do that now similar to how we've done it before. The extended class will be `Demo\Portal\XF\Entity\Thread` so create that in the path `src/addons/Demo/Portal/XF/Entity/Thread.php` with the contents:
 
-```php
+```php title="src/addons/Demo/Portal/XF/Entity/Thread.php"
 <?php
 
 namespace Demo\Portal\XF\Entity;
@@ -756,7 +756,7 @@ We can now move on to changing the thread editor service to look for this value 
 
 The editor service is actually going to be very similar to the extended creator service we created earlier, so create that in the relevant location. Here is all of the code for the extended class:
 
-```php
+```php title="src/addons/Demo/Portal/XF/Service/Thread/Editor.php"
 <?php
 
 namespace Demo\Portal\XF\Service\Thread;
@@ -808,7 +808,7 @@ In the case of unfeaturing, we actually just delete the featured thread entity b
 
 Before we finish the process of editing, we need to add code to our extended thread controller, and specifically extend the `setupThreadEdit()` method. The entire extended thread controller code will look like this:
 
-```php
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/Thread.php"
 <?php
 
 namespace Demo\Portal\XF\Pub\Controller;
@@ -837,7 +837,7 @@ We need to extend another method in the thread controller to handle a situation 
 
 We just need to add the following code below the `setupThreadEdit()` method we added above:
 
-```php
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/Thread.php"
 public function finalizeThreadReply(\XF\Service\Thread\Replier $replier)
 {
 	parent::finalizeThreadReply($replier);
@@ -859,7 +859,7 @@ Note that we haven't actually returned anything in this method because it isn't 
 
 For the final step in manually featuring/unfeaturing a thread, we need to go back to the forum controller and slightly change our existing code so that if featuring isn't automatic, we can handle it manually, instead. This should be fairly straight forward. Head into your extended forum controller, and replace this:
 
-```php
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/Thread.php"
 if ($forum->demo_portal_auto_feature)
 {
 	$creator->setFeatureThread(true);
@@ -868,7 +868,7 @@ if ($forum->demo_portal_auto_feature)
 
 With this:
 
-```php
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/Thread.php"
 if ($forum->demo_portal_auto_feature)
 {
 	$creator->setFeatureThread(true);
@@ -900,7 +900,7 @@ First we should adjust our code so we only display X featured threads, and we sh
 
 To start, we need to go back to our portal controller, and add some code to the top of the `actionIndex()` method:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 $page = $this->filterPage();
 $perPage = 5;
 ```
@@ -909,20 +909,20 @@ The first line here is a special helper method to get the current page number. T
 
 The next thing to do is to change this line:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 $finder = $repo->findFeaturedThreadsForPortalView();
 ```
 
 To this:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 $finder = $repo->findFeaturedThreadsForPortalView()
 	->limitByPage($page, $perPage);
 ```
 
 This changes our query so that it will limit by the page / per page values we defined above. This will automatically calculate the correct limit (`$perPage`) and offset (`($page - 1) * $perPage`) for the current page. Next, we need to pass a few more params into our view params so change:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 $viewParams = [
 	'featuredThreads' => $finder->fetch()
 ];
@@ -930,7 +930,7 @@ $viewParams = [
 
 To:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 $viewParams = [
 	'featuredThreads' => $finder->fetch(),
 	'total' => $finder->total(),
@@ -943,7 +943,7 @@ To use display our page navigation, we need to know the total number of entries,
 
 If you head back on over to the portal, you will now see only 5 featured threads displayed. However, we need to now add the page navigation. So open up the `demo_portal_view` template and directly after the closing `</xf:foreach>` tag add the following:
 
-```html
+```html title="src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html"
 <xf:pagenav page="{$page}" perpage="{$perPage}" total="{$total}" link="portal" wrapperclass="block" />
 ```
 
@@ -955,7 +955,7 @@ Widget positions are added in the Admin CP under "Development". Go to the "Widge
 
 To add this position to the template, simply add the following below the `<xf:title>` tag:
 
-```html
+```html title="src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html"
 <xf:widgetpos id="demo_portal_view_sidebar" position="sidebar" />
 ```
 
@@ -963,7 +963,7 @@ Of course we still won't see a sidebar until we add some widgets to it. Widgets 
 
 For the sake of simplicity, we'll just duplicate the widgets that are currently assigned to the `forum_list_sidebar` position (by default). So, we'll add those to a new `installStep4()` method into the Setup class:
 
-```php
+```php title="src/addons/Demo/Portal/Setup.php"
 public function installStep4()
 {
 	$this->createWidget('demo_portal_view_members_online', 'members_online', [
@@ -1001,19 +1001,19 @@ To do this, we need to change our code so that we "over-fetch" the number of rec
 
 To start, go to the Portal controller, and change this line:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 ->limitByPage($page, $perPage);
 ```
 
 To:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 ->limit($perPage * 3);
 ```
 
 And below that, add:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 $featuredThreads = $finder->fetch()
 	->filter(function(\Demo\Portal\Entity\FeaturedThread $featuredThread)
 	{
@@ -1024,25 +1024,25 @@ $featuredThreads = $finder->fetch()
 
 Finally change:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 'featuredThreads' => $finder->fetch(),
 ```
 
 To:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 'featuredThreads' => $featuredThreads,
 ```
 
 You may have spotted earlier in the demo_portal_view template that each post we render also specifies its attachments:
 
-```plain
+```html title="src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html"
 'attachments': $post.attach_count ? $post.Attachments : [],
 ```
 
 Right now, this is going to generate an additional query for each post. So, we should instead try to do a single query for all of the posts we are displaying and add them to the posts in advance. It probably sounds more complicated than it is. Just add the below code beneath the `->slice(0, $perPage, true);` line.
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 $threads = $featuredThreads->pluckNamed('Thread');
 $posts = $threads->pluckNamed('FirstPost', 'first_post_id');
 
@@ -1057,7 +1057,7 @@ The final permission related thing to finish up is to create a new permission to
 
 To actually use this permission, we need to go back to our extended thread entity to modify the `canFeatureUnfeature()` method. Replace `return true;` with:
 
-```php
+```php title="src/addons/Demo/Portal/XF/Entity/Thread.php"
 return \XF::visitor()->hasNodePermission($this->node_id, 'demoPortalFeature');
 ```
 
@@ -1073,13 +1073,13 @@ Now click "Add option". Set the "Option ID" to `demoPortalFeaturedPerPage`, "Tit
 
 To implement that, go back to the portal controller and change:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 $perPage = 5;
 ```
 
 To:
 
-```php
+```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 $perPage = $this->options()->demoPortalFeaturedPerPage;
 ```
 
@@ -1087,10 +1087,10 @@ It's probably not going to hurt to add another option. Perhaps another useful op
 
 Set "Option ID" to `demoPortalDefaultSort`, "Title" to `Default sort order` and "Edit format" to `Radio buttons`. For the "Format parameters" set those as follows:
 
- ```plain
- featured_date={{ phrase('demo_portal_featured_date') }}
- post_date={{ phrase('demo_portal_post_date') }}
- ```
+```title="Format parameters"
+featured_date={{ phrase('demo_portal_featured_date') }}
+post_date={{ phrase('demo_portal_post_date') }}
+```
 
 Finally set "Default value" to `featured_date` and click "Save".
 
@@ -1100,7 +1100,7 @@ Set the option value to "Post date".
 
 Strictly speaking, we could just update our repository method to use the new option directly, however, it might be worth looking at how custom finder methods work. Create a new file in the path `src/addons/Demo/Portal/Finder/FeaturedThread.php` with the contents:
 
-```php
+```php title="src/addons/Demo/Portal/Finder/FeaturedThread.php"
 <?php
 
 namespace Demo\Portal\Finder;
@@ -1131,13 +1131,13 @@ As you can see, all we've done here is create a fairly basic class which extends
 
 Inside our featured thread repository, find:
 
-```php
+```php title="src/addons/Demo/Portal/Repository/FeaturedThread.php"
 ->setDefaultOrder('featured_date', 'DESC')
 ```
 
 And change to:
 
-```php
+```php title="src/addons/Demo/Portal/Repository/FeaturedThread.php"
 ->applyFeaturedOrder('DESC')
 ```
 
@@ -1145,13 +1145,13 @@ Finally, it probably makes sense to update our portal view to display the approp
 
 In the demo_portal_view template change:
 
-```html
+```html title="src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html"
 <li><xf:date time="{$featuredThread.featured_date}" /></li>
 ```
 
 To:
 
-```html
+```html title="src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html"
 <li>
 	<xf:if is="$xf.options.demoPortalDefaultSort == 'featured_date'">
 		<xf:date time="{$featuredThread.featured_date}" />
@@ -1167,7 +1167,7 @@ To approach this, we are going to need to modify the Thread entity again but thi
 
 So, head back into the "Add code event listeners" page, and this time listen to the `entity_post_save` event. The event hint this time will be `XF\Entity\Thread`. For the execute callback, we will use the same class as we did before (`Demo\Portal\Listener`) but we will add a new method here named `threadEntityPostSave`. Let's add that method now so it's there when we save the listener:
 
-```php
+```php title="src/addons/Demo/Portal/Listener.php"
 public static function threadEntityPostSave(\XF\Mvc\Entity\Entity $entity)
 {
 
@@ -1178,7 +1178,7 @@ Click "Save" to save the listener.
 
 The contents of this function are fairly simple, let's look at that:
 
-```php
+```php title="src/addons/Demo/Portal/Listener.php"
 if ($entity->isUpdate())
 {
 	$visibilityChange = $entity->isStateChanged('discussion_state', 'visible');
@@ -1202,7 +1202,7 @@ This would only cover the situation whereby the thread is soft deleted or sent t
 
 For this, we need another listener, this time for the `entity_post_delete` event. So, add that using the same callback class, and this time a method name of `threadEntityPostDelete`. Add the following code to the listener class:
 
-```php
+```php title="src/addons/Demo/Portal/Listener.php"
 public static function threadEntityPostDelete(\XF\Mvc\Entity\Entity $entity)
 {
 	$featuredThread = $entity->FeaturedThread;
@@ -1221,7 +1221,7 @@ Speaking of orphaned data, we should tidy up the database whenever the add-on is
 
 We're going to create 3 new methods which correspond to our first 3 install steps:
 
-```php
+```php title="src/addons/Demo/Portal/Setup.php"
 public function uninstallStep1()
 {
 	$this->schemaManager()->alterTable('xf_forum', function(Alter $table)

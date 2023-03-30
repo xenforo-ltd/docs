@@ -8,7 +8,7 @@ The API for a specific XenForo installation is accessible at `<XenForo base URL>
 
 The API is enabled by default. If necessary, all API access can quickly be disabled by adding the following to **src/config.php**:
 
-```php
+```php title="src/config.php"
 $config['enableApi'] = false;
 ```
 
