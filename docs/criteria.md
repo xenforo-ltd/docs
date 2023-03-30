@@ -4,9 +4,9 @@ When XenForo needs to test something (user/page/post...) against some **user sel
 
 Some places, where the Criteria system is used:
 
--   Trophies
--   User-group promotions
--   Forum notices
+- Trophies
+- User-group promotions
+- Forum notices
 
 Addons can also use this system.
 
@@ -14,17 +14,17 @@ Addons can also use this system.
 
 Consider the following criteria:
 
--   User has/has no avatar
--   User has more than 300 messages
--   User is creating a thread right now
--   Current user's selected navigation tab is "Members"
+- User has/has no avatar
+- User has more than 300 messages
+- User is creating a thread right now
+- Current user's selected navigation tab is "Members"
 
 The first two criteria refer to the user himself. The remaining ones refer to his current location on the forum. It appears we have different categories or **types** of criteria.
 
 There are two criteria types in XenForo out of the box:
 
--   User criteria — handling criteria about the user himself
--   Page criteria — handling criteria about user's current location + time criteria
+- User criteria — handling criteria about the user himself
+- Page criteria — handling criteria about user's current location + time criteria
 
 Some addons may also add their own criteria types.
 
@@ -80,8 +80,8 @@ It all starts from template code. Here is how criteria look inside templates:
 
 As you can see, criterion is simply a checkbox with optional input fields inside (criterion data). Let's analyze the code:
 
--   `foo_criteria` and `bar_criteria` are the input containers and usually `foo` and `bar` parts refer to criteria type. For example, `user_criteria[...]` lets us know that this criteria belong to User criteria.
--   `value="criterion_1_rule"` and `value="criterion_2_rule"` are, obviously, the rules of criteria.
+- `foo_criteria` and `bar_criteria` are the input containers and usually `foo` and `bar` parts refer to criteria type. For example, `user_criteria[...]` lets us know that this criteria belong to User criteria.
+- `value="criterion_1_rule"` and `value="criterion_2_rule"` are, obviously, the rules of criteria.
 
 !!! note
     Keep in mind that `criterion_1/2_rule` in `name` attributes may not have to be criteria rules! These are just names for input containers. You can easily write `<xf:option name="foo[bar][rule]" value="criterion_rule" />` and it will work correctly. The criterion rule will be `criterion_rule`, not `bar`.
@@ -195,22 +195,26 @@ Your selected criteria stores in `user_criteria` column in `xf_trophy` table.
 
 When XenForo decides to check, whether to award a user with a trophy or not, it converts rules into camel case method names:
 
--   `like_count` > `_matchLikeCount()`
--   `has_avatar` > `_matchHasAvatar()`
+- `like_count` > `_matchLikeCount()`
+- `has_avatar` > `_matchHasAvatar()`
 
 Since both of selected criteria are User criteria, XenForo addresses the User criteria class and tries to find such methods in it:
 
 ```php title="src/XF/Criteria/User.php"
 //...
+
 protected function _matchLikeCount(array $data, \XF\Entity\User $user)
 {
     return ($user->like_count && $user->like_count >= $data['likes']);
 }
+
 //...
+
 protected function _matchHasAvatar(array $data, \XF\Entity\User $user)
 {
     return $user->user_id && ($user->avatar_date || $user->gravatar);
 }
+
 //...
 ```
 
@@ -583,8 +587,8 @@ public static function criteriaUser($rule, array $data, \XF\Entity\User $user, &
 
 Pay attention to the following:
 
--   We are using `$user` variable for retrieving currently matching user. We can use this variable since our criterion belongs to **User** criteria.
--   We can access data via `$data` array. It contains data from fields [we have added](#adding-template-modification) in template modification. We have only added one `<xf:numberbox...` which `name` attribute equals `user_criteria[likes_on_single][data][likes]`. That is why we can use `$data['likes']` in the code above.
+- We are using `$user` variable for retrieving currently matching user. We can use this variable since our criterion belongs to **User** criteria.
+- We can access data via `$data` array. It contains data from fields [we have added](#adding-template-modification) in template modification. We have only added one `<xf:numberbox...` which `name` attribute equals `user_criteria[likes_on_single][data][likes]`. That is why we can use `$data['likes']` in the code above.
 
 Everything is done right now. Let's test it!
 
@@ -619,12 +623,12 @@ You can [download](files/example-sources/all-for-one-criterion-2.0.10.zip) addon
 
 Imagine we are creating an addon (addon ID: `PostsRemover`) for removing all posts that match selected criteria. A list of available criteria:
 
--   Post has at least X likes
--   Post author has an X username
--   Post was edited at least X times
--   Post was edited no more than X times
--   Post was published before X
--   Post was published after X
+- Post has at least X likes
+- Post author has an X username
+- Post was edited at least X times
+- Post was edited no more than X times
+- Post was published before X
+- Post was published after X
 
 Obviously, for such criteria we need a new criteria type: Post criteria.
 
@@ -740,7 +744,6 @@ protected function isUnknownMatchedPost($rule, array $data, \XF\Entity\Post $pos
 We simply used `isMatched(...)` method code replacing `$user` variable of User entity type with `$post` variable of Post entity type.
 
 As we do not plan to handle special and unknown criteria we return null in `isSpecialMatchedPost` and `false` in `isUnknownMathcedPost` methods.
-
 
 ### Template
 

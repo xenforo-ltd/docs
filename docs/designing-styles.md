@@ -27,7 +27,7 @@ php cmd.php xf-designer:enable [style_id] [designer_mode_id]
 The designer mode ID is the identifier you will use for future commands related to designer mode. Once enabled, the current modified components of the style will be exported to the `[basePath]/[designer_mode_id]` directory.
 
 When enabling designer mode for this style if that directory already exists you will be given a choice to make as to whether we should overwrite the current contents of that directory from the style, or whether we should overwrite the current style from the current contents of that directory.
- 
+
 ## Disabling designer mode for a style
 
 To disable designer mode for a style, you just run the following CLI command:
@@ -55,14 +55,14 @@ The templates will be output in HTML format and are directly editable on the fil
 ### Style properties and groups
 
 Style properties and groups will be output to the `[basePath]/[designer_mode_id]/style_properties` and `[basePath]/[designer_mode_id]/style_property_groups` directories. They are exported in JSON format and serve as a useful way to monitor changes to these files via a version control system.
- 
- It is not recommended to modify these files directly as changes to them will **not** be automatically imported like they are with templates.
- 
+
+It is not recommended to modify these files directly as changes to them will **not** be automatically imported like they are with templates.
+
 ## Modifying a specific template
 
 Bearing in mind that a style represents components which are modified within that style only, when designer mode is enabled, the file system will also contain only components which are modified within that style only. It would not be possible to output the effective version of each template and style property.
- 
- To mark a template as modified within a style, you can do it in the usual way by editing it in the Admin CP. Templates and style properties modified in the Admin CP will automatically be written out to the file system if designer mode is enabled. However, it would likely be more convenient to modify or "touch" a template using a CLI command:
+
+To mark a template as modified within a style, you can do it in the usual way by editing it in the Admin CP. Templates and style properties modified in the Admin CP will automatically be written out to the file system if designer mode is enabled. However, it would likely be more convenient to modify or "touch" a template using a CLI command:
 
 ```sh title="Terminal"
 php cmd.php xf-designer:touch-template [designer_mode_id] [template_type:template_title]

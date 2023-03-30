@@ -13,12 +13,12 @@ Although XenForo 2.0 adds a lot of improvements for your forums and its members,
 been put into improving the underlying framework of XenForo. You can read more information about these changes in
 the following threads:
 
- * <a href="https://xenforo.com/community/threads/xenforo-2-0-development-updates-from-xf2demo.139565/post-1205086" target="_blank">
- 	What's new for developers in XenForo 2 (part 1)
-   </a>
- * <a href="https://xenforo.com/community/threads/xenforo-2-0-development-updates-from-xf2demo.139565/post-1205088" target="_blank">
- 	What's new for developers in XenForo 2 (part 2)
-   </a>
+- <a href="https://xenforo.com/community/threads/xenforo-2-0-development-updates-from-xf2demo.139565/post-1205086" target="_blank">
+  What's new for developers in XenForo 2 (part 1)
+  </a>
+- <a href="https://xenforo.com/community/threads/xenforo-2-0-development-updates-from-xf2demo.139565/post-1205088" target="_blank">
+  What's new for developers in XenForo 2 (part 2)
+  </a>
 
 ## Getting started
 
@@ -37,9 +37,9 @@ accept the license agreement. Finally, click the Download button to download the
 
 The requirements for running XF 2.0 have changed since XF 1.5. The recommended requirements are as follows:
 
-* PHP: 5.4.0+
-* MySQL: 5.5+
-* PHP extensions: MySQLi, GD (with JPEG support), PCRE, SPL, SimpleXML, DOM, JSON, iconv, ctype, cURL
+- PHP: 5.4.0+
+- MySQL: 5.5+
+- PHP extensions: MySQLi, GD (with JPEG support), PCRE, SPL, SimpleXML, DOM, JSON, iconv, ctype, cURL
 
 [Download the requirements test script.](https://xenforo.com/purchase/requirements-zip)
 
@@ -75,7 +75,7 @@ Once extracted you will see a directory named `upload`. You need to go into
 that directory and upload the files and directories to your server's web root. This would usually be in a directory named
 `public_html`, `htdocs` or `www`.
 
-## Creating src/config.php
+## Creating `src/config.php`
 
 If using the CLI to install XF 2.0, you will need to create the config.php file manually. To do this, enter the `src` directory within the XF 2.0 files you uploaded to your server. Create a new file named config.php and populate it with the host, port, username, password and database name for your MySQL server.
 
@@ -141,7 +141,7 @@ Occasionally it may be necessary to reinstall XF2. This is particularly true dur
 
 Before uploading the new files, you should delete the contents of your `data` and `internal_data` directories.
 
-Finally, you will just need to start the installation, similar to above. You will need to use the `--clear` option which will delete all of the existing xf_ tables.
+Finally, you will just need to start the installation, similar to above. You will need to use the `--clear` option which will delete all of the existing xf\_ tables.
 
 ```sh title="Terminal"
 php cmd.php xf:install --clear

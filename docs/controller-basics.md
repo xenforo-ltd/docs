@@ -1,15 +1,15 @@
-# Controller basics 
+# Controller basics
 
 At a basic level, Controllers are the code that is executed when you visit a page within XF. Controllers are generally responsible for handling user input and passing that user input to the appropriate place which, generally, would be to perform some sort of database action (Model) or load visual content (View).
- 
+
 When a user clicks a link, the requested URL is routed to a specific controller and controller action. See [Routing basics](routing-basics.md). For example, in XF if you click a URL like `index.php?conversations/add` you will be routed to the `XF\Pub\Controller\Conversation` controller and to the `add` action.
- 
+
 If you look at this class in the file system (see [Autoloader](general-concepts.md#autoloader) for a description of how classes and file paths map to each other) you will notice that there are a number of methods named with a prefix of `action`. All of these methods indicate a specific controller action. So, to see the code involved when viewing the conversations/add page mentioned above, look in this file for `public function actionAdd()`.
 
 XF controllers are responsible for returning a reply object which generally consist of one of the following types:
 
 ## View reply
- 
+
 This is one of the most common replies you will deal with during XF development. A controller which returns a view reply will usually require up to three arguments to be passed in. A view class (more on that below), a template name, and an array of `$viewParams` which is the data that should be available to the template.
 
 Here's a typical example of a controller action which returns a View reply:
@@ -19,7 +19,7 @@ public function actionExample()
 {
     $hello = 'Hello';
     $world = 'world!';
-    
+
     $viewParams = [
         'hello' => $hello,
         'world' => $world
@@ -50,7 +50,7 @@ Hello world!
 
 This reply is returned when you wish to redirect a user to a different URL after they have completed some sort of action.
 
-A common use case here is after a user has submitted data through a form you may wish to redirect them to a different page, for example returning a user to a list of items. 
+A common use case here is after a user has submitted data through a form you may wish to redirect them to a different page, for example returning a user to a list of items.
 
 Here's an example of a typical controller action that performs a redirect:
 
@@ -140,7 +140,7 @@ Unless you have a specific need to override an existing action entirely, and rep
 public function actionExample()
 {
     $reply = parent::actionExample();
-    
+
     return $reply;
 }
 ```
@@ -151,16 +151,16 @@ Assuming the above is added to an extended controller where the `actionExample()
 public function actionExample()
 {
     $reply = parent::actionExample();
-    
+
     if ($reply instanceof \XF\Mvc\Reply\View)
     {
         $reply->setParam('hello', 'Bonjour');
     }
-    
+
     return $reply;
 }
 ```
 
-Because a controller reply can actually represent a number of different objects that have different behaviors and methods, it is imperative that we only attempt to extend the correct reply type. We do that in the example above by checking to see if the parent `$reply` object is actually a `View`  type. If we didn't do this, we extended this action and the controller action replies with a redirect instead, then there would likely be an error.  
+Because a controller reply can actually represent a number of different objects that have different behaviors and methods, it is imperative that we only attempt to extend the correct reply type. We do that in the example above by checking to see if the parent `$reply` object is actually a `View` type. If we didn't do this, we extended this action and the controller action replies with a redirect instead, then there would likely be an error.
 
 Before extending this action visiting this page would display "Hello world!". After extending it, the view will now display "Bonjour world!".

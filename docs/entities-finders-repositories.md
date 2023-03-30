@@ -44,15 +44,15 @@ So far we've seen the Finder apply somewhat simple where and limit constraints. 
 
 The `where` method can support up to three arguments. The first being the condition itself, e.g. the column you are querying. The second would ordinarily be the operator. The third is the value being searched for. If you supply only two arguments, as you have seen above, then it automatically implies the operator is `=`. Below is a list of the other operators which are valid:
 
-* `=`
-* `<>`
-* `!=`
-* `>`
-* `>=`
-* `<`
-* `<=`
-* `LIKE`
-* `BETWEEN`
+- `=`
+- `<>`
+- `!=`
+- `>`
+- `>=`
+- `<`
+- `<=`
+- `LIKE`
+- `BETWEEN`
 
 So, we could get a list of the valid users who registered in the last 7 days:
 
@@ -138,8 +138,8 @@ $users = $finder->order('message_count', 'DESC')->limit(10);
 !!! note
     Now is probably a good time to mention that finder methods can mostly be called in any order. For example: `$threads = $finder->limit(10)->where('thread_id', '>', 123)->order('post_date')->with('User')->fetch();`
     Although if you wrote a MySQL query in that order you'd certainly encounter some syntax issues, the Finder system will still build it all in the correct order and the above code, although odd looking and probably not recommended, is perfectly valid.
-    
-As with a standard MySQL query, it is possible to order a result set on multiple columns. To do that, you can just call the order method again. It's also possible to pass multiple order clauses into the order method using an array. 
+
+As with a standard MySQL query, it is possible to order a result set on multiple columns. To do that, you can just call the order method again. It's also possible to pass multiple order clauses into the order method using an array.
 
 ```php
 $finder = \XF::finder('XF:User');
@@ -182,7 +182,7 @@ $users = $finder->limitByPage(3, 20);
 
 In this case, the limit is going to be set to 20 (which is our per page value) and the offset is going to be set to 40 because we're starting on page 3.
 
-Occasionally, it is necessary for us to grab additional more data than the limit. Over-fetching can be useful to help detect whether you have additional data to display after the current page, or if you have a need to filter the initial result set down based on permissions. We can do that with the third argument: 
+Occasionally, it is necessary for us to grab additional more data than the limit. Over-fetching can be useful to help detect whether you have additional data to display after the current page, or if you have a need to filter the initial result set down based on permissions. We can do that with the third argument:
 
 ```php
 $finder = \XF::finder('XF:User');
@@ -211,7 +211,7 @@ WHERE (`xf_user`.`user_id` = 1)"
 ```
 
 You probably won't need it very often, but it can be useful if the finder isn't quite returning the results you expected. Read more about the `dumpSimple` method in the [Dump a variable](development-tools.md#dump-a-variable) section.
- 
+
 ### Custom finder methods
 
 So far we have seen the finder object get setup with an argument similar to `XF:User` and `XF:Thread`. For the most part, this identifies the Entity class the finder is working with and will resolve to, for example, `XF\Entity\User`. However, it can additionally represent a finder class. Finder classes are optional, but they serve as a way to add custom finder methods to specific finder types. To see this in action, let's look at the finder class that relates to `XF:User` which can be found in the `XF\Finder\User` class.
@@ -246,30 +246,39 @@ If you're familiar with XF1, you may be familiar with some of the concepts behin
 The `Structure` object consists of a number of properties which define the structure of the Entity and the database table it relates to. The structure object itself is setup inside the entity it relates to. Let's look at some of the common properties from the User entity:
 
 #### Table
+
 ```php
 $structure->table = 'xf_user';
 ```
+
 This tells the Entity which database table to use when updating and inserting records, and also tells the Finder which table to read from when building queries to execute. Additionally, it plays a part in knowing which other tables your query needs to join to.
 
 #### Short name
+
 ```php
 $structure->shortName = 'XF:User';
 ```
+
 This is the just the short class name of both the Entity itself and the Finder class (if applicable).
 
 #### Content type
+
 ```php
 $structure->contentType = 'user';
 ```
+
 This defines what content type this Entity represents. This will not be needed in most entity structures. It is used to connect to specific things used by the "content type" system (which will be covered in another section).
 
 #### Primary key
+
 ```php
 $structure->primaryKey = 'user_id';
 ```
+
 Defines the column which represents the primary key in the database table. If a table supports more than a single column as a primary key, then this can be defined as an array.
 
 #### Columns
+
 ```php
 $structure->columns = [
     'user_id' => ['type' => self::UINT, 'autoIncrement' => true, 'nullable' => true, 'changeLog' => false],
@@ -279,6 +288,7 @@ $structure->columns = [
     // and many more columns ...
 ];
 ```
+
 This is a key part of the configuration of the entity as this goes into a lot of detail to explain the specifics of each database column that the Entity is responsible for. This tells us the type of data that is expected, whether a value is required, what format it should match, whether it should be a unique value, what its default value is, and much more.
 
 Based on the `type`, the entity manager knows whether to encode or decode a value in a certain way. This may be a somewhat simple process of casting a value to a string or an integer, or slightly more complicated such as using `json_encode()` on an array when writing to the database or using `json_decode()` on a JSON string when reading from the database so that the value is correctly returned to the entity object as an array without us needing to manually do that. It can also support comma separated values being encoded/decoded appropriately.
@@ -286,25 +296,30 @@ Based on the `type`, the entity manager knows whether to encode or decode a valu
 Occasionally it is necessary to do some additional verification or modification of a value before it is written. As an example, in the User entity, look at the `verifyStyleId()` method. When a value is set on the `style_id` field, we automatically check to see if a method named `verifyStyleId()` exists, and if it does, we run the value through that first.
 
 #### Behaviors
+
 ```php
 $structure->behaviors = [
     'XF:ChangeLoggable' => []
 ];
 ```
-This is an array of behavior classes which should be used by this entity. Behavior classes are a way of allowing certain code to be reused generically across multiple entity types (only when the entity changes, not on reads). A good example of this is the `XF:Likeable` behavior which is able to automatically execute certain actions on entities which support content which can be "liked". This includes automatically recalculating counts when visibility changes occur within the content and automatically deleting likes when the content is deleted. 
- 
+
+This is an array of behavior classes which should be used by this entity. Behavior classes are a way of allowing certain code to be reused generically across multiple entity types (only when the entity changes, not on reads). A good example of this is the `XF:Likeable` behavior which is able to automatically execute certain actions on entities which support content which can be "liked". This includes automatically recalculating counts when visibility changes occur within the content and automatically deleting likes when the content is deleted.
+
 #### Getters
+
 ```php
 $structure->getters = [
     'is_super_admin' => true,
     'last_activity' => true
 ];
 ```
-Getter methods are automatically called when the named fields are called. For example, if we request `is_super_admin` from a User entity, this will automatically check for, and use the `getIsSuperAdmin()` method. The interesting thing to note about this is that the xf_user table doesn't actually have a field named `is_super_admin`. This actually exists on the Admin entity, but we have added it as a getter method as a shorthand way of accessing that value. Getter methods can also be used to override the values of existing fields directly, which is the case for the `last_activity` value here. `last_activity` is actually a cached value which is updated usually when a user logs out. However, we store the user's latest activity date in the xf_session_activity table, so we can use this `getLastActivity` method to return that value instead of the cached last activity value. Should you ever have a need to bypass the getter method entirely, and just get the true entity value, just suffix the column name with an underscore, e.g. `$user->last_activity_`.
+
+Getter methods are automatically called when the named fields are called. For example, if we request `is_super_admin` from a User entity, this will automatically check for, and use the `getIsSuperAdmin()` method. The interesting thing to note about this is that the `xf_user` table doesn't actually have a field named `is_super_admin`. This actually exists on the Admin entity, but we have added it as a getter method as a shorthand way of accessing that value. Getter methods can also be used to override the values of existing fields directly, which is the case for the `last_activity` value here. `last_activity` is actually a cached value which is updated usually when a user logs out. However, we store the user's latest activity date in the xf_session_activity table, so we can use this `getLastActivity` method to return that value instead of the cached last activity value. Should you ever have a need to bypass the getter method entirely, and just get the true entity value, just suffix the column name with an underscore, e.g. `$user->last_activity\_`.
 
 Because an entity is just like any other PHP object, you can add more methods to them. A common use case for this is for adding things like permission check methods that can be called on the entity itself.
 
 #### Relations
+
 ```php
 $structure->relations = [
     'Admin' => [
@@ -315,15 +330,16 @@ $structure->relations = [
     ]
 ];
 ```
+
 This is how Relations are defined. What are relations? They define the relationship between entities which can be used to perform join queries to other tables or fetch records associated to an entity on the fly. If we remember the `with` method on the finder, if we wanted to fetch a specific user and preemptively fetch the user's Admin record (if it exists) then we would do something like the following:
- 
+
 ```php
 $finder = \XF::finder('XF:User');
 $user = $finder->where('user_id', 1)->with('Admin')->fetchOne();
 ```
- 
+
 This will use the information defined in the user entity for the `Admin` relation and the details of the `XF:Admin` entity structure to know that this user query should perform a `LEFT JOIN` on the xf_admin table and the `user_id` column. To access the admin last login date from the user entity:
-  
+
 ```php
 $lastLogin = $user->Admin->last_login; // returns timestamp of the last admin login
 ```
@@ -365,6 +381,7 @@ $user = $finder->where('user_id', 1)->with('ConnectedAccounts|facebook')->fetchO
 ```
 
 #### Options
+
 ```php
 $structure->options = [
 	'custom_title_disallowed' => preg_split('/\r?\n/', $options->disallowedCustomTitles),
@@ -372,21 +389,22 @@ $structure->options = [
 	'skip_email_confirm' => false
 ];
 ```
+
 Entity options are a way of modifying the behavior of the entity under certain conditions. For example, if we set `admin_edit` to true (which is the case when editing a user in the Admin CP), then certain checks will be skipped such as to allow a user's email address to be empty.
 
 ### The Entity life cycle
 
 The Entity plays a significant job in terms of managing the life cycle of a record within the database. As well as reading values from it, and writing values to it, the Entity can be used to delete records and trigger certain events when all of these actions occur so that certain tasks can be performed, or certain associated records can be updated as well. Let's look at some of these events that happen when an entity is saving:
 
-* `_preSave()` - This happens before the save process begins, and is primarily used to perform any additional pre-save validations or to set additional data before the save happens.
-* `_postSave()` - After the data has been saved, but before any transactions are committed, this method is called and you can use it to perform any additional work that should trigger after an entity has been saved.
+- `_preSave()` - This happens before the save process begins, and is primarily used to perform any additional pre-save validations or to set additional data before the save happens.
+- `_postSave()` - After the data has been saved, but before any transactions are committed, this method is called and you can use it to perform any additional work that should trigger after an entity has been saved.
 
 There are additionally `_preDelete()` and `_postDelete()` which work in a similar way, but when a delete is happening.
 
 The Entity is also able to give information on its current state. For example, there is an `isInsert()` and `isUpdate()` method so you can detect whether this is a new record being inserted or an existing record being updated. There is an `isChanged()` method which can tell you whether a specific field has changed since the last save.
- 
- Let's look at some real examples of these methods in action, in the User entity.
- 
+
+Let's look at some real examples of these methods in action, in the User entity.
+
 ```php
  protected function _preSave()
  {
@@ -395,14 +413,14 @@ The Entity is also able to give information on its current state. For example, t
  		$groupRepo = $this->getUserGroupRepo();
  		$this->display_style_group_id = $groupRepo->getDisplayGroupIdForUser($this);
  	}
- 	
+
  	// ...
  }
- 
+
  protected function _postSave()
  {
     // ...
-    
+
  	if ($this->isUpdate() && $this->isChanged('username') && $this->getExistingValue('username') != null)
  	{
  		$this->app()->jobManager()->enqueue('XF:UserRenameCleanUp', [
@@ -411,10 +429,10 @@ The Entity is also able to give information on its current state. For example, t
  			'newUserName' => $this->username
  		]);
  	}
- 	
+
  	// ...
 ```
- 
+
 In the `_preSave()` example we fetch and cache the new display group ID for a user based on their changed user groups. In the `_postSave()` example, we trigger a job to run after a user's name has been changed.
 
 ## Repositories

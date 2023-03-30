@@ -6,7 +6,7 @@ XF2 provides developers with a number of built in tools you can use to expedite 
 
 Debug mode can be enabled in your `config.php` which will allow you to access certain development tools in the Admin CP (such as creating routes, permissions, admin navigation etd.) and it will also enable an output at the bottom of every page which details how long the page took to process, how many queries were executed to render the page and how much memory was used. A tooltip containing information about the current controller, action and template name is available on hover. You can also click on the time output and this will give you a detailed look at exactly what queries ran and the stack trace that led to that query being executed.
 
- You can enable debug mode by adding the following to `config.php`:
+You can enable debug mode by adding the following to `config.php`:
 
 ```php title="src/config.php"
 $config['debug'] = true;
@@ -46,6 +46,7 @@ If you're using two or more XF installs on the same domain, you may experience i
 ## Preventing frequent logout for users with a dynamic IP
 
 XenForo sessions are usually bound to your IP address. If your IP address is dynamic or you are using a VPN, proxy or load balancer, you may get loggout frequently. You can prevent this by adding the following to your `src/config.php` file:
+
 ```php title="src/config.php"
 $c->extend('session', function(\XF\Session\Session $session)
 {
@@ -76,14 +77,14 @@ php cmd.php xf-addon:create
 
 The `xf-addon:create` command is how to initially set up and create a new add-on. Once it runs, all you need to answer are some basic questions:
 
-* Enter an ID for this add-on
-* Enter a title
-* Enter a version ID (e.g. 1000010)
-* Enter a version string (e.g. 1.0.0 Alpha)
+- Enter an ID for this add-on
+- Enter a title
+- Enter a version ID (e.g. 1000010)
+- Enter a version string (e.g. 1.0.0 Alpha)
 
-You will then be given the option to create the add-on and write out its addon.json file, and asked some questions about  whether you want to add a Setup.php file.
+You will then be given the option to create the add-on and write out its addon.json file, and asked some questions about whether you want to add a Setup.php file.
 
-### Export _data .XML files
+### Export \_data .XML files
 
 ```sh title="Terminal"
 php cmd.php xf-addon:export [addon_id]
@@ -239,4 +240,4 @@ array(2) {
 
 This is actually the same output as a standard var_dump, but slightly modified for readability and wrapped inside `<pre>` tags to ensure whitespace is maintained when rendering.
 
-The alternative is actually a component named VarDumper from the Symfony project. It outputs HTML, CSS and JS to create a much more functional and potentially easier to read output. It allows you to collapse certain sections, and for certain values which can output a considerable amount of data, such as objects, it can collapse those sections automatically.  
+The alternative is actually a component named VarDumper from the Symfony project. It outputs HTML, CSS and JS to create a much more functional and potentially easier to read output. It allows you to collapse certain sections, and for certain values which can output a considerable amount of data, such as objects, it can collapse those sections automatically.

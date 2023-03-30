@@ -1,20 +1,20 @@
 # macOS development environment with concurrent PHP versions
 
-To get the most out of the XenForo framework, you'll want to have a local webserver capable of running XenForo, along with  capable debugger and a code editor that understands the code and can help you get around it.
+To get the most out of the XenForo framework, you'll want to have a local webserver capable of running XenForo, along with capable debugger and a code editor that understands the code and can help you get around it.
 
 Thankfully, these requirements are now simple to meet and won't cost you anything.
 
-This document and its accompanying video will help you to get started on a Macintosh running macOS 11 *Big Sur* or later. If you want to skip the explanations, you can skip the document and just read the [summary](#summary).
+This document and its accompanying video will help you to get started on a Macintosh running macOS 11 _Big Sur_ or later. If you want to skip the explanations, you can skip the document and just read the [summary](#summary).
 
 <div class="video-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/kiFqrd_dHz8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
----
 
-As a bonus, this approach will allow you to run **multiple versions of PHP *at the same time***, so you could run instances of XenForo 1.5 on PHP 5.6, XenForo 2.1 on PHP 7.4 and XenForo 2.2 on PHP 8.0 if you wanted to, **without** having to manually switch the PHP version whenever you want to access a particular version. More on that later.
+As a bonus, this approach will allow you to run **multiple versions of PHP _at the same time_**, so you could run instances of XenForo 1.5 on PHP 5.6, XenForo 2.1 on PHP 7.4 and XenForo 2.2 on PHP 8.0 if you wanted to, **without** having to manually switch the PHP version whenever you want to access a particular version. More on that later.
 
 !!! note
 	You must be logged into macOS with a user account with administrative privileges in order to complete the steps in this document.
 
 ## Homebrew
+
 [Homebrew](https://brew.sh) is a package manager for macOS that provides a relatively easy way to install all the components you need to run a local web and database server. It can do a lot more than that too, but that's beyond the scope of this document.
 
 One great thing about Homebrew is that it installs its packages into a single directory tree, so it is nicely walled-off from the rest of your Mac, making maintenance and uninstallation far less painful than other methods.
@@ -56,7 +56,7 @@ Now it's time to use Homebrew to install some packages. We are going to give Hom
 
 ### PHP, Apache, MariaDB, ElasticSearch, Mailhog, ImageMagick
 
-The following command will install three versions of [PHP](https://www.php.net) , the [Apache HTTP Server](http://httpd.apache.org),  [MariaDB](https://mariadb.com) (which we will be using as our [MySQL](https://www.mysql.com) engine), [ElasticSearch](https://www.elastic.co), [MailHog](https://github.com/mailhog/MailHog) and [ImageMagick](https://imagemagick.org).
+The following command will install three versions of [PHP](https://www.php.net) , the [Apache HTTP Server](http://httpd.apache.org), [MariaDB](https://mariadb.com) (which we will be using as our [MySQL](https://www.mysql.com) engine), [ElasticSearch](https://www.elastic.co), [MailHog](https://github.com/mailhog/MailHog) and [ImageMagick](https://imagemagick.org).
 
 If you would rather install [MySQL](https://www.mysql.com) than [MariaDB](https://mariadb.com), [read this note](#note-for-cjk-users).
 
@@ -188,11 +188,12 @@ Each version of PHP requires its own configuration edits, but thankfully they ar
 
 We need to set up some sensible defaults and enable Xdebug for each PHP version.
 
-Begin by editing the `php.ini` files at `/usr/local/etc/php/5.6/php.ini`, `/usr/local/etc/php/7.4/php.ini` and  `/usr/local/etc/php/8.0/php.ini` and remove any lines at the top of the file referencing xdebug or imagick, then save the files.
+Begin by editing the `php.ini` files at `/usr/local/etc/php/5.6/php.ini`, `/usr/local/etc/php/7.4/php.ini` and `/usr/local/etc/php/8.0/php.ini` and remove any lines at the top of the file referencing xdebug or imagick, then save the files.
 
-Next, create, edit and save the following three *ini* files with the noted contents for each:
+Next, create, edit and save the following three _ini_ files with the noted contents for each:
 
 ##### `/usr/local/etc/php/5.6/conf.d/php-dev.ini`
+
 ```ini
 post_max_size = 20M
 upload_max_filesize = 10M
@@ -211,8 +212,11 @@ xdebug.remote_port = 9000
 [imagick]
 extension = "imagick.so"
 ```
+
 ---
+
 ##### `/usr/local/etc/php/7.4/conf.d/php-dev.ini` **and** `/usr/local/etc/php/8.0/conf.d/php-dev.ini`
+
 ```ini
 post_max_size = 20M
 upload_max_filesize = 10M
@@ -244,11 +248,13 @@ We are going to be using the FastCGI Process Manager (FPM) implementation of PHP
 Create the following file, then enter and save the contents noted below, changing the username to be your own:
 
 `/usr/local/etc/php/5.6/php-fpm.d/x.conf`
+
 ```apacheconf
 user = kier
 group = staff
 listen = 127.0.0.1:9056
 ```
+
 Note the use of port `9056` there. I got `9056` by removing the decimal point from the PHP version number `5.6` and adding the concatenated value `56` to `9000`, resulting in `9056`.
 
 Next, you will need to copy this file to the following locations, changing the port number as required:
@@ -284,16 +290,17 @@ The configuration we built [above](#apache) will default the server to use PHP 8
 In your `Documents/www` folder, create the following tree of folders and files (or download [this zip](files/info.zip), which contains the same contents):
 
 - Documents
-	- www
-		- info
-			- php5.6
-			  	- info.php
-			- php7.4
-			 	 - info.php
-			- php8.0
-			  	- info.php
-			  
+  - www
+    - info
+      - php5.6
+        - info.php
+      - php7.4
+        - info.php
+      - php8.0
+        - info.php
+
 In each of these `index.php` files, add the following contents:
+
 ```php
 <?php
 
@@ -308,6 +315,7 @@ If you visit any of these locations using your browser, you will see **PHP 8.0**
 Next, create a `.htaccess` file in each php version directory alongside the `info.php` file, and add the following contents:
 
 ### .htaccess for PHP 5.6
+
 ```apacheconf
 <FilesMatch \.php$>
     SetHandler "proxy:fcgi://localhost:9056"
@@ -315,6 +323,7 @@ Next, create a `.htaccess` file in each php version directory alongside the `inf
 ```
 
 ### .htaccess for PHP 7.4
+
 ```apacheconf
 <FilesMatch \.php$>
     SetHandler "proxy:fcgi://localhost:9074"
@@ -322,6 +331,7 @@ Next, create a `.htaccess` file in each php version directory alongside the `inf
 ```
 
 ### .htaccess for PHP 8.0
+
 ```apacheconf
 <FilesMatch \.php$>
     SetHandler "proxy:fcgi://localhost:9080"
@@ -347,14 +357,15 @@ Check out our section on [Visual Studio Code and how to use it with Xdebug](vsco
 
 ## Links to resources
 
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [TablePlus](https://tableplus.io/)
-* [Homebrew](https://brew.sh)
-* [Xdebug](https://xdebug.org)
-* [XdebugToggle for Safari](https://apps.apple.com/gb/app/xdebugtoggle/id1437227804?mt=12)
-* [Video of this process](https://youtu.be/kiFqrd_dHz8)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [TablePlus](https://tableplus.io/)
+- [Homebrew](https://brew.sh)
+- [Xdebug](https://xdebug.org)
+- [XdebugToggle for Safari](https://apps.apple.com/gb/app/xdebugtoggle/id1437227804?mt=12)
+- [Video of this process](https://youtu.be/kiFqrd_dHz8)
 
 ---
+
 ## Summary
 
 ### Terminal command summary
@@ -416,16 +427,20 @@ brew services start httpd;
 Edit the following files as described:
 
 At the end of `/usr/local/etc/httpd/httpd.conf`, add
+
 ```apacheconf
 Include /usr/local/etc/httpd/extra/httpd-dev.conf
-``` 
-Within `/usr/local/etc/php/`, edit the files `5.6/php.ini`, `7.4/php.ini` and `8.0/php,ini`, find the *imagick.so* and *xdebug.so* extension lines at the top of the file and if either exists, comment them out as follows:
+```
+
+Within `/usr/local/etc/php/`, edit the files `5.6/php.ini`, `7.4/php.ini` and `8.0/php,ini`, find the _imagick.so_ and _xdebug.so_ extension lines at the top of the file and if either exists, comment them out as follows:
+
 ```ini
 ; extension="imagick.so"
 ; zend_extension="xdebug.so"
 ```
 
 At the end of `/usr/local/etc/php/5.6/php-fpm.conf`, add
+
 ```apacheconf
 include=/usr/local/etc/php/5.6/php-fpm.d/*.conf
 ```
@@ -457,6 +472,7 @@ Rename the files from `htaccess.txt` to `.htaccess` after placing them in their 
 It has been pointed out that [MariaDB does not work particularly well with CJK languages](https://xenforo.com/community/threads/developer-ide-and-server-software-setup-guides.191195/post-1499966). If CJK support is important in your development process, you should replace commands referencing `mariadb` with `mysql`, which will cause MySQL 8.0 to be installed instead.
 
 Specifically, the commands that should change are:
+
 ```bash
 # install packages including MariaDB:
 brew install pkg-config mariadb httpd mailhog imagemagick elastic/tap/elasticsearch-full shivammathur/php/php@5.6 shivammathur/php/php@7.4 shivammathur/php/php@8.0;

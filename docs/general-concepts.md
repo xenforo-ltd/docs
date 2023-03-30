@@ -6,7 +6,7 @@ The following sections go into detail about some of the general systems and conc
 
 XF2 is not powered by a specifc framework as XF1 was, however, we have employed the use of certain popular, well-tested, open source packages to help with specific tasks. For example, we use a project named [SwiftMailer](https://github.com/swiftmailer/swiftmailer) for email sending and a project named [Guzzle](https://github.com/guzzle/guzzle) as a HTTP client. All third party projects are loaded from the `src/vendor` directory.
 
-It is not currently possible for add-on developers to add their own dependencies to this location. 
+It is not currently possible for add-on developers to add their own dependencies to this location.
 
 ## Integrated Development Environment (IDE)
 
@@ -31,7 +31,7 @@ namespace Demo\Entity;
 
 class Thing
 {
-	
+
 }
 ```
 
@@ -58,7 +58,7 @@ Notice how the short class names are identical. The repository call would actual
 A great deal number of classes in XF2 are extendable which allows developers to extend and override the core code without having to directly edit it. If you're familiar with XF1 development, you will be somewhat familiar with the following process:
 
 1. Create a Listener PHP file
-2. Create a class which will ultimately extend the original class 
+2. Create a class which will ultimately extend the original class
 3. Write a function which matches the expected callback signature for one of the `load_class` events and adds the name of your extended class
 4. Add a "Code event listener" in the Admin CP which specifies the Listener class and method name for the function mentioned above, and optionally hint as to which class is being extended
 
@@ -75,7 +75,7 @@ You will now have an addon.json file for this add-on in the following location `
 
 !!! note
 	Although, strictly speaking, you can place your extended classes wherever you like within your add-on directory, it is recommended to put extended classes in a directory which easily identifies a) the add-on the class belongs to b) the type of class being extended and c) the name of the class being extended. In the following examples, we are extending the public XF Member controller so we will place our extended class in the following path: `src/addons/Demo/XF/Pub/Controller/Member.php`.
-	
+
 The extended class needs to exist before we add the class extension to the Admin CP. So, follow the following instructions:
 
 1. Create a new directory named `XF` inside `src/addons/Demo`
@@ -92,7 +92,7 @@ namespace Demo\XF\Pub\Controller;
 
 class Member extends XFCP_Member
 {
-	
+
 }
 ```
 
@@ -122,7 +122,7 @@ We talk more about controllers, actions, and replies in the [Controller basics](
 
 Now we've added some code to our extended controller, let's see it in action. Simply enter the following URL (relative to your board URL): `index.php?members/hello-world`. You should now see a "Hello world!" message displayed!
 
-As mentioned earlier, it is also possible to override existing methods within a class. For example, if we changed `actionHelloWorld()` with `actionIndex()` then you would no longer have a "Notable members" list, it would instead display the "Hello world!" message! This isn't quite the right way to extend an existing controller action (or any class method, in fact) but we go into more detail about that in the [Modifying a controller action reply (properly)](controller-basics.md#modifying-a-controller-action-reply-properly) section. 
+As mentioned earlier, it is also possible to override existing methods within a class. For example, if we changed `actionHelloWorld()` with `actionIndex()` then you would no longer have a "Notable members" list, it would instead display the "Hello world!" message! This isn't quite the right way to extend an existing controller action (or any class method, in fact) but we go into more detail about that in the [Modifying a controller action reply (properly)](controller-basics.md#modifying-a-controller-action-reply-properly) section.
 
 ## Type hinting
 

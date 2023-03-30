@@ -1,6 +1,6 @@
-# Windows development environment 
+# Windows development environment
 
-To get the most out of the XenForo framework, you'll want to have a local webserver capable of running XenForo, along with  capable debugger and a code editor that understands the code and can help you get around it.
+To get the most out of the XenForo framework, you'll want to have a local webserver capable of running XenForo, along with capable debugger and a code editor that understands the code and can help you get around it.
 
 Thankfully, these requirements are now simple to meet and won't cost you anything.
 
@@ -44,6 +44,7 @@ It's important to get precisely the correct version of Xdebug to work with the v
 ### Collecting phpinfo
 
 In your command prompt window, enter the following:
+
 ```
 php -i > Desktop\info.txt
 ```
@@ -54,19 +55,22 @@ This will write out the complete phpinfo output to a file called `info.txt` on y
 
 Next, open https://xdebug.org/wizard in a browser window, paste the contents of your `info.php` file into the text box on the page and click the **[ Analyse my phpinfo() output ]** button below.
 
-Follow the instructions that are presented after the summary on the subsequent page, to download the php_xdebug DLL file and move it into place, and to copy the *zend_extension* configuration line into your clipboard.
+Follow the instructions that are presented after the summary on the subsequent page, to download the `php_xdebug` DLL file and move it into place, and to copy the _zend_extension_ configuration line into your clipboard.
 
 ### Edit php.ini
 
 You can quickly edit your `php.ini` file with a Laragon shortcut - right click the gear icon and select PHP > php.ini from the menu that pops up.
 
 At the end of the file, add the following:
+
 ```
 [xdebug]
 xdebug.remote_enable= 1
 xdebug.remote_autostart = 1
 ```
+
 ... and immediately after that, add the line from the Xdebug wizard that begins `zend_extension = C:\...`. My completed php.ini additions look like this:
+
 ```
 [xdebug]
 xdebug.remote_enable= 1
@@ -79,6 +83,7 @@ Save and close the `php.ini` file.
 ### Test the Xdebug installation
 
 In your command line window, type `php -v` again, and this time we should see output that indicates that Xdebug is properly installed.
+
 ```
 C:\Users\Kier>php -v
 PHP 7.2.19 (cli) (built: May 29 2019 13:58:59) ( ZTS MSVC15 (Visual C++ 2017) x64 )
@@ -95,12 +100,12 @@ Check out our section on [Visual Studio Code and how to use it with Xdebug](vsco
 
 ## Links to resources
 
-* [Laragon Lite](https://laragon.org/download/)
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [Xdebug](https://xdebug.org/wizard)
-* [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc?hl=en)
-* [XenForo requirements script](https://xenforo.com/purchase/requirements-zip)
-* [XenForo](https://xenforo.com/purchase/)
-* [Video of this process](https://youtu.be/-1TOCDbmZmg)
+- [Laragon Lite](https://laragon.org/download/)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Xdebug](https://xdebug.org/wizard)
+- [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc?hl=en)
+- [XenForo requirements script](https://xenforo.com/purchase/requirements-zip)
+- [XenForo](https://xenforo.com/purchase/)
+- [Video of this process](https://youtu.be/-1TOCDbmZmg)
 
 <!-- test -->

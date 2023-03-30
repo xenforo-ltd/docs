@@ -1,15 +1,14 @@
 # Linux development environment with concurrent PHP versions
 
-To get the most out of the XenForo framework, you'll want to have a local webserver capable of running XenForo, along with  capable debugger and a code editor that understands the code and can help you get around it.
+To get the most out of the XenForo framework, you'll want to have a local webserver capable of running XenForo, along with capable debugger and a code editor that understands the code and can help you get around it.
 
 Thankfully, these requirements are now simple to meet and won't cost you anything.
 
 The following document and accompanying video will guide you step-by-step to installing everything you need to get started on a system based on Ubuntu Linux.
 
 <div class="video-wrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/yzWzKjtvUIw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
----
 
-As with our [macOS development environment](macos-dev.md), this configuration will allow you to run **multiple versions of PHP *at the same time***, so you could run instances of XenForo 1.5 on PHP 5.6, XenForo 2.1 on PHP 7.4 and XenForo 2.2 on PHP 8.0 if you wanted to, **without** having to manually switch the PHP version whenever you want to access a particular version.
+As with our [macOS development environment](macos-dev.md), this configuration will allow you to run **multiple versions of PHP _at the same time_**, so you could run instances of XenForo 1.5 on PHP 5.6, XenForo 2.1 on PHP 7.4 and XenForo 2.2 on PHP 8.0 if you wanted to, **without** having to manually switch the PHP version whenever you want to access a particular version.
 
 Much of the explanation for what we're doing here can be found in our [macOS guide](macos-dev.md), so this document will be fairly short and to the point. If you'd like to just grab the install script then proceed straight to [configuring](#configuring), do so [here](files/linux/install-ubuntu.sh).
 
@@ -19,7 +18,7 @@ Much of the explanation for what we're doing here can be found in our [macOS gui
 
 This tutorial is based on an [Ubuntu](https://ubuntu.com) or [Debian](https://debian.org) system, but the principles can be applied to any Linux distribution that makes historical PHP packages available.
 
-APT is the *Advanced Package Tool* built into Debian-based Linux distributions. It makes the job of installing pre-configured software on Linux a lot less painful than it once was.
+APT is the _Advanced Package Tool_ built into Debian-based Linux distributions. It makes the job of installing pre-configured software on Linux a lot less painful than it once was.
 
 ### Adding new repositories
 
@@ -34,7 +33,7 @@ In a terminal, run the following commands:
 sudo add-apt-repository -y ppa:ondrej/php
 
 # TablePlus (optional)
-wget -O - -q http://deb.tableplus.com/apt.tableplus.com.gpg.key | sudo apt-key add - 
+wget -O - -q http://deb.tableplus.com/apt.tableplus.com.gpg.key | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://deb.tableplus.com/debian tableplus main"
 
 # ElasticSearch (optional)
@@ -46,7 +45,7 @@ sudo apt update -y
 sudo apt upgrade -y
 ```
 
-If you are using Debian rather than Ubuntu, ignore the `ppa:ondrej/php` line, and run these instead, *before* you run `apt update`:
+If you are using Debian rather than Ubuntu, ignore the `ppa:ondrej/php` line, and run these instead, _before_ you run `apt update`:
 
 ```bash
 sudo apt-get -y install apt-transport-https lsb-release ca-certificates curl
@@ -109,7 +108,7 @@ In a terminal, run the following:
 sudo mysql_secure_installation
 ```
 
-In this script, accept the defaults for everything, but ensure that you *do* set a root password.
+In this script, accept the defaults for everything, but ensure that you _do_ set a root password.
 
 Next, run the MySQL client with `sudo`:
 
@@ -153,6 +152,7 @@ DocumentRoot "/home/kier/Documents/www"
 	SetHandler "proxy:fcgi://localhost:9080"
 </FilesMatch>
 ```
+
 Those instances of `/home/kier/Documents/www` will need to be replaced with wherever you intend to store your www documents.
 
 Make sure the directory exists before you start the Apache service.
@@ -215,19 +215,20 @@ Everything should now be running, so you can follow [the instructions to work wi
 
 ## Links to resources
 
-* [dev.sury.org for PHP packages](https://deb.sury.org)
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [TablePlus](https://tableplus.io/)
-* [Xdebug](https://xdebug.org)
-* [Xdebug Helper for Firefox](https://addons.mozilla.org/en-GB/firefox/addon/xdebug-helper-for-firefox/)
-* [Video of this process](https://youtu.be/yzWzKjtvUIw)
+- [dev.sury.org for PHP packages](https://deb.sury.org)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [TablePlus](https://tableplus.io/)
+- [Xdebug](https://xdebug.org)
+- [Xdebug Helper for Firefox](https://addons.mozilla.org/en-GB/firefox/addon/xdebug-helper-for-firefox/)
+- [Video of this process](https://youtu.be/yzWzKjtvUIw)
 
 ---
+
 ## Summary
 
 ### Terminal commands
 
-Run the installation commands for [Ubuntu](files/linux/install-ubuntu.sh) or [Debian](files/linux/install-debian.sh) 
+Run the installation commands for [Ubuntu](files/linux/install-ubuntu.sh) or [Debian](files/linux/install-debian.sh)
 
 ### Configure MariaDB / MySQL
 

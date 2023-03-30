@@ -16,7 +16,7 @@ $config['enableApi'] = false;
 
 API keys are created via the admin control panel by going to **Setup > API keys**. As generating API keys can allow access to highly privileged data, only super administrators may access this system. All super admins will receive an email when an API key is generated to ensure that the request is valid.
 
-When a key is created, a random string will be generated and this will be used to authenticate yourself with the API. It is important that this key is kept secret. If you believe an API key has been compromised, you should immediately regenerate the key and update any code using the old key.  
+When a key is created, a random string will be generated and this will be used to authenticate yourself with the API. It is important that this key is kept secret. If you believe an API key has been compromised, you should immediately regenerate the key and update any code using the old key.
 
 ### Key types
 
@@ -24,12 +24,11 @@ All API access is done in the context of a specific user. For example, if I acce
 
 To allow control over this, there are three types of API keys:
 
-* **Guest key** - this key always accesses the API as a guest user. These requests will always respect the guest permissions. For example, if guests cannot reply to threads, an API request to reply to a thread would generate a no permission error.
-* **User key** - this key always accesses the API as a specified user and always respects that user's permissions, similar to a guest key.
-* **Super user key** - this key can access the API as any user by passing an additional value into it. Optionally, this key can bypass the requesting user's permissions, allowing them to take actions or view content they would not normally have access to.
+- **Guest key** - this key always accesses the API as a guest user. These requests will always respect the guest permissions. For example, if guests cannot reply to threads, an API request to reply to a thread would generate a no permission error.
+- **User key** - this key always accesses the API as a specified user and always respects that user's permissions, similar to a guest key.
+- **Super user key** - this key can access the API as any user by passing an additional value into it. Optionally, this key can bypass the requesting user's permissions, allowing them to take actions or view content they would not normally have access to.
 
 Super user keys are very useful for integrations with other systems or applications. For example, you may integrate with a third-party CMS that creates a thread whenever you post a new article. This type of key would allow you to create a thread with a different user depending on the article author or in a forum that users normally can't post in.
-
 
 ### Key scopes
 
@@ -45,7 +44,7 @@ Once you know the URL to access the API and have a key, you can begin to make re
 
 All API responses will be returned in JSON format, except in cases where a binary file is specifically requested (such as when downloading an attachment). Errors will always return a response code in the 400 range. Successful requests will return a 200 code. While not commonly used, redirects will return a 300-range code.
 
-Requests bodies must be sent using the `application/x-www-form-urlencoded` encoding or, if a file is being uploaded,  the `multipart/form-data` encoding. Parameters may also be passed via the query string, although for non-GET requests we **strongly** recommend passing parameters via the request body.
+Requests bodies must be sent using the `application/x-www-form-urlencoded` encoding or, if a file is being uploaded, the `multipart/form-data` encoding. Parameters may also be passed via the query string, although for non-GET requests we **strongly** recommend passing parameters via the request body.
 
 All request data must use the UTF-8 character set.
 
@@ -75,9 +74,9 @@ Error messages have a standardized format. Here is an example:
 
 The top level will be an object with an `errors` key. This will be an array with 1 or more entries. Each entry is an object with the following parameters:
 
-* `code` - this is a machine readable code for the error. There are many possible error codes as they are situation dependent.
-* `message` - a human readable version of the error. This may change or may be translated and should not be used to identify the type of error.
-* `params` - this is a list of key-value parameters that are relevant to the error triggered. They may supplement the error code and message to give more specific details about the error.
+- `code` - this is a machine readable code for the error. There are many possible error codes as they are situation dependent.
+- `message` - a human readable version of the error. This may change or may be translated and should not be used to identify the type of error.
+- `params` - this is a list of key-value parameters that are relevant to the error triggered. They may supplement the error code and message to give more specific details about the error.
 
 ## API endpoints
 

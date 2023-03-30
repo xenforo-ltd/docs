@@ -17,7 +17,7 @@ php cmd.php xf-addon:create
 
     **Enter a title:** Demo - Portal
 
-    **Enter a version ID:** This integer will be used for internal variable comparisons.  
+    **Enter a version ID:** This integer will be used for internal variable comparisons.
     Each release of your addon should increase this number:  1000010
 
     Version string set to: 1.0.0 Alpha
@@ -100,7 +100,7 @@ class Setup extends AbstractSetup
 
 We talked a little bit already about the Setup class. We're going to be breaking the install, upgrade and uninstall processes into separate steps.
 
-Let's start by importing some useful Schema classes. If you want to learn more about them, you can refer to the [Managing the Schema section](managing-the-schema.md).  
+Let's start by importing some useful Schema classes. If you want to learn more about them, you can refer to the [Managing the Schema section](managing-the-schema.md).
 Just after the last `use` declaration, add the following lines:
 
 ```php title="src/addons/Demo/Portal/Setup.php"
@@ -430,7 +430,7 @@ class Creator extends XFCP_Creator
 }
 ```
 
-While we're here we will also create another extension. The base will be `XF\Pub\Controller\Forum` and the extension class will be `Demo\Portal\XF\Pub\Controller\Forum`.  Creating the following code in the path `src/addons/Demo/Portal/XF/Pub/Controller/Forum.php` and click "Save":
+While we're here we will also create another extension. The base will be `XF\Pub\Controller\Forum` and the extension class will be `Demo\Portal\XF\Pub\Controller\Forum`. Creating the following code in the path `src/addons/Demo/Portal/XF/Pub/Controller/Forum.php` and click "Save":
 
 ```php title="src/addons/Demo/Portal/XF/Pub/Controller/Forum.php"
 <?php
@@ -513,7 +513,7 @@ There's still a considerable amount of work to do before we're finished, but now
 
 To do this we need a new public route. Go to the Admin CP and under "Development" click "Routes" then click "Add route: Public". We're going to keep this quite simple, for now. The route prefix is going to be "portal", the section context is going to be "home" and the controller is going to be "Demo\Portal:Portal".
 
- We should now create that controller at the path `src/addons/Demo/Portal/Pub/Controller/Portal.php` with the following basic contents:
+We should now create that controller at the path `src/addons/Demo/Portal/Pub/Controller/Portal.php` with the following basic contents:
 
 ```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 <?php
@@ -1280,6 +1280,5 @@ php cmd.php xf-addon:build-release Demo/Portal
     **Writing release ZIP to ../src/addons/Demo/Portal/_releases.**
 
     **Release written successfully.**
-
 
 So, with that, that concludes our demo add-on! If you would like to download the source code for this add-on, built using the very commands demonstrated above, click here: [Demo-Portal-1.0.0 Alpha.zip](files/Demo-Portal-1.0.0 Alpha.zip).

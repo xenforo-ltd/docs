@@ -30,10 +30,10 @@ You will need to install a selection of extensions to enable the advanced functi
 
 Use the search box to locate and install the following extensions:
 
-* PHP Intelephense
-* PHP Debug
-* Visual Studio Intellicode
-* SQLTools MySQL/MariaDB
+- PHP Intelephense
+- PHP Debug
+- Visual Studio Intellicode
+- SQLTools MySQL/MariaDB
 
 After you have completed the installation of the extensions listed here, make sure that they are fully activated by quitting VS Code and restarting it. This helps to clear any cached settings and reinitialize the engine.
 
@@ -83,10 +83,10 @@ You can now use the `Step Over` button (or press F10 on the keyboard) on the deb
 
 It is beyond the scope of this tutorial to go into detail about how to use a Step Debugger, but there are plenty of resources online to help you get the gist.
 
-* [Visual Studio Debugging](https://code.visualstudio.com/docs/editor/debugging) (Visual Studio Code Docs)
-* [Step Into Step-through Debugging](https://www.fourkitchens.com/blog/article/step-step-through-debugging/) (Four Kitchens)
+- [Visual Studio Debugging](https://code.visualstudio.com/docs/editor/debugging) (Visual Studio Code Docs)
+- [Step Into Step-through Debugging](https://www.fourkitchens.com/blog/article/step-step-through-debugging/) (Four Kitchens)
 
 ## Links to resources
 
-* [XenForo requirements script](https://xenforo.com/purchase/requirements-zip)
-* [XenForo](https://xenforo.com/purchase/)
+- [XenForo requirements script](https://xenforo.com/purchase/requirements-zip)
+- [XenForo](https://xenforo.com/purchase/)
