@@ -8,9 +8,11 @@ The add-on we're going to build will allow users with the appropriate permission
 
 Throughout the add-on we will use the add-on ID of `Demo/Portal`. The first thing we need to do is create the add-on, for this we need to open a command prompt / shell / terminal window, change the directory to your XF installation root (where `cmd.php` is located) and run the following command, and enter the responses displayed below:
 
-!!! terminal
-    *$* php cmd.php xf-addon:create
+```sh title="Terminal"
+php cmd.php xf-addon:create
+```
 
+!!! example "Terminal output"
     **Enter an ID for this add-on:** Demo/Portal
 
     **Enter a title:** Demo - Portal
@@ -174,10 +176,17 @@ The same principles apply here in terms of naming. A significant difference is t
 
 One of the simplest things to forget when adding the code which adds various schema changes is to forget to apply the schema changes yourself. You can run install/upgrade steps using a CLI command. In this case, execute the following commands:
 
-!!! terminal
-    *$* php cmd.php xf-addon:install-step Demo/Portal 1
-    *$* php cmd.php xf-addon:install-step Demo/Portal 2
-    *$* php cmd.php xf-addon:install-step Demo/Portal 3
+```sh title="Terminal"
+php cmd.php xf-addon:install-step Demo/Portal 1
+```
+
+```sh title="Terminal"
+php cmd.php xf-addon:install-step Demo/Portal 2
+```
+
+```sh title="Terminal"
+php cmd.php xf-addon:install-step Demo/Portal 3
+```
 
 ## Extending the forum entity
 
@@ -990,8 +999,9 @@ public function installStep4()
 
 And, of course, don't forget to run this setup step for yourself:
 
-!!! terminal
-    *$* php cmd.php xf-addon:install-step Demo/Portal 4
+```sh title="Terminal"
+php cmd.php xf-addon:install-step Demo/Portal 4
+```
 
 ## Implementing permissions & optimizations
 
@@ -1252,9 +1262,11 @@ The final step for any add-on, is releasing it! This involves extracting the XML
 
 Thankfully, this can be done with a single CLI command! Just execute the command below:
 
-!!! terminal
-    *$* php cmd.php xf-addon:build-release Demo/Portal
+```sh title="Terminal"
+php cmd.php xf-addon:build-release Demo/Portal
+```
 
+!!! example "Terminal output"
     **Performing add-on export.**
 
     **Exporting data for Demo - Portal to ../src/addons/Demo/Portal/_data.**

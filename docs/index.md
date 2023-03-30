@@ -126,8 +126,9 @@ XF 2.0 files.
 
 To start the install, just enter the below command:
 
-!!! terminal
-    *$* php cmd.php xf:install
+```sh title="Terminal"
+php cmd.php xf:install
+```
 
 You will be asked a number of questions, such as the initial administrator username and password, board title. After this,
 the XF 2.0 database tables and master data will be imported.
@@ -142,8 +143,9 @@ Before uploading the new files, you should delete the contents of your `data` an
 
 Finally, you will just need to start the installation, similar to above. You will need to use the `--clear` option which will delete all of the existing xf_ tables.
 
-!!! terminal
-    *$* php cmd.php xf:install --clear
+```sh title="Terminal"
+php cmd.php xf:install --clear
+```
 
 Once the re-install has been completed, you should now be able to log back on.
 
@@ -158,8 +160,9 @@ If you have been developing add-ons, and you have chosen to keep or backup your 
 
 When you install XF2, we perform a file integrity check in the installation. If necessary, and you can't otherwise perform the check via the page in the Admin CP, you can run the CLI command to perform that check.
 
-!!! terminal
-    *$* php cmd.php xf:file-check _[addon_id]_
+```sh title="Terminal"
+php cmd.php xf:file-check [addon_id]
+```
 
 If you wish to do a file health check on all files, including XF itself, just omit the `[addon_id]` argument. For XF only, just use `XF` in place of the argument, or for a specific add-on, just specify the add-on ID you wish to check.
 
@@ -169,28 +172,32 @@ In addition to the above commands for installing XF2, there are also several com
 
 ### Install
 
-!!! terminal
-    *$* php cmd.php xf:addon-install _[addon_id]_
-
 Installs the specified add-on, as long as it is available, and passes the file health check. If development output is available, you will be asked to confirm if you wish to use that for the installation, instead of the exported data XML files.
+
+```sh title="Terminal"
+php cmd.php xf:addon-install [addon_id]
+```
 
 ### Upgrade
 
-!!! terminal
-    *$* php cmd.php xf:addon-upgrade _[addon_id]_
-
 Upgrades the specified add-on, as long as it is upgradeable, and passes the file health check. Can optionally perform import from development output.
+
+```sh title="Terminal"
+php cmd.php xf:addon-upgrade [addon_id]
+```
 
 ### Rebuild
 
-!!! terminal
-    *$* php cmd.php xf:addon-rebuild _[addon_id]_
-
 Rebuilds the master data for the specified add-on, as long as it is rebuildable, and passes the file health check. This re-imports the add-on's data. Can optionally perform import from development output.
+
+```sh title="Terminal"
+php cmd.php xf:addon-rebuild [addon_id]
+```
 
 ### Uninstall
 
-!!! terminal
-    *$* php cmd.php xf:addon-uninstall _[addon_id]_
-
 Uninstalls the specified add-on, as long as it is uninstallable.
+
+```sh title="Terminal"
+php cmd.php xf:addon-uninstall [addon_id]
+```

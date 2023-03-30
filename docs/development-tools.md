@@ -70,8 +70,9 @@ In this section we'll go through some of the common tools and explain what they 
 
 ### Creating a new add-on
 
-!!! terminal
-    *$* php cmd.php xf-addon:create
+```sh title="Terminal"
+php cmd.php xf-addon:create
+```
 
 The `xf-addon:create` command is how to initially set up and create a new add-on. Once it runs, all you need to answer are some basic questions:
 
@@ -84,15 +85,17 @@ You will then be given the option to create the add-on and write out its addon.j
 
 ### Export _data .XML files
 
-!!! terminal
-    *$* php cmd.php xf-addon:export _[addon_id]_
+```sh title="Terminal"
+php cmd.php xf-addon:export [addon_id]
+```
 
 This command is what you will use to export all of your add-on's data to XML files inside the `_data` directory. It exports the data from what is currently in the database (rather than from the development output files).
 
 ### Bump your add-on version
 
-!!! terminal
-    *$* php cmd.php xf-addon:bump-version _[addon_id]_ --version-id 1020370 --version-string 1.2.3
+```sh title="Terminal"
+php cmd.php xf-addon:bump-version [addon_id] --version-id 1020370 --version-string 1.2.3
+```
 
 !!! note
 	If your version string contains spaces, you'll need to surround it with quotes.
@@ -101,15 +104,17 @@ This command takes the add-on ID for your add-on, the new version ID and the new
 
 ### Sync your addon.json to the database
 
-!!! terminal
-    *$* php cmd.php xf-addon:sync-json _[addon_id]_
+```sh title="Terminal"
+php cmd.php xf-addon:sync-json [addon_id]
+```
 
 Sometimes you might prefer to edit the JSON file directly with certain details. This could be the version, or a new icon, or a change of title or description. Changing the JSON in this way can cause the add-on system to believe there are pending changes or that the add-on is upgradeable. A rebuild or upgrade can be a destructive operation if you haven't yet exported your current data. Therefore, running this command is recommended as a way of importing that data in without affecting your existing data.
 
 ### Validate your addon.json file
 
-!!! terminal
-    *$* php cmd.php xf-addon:validate-json _[addon_id]_
+```sh title="Terminal"
+php cmd.php xf-addon:validate-json [addon_id]
+```
 
 If you'd like to check your JSON file contains the correct content and in the correct format, you can now validate it. The validator will check that the content can be decoded, that it contains all of the correct required fields (such as title and version ID) and also checks for the presence of the optional keys (such as description and icon). If any keys are missing, you will be offered to have the issues fixed for you. We also check to see if there are any unexpected fields within the JSON file. These may be deliberate or represent typos. You can run the command manually or the command will be run automatically while building your release.
 
@@ -121,25 +126,29 @@ There are three commands which help with this. These commands will only work wit
 
 #### Run an install step
 
-!!! terminal
-    *$* php cmd.php xf-addon:install-step _[addon_id]_ _[step]_
+```sh title="Terminal"
+php cmd.php xf-addon:install-step [addon_id] [step]
+```
 
 #### Run an upgrade step
 
-!!! terminal
-    *$* php cmd.php xf-addon:upgrade-step _[addon_id]_ _[version]_ _[step]_
+```sh title="Terminal"
+php cmd.php xf-addon:upgrade-step [addon_id] [version] [step]
+```
 
 #### Run an uninstall step
 
-!!! terminal
-    *$* php cmd.php xf-addon:uninstall-step _[addon_id]_ _[step]_
+```sh title="Terminal"
+php cmd.php xf-addon:uninstall-step [addon_id] [step]
+```
 
 ## Building an add-on release
 
 Once all of the hard work has been done, it's a shame to have to go through a number of other processes before you can actually release it. Even the process of collecting all of the files into the correct place and creating the ZIP file manually can be time consuming and prone to errors. We can take care of that automatically, including generating the `hashes.json` file, with one simple command.
 
-!!! terminal
-    *$* php cmd.php xf-addon:build-release _[addon_id]_
+```sh title="Terminal"
+php cmd.php xf-addon:build-release [addon_id]
+```
 
 When you run this command, it will first run the `xf-addon:export` command before then collecting all of your files together into a temporary `_build` directory and writing them to a ZIP file. The finished ZIP will also include the `hashes.json` file. Once the ZIP has been created it will be saved to your `_releases` directory named and named `<ADDON ID>-<VERSION STRING>.zip`.
 
@@ -190,16 +199,18 @@ To use any of these commands, you must have [development mode](#enabling-develop
 
 ### Import development output
 
-!!! terminal
-    *$* php cmd.php xf-dev:import --addon _[addon_id]_
+```sh title="Terminal"
+php cmd.php xf-dev:import --addon [addon_id]
+```
 
 Running this command will import all of the development output files from your add-on `_output` directory into the
 database.
 
 ### Export development output
 
-!!! terminal
-    *$* php cmd.php xf-dev:export --addon _[addon_id]_
+```sh title="Terminal"
+php cmd.php xf-dev:export --addon [addon_id]
+```
 
 This will export all data currently associated to your add-on in the database to files within your
 `_output` directory.

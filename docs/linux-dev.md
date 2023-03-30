@@ -105,15 +105,17 @@ MariaDB / MySQL needs a little more work after it's installed.
 
 In a terminal, run the following:
 
-!!! terminal
-	sudo mysql_secure_installation
+```sh title="Terminal"
+sudo mysql_secure_installation
+```
 
 In this script, accept the defaults for everything, but ensure that you *do* set a root password.
 
 Next, run the MySQL client with `sudo`:
 
-!!! terminal
-	sudo mysql -uroot -p
+```sh title="Terminal"
+sudo mysql -uroot -p
+```
 
 And after you have a working SQL prompt, enter the following queries:
 
