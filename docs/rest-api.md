@@ -60,7 +60,7 @@ When an error is encountered, the response code will be in the 400 range. Occasi
 
 Error messages have a standardized format. Here is an example:
 
-```json
+```json title="Error response"
 {
     "errors": [
         {
