@@ -53,7 +53,7 @@ Version IDs for add-ons are basic integers which are used for internal version c
 - `d` represents the state, e.g. `1` for alpha releases, `3` for beta releases, `5` for release candidates and `7` for stable releases
 - `e` represents the state version
 
-For example, an add-on with version string of 1.7.3 release candidate 4 would have an ID of `1070354`. The final stable release XF2 will have an ID of `2000070`. Version 1.5.0 Beta 3 of XF had an ID of `1050033`. Stable version 99.99.99 would have an ID of `99999970`... and maybe you should slow down a bit 😉
+For example, an add-on with version string of 1.7.3 release candidate 4 would have an ID of `1070354`. The final stable release XF2 will have an ID of `2000070`. Version 1.5.0 Beta 3 of XF had an ID of `1050033`. Stable version 99.99.99 would have an ID of `99999970`... and maybe you should slow down a bit :wink:
 
 ## Common add-on files and directories
 

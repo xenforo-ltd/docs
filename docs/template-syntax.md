@@ -471,7 +471,7 @@ The likes tag takes the following attributes:
 
 > You, tlisbon, kcho and 2 others
 
-The format is [👍 `abc` and x others] (where the 👍 'thumbs up' emoji represents the 'likes' icon and `abc` represents the usernames of the last three users who liked the post.)
+The format is [:thumbsup: `abc` and x others] (where the :thumbsup: 'thumbs up' emoji represents the 'likes' icon and `abc` represents the usernames of the last three users who liked the post.)
 
 ### Sidebar tag
 

@@ -55,6 +55,8 @@ extra_javascript:
 
 markdown_extensions:
   - admonition
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.highlight:
       auto_title: true
       anchor_linenums: true
