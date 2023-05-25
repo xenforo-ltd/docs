@@ -5,8 +5,7 @@ site_url: https://xenforo.com/docs/dev/
 copyright: <a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo<sup>&reg;</sup> &copy; 2010-2023 XenForo Ltd.</a>
 
 nav:
-  - Overview:
-      - Getting started: index.md
+  - Overview: index.md
   - Site Administrators (or common):
       - Template syntax: template-syntax.md
       - REST API: rest-api.md
