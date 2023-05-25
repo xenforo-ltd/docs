@@ -59,6 +59,11 @@ markdown_extensions:
   - pymdownx.highlight:
       auto_title: true
       anchor_linenums: true
+      extend_pygments_lang:
+        - name: php
+          lang: php
+          options:
+            startinline: true
       line_spans: __span
   - pymdownx.inlinehilite
   - pymdownx.snippets
