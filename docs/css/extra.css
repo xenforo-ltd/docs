@@ -1,22 +1,61 @@
-:root>*,
 [data-md-color-scheme="default"] {
-  --md-primary-fg-color: hsl(205 70% 31%);
-  --md-primary-fg-color--light: hsl(205 70% 31%);
-  --md-primary-fg-color--dark: hsl(205 70% 31%);
-  --md-primary-bg-color: hsl(204 74% 85%);
-  --md-primary-bg-color--light: hsl(204 74% 85% / 0.7);
+  --md-primary-fg-color: hsl(205 80% 30%);
+  --md-primary-fg-color--light: hsl(205 80% 40%);
+  --md-primary-fg-color--dark: hsl(205 80% 30%);
+  --md-primary-bg-color: hsl(204 80% 80%);
+  --md-primary-bg-color--light: hsl(204 80% 95%);
 
-  --md-accent-fg-color: hsl(205 70% 31%);
-  --md-accent-fg-color--transparent: hsl(205 70% 31% / 0.1);
+  --md-accent-fg-color: hsl(205 80% 40%);
+  --md-accent-fg-color--transparent: hsl(205 80% 40% / 0.1);
+  --md-accent-bg-color: hsl(205 80% 80%);
+  --md-accent-bg-color--light: hsl(205 80% 95%);
 
-  --md-typeset-color: hsl(0 0% 8%);
-  --md-typeset-a-color: hsl(205 65% 42%);
+  --md-default-fg-color: hsl(0 0% 8%);
+  --md-default-fg-color-light: hsl(0 0% 8% / 0.7);
+  --md-default-fg-color-lighter: hsl(0 0% 8% / 0.3);
+  --md-default-fg-color-lightest: hsl(0 0% 8% / 0.12);
+  --md-default-bg-color: hsl(0 0% 100%);
+  --md-default-bg-color--light: hsl(0 0% 100% / 0.7);
+  --md-default-bg-color--lighter: hsl(0 0% 100% / 0.3);
+  --md-default-bg-color--lightest: hsl(0 0% 100% / .12);
 
-  --md-footer-fg-color: hsl(206 80% 96%);
-  --md-footer-fg-color--light: hsl(206 80% 96% / 0.7);
-  --md-footer-fg-color--lighter: hsl(206 80% 96% / 0.45);
-  --md-footer-bg-color: hsl(205 69% 19%);
-  --md-footer-bg-color--dark: hsl(205 69% 19% / 0.5);
+  --md-typeset-a-color: hsl(205 80% 40%);
+
+  --md-footer-fg-color: hsl(206 80% 80%);
+  --md-footer-fg-color--light: hsl(206 80% 95%);
+  --md-footer-fg-color--lighter: hsl(206 80% 95% / 0.5);
+  --md-footer-bg-color: hsl(205 80% 22%);
+  --md-footer-bg-color--dark: hsl(205 80% 22% / 0.5);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: hsl(205 60% 10%);
+  --md-primary-fg-color--light: hsl(205 60% 20%);
+  --md-primary-fg-color--dark: hsl(205 60% 10%);
+  --md-primary-bg-color: hsl(204 60% 60%);
+  --md-primary-bg-color--light: hsl(204 60% 75%);
+
+  --md-accent-fg-color: hsl(205 60% 60%);
+  --md-accent-fg-color--transparent: hsl(205 60% 60% / 0.1);
+  --md-accent-bg-color: hsl(205 60% 20%);
+  --md-accent-bg-color--light: hsl(205 60% 40%);
+
+  --md-default-fg-color: hsl(0 0% 88%);
+  --md-default-fg-color-light: hsl(0 0% 88% / 0.7);
+  --md-default-fg-color-lighter: hsl(0 0% 88% / 0.3);
+  --md-default-fg-color-lightest: hsl(0 0% 88% / 0.12);
+  --md-default-bg-color: hsl(0 0% 8%);
+  --md-default-bg-color--light: hsl(0 0% 8% / 0.7);
+  --md-default-bg-color--lighter: hsl(0 0% 8% / 0.3);
+  --md-default-bg-color--lightest: hsl(0 0% 8% / .12);
+
+  --md-typeset-a-color: hsl(205 60% 60%);
+
+  --md-footer-fg-color: hsl(206 60% 60%);
+  --md-footer-fg-color--light: hsl(206 60% 75%);
+  --md-footer-fg-color--lighter: hsl(206 60% 75% / 0.5);
+  --md-footer-bg-color: hsl(205 60% 2%);
+  --md-footer-bg-color--dark: hsl(205 60% 2% / 0.5);
 }
 
 .md-logo {

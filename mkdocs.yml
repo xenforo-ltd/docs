@@ -37,6 +37,21 @@ theme:
   favicon: images/favicon.png
   icon:
     repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Dark
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Light
   features:
     - content.action.edit
     - content.code.copy
@@ -47,11 +62,11 @@ theme:
     - toc.follow
 
 extra_css:
-  - css/extra.css
+  - css/extra.css?v=3
 
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
-  - js/extra.js
+  - js/extra.js?v=3
 
 markdown_extensions:
   - admonition
