@@ -1,4 +1,4 @@
-site_name: XenForo Developer Documentation
+site_name: Developer Documentation
 site_description: Developer documentation for XenForo
 site_author: XenForo Ltd.
 site_url: https://xenforo.com/docs/dev/
@@ -30,6 +30,7 @@ nav:
 
 theme:
   name: material
+  custom_dir: overrides
   font:
     text: Nunito Sans
     code: JetBrains Mono
