@@ -66,6 +66,12 @@
   opacity: 1;
 }
 
+.md-header__button.md-logo img,
+.md-nav__title .md-nav__button.md-logo img {
+  width: 100px;
+  height: 26px;
+}
+
 th:first-of-type,
 td:first-of-type {
   white-space: nowrap;
