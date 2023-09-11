@@ -63,11 +63,11 @@ theme:
     - toc.follow
 
 extra_css:
-  - css/extra.css?v=3
+  - css/extra.css?v=4
 
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
-  - js/extra.js?v=3
+  - js/extra.js?v=4
 
 markdown_extensions:
   - admonition
