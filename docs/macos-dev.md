@@ -50,6 +50,9 @@ In your terminal window, enter the following command:
 
 Watch the output and confirm as necessary.
 
+!!! note
+    Homebrew is installed in either `/usr/local`, for macOS Intel, or `/opt/homebrew`, for Apple Silicon. If your Mac uses Apple Silicon, the commands given throughout the rest of this tutorial will need to be substituted to use the correct path.
+
 ## Installing Homebrew packages
 
 Now it's time to use Homebrew to install some packages. We are going to give Homebrew some information about some additional package sources, then install (almost) everything we need with one long command.
