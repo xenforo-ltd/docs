@@ -170,7 +170,7 @@ Macros are reusable blocks of template code. Here's a real example of defining a
 
 ```html title="Template"
 <!-- Macro definition -->
-<xf:macro name="alert" arg-type="info" arg-message="">
+<xf:macro id="alert" arg-type="info" arg-message="">
     <div class="block block--{{ $type }}">
         <div class="block-container">
             <h3 class="block-header">{{ phrase('notice') }}</h3>
@@ -182,7 +182,7 @@ Macros are reusable blocks of template code. Here's a real example of defining a
 </xf:macro>
 
 <!-- Using the macro -->
-<xf:macro name="alert" arg-type="success" arg-message="{{ phrase('operation_completed_successfully') }}" />
+<xf:macro id="alert" arg-type="success" arg-message="{{ phrase('operation_completed_successfully') }}" />
 ```
 
 The macro defines reusable content with customisable parameters (`arg-type` and `arg-message`). When you call the macro, you can provide different values for these parameters to customise the output.
@@ -213,7 +213,7 @@ $viewParams = [
 
 ```html title="Template"
 <!-- Macro definition -->
-<xf:macro name="item_card" arg-title="" arg-value="0" arg-created="{{ $xf.time }}" arg-showDate="true">
+<xf:macro id="item_card" arg-title="" arg-value="0" arg-created="{{ $xf.time }}" arg-showDate="true">
     <div class="block-row itemCard">
         <div class="itemCard-header">
             <h3 class="block-textHeader">{{ $title }}</h3>
@@ -238,7 +238,7 @@ $viewParams = [
         <div class="block-body">
             <xf:if is="{{ $items }}">
                 <xf:foreach loop="{{ $items }}" value="$item">
-                    <xf:macro name="item_card" 
+                    <xf:macro id="item_card" 
                         arg-title="{{ $item.title }}" 
                         arg-value="{{ $item.value }}" 
                         arg-created="{{ $item.created }}" />

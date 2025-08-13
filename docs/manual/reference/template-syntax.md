@@ -47,14 +47,14 @@ For readability reasons, you should not use a macro tag as a variable. You shoul
 
 ```html
 <xf:macro
-    name="my_macro_name">
+    id="my_macro_name">
 
     <!-- Your macro content -->
 
 </xf:macro>
 ```
 
-At its simplest, a macro can be defined with a `name` attribute and the content you want repeated inside the macro tag.
+At its simplest, a macro can be defined with a `id` attribute and the content you want repeated inside the macro tag.
 
 :::note
 When you're using a macro in multiple files, it's best practice to put the macro in it's own template.
@@ -65,7 +65,7 @@ When you're using a macro in multiple files, it's best practice to put the macro
 
 ```html
 <xf:macro
-    name="my_macro_name"
+    id="my_macro_name"
     arg-message="My amazing macro message!">
 
     <h1>Message</h1>
@@ -82,10 +82,10 @@ Sometimes it's necessary to mark an argument as required. This can be done by se
 ### Including & using macros
 
 ```html
-<xf:macro template="my_macro_template" name="my_macro_name" />
+<xf:macro template="my_macro_template" id="my_macro_name" />
 ```
 
-At it's simplest, you include a macro by setting the `name` attribute and leaving the tag empty.
+At it's simplest, you include a macro by setting the `id` attribute and leaving the tag empty.
 
 :::note
 When using a macro tag, you should use the self-closing form of the tag to allow someone to more easily distinguish the difference between a definition and usage of a macro.
@@ -97,7 +97,7 @@ When using a macro tag, you should use the self-closing form of the tag to allow
 You can also provide arguments to the macro:
 
 ```html
-<xf:macro template="my_macro_template" name="my_macro_name" arg-argName="argValue" />
+<xf:macro template="my_macro_template" id="my_macro_name" arg-argName="argValue" />
 ```
 
 Where `argName` is the name of the macro argument.
