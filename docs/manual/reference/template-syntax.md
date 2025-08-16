@@ -15,9 +15,9 @@ If you want to comment out some template code (or an inspirational message) that
 
 ```html
 <xf:comment>
-If you stop seeing the world in terms of what you like
-and what you dislike and saw things for what they truly are in themselves,
-you will find a great deal more peace in your life.
+    If you stop seeing the world in terms of what you like
+    and what you dislike and saw things for what they truly are in themselves,
+    you will find a great deal more peace in your life.
 </xf:comment>
 ```
 
@@ -65,8 +65,8 @@ When you're using a macro in multiple files, it's best practice to put the macro
 
 ```html
 <xf:macro
-    id="my_macro_name"
-    arg-message="My amazing macro message!">
+        id="my_macro_name" 
+        arg-message="My amazing macro message!">
 
     <h1>Message</h1>
     <p>{$message}</p>
@@ -179,7 +179,7 @@ The for-each tag allows you to loop over an array of items, printing a block of 
 <xf:set var="$names" value="{{ ['Patrick', 'Theresa', 'Kimball', 'Wayne', 'Grace'] }}" />
 
 <xf:foreach loop="$names" key="$key" value="$name" i="$i">
-	<p>Hello there, {$name}. This is name number {$i}. Array key of this element: {$key}</p>
+    <p>Hello there, {$name}. This is name number {$i}. Array key of this element: {$key}</p>
 </xf:foreach>
 ```
 
@@ -420,7 +420,7 @@ The `src` tag cannot be used in conjunction with either the `prod` or `dev` tags
 
 ```html
 <xf:js>
-alert("The truth hurts, I know. It's biologically based actually.");
+    alert("The truth hurts, I know. It's biologically based actually.");
 </xf:js>
 ```
 
@@ -459,8 +459,8 @@ The set tag takes the following attributes:
 
 ```html
 <xf:set var="$myVariableName">
-My Variable Value!
-This could be a callback, or simply a group of phrases.
+    My Variable Value!
+    This could be a callback, or simply a group of phrases.
 </xf:set>
 ```
 
@@ -644,7 +644,7 @@ By default, the modification mode is `replace`. (i.e. if the attribute is not sp
 
 ## Template elements
 
-### datalists
+### Data lists
 Data lists are a way to display data in a table using xenforo template tags.
 
 #### xf:datalist
@@ -718,10 +718,10 @@ $viewParams = [
             
             <!-- Data rows with labels -->
             <xf:foreach loop="{{ $items }}" value="$item" key="$index">
-                <xf:datarow 
-                    label="Item {{ $index + 1 }}" 
-                    hint="ID: {{ $index }}"
-                    explain="Sample item data">
+                <xf:datarow
+                        label="Item {{ $index + 1 }}"
+                        hint="ID: {{ $index }}"
+                        explain="Sample item data">
                     <xf:cell class="dataList-cell--main">{{ $item.title }}</xf:cell>
                     <xf:cell class="dataList-cell--iconic">
                         <i class="fa fa-dollar-sign" aria-hidden="true"></i>
@@ -735,7 +735,7 @@ $viewParams = [
 </div>
 ```
 
-### forms
+### Forms
 Forms are a way to create HTML forms using XenForo template tags.
 
 #### xf:form
