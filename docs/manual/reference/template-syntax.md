@@ -641,3 +641,96 @@ By default, the modification mode is `replace`. (i.e. if the attribute is not sp
 - `prepend` - Places the contents of the tag at the beginning of the element's HTML.
 - `append` - Places the contents of the tag at the end of the element's HTML.
 - `replace` - Replaces the element's HTML with the contents of the tag.
+
+## Template elements
+
+### datalists
+Data lists are a way to display data in a table using xenforo template tags.
+
+#### xf:datalist
+A data list is a container for the tags `datarow` and `cell`. It wraps around the `datarow` tags to create a table.
+
+#### xf:datarow
+A data row is a row of data within that datalist. It wraps around the `cell` tags to create a table.
+
+The parameters available to use in the `datarow` are:
+
+- `rowtype` which is where  you can define that the row your creating is a `header`.
+- `icon` where you can define an icon for the row. (This adds an extra cell to the start of the row which holds the icon).
+- `label` where you can define a label for the row. (This adds an extra cell to the start of the row which holds the label).
+- `hint` This is a conditional argument, it requires a `label` to be set. It adds the hint value after the label text in a muted colour.
+- `explain` This is a conditional argument, it requires a `label` to be set. It adds the explain value under the label text in a muted colour.
+
+#### xf:cell
+A cell represents a single unit of data within a data row.
+
+The parameters available to use in the `cell` are:
+
+- `class` which is where you can define these classes to get a desired style.
+
+| Class                        | Description                 |
+|------------------------------|-----------------------------|
+| `dataList-cell--main`        | Primary content cell        |
+| `dataList-cell--link`        | Clickable cell              |
+| `dataList-cell--alt`         | Alternative styling         |
+| `dataList-cell--action`      | Action button cell          |
+| `dataList-cell--iconic`      | Cell with an icon           |
+| `dataList-cell--min`         | Minimal width cell          |
+
+
+#### Example of a basic data list
+```html title="Template"
+<xf:datalist>
+    <xf:datarow rowtype="header">
+        <xf:cell>Column 1</xf:cell>
+        <xf:cell>Column 2</xf:cell>
+    </xf:datarow>
+    <xf:datarow>
+        <xf:cell>Value 1</xf:cell>
+        <xf:cell>Value 2</xf:cell>
+    </xf:datarow>
+</xf:datalist>
+```
+
+#### Example of a more advanced data list
+```php title="Controller"
+$viewParams = [
+    'items' => [
+        ['title' => 'First item', 'value' => 12.3456, 'created' => XF::$time - 86400],
+        ['title' => 'Second item', 'value' => 9876.54321, 'created' => XF::$time - 3600],
+        ['title' => 'Third item', 'value' => 42, 'created' => XF::$time],
+    ],
+];
+```
+
+```html title="Template"
+<div class="block">
+    <div class="block-container">
+        <h2 class="block-header">Items Data List</h2>
+        
+        <xf:datalist>
+            <!-- Header row with icon -->
+            <xf:datarow rowtype="header" icon="fa-list">
+                <xf:cell>Title</xf:cell>
+                <xf:cell>Value</xf:cell>
+                <xf:cell>Created</xf:cell>
+            </xf:datarow>
+            
+            <!-- Data rows with labels -->
+            <xf:foreach loop="{{ $items }}" value="$item" key="$index">
+                <xf:datarow 
+                    label="Item {{ $index + 1 }}" 
+                    hint="ID: {{ $index }}"
+                    explain="Sample item data">
+                    <xf:cell class="dataList-cell--main">{{ $item.title }}</xf:cell>
+                    <xf:cell class="dataList-cell--iconic">
+                        <i class="fa fa-dollar-sign" aria-hidden="true"></i>
+                        {{ $item.value | number(2) }}
+                    </xf:cell>
+                    <xf:cell class="dataList-cell--min">{{ date($item.created, 'M j, Y H:i') }}</xf:cell>
+                </xf:datarow>
+            </xf:foreach>
+        </xf:datalist>
+    </div>
+</div>
+```
