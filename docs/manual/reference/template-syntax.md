@@ -118,7 +118,7 @@ The if template tag can be used to conditionally display some HTML or a part of 
 ```html
 <!-- Shows content only if a user is signed in... -->
 <xf:if is="$xf.visitor.user_id">
-	<!-- Do something... -->
+    <!-- Do something... -->
 </xf:if>
 ```
 
@@ -143,7 +143,7 @@ The else and else-if tags are used in conjunction with the if tag to conditional
 
 ```html
 <xf:if is="$xf.visitor.is_admin">
-	<!-- Content here will only be shown to Administrators... -->
+    <!-- Content here will only be shown to Administrators... -->
 <xf:else />
     <!-- Content here will be shown to anyone who is not an Administrator! -->
 </xf:if>
@@ -381,9 +381,9 @@ The CSS tag takes the following attributes:
 
 ```html
 <xf:css>
-html, body {
- font-family: "Roboto", sans-serif;
-}
+    html, body {
+        font-family: "Roboto", sans-serif;
+    }
 </xf:css>
 ```
 
@@ -626,7 +626,7 @@ The HTML element that they change is simply the tag name. So the `sidebar` tag w
 
 ```html
 <xf:sidebar>
- <h1>My Magical Sidebar!</h1>
+    <h1>My Magical Sidebar!</h1>
 </xf:sidebar>
 ```
 
@@ -655,9 +655,9 @@ A data row is a row of data within that datalist. It wraps around the `cell` tag
 
 The parameters available to use in the `datarow` are:
 
-- `rowtype` which is where  you can define that the row your creating is a `header`.
-- `icon` where you can define an icon for the row. (This adds an extra cell to the start of the row which holds the icon).
-- `label` where you can define a label for the row. (This adds an extra cell to the start of the row which holds the label).
+- `rowtype` which is where you can define that the row your creating is a `header`.
+- `icon` where you can define an icon for the row. (This adds an extra cell to the start of the row, which holds the icon).
+- `label` where you can define a label for the row. (This adds an extra cell to the start of the row, which holds the label).
 - `hint` This is a conditional argument, it requires a `label` to be set. It adds the hint value after the label text in a muted colour.
 - `explain` This is a conditional argument, it requires a `label` to be set. It adds the explain value under the label text in a muted colour.
 
@@ -733,4 +733,65 @@ $viewParams = [
         </xf:datalist>
     </div>
 </div>
+```
+
+### forms
+Forms are a way to create HTML forms using XenForo template tags.
+
+#### xf:form
+A form is a container that wraps around form rows and controls to create an HTML form.
+
+The parameters available to use in the `form` are:
+
+- `action` specifies the URL where the form will be submitted.
+- `ajax` when set to `true`, enables AJAX form submission.
+
+#### xf:formrow
+A form row represents a single form field with its label, input control, and optional explanatory text.
+It wraps around input controls to provide consistent styling and structure.
+
+The parameters available to use in the `formrow` are:
+
+- `label` specifies the label text for the form control.
+- `hint` adds additional hint text next to the label in muted styling.
+- `explain` adds explanatory text below the control to provide additional information.
+- `error` displays an error message for the form field. The error message will be displayed under the input area, but above the explain.
+
+#### Example of a basic form
+```html title="Template"
+<xf:form action="{{ link('test/inputdemo') }}" class="block" ajax="true">
+    <div class="block-container">
+        <div class="block-body">
+            <xf:textboxrow name="user_text"
+                           value=""
+                           label="Enter your text"
+                           explain="Type anything you want to see displayed on the screen."
+                           required="required" />
+
+            <xf:formrow label="Custom Input"
+                        hint="Optional hint text"
+                        explain="This is a custom form row with any HTML content inside"
+                        error="This is a error message.">
+                <div class="inputGroup">
+					<span class="inputGroup-text">
+						<i class="fa fa-user" aria-hidden="true"></i>
+					</span>
+                    <input type="text" name="custom_field" class="input" placeholder="Enter custom value">
+                </div>
+            </xf:formrow>
+
+            <xf:submitrow sticky="true" icon="submit" />
+        </div>
+    </div>
+</xf:form>
+```
+
+```php title="Controller"
+public function actionInputDemo(): XF\Mvc\Reply\Error
+{
+    $userInput = $this->filter('user_text', 'str');
+    $customField = $this->filter('custom_field', 'str');
+    
+    return $this->error("This is not an error, this is your input: $userInput, Custom field: $customField");
+}
 ```
