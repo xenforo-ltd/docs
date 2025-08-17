@@ -131,6 +131,7 @@ The if tag takes the following attributes:
     - `AND` - Used to link additional conditions. (Alternatives: `&&`)
     - `!` - Place before a condition to invert it. (Known as: 'not')
     - `XOR` - Returns true if only one of two conditions is true. (Known as: Exclusive OR)
+:::
 
 #### xf:elseif / xf:else
 The else and else-if tags are used in conjunction with the if tag to conditionally display HTML in the way that the name suggests.
@@ -204,11 +205,13 @@ The set tag allows you to create a reference to another variable or create a new
 <xf:set var="$visitor" value="{$xf.visitor}" />
 ```
 
-!!! warning
-Do not use the Set tag for a group of elements you wish to use in multiple templates, you should instead use the Macro Tag.
+:::warning
+    Do not use the Set tag for a group of elements you wish to use in multiple templates, you should instead use the Macro Tag.
+:::
 
-!!! warning
-The variable name (`var` attribute) must begin with a `$`.
+:::warning
+    The variable name (`var` attribute) must begin with a `$`.
+:::
 
 The set tag takes the following attributes:
 
@@ -524,7 +527,62 @@ If the JS tag is not empty, anything in the tag will be converted to inline JS.
 :::
 
 #### xf:fa
-TODO: Add this method.
+Inserts a Font Awesome icon with the appropriate classes and optional formatting.
+
+```html title="Terminal"
+<!-- Basic usage -->
+<xf:fa icon="fa-user" />
+```
+
+The fa tag takes the following attributes:
+
+- `icon`: The Font Awesome icon class to use (required). Must include the fa- prefix.
+
+:::example "Example of usage"
+    ```html title="Template"
+    <!-- Spinning animation -->
+    <xf:fa icon="fa-circle-notch fa-spin" /> Loading...
+
+    <!-- Pulsing (90-degree step) animation -->
+    <xf:fa icon="fa-heart fa-pulse" /> New notification
+    
+    <!-- Border -->
+    <xf:fa icon="fa-camera fa-border" /> Photos
+    
+    <!-- Horizontal flip -->
+    <xf:fa icon="fa-reply fa-flip-horizontal" />
+    
+    <!-- Vertical flip -->
+    <xf:fa icon="fa-arrow-up fa-flip-vertical" />
+    
+    <!-- Both directions flip -->
+    <xf:fa icon="fa-exchange-alt fa-flip-both" />
+    
+    <!-- Rotate by 90 degrees -->
+    <xf:fa icon="fa-arrow-up fa-rotate-90" />
+    
+    <!-- Rotate by 180 degrees -->
+    <xf:fa icon="fa-arrow-up fa-rotate-180" />
+    
+    <!-- Rotate by 270 degrees -->
+    <xf:fa icon="fa-arrow-up fa-rotate-270" />
+    
+    <!-- Size examples -->
+    <xf:fa icon="fa-star fa-xs" />
+    <xf:fa icon="fa-star fa-sm" />
+    <xf:fa icon="fa-star fa-lg" />
+    <xf:fa icon="fa-star fa-2x" />
+    <xf:fa icon="fa-star fa-3x" />
+    <xf:fa icon="fa-star fa-4x" />
+    <xf:fa icon="fa-star fa-5x" />
+    <xf:fa icon="fa-star fa-6x" />
+    <xf:fa icon="fa-star fa-7x" />
+    <xf:fa icon="fa-star fa-8x" />
+    <xf:fa icon="fa-star fa-9x" />
+    ```
+
+    ![An example of the font awesome icons](files/images/example-font-awesome-icons.png)
+:::
 
 ### Advanced tags
 
