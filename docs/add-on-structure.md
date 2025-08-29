@@ -55,6 +55,15 @@ Version IDs for add-ons are basic integers which are used for internal version c
 
 For example, an add-on with version string of 1.7.3 release candidate 4 would have an ID of `1070354`. The final stable release XF2 will have an ID of `2000070`. Version 1.5.0 Beta 3 of XF had an ID of `1050033`. Stable version 99.99.99 would have an ID of `99999970`... and maybe you should slow down a bit :wink:
 
+<div class="version-converter" id="versionConverter">
+  <label for="versionInput">Enter version string:</label>
+  <div class="version-converter-input">
+    <input type="text" id="versionInput" placeholder="e.g. 1.7.3 rc4">
+    <button id="convertBtn">Convert</button>
+  </div>
+  <div id="versionResult"></div>
+</div>
+
 ## Common add-on files and directories
 
 There are a number of files and directories within an add-on's directory that have a special purpose and meaning.

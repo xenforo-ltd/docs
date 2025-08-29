@@ -1,0 +1,66 @@
+.version-converter {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+[data-md-color-scheme="slate"] .version-converter {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.version-converter label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.version-converter-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#versionInput {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-color: #fff;
+  color: #000;
+}
+
+[data-md-color-scheme="slate"] #versionInput {
+  background-color: #333;
+  color: #eee;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+#convertBtn {
+  padding: 0.5rem 1rem;
+  background-color: var(--md-primary-fg-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#convertBtn:hover {
+  background-color: var(--md-primary-fg-color--light);
+}
+
+#versionResult {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+.version-success {
+  color: var(--md-typeset-a-color);
+}
+
+.version-error {
+  color: #e53935;
+}
