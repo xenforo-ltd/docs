@@ -641,7 +641,9 @@ A cell represents a single unit of data within a data row.
 
 The parameters available to use in the `cell` are:
 
-- `class` which is where you can define these classes to get a desired style.
+- `width` the width parameter defines the width of the cell using a standard CSS unit such as px, %, rem, etc.
+- `colspan` defines how many columns the cell should span.
+- `class` allows you to define classes to apply a desired style.
 
 | Class                        | Description                 |
 |------------------------------|-----------------------------|
