@@ -529,7 +529,7 @@ If the JS tag is not empty, anything in the tag will be converted to inline JS.
 #### xf:fa
 Inserts a Font Awesome icon with the appropriate classes and optional formatting.
 
-```html title="Terminal"
+```html title="Template"
 <!-- Basic usage -->
 <xf:fa icon="fa-user" />
 ```
@@ -643,6 +643,7 @@ The parameters available to use in the `cell` are:
 
 - `width` the width parameter defines the width of the cell using a standard CSS unit such as px, %, rem, etc.
 - `colspan` defines how many columns the cell should span.
+- `rowspan` defines how many rows the cell should span.`
 - `class` allows you to define classes to apply a desired style.
 
 | Class                        | Description                 |
@@ -733,6 +734,67 @@ The parameters available to use in the `formrow` are:
 - `hint` adds additional hint text next to the label in muted styling.
 - `explain` adds explanatory text below the control to provide additional information.
 - `error` displays an error message for the form field. The error message will be displayed under the input area, but above the explain.
+
+#### xf:select
+The xf:select tag is used to create dropdown selection menus in XenForo templates.
+This tag generates an HTML `<select>` element with XenForo styling and functionality.
+
+**Basic usage**
+```html title="Template"
+<xf:select name="option_name" value="{$selectedOption}">
+    <xf:option value="option1">Option 1</xf:option>
+    <xf:option value="option2">Option 2</xf:option>
+    <xf:option value="option3">Option 3</xf:option>
+</xf:select>
+```
+
+**With multiple selection:**
+```html title="Template"
+<xf:select name="dynamic-options" value="{$selectedValues}" multiple="true">
+    <xf:option value="any">Any</xf:option>
+    <xf:options source="{$items}" />
+</xf:select>
+```
+
+Parameters available for the `select` tag:
+
+- **name**: The name of the form field.
+- **value**: The value that should be pre-selected when the form loads.
+    - For single selects, this should be a scalar value matching the desired option's value.
+    - For multiple selects, this should be an array of values to be selected.
+- **multiple**: Optional. If set to "true", allows multiple options to be selected.
+- **size**: Optional. Specifies the number of visible options. Most useful with multiple selects.
+- **class**: Optional. Additional CSS classes to apply to the select element.
+- **disabled**: Optional. If set to "true", disables the select element.
+- **readonly**: Optional. If set to "true", makes the select element read-only.
+
+#### xf:option
+The `xf:option` tag defines a single option within an `xf:select` dropdown.
+
+**Basic usage**
+```html title="Template"
+<xf:option value="option1">Option 1</xf:option>
+```
+
+Parameters available for the `xf:option` tag:
+
+- **value**: The value submitted when this option is selected.
+- **selected**: Optional. If set to "true", this option will be pre-selected.
+- **disabled**: Optional. If set to "true", this option cannot be selected.
+
+#### xf:options
+The `xf:options` tag can be used inside `xf:select` to dynamically generate multiple `<xf:option>` elements from a data source.
+
+**Basic usage**
+```html title="Template"
+<xf:select name="dynamic_select" value="{$selectedValue}">
+    <xf:options source="{$items}" />
+</xf:select>
+```
+
+Parameters for `xf:options`:
+
+- **source**: An array, collection, or other iterable data structure. Each element will become an `<xf:option>` in the select menu.
 
 #### Example of a basic form
 ```html title="Template"
