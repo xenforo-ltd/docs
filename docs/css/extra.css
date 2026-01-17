@@ -78,6 +78,6 @@ td:first-of-type {
 }
 
 h2 {
-  border-bottom: 1px solid #afafaf;
+  border-bottom: 1px solid var(--md-default-fg-color-light);
   width: 100%;
 }
