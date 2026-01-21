@@ -750,7 +750,7 @@ namespace Demo\Portal\XF\Entity;
 
 class Thread extends XFCP_Thread
 {
-	public function canFeatureUnfeature()
+	public function canFeatureUnfeature(&$error = null): bool
 	{
 		return true;
 	}
