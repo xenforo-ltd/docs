@@ -1064,7 +1064,7 @@ Right now, this is going to generate an additional query for each post. So, we s
 $threads = $featuredThreads->pluckNamed('Thread');
 $posts = $threads->pluckNamed('FirstPost', 'first_post_id');
 
-/** @var \XF\Repository\Attachment $attachRepo */
+/** @var \XF\Repository\AttachmentRepository $attachRepo */
 $attachRepo = $this->repository('XF:Attachment');
 $attachRepo->addAttachmentsToContent($posts, 'post');
 ```
