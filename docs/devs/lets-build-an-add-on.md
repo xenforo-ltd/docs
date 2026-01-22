@@ -370,9 +370,9 @@ Finally, click save to save your template modification. If all has gone well, wh
 
 We have our column, we have a UI to pass an input to that column, now we have to handle saving data to that column. We will do this by extending the Forum controller and extending a special method which is called when a node and its data are saved. First, let's create a "Class extension" which can be found under the "Development" entry in the Admin CP. Click "Add class extension".
 
-Here we need to specify a "Base class name" which is the name of the class we are extending, which in this case will be `XF\Admin\Controller\ForumController`. And we need to specify a "Extension class name" which is the class which will extend the base class. Enter this as `Demo\Portal\XF\Admin\Controller\ForumController`. We should create that class before clicking Save.
+Here we need to specify a "Base class name" which is the name of the class we are extending, which in this case will be `XF\Admin\Controller\ForumController`. And we need to specify an "Extension class name" which is the class which will extend the base class. Enter this as `Demo\Portal\XF\Admin\Controller\ForumController`. We should create that class before clicking Save.
 
-Create a new file in `src/addons/Demo/Portal/XF/Admin/Controller` named `Forum.php`. This might seem like quite a long path, but we recommend a path like this for extended classes. It enables you to more easily identify the files that represent extended classes by virtue of the fact that they are in a directory of the same name as the extended "add-on" ID (in this case `XF`). It also makes it clear exactly which class has been extended as the directory structure follows the same path as the default class. The contents of the file should, for now, look like this:
+Create a new file in `src/addons/Demo/Portal/XF/Admin/Controller` named `ForumController.php`. This might seem like quite a long path, but we recommend a path like this for extended classes. It enables you to more easily identify the files that represent extended classes by virtue of the fact that they are in a directory of the same name as the extended "add-on" ID (in this case `XF`). It also makes it clear exactly which class has been extended as the directory structure follows the same path as the default class. The contents of the file should, for now, look like this:
 
 ```php title="src/addons/Demo/Portal/XF/Admin/Controller/ForumController.php"
 <?php
@@ -835,7 +835,7 @@ class ThreadController extends XFCP_ThreadController
 {
 	public function setupThreadEdit(\XF\Entity\Thread $thread)
 	{
-		/** @var \Demo\Portal\XF\Service\Thread\EditorService $editor */
+        /** @var \Demo\Portal\XF\Service\Thread\EditorService $editor */
 		$editor = parent::setupThreadEdit($thread);
 
 		$canFeatureUnfeature = $thread->canFeatureUnfeature();
