@@ -1,45 +1,31 @@
-# Welcome to XenForo 2!
+# Welcome to XenForo!
 
-This documentation aims to get you started with XenForo 2.0 development. Pre-requisites for this documentation assume you
-will be familiar with, amongst other things, PHP and MySQL or MariaDB. It is not essential to have experience with a previous
-version of XenForo, but it would be an advantage.
+This documentation aims to get you started with XenForo development. Pre-requisites for this documentation assume you
+will be familiar with, amongst other things, PHP and MySQL (or similar). It is not essential to have experience with a previous version of XenForo or another framework, but it would be an advantage.
 
 On the subsequent pages we will walk you through a brief overview of how to setup a local server, getting ready for
-installation, doing a clean install of XenForo 2.0, and run through some of the concepts of XF2 development.
-
-## What's new for developers?
-
-Although XenForo 2.0 adds a lot of improvements for your forums and its members, a significant amount of effort has
-been put into improving the underlying framework of XenForo. You can read more information about these changes in
-the following threads:
-
-- <a href="https://xenforo.com/community/threads/xenforo-2-0-development-updates-from-xf2demo.139565/post-1205086" target="_blank">
-  What's new for developers in XenForo 2 (part 1)
-  </a>
-- <a href="https://xenforo.com/community/threads/xenforo-2-0-development-updates-from-xf2demo.139565/post-1205088" target="_blank">
-  What's new for developers in XenForo 2 (part 2)
-  </a>
+installation, doing a clean install of XenForo, and run through some of the concepts of developing add-ons for XenForo.
 
 ## Getting started
 
-Getting started with XF development is easy. You just need to download the files, upload them to a web server and
+Getting started with XenForo development is easy. You just need to download the files, upload them to a web server and
 trigger the install.
 
 If you don't have a web server, yet, don't worry, you can set one up on your local machine.
 
-## Downloading XF 2.0
+## Downloading
 
-To download XF 2.0, just visit the [Customer Area](https://xenforo.com/customers) and log in as normal. Locate the
+To download XenForo, just visit the [Customer Area](https://xenforo.com/customers) and log in as normal. Locate the
 correct license and click the "Download XenForo" link. Select the version you wish to download, the package type and
 accept the license agreement. Finally, click the Download button to download the files.
 
-## XF 2.0 requirements
+## XenForo system requirements
 
-The requirements for running XF 2.0 have changed since XF 1.5. The recommended requirements are as follows:
+The recommended requirements are as follows:
 
-- PHP: 5.4.0+
-- MySQL: 5.5+ or MariaDB: 5.5+
-- PHP extensions: MySQLi, GD (with JPEG support), PCRE, SPL, SimpleXML, DOM, JSON, iconv, ctype, cURL
+- PHP: 7.2 (8.4 recommended)
+- MySQL: 5.7 (MariaDB and Percona also compatible)
+- PHP extensions: MySQLi, GD (with JPEG support), PCRE, cURL, SPL, SimpleXML, DOM, JSON, iconv, ctype
 
 [Download the requirements test script.](https://xenforo.com/purchase/requirements-zip)
 
@@ -68,7 +54,7 @@ managing MySQL or MariaDB.
 
 ## Uploading
 
-To install XF 2.0, you simply need to extract the ZIP file downloaded from the Customer Area and upload
+To install XenForo, you simply need to extract the ZIP file downloaded from the Customer Area and upload
 some of the files and directories within.
 
 Once extracted you will see a directory named `upload`. You need to go into
@@ -77,7 +63,7 @@ that directory and upload the files and directories to your server's web root. T
 
 ## Creating `src/config.php`
 
-If using the CLI to install XF 2.0, you will need to create the config.php file manually. To do this, enter the `src` directory within the XF 2.0 files you uploaded to your server. Create a new file named config.php and populate it with the host, port, username, password and database name for your MySQL or MariaDB server.
+If using the CLI to install XenForo, you will need to create the config.php file manually. To do this, enter the `src` directory within the XenForo files you uploaded to your server. Create a new file named config.php and populate it with the host, port, username, password and database name for your MySQL or MariaDB server.
 
 !!! note
 	Make sure you create the config file in within the `src` directory. The `library` directory is only used for legacy purposes.
@@ -96,12 +82,6 @@ $config['db']['dbname'] = 'xf2';
 
 You're now ready to install!
 
-If you are using MySQL 5.5 or MariaDB 5.5 and above and you wish to have full unicode support (for things like emoji) you should also add the following before install:
-
-```php title="src/config.php"
-$config['fullUnicode'] = true;
-```
-
 ## A note on file permissions
 
 XenForo will need to write files to specific locations while running. In normal operation, this is limited to the `data` and `internal_data` directories (and their sub-directories). These file writes will be triggered by things like attachment uploads, so they will normally be triggered by the user PHP as running as within your web server. Therefore, it is necessary to ensure that permissions are set in these directories so that the web server can write to them. You will need to do this before installation can begin.
@@ -116,10 +96,10 @@ Note that if you are developing add-ons, you may potentially have other location
 
 ## Installation
 
-The current way to install XF 2.0 is via the new CLI system. A lot of development processes can only be performed
-using the CLI so let's get stuck into using it to install XF 2.0. To run these commands, you will need access to a
-terminal/shell, the php CLI command and the current working directory should be the root of where you uploaded the
-XF 2.0 files.
+The easiest way to install XenForo is via the new CLI system. A lot of development processes can only be performed
+using the CLI so let's get stuck into using it to install XenForo. To run these commands, you will need access to a
+terminal/shell, the `php` command and the current working directory should be the root of where you uploaded the
+XenForo files.
 
 !!! warning
 	To eliminate file permission problems, we recommend running the installer as the same user that PHP runs as via your web server. If you don't do this, you should take steps to ensure that permissions are set correctly. See the above section for more details.
@@ -131,13 +111,13 @@ php cmd.php xf:install
 ```
 
 You will be asked a number of questions, such as the initial administrator username and password, board title. After this,
-the XF 2.0 database tables and master data will be imported.
+the XenForo database tables and master data will be imported.
 
-XF 2.0 is now installed!
+XenForo is now installed!
 
 ## Reinstallation
 
-Occasionally it may be necessary to reinstall XF2. This is particularly true during the Development Preview stage which does not support upgrading. If you are ready to do a reinstall, download the new files (if applicable) as per the [Downloading XF 2.0](#downloading-xf-20) section above. It should generally be possible to just merge and overwrite your existing files. If you're doing a full clean re-install, you may want to save a copy of your config.php file or re-create it as per the instructions in the [Creating src/config.php](#creating-srcconfigphp).
+Occasionally it may be necessary to reinstall XenForo. If you are ready to do a reinstall, download the new files (if applicable) as per the [Downloading](#downloading) section above. It should generally be possible to just merge and overwrite your existing files. If you're doing a full clean re-install, you may want to save a copy of your config.php file or re-create it as per the instructions in the [Creating src/config.php](#creating-srcconfigphp).
 
 Before uploading the new files, you should delete the contents of your `data` and `internal_data` directories.
 
@@ -152,13 +132,13 @@ Once the re-install has been completed, you should now be able to log back on.
 If you have been developing add-ons, and you have chosen to keep or backup your existing `src/addons` directory, you can restore your add-on data with the [Import development output](development-tools.md#import-development-output) command.
 
 !!! warning
-    Be careful if you choose to back up and restore your `src/addons` directory. The `XF` directory within contains the XF master data, and should not be restored from a backup to ensure you always have the most up to date version of the files.
+    Be careful if you choose to back up and restore your `src/addons` directory. The `XF` directory within contains the XenForo master data, and should not be restored from a backup to ensure you always have the most up to date version of the files.
 
     Performing a reinstall in this way is a destructive operation and it will remove all data you have created. Additionally, bear in mind that only tables with the `xf_` prefix are cleared. This is a significant reason for the recommendation that all tables, even for add-ons, should be prefixed with `xf_`.
 
 ## Verifying file integrity
 
-When you install XF2, we perform a file integrity check in the installation. If necessary, and you can't otherwise perform the check via the page in the Admin CP, you can run the CLI command to perform that check.
+When you install XenForo, we perform a file integrity check in the installation. If necessary, and you can't otherwise perform the check via the page in the Admin CP, you can run the CLI command to perform that check.
 
 ```sh title="Terminal"
 php cmd.php xf:file-check [addon_id]
