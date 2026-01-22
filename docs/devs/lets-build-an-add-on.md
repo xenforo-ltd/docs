@@ -370,16 +370,16 @@ Finally, click save to save your template modification. If all has gone well, wh
 
 We have our column, we have a UI to pass an input to that column, now we have to handle saving data to that column. We will do this by extending the Forum controller and extending a special method which is called when a node and its data are saved. First, let's create a "Class extension" which can be found under the "Development" entry in the Admin CP. Click "Add class extension".
 
-Here we need to specify a "Base class name" which is the name of the class we are extending, which in this case will be `XF\Admin\Controller\Forum`. And we need to specify a "Extension class name" which is the class which will extend the base class. Enter this as `Demo\Portal\XF\Admin\Controller\Forum`. We should create that class before clicking Save.
+Here we need to specify a "Base class name" which is the name of the class we are extending, which in this case will be `XF\Admin\Controller\ForumController`. And we need to specify a "Extension class name" which is the class which will extend the base class. Enter this as `Demo\Portal\XF\Admin\Controller\ForumController`. We should create that class before clicking Save.
 
 Create a new file in `src/addons/Demo/Portal/XF/Admin/Controller` named `Forum.php`. This might seem like quite a long path, but we recommend a path like this for extended classes. It enables you to more easily identify the files that represent extended classes by virtue of the fact that they are in a directory of the same name as the extended "add-on" ID (in this case `XF`). It also makes it clear exactly which class has been extended as the directory structure follows the same path as the default class. The contents of the file should, for now, look like this:
 
-```php title="src/addons/Demo/Portal/XF/Admin/Controller/Forum.php"
+```php title="src/addons/Demo/Portal/XF/Admin/Controller/ForumController.php"
 <?php
 
 namespace Demo\Portal\XF\Admin\Controller;
 
-class Forum extends XFCP_Forum
+class ForumController extends XFCP_ForumController
 {
 
 }
@@ -389,7 +389,7 @@ See [Extending classes](general-concepts.md#extending-classes) and [Type hinting
 
 Click save to save the Class extension. Now we can add some code. The particular method we need to extend is a protected function called `saveTypeData`. When extending any existing method in any class, it is important to inspect the original method for a couple of reasons. The first being we want to make sure the arguments we use in the extended method, match that of the method we're extending. The second being that we need to know what this method actually does. For example, should the method be returning something of a particular type, or a certain object? This is certainly the case in most controller actions as we mentioned in the [Modifying a controller action reply (properly)](controller-basics.md#modifying-a-controller-action-reply-properly) section. However, although this method is within a controller, it isn't actually a controller action itself. In fact, this particular method is a "void" method; it isn't expected to return anything. However, we should always ensure we call the parent method in our extended method so let's just add the new method itself, without the new code we need to add:
 
-```php title="src/addons/Demo/Portal/XF/Admin/Controller/Forum.php"
+```php title="src/addons/Demo/Portal/XF/Admin/Controller/ForumController.php"
 protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Entity\AbstractNode $data)
 {
 	parent::saveTypeData($form, $node, $data);
@@ -403,7 +403,7 @@ This particular method's argument list assumes that we have a `use` declaration 
 
 So, right now, we've extended that method, and our extension should be called, but right now it isn't doing anything other than calling its parent method. We now need to get the value of the input from the forum edit page and apply that to the `$data` entity (which in this case is the Forum entity).
 
-```php title="src/addons/Demo/Portal/XF/Admin/Controller/Forum.php"
+```php title="src/addons/Demo/Portal/XF/Admin/Controller/ForumController.php"
 protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Entity\AbstractNode $data)
 {
 	parent::saveTypeData($form, $node, $data);
@@ -425,27 +425,27 @@ We've added a new column to the forum entity which will allow us to automaticall
 
 In XenForo, we make heavy use of Service objects. These typically take a "setup and go" type approach; you setup your configuration and then call a method to complete the action. We use a service object to setup and perform the thread creation, so this is a perfect place to add the code we need. It all starts with another class extension, so go to the "Add class extension" page.
 
-This time, the base class will be `XF\Service\Thread\Creator` and the extension class will be `Demo\Portal\XF\Service\Thread\Creator` and, as usual, this new class will look something like the code below. Create that code in the path `src/addons/Demo/Portal/XF/Service/Thread/Creator.php` then click "Save" to create the extension.
+This time, the base class will be `XF\Service\Thread\CreatorService` and the extension class will be `Demo\Portal\XF\Service\Thread\CreatorService` and, as usual, this new class will look something like the code below. Create that code in the path `src/addons/Demo/Portal/XF/Service/Thread/CreatorService.php` then click "Save" to create the extension.
 
-```php title="src/addons/Demo/Portal/XF/Service/Thread/Creator.php"
+```php title="src/addons/Demo/Portal/XF/Service/Thread/CreatorService.php"
 <?php
 
 namespace Demo\Portal\XF\Service\Thread;
 
-class Creator extends XFCP_Creator
+class CreatorService extends XFCP_CreatorService
 {
 
 }
 ```
 
-While we're here we will also create another extension. The base will be `XF\Pub\Controller\Forum` and the extension class will be `Demo\Portal\XF\Pub\Controller\Forum`. Creating the following code in the path `src/addons/Demo/Portal/XF/Pub/Controller/Forum.php` and click "Save":
+While we're here we will also create another extension. The base will be `XF\Pub\Controller\ForumController` and the extension class will be `Demo\Portal\XF\Pub\Controller\ForumController`. Creating the following code in the path `src/addons/Demo/Portal/XF/Pub/Controller/ForumController.php` and click "Save":
 
-```php title="src/addons/Demo/Portal/XF/Pub/Controller/Forum.php"
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/ForumController.php"
 <?php
 
 namespace Demo\Portal\XF\Pub\Controller;
 
-class Forum extends XFCP_Forum
+class ForumController extends XFCP_ForumController
 {
 
 }
@@ -453,7 +453,7 @@ class Forum extends XFCP_Forum
 
 We're ultimately going to extend the `_save()` method in our extended thread creator object so we can feature our thread after it has been created. To fit in with the "setup and go" approach, we will create a method which can be used to indicate whether the thread should be created as featured, or not. For this, we need two things; a class property to store the value (it defaults to null) and a public method to allow that property to be set.
 
-```php title="src/addons/Demo/Portal/XF/Service/Thread/Creator.php"
+```php title="src/addons/Demo/Portal/XF/Service/Thread/CreatorService.php"
 protected $featureThread;
 
 public function setFeatureThread($featureThread)
@@ -464,10 +464,10 @@ public function setFeatureThread($featureThread)
 
 Going back to our newly extended forum controller, we will now extend the method that sets up the creator service, and opt in to featuring if the forum entity has the necessary value set. Remember, before extending a method, we need to know what it is expected to return (if anything), and ensure we call the parent method. If the parent method does return something, then it is this which we should return after our code has finished. The `setupThreadCreate()` method in this case returns the set up creator service, so we will start this off as follows:
 
-```php title="src/addons/Demo/Portal/XF/Pub/Controller/Forum.php"
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/ForumController.php"
 protected function setupThreadCreate(\XF\Entity\Forum $forum)
 {
-    /** @var \Demo\Portal\XF\Service\Thread\Creator $creator */
+    /** @var \Demo\Portal\XF\Service\Thread\CreatorService $creator */
 	$creator = parent::setupThreadCreate($forum);
 
 	return $creator;
@@ -478,7 +478,7 @@ As expected, this doesn't actually do anything; the extended code is called, but
 
 In between the `$creator` line and the `return` line, add:
 
-```php title="src/addons/Demo/Portal/XF/Pub/Controller/Forum.php"
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/ForumController.php"
 if ($forum->demo_portal_auto_feature)
 {
 	$creator->setFeatureThread(true);
@@ -487,7 +487,7 @@ if ($forum->demo_portal_auto_feature)
 
 We can now add the `_save()` method to the extended creator class:
 
-```php title="src/addons/Demo/Portal/XF/Service/Thread/Creator.php"
+```php title="src/addons/Demo/Portal/XF/Service/Thread/CreatorService.php"
 protected function _save()
 {
 	$thread = parent::_save();
@@ -498,7 +498,7 @@ protected function _save()
 
 To make sure this thread gets featured, in between the `$thread` line and the `return` line we just need to add:
 
-```php title="src/addons/Demo/Portal/XF/Service/Thread/Creator.php"
+```php title="src/addons/Demo/Portal/XF/Service/Thread/CreatorService.php"
 if ($this->featureThread && $thread->discussion_state == 'visible')
 {
     /** @var \Demo\Portal\Entity\FeaturedThread $featuredThread */
@@ -599,8 +599,9 @@ This doesn't return the results of this query. This returns the finder object it
 Let's now use that in our `actionIndex()` method inside our portal controller. Change the existing `$viewParams = [];` line to the following:
 
 ```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
-/** @var \Demo\Portal\Repository\FeaturedThread $repo */
-$repo = $this->repository('Demo\Portal:FeaturedThread');
+use Demo\Portal\Repository\FeaturedThread;
+
+$repo = $this->repository(FeaturedThread::class);
 
 $finder = $repo->findFeaturedThreadsForPortalView();
 
@@ -769,16 +770,16 @@ Ok, so, we haven't exactly done much here of value, yet. All the `canFeatureUnfe
 
 To test this works so far, open one of the threads you previously featured, and select "Edit thread" from the tools menu. We should see the "Set thread status" checkbox row has the "Featured" checkbox we added, and it should be checked, indicating that this thread is indeed featured.
 
-We can now move on to changing the thread editor service to look for this value and feature or unfeature accordingly. We are going to need two new class extensions for this. Go back to the "Add class extensions" page. The first one will have a base class of `XF\Pub\Controller\Thread` and extension class of `Demo\Portal\XF\Pub\Controller\Thread`. The second one will have a base class of `XF\Service\Thread\Editor` and an extension class of `Demo\Portal\XF\Service\Thread\Editor`.
+We can now move on to changing the thread editor service to look for this value and feature or unfeature accordingly. We are going to need two new class extensions for this. Go back to the "Add class extensions" page. The first one will have a base class of `XF\Pub\Controller\ThreadController` and extension class of `Demo\Portal\XF\Pub\Controller\ThreadController`. The second one will have a base class of `XF\Service\Thread\EditorService` and an extension class of `Demo\Portal\XF\Service\Thread\EditorService`.
 
 The editor service is actually going to be very similar to the extended creator service we created earlier, so create that in the relevant location. Here is all of the code for the extended class:
 
-```php title="src/addons/Demo/Portal/XF/Service/Thread/Editor.php"
+```php title="src/addons/Demo/Portal/XF/Service/Thread/EditorService.php"
 <?php
 
 namespace Demo\Portal\XF\Service\Thread;
 
-class Editor extends XFCP_Editor
+class EditorService extends XFCP_EditorService
 {
 	protected $featureThread;
 
@@ -825,16 +826,16 @@ In the case of unfeaturing, we actually just delete the featured thread entity b
 
 Before we finish the process of editing, we need to add code to our extended thread controller, and specifically extend the `setupThreadEdit()` method. The entire extended thread controller code will look like this:
 
-```php title="src/addons/Demo/Portal/XF/Pub/Controller/Thread.php"
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/ThreadController.php"
 <?php
 
 namespace Demo\Portal\XF\Pub\Controller;
 
-class Thread extends XFCP_Thread
+class ThreadController extends XFCP_ThreadController
 {
 	public function setupThreadEdit(\XF\Entity\Thread $thread)
 	{
-		/** @var \Demo\Portal\XF\Service\Thread\Editor $editor */
+		/** @var \Demo\Portal\XF\Service\Thread\EditorService $editor */
 		$editor = parent::setupThreadEdit($thread);
 
 		$canFeatureUnfeature = $thread->canFeatureUnfeature();
@@ -854,8 +855,8 @@ We need to extend another method in the thread controller to handle a situation 
 
 We just need to add the following code below the `setupThreadEdit()` method we added above:
 
-```php title="src/addons/Demo/Portal/XF/Pub/Controller/Thread.php"
-public function finalizeThreadReply(\XF\Service\Thread\Replier $replier)
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/ThreadController.php"
+public function finalizeThreadReply(\XF\Service\Thread\ReplierService $replier)
 {
 	parent::finalizeThreadReply($replier);
 
@@ -876,7 +877,7 @@ Note that we haven't actually returned anything in this method because it isn't 
 
 For the final step in manually featuring/unfeaturing a thread, we need to go back to the forum controller and slightly change our existing code so that if featuring isn't automatic, we can handle it manually, instead. This should be fairly straight forward. Head into your extended forum controller, and replace this:
 
-```php title="src/addons/Demo/Portal/XF/Pub/Controller/Thread.php"
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/ThreadController.php"
 if ($forum->demo_portal_auto_feature)
 {
 	$creator->setFeatureThread(true);
@@ -885,7 +886,7 @@ if ($forum->demo_portal_auto_feature)
 
 With this:
 
-```php title="src/addons/Demo/Portal/XF/Pub/Controller/Thread.php"
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/ThreadController.php"
 if ($forum->demo_portal_auto_feature)
 {
 	$creator->setFeatureThread(true);
@@ -1061,11 +1062,12 @@ You may have spotted earlier in the demo_portal_view template that each post we 
 Right now, this is going to generate an additional query for each post. So, we should instead try to do a single query for all of the posts we are displaying and add them to the posts in advance. It probably sounds more complicated than it is. Just add the below code beneath the `->slice(0, $perPage, true);` line.
 
 ```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
+use XF\Repository\AttachmentRepository;
+
 $threads = $featuredThreads->pluckNamed('Thread');
 $posts = $threads->pluckNamed('FirstPost', 'first_post_id');
 
-/** @var \XF\Repository\AttachmentRepository $attachRepo */
-$attachRepo = $this->repository('XF:Attachment');
+$attachRepo = $this->repository(AttachmentRepository::class);
 $attachRepo->addAttachmentsToContent($posts, 'post');
 ```
 
