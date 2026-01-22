@@ -1,7 +1,7 @@
 # Welcome to XenForo 2!
 
 This documentation aims to get you started with XenForo 2.0 development. Pre-requisites for this documentation assume you
-will be familiar with, amongst other things, PHP and MySQL. It is not essential to have experience with a previous
+will be familiar with, amongst other things, PHP and MySQL or MariaDB. It is not essential to have experience with a previous
 version of XenForo, but it would be an advantage.
 
 On the subsequent pages we will walk you through a brief overview of how to setup a local server, getting ready for
@@ -38,7 +38,7 @@ accept the license agreement. Finally, click the Download button to download the
 The requirements for running XF 2.0 have changed since XF 1.5. The recommended requirements are as follows:
 
 - PHP: 5.4.0+
-- MySQL: 5.5+
+- MySQL: 5.5+ or MariaDB: 5.5+
 - PHP extensions: MySQLi, GD (with JPEG support), PCRE, SPL, SimpleXML, DOM, JSON, iconv, ctype, cURL
 
 [Download the requirements test script.](https://xenforo.com/purchase/requirements-zip)
@@ -47,7 +47,7 @@ The requirements for running XF 2.0 have changed since XF 1.5. The recommended r
 
 It's often more convenient to set up a local web server for development. There are generally two approaches for this:
 
-1. Install Apache (or nginx), MySQL (or MariaDB) and PHP yourself.
+1. Install Apache (or nginx), MySQL or MariaDB, and PHP yourself.
 1. Install a pre-built virtual machine
 1. Install a pre-built stack.
 
@@ -63,8 +63,8 @@ Luckily, we have created some walkthroughs on how to setup a local dev environme
 
 There are many pre-built stacks out there and they may vary in feature set, performance and reliability. Bitnami maintain a number of stacks, including [LAMP](https://bitnami.com/stack/lamp),
 [MAMP](https://bitnami.com/stack/mamp) and [WAMP](https://bitnami.com/stack/wamp) stacks for use on Linux, Mac and
-Windows respectively. They all include a fully configured installation of Apache, MySQL and PHP and include PhpMyAdmin for
-managing MySQL.
+Windows respectively. They all include a fully configured installation of Apache, MySQL or MariaDB and PHP and include PhpMyAdmin for
+managing MySQL or MariaDB.
 
 ## Uploading
 
@@ -77,7 +77,7 @@ that directory and upload the files and directories to your server's web root. T
 
 ## Creating `src/config.php`
 
-If using the CLI to install XF 2.0, you will need to create the config.php file manually. To do this, enter the `src` directory within the XF 2.0 files you uploaded to your server. Create a new file named config.php and populate it with the host, port, username, password and database name for your MySQL server.
+If using the CLI to install XF 2.0, you will need to create the config.php file manually. To do this, enter the `src` directory within the XF 2.0 files you uploaded to your server. Create a new file named config.php and populate it with the host, port, username, password and database name for your MySQL or MariaDB server.
 
 !!! note
 	Make sure you create the config file in within the `src` directory. The `library` directory is only used for legacy purposes.
@@ -96,7 +96,7 @@ $config['db']['dbname'] = 'xf2';
 
 You're now ready to install!
 
-If you are using MySQL 5.5 and above and you wish to have full unicode support (for things like emoji) you should also add the following before install:
+If you are using MySQL 5.5 or MariaDB 5.5 and above and you wish to have full unicode support (for things like emoji) you should also add the following before install:
 
 ```php title="src/config.php"
 $config['fullUnicode'] = true;
