@@ -9,3 +9,25 @@
         <title>{{ config.site_name }} | XenForo</title>
     {% endif %}
 {% endblock %}
+
+{% block content %}
+    {% if page %}
+        {% if page.meta.verified_version %}
+            <div class="admonition success">
+                <p class="admonition-title">Documentation status</p>
+                <p>Verified against <strong>v{{ page.meta.verified_version }}</strong><br>
+                {% if page.meta.verified_date %}
+                    Last reviewed: {{ page.meta.verified_date }}
+                {% endif %}
+                </p>
+            </div>
+        {% else %}
+            <div class="admonition warning">
+                <p class="admonition-title">Documentation status</p>
+                <p>This page has not yet been verified against a specific version.</p>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {{ super() }}
+{% endblock %}
