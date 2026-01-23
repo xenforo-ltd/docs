@@ -13,6 +13,7 @@ nav:
       - Add-on structure: add-on-structure.md
       - Development tools: development-tools.md
       - General concepts: general-concepts.md
+      - Template basics: template-basics.md
       - Routing basics: routing-basics.md
       - Controller basics: controller-basics.md
       - Entities, finders, and repositories: entities-finders-repositories.md
