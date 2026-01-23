@@ -18,7 +18,9 @@ nav:
       - Entities, finders, and repositories: entities-finders-repositories.md
       - Criteria: criteria.md
       - Managing the schema: managing-the-schema.md
-      - Let's build an add-on: lets-build-an-add-on.md
+      - Addon Examples:
+        - Demo/Portal add-on: lets-build-an-add-on.md
+        - Demo/ToolTip add-on: demo-tooltip-addon.md
   - Designers:
       - Designing styles: designing-styles.md
       - Template syntax: template-syntax.md
