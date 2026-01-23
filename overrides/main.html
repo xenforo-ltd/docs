@@ -15,9 +15,9 @@
         {% if page.meta and page.meta.verified_version %}
             <div class="admonition success">
                 <p class="admonition-title">Documentation status</p>
-                <p>Verified against <strong>v{{ page.meta.verified_version }}</strong><br>
+                <p>Verified against <strong>v{{ page.meta.verified_version }}</strong>
                 {% if page.meta.verified_date %}
-                    Last reviewed: {{ page.meta.verified_date }}
+                    <br>Last reviewed: {{ page.meta.verified_date }}
                 {% endif %}
                 </p>
             </div>
