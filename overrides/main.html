@@ -12,7 +12,7 @@
 
 {% block content %}
     {% if page %}
-        {% if page.meta.verified_version %}
+        {% if page.meta and page.meta.verified_version %}
             <div class="admonition success">
                 <p class="admonition-title">Documentation status</p>
                 <p>Verified against <strong>v{{ page.meta.verified_version }}</strong><br>
