@@ -44,7 +44,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           routeBasePath: '/',
-          editUrl: 'https://github.com/xenforo-ltd/docs/edit/main/docs/',
+          editUrl: 'https://github.com/xenforo-ltd/docs/edit/main/',
         },
         blog: false,
         theme: {
