@@ -28,4 +28,4 @@ A mixed type forum is essentially a regular discussion forum that can also host 
 
 To create a mixed-type forum, create or edit a regular discussion forum in the **Admin control panel** through the **Node editor**, and check the thread types you want to allow in the *Allowed thread types* section.
 
-Some thread types may not be contained in a mixed-type forum at all, [suggestions](suggestions.md#suggestions) being one of those types.
+Some thread types may not be contained in a mixed-type forum at all, [suggestions](suggestions.md) being one of those types.

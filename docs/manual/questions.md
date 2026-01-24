@@ -8,7 +8,7 @@ When a thread author is seeking an answer to a specific question they may post a
 
 Replies to the thread are considered to be answers to the question, any of which may be a possible [solution](questions.md#solutions).
 
-Users with permission to vote on threads and posts may [cast a vote](content-voting.md#content-voting) on each answer, which may help other users to determine which answer should be the [solution](questions.md#solutions).
+Users with permission to vote on threads and posts may [cast a vote](content-voting.md) on each answer, which may help other users to determine which answer should be the [solution](questions.md#solutions).
 
 #### Solutions
 

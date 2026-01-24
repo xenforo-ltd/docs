@@ -251,7 +251,7 @@ The name of the PHP class that is used to connect to your database. If you use a
 
 ### HTTP client settings
 
-These settings control the behavior of the internal XenForo HTTP client, which is used to fetch resources from across the internet, such as images and web pages when using the [Image and link proxy](proxy.md#image-and-link-proxy).
+These settings control the behavior of the internal XenForo HTTP client, which is used to fetch resources from across the internet, such as images and web pages when using the [Image and link proxy](proxy.md).
 
 - `$config['http']['sslVerify']` = `null`;
 - `$config['http']['proxy']` = `null`;

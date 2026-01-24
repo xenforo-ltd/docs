@@ -6,7 +6,7 @@ Suggestions are one of XenForo's [forum and thread types](forum-thread-types.md)
 
 Suggestion threads are useful when you want to solicit feedback from your community in a structured fashion.
 
-The first post of a suggestion thread is considered to be the suggestion, and controls are available to allow users with appropriate permissions to [vote the suggestion up or down](content-voting.md#content-voting) depending upon how they feel about it.
+The first post of a suggestion thread is considered to be the suggestion, and controls are available to allow users with appropriate permissions to [vote the suggestion up or down](content-voting.md) depending upon how they feel about it.
 
 The [vote score](content-voting.md#vote-score) for a suggestion will determine its position within its parent forum, with suggestions having a higher vote score appearing further up the list than those with a lower vote score.
 
