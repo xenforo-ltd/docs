@@ -1089,7 +1089,7 @@ We currently display only 5 featured threads per page, but it would be nice to h
 
 In the Admin CP under Setup then Options click the "Add option group" button. We'll just call the "Group ID" `demoPortal` and give it a title of "Demo - Portal options". Give it an appropriate ̀"Description" and "Display order" and click "Save".
 
-Now click "Add option". Set the "Option ID" to `demoPortalFeaturedPerPage`, "Title" to `Featured threads per page`, edit format to `Spin box`, "Data type" to `Positive integer` and "Default value" to `10`. Click "Save".
+Now click "Add option". Set the "Option ID" to `demoPortalFeaturedPerPage`, "Title" to `Featured threads per page`, edit format to `Number box`, "Data type" to `Positive integer` and "Default value" to `10`. Click "Save".
 
 To implement that, go back to the portal controller and change:
 
