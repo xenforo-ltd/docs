@@ -1059,7 +1059,7 @@ You may have spotted earlier in the demo_portal_view template that each post we 
 'attachments': $post.attach_count ? $post.Attachments : [],
 ```
 
-Right now, this is going to generate an additional query for each post. So, we should instead try to do a single query for all of the posts we are displaying and add them to the posts in advance. It probably sounds more complicated than it is. Just add the below code beneath the `->slice(0, $perPage, true);` line.
+Right now, this is going to generate an additional query for each post. So, we should instead try to do a single query for all of the posts we are displaying and add them to the posts in advance. It probably sounds more complicated than it is. Just add the below code beneath the `->sliceToPage($page, $perPage);` line.
 
 ```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 use XF\Repository\AttachmentRepository;
