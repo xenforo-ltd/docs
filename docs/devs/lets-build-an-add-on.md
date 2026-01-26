@@ -1073,7 +1073,7 @@ $attachRepo->addAttachmentsToContent($posts, 'post');
 
 We use the `pluckNamed()` method first to get a collection of threads, then again to get a collection of the posts (keyed by the post ID) from the threads. Once we have the posts, we can just pass them into a special method in the attachment repo, which performs a single query and "hydrates" the Attachments relation for each post.
 
-The final permission related thing to finish up is to create a new permission to control who can feature / unfeature threads manually. To do this, in the Admin CP under "Development" click "Permission definitions" and click "Add permission". The "Permission group" will be "forum", "Permission ID" will be `demoPortalFeature`, "Title" should be `Can feature / unfeature threads`, set "Interface group" to `Forum moderator permissions` and after choosing an appropriate display order and ensuring your add-on is selected, click "Save".
+The final permission related thing to finish up is to create a new permission to control who can feature / unfeature threads manually. To do this, in the Admin CP under "Development" click "Permission definitions" and click "Add permission". The "Permission group" will be `forum`, "Permission ID" will be `demoPortalFeature`, "Title" should be `Can feature / unfeature threads`, set "Interface group" to `Forum moderator permissions` and after choosing an appropriate display order and ensuring your add-on is selected, click "Save".
 
 To actually use this permission, we need to go back to our extended thread entity to modify the `canFeatureUnfeature()` method. Replace `return true;` with:
 
