@@ -877,7 +877,7 @@ Note that we haven't actually returned anything in this method because it isn't 
 
 For the final step in manually featuring/unfeaturing a thread, we need to go back to the forum controller and slightly change our existing code so that if featuring isn't automatic, we can handle it manually, instead. This should be fairly straight forward. Head into your extended forum controller, and replace this:
 
-```php title="src/addons/Demo/Portal/XF/Pub/Controller/ThreadController.php"
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/ForumController.php"
 if ($forum->demo_portal_auto_feature)
 {
 	$creator->setFeatureThread(true);
@@ -886,7 +886,7 @@ if ($forum->demo_portal_auto_feature)
 
 With this:
 
-```php title="src/addons/Demo/Portal/XF/Pub/Controller/ThreadController.php"
+```php title="src/addons/Demo/Portal/XF/Pub/Controller/ForumController.php"
 if ($forum->demo_portal_auto_feature)
 {
 	$creator->setFeatureThread(true);
