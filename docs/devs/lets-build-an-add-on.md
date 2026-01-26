@@ -706,7 +706,7 @@ public static function homePageUrl(&$homePageUrl, \XF\Mvc\Router $router)
 }
 ```
 
-Finally, we should consider changing the index page route to our portal page. Go to Admin CP and under Setup click Options followed by "Basic board information". Change the "Index page route" option to `portal/`.
+Finally, we should consider changing the index page route to our portal page. Go to Admin CP and under Setup click Options followed by "Basic options". Change the "Index page route" option to `portal/`.
 
 While you're in the Admin CP, let's see what happens now when you click on the Board title in the header. This should take you to your index page. All being well, that index page should now be your portal! In addition to that, the Home tab should be visible, and selected.
 
