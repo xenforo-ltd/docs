@@ -138,6 +138,33 @@ const config: Config = {
       apiKey: '80cdb7d3922b3717ceec76c4d13ca2d6',
       indexName: 'Docs',
     },
+    languageTabs: [
+      {
+        highlight: "bash",
+        language: "curl",
+        logoClass: "curl",
+      },
+      {
+        highlight: "php",
+        language: "php",
+        logoClass: "php",
+      },
+      {
+        highlight: "javascript",
+        language: "javascript",
+        logoClass: "javascript",
+      },
+      {
+        highlight: "go",
+        language: "go",
+        logoClass: "go",
+      },
+      {
+        highlight: "python",
+        language: "python",
+        logoClass: "python",
+      }
+    ],
   } satisfies Preset.ThemeConfig,
 };
 
