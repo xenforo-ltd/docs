@@ -1,0 +1,48 @@
+---
+id: post-attachments
+title: "Uploads an attachment"
+description: "Uploads an attachment. An API attachment key must be created first. Must be submitted using multipart/form-data encoding."
+sidebar_label: "Uploads an attachment"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVttu4zYQ/RWCTy3gS1r0yW9uuwsEi6LBxgEWcAMtJY4t7kqkSo7ipIb+vTOUbDGJjHSBAgXqF9uc+5mZQx6la8ArNM5ea7mSjQuYKURVlDVYDJmcSVT7IFdbuR6P5f1MagiFNw2bkuFdUzmlg1BWjOYLsbZifXOdHImv8CTqNqDIQRQeFIIWO+MDKf82HIc2rw2yoA3G7km9QtMoj8ud8/VcK1QCbOE0CReUoIc/Wwj4s9NPcnWUhbNIkfinaprKFLG85eP8cDjMo4fWV9EeNCuFooRa8S98aoBqcfkXKJAcN57RQQOBpZR5ohTQU3j5EodNCVMVoxMqBFeYWO/BYCm7mRyV/pnjxOnOVCC7ri/eeK5kGzN85vWeNVIQvgR29n+vudcJjbOhL+PHqyv+eu79ti0KCGHXVuKkTJ4uTM+3AjdZ5gVdrsuqGl4DQnWwMAvmr1RqKMU9eBaXYPYlTssORhPmkyIs2zq3ylQZ7cJkXA9orMreVtTUiQIvik3IHowGlwhz5ypQdpCqVpsL0hHEzOjpQoZ2Zb1kIv5J4ZKDPkZGpHIB4QcDh6xwrZ1EmbE0WPHZyI9vDTIB5rwWbiewZLo7z2EbWVR2XT/DP02N7Y0LweQVCPDe+bD6w87F5wQpWoisDeCzg3d2/3klNt7sKVfaQdMHZKmo1VfmVv4/8KfQDoKwDkmGRTmqYqnwzNX4vBSKtvj3tqYvKdFT3iveb4NQh7ftmdMnp6AmgNV+WkY3i5p2rrQ2XIeqbpIw6Fvozh/2jaU7XZ6ckuKtk8vkGl3SMSH5AFzc9ijjspBGY16Nyiew7513kVDB6sbRqMnunu2L1ht8ig4+vZ+vGzP/wPS8vU/Ftwx1j0aqNCLamA+RMg1HK0FpGuOZ7PknNXmZGCfEtE43qFAtjYHFoc0M4mB4R1V+a7Bo8+o9wYN3/Wu8RAqki0R8N7B+oIWhXvSjOST1fVxEnraP41vg3aOqmwrO19h4y6TknFKV3fVENCx00goy4ub1uf2wuFpcXWzcx3e3m5iXdkXLMc4Y8XzUKi7EgMDkq+ml5+RF858+s4aeIjzisqmUiTUNtN/P/DZBNpAFPxNLXgqSHI+5CnDnq67jY+qSj7NLwCpvVM6I0yTPTlPCU9637Ze++vmG47N61faz9dbbrpudXKyJYRu8YBxJilfovMg3v99uSDkfHpR1ZBWZeJ6lfzjtrvsbznnzNg==
+sidebar_class_name: "post api-method"
+info_path: api/xenforo-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Uploads an attachment"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/attachments/"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+Uploads an attachment. An API attachment key must be created first. Must be submitted using multipart/form-data encoding.
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"attachment":{"type":"object","properties":{"filename":{"type":"string"},"file_size":{"type":"integer"},"height":{"type":"integer"},"width":{"type":"integer"},"thumbnail_url":{"type":"string"},"retina_thumbnail_url":{"type":"string"},"direct_url":{"type":"string"},"is_video":{"type":"boolean"},"is_audio":{"type":"boolean"},"attachment_id":{"type":"integer"},"content_type":{"type":"string"},"content_id":{"type":"integer"},"attach_date":{"type":"integer"},"view_count":{"type":"integer"}},"title":"Attachment","description":"The attachment record of the successful upload"}}}}}},"400":{"description":"Possible errors:\n- `attachment_key_user_wrong`: Triggered if the user making the request does not match the user that created the attachment key.","content":{"application/json":{"schema":{"type":"object","properties":{"errors":{"type":"array","items":{"type":"object","properties":{"code":{"type":"string"},"message":{"type":"string"},"params":{"type":"object","additionalProperties":true}}}}}}}}}}}
+>
+  
+</StatusCodes>
+
+      

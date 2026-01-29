@@ -1,24 +1,20 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
 const config: Config = {
   title: 'Documentation',
   tagline: 'Documentation for XenForo',
   favicon: 'img/favicon.png',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
-  future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
-  },
-
   url: 'https://xenforo.com',
   baseUrl: '/docs/',
 
   organizationName: 'xenforo-ltd',
   projectName: 'docs',
+  deploymentBranch: 'main',
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'warn',
@@ -45,6 +41,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           routeBasePath: '/',
           editUrl: 'https://github.com/xenforo-ltd/docs/edit/main/',
+          docItemComponent: "@theme/ApiItem",
         },
         blog: false,
         theme: {
@@ -59,6 +56,30 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+
+  plugins: [
+    'docusaurus-markdown-source-plugin',
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "api",
+        docsPluginId: "classic",
+        config: {
+          xenforo: {
+            specPath: "static/api/openapi.json",
+            outputDir: "docs/api",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+            hideSendButton: false
+          } satisfies OpenApiPlugin.Options,
+        },
+      },
+    ],
+  ],
+
+  themes: ["docusaurus-theme-openapi-docs"],
 
   themeConfig: {
     image: 'img/xenforo-social-card.jpg',
@@ -84,6 +105,12 @@ const config: Config = {
           sidebarId: 'developersSidebar',
           position: 'left',
           label: 'Developers',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'apiSidebar',
+          position: 'left',
+          label: 'API',
         },
         {
           href: 'https://xenforo.com/community',

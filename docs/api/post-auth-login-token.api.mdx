@@ -1,0 +1,48 @@
+---
+id: post-auth-login-token
+title: "Generates a token that can automatically log into a specific XenForo user when the login URL is visited"
+description: "Generates a token that can automatically log into a specific XenForo user when the login URL is visited. If the visitor is already logged into a XenForo account, they will not be logged into the specified account. Only available to super user keys."
+sidebar_label: "Generates a token that can automatically log into a specific XenForo user when the login URL is visited"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV01v2zgQ/SsEL9sFZMfdY27eTbswtkCDfAAF0sCgyZHNmiK1JOUPBPrvO0NKtuw02/bSQ9tcIomc4ZuZ94bjJ+5q8CJqZ2eKX/LahTgXTVzNjVtqO49uDZYXPIpl4JcPfIpL/LHgCoL0uiY7tPobLDmBwARLFiyuRGRSWIa+XIX+pTBmz9Ap0zY63BdqkLrUkn0A+9Z5x5oAnm1XyRhYOp7d37xjOrCNDjqCGrNZmRbTu/O0JIwHoZLnJajeee9TSOkaGwuy2rOtNoZZF9kCTvaTyw4Ofupsxuy9RcRiI7QRCwMYGAsNJisDXcM+jDExHv5tIMQ/ndrzyycunY1gIz2KujYYNqXoYjfabrej0vlq1HgDVjoFijYFuYJK0FPc14CpdItPICM6rj1VJmoItEpnzrUabETksATP24IbXek41/VgNUSv7ZKfFwrzh343Gk8vMAVyHVLwXc3OMzG7ZgiZCaU02QvDAsjG67inUz3Exts5xvON54oyYgKpALg1HZlLT9XBymS/eHzCgyVGEmAxcJ/f6gCplL/h1qXrEffV1lbBbkzYELaEAayFcwaE/X9cp7RLcMiPXiANPNRGyHQ4wxR4rLEZkC5HoEukXn76DDGZsIopXZZA1j32l5yN2RWUojEx0M5SmADjnPUKqgXW/cvB/YVc9M4EEhVlL50n2MeDD1bBR86kc2sNh/QHiEcVpmAQWEBYp4iibwhQmxWgPdH54UDTR1oYCuBTIEi/+P6L7z8q3/NSqJ0NmcJ/TCb07xTjbSMlhFA2hvWbMY4Xbo1vFc3wyn5GUdJNWv8qAl9hhDLmfAx4mTOhsXAok0wecgy7Wvv9XOEI8BnFnvu+t3rHoq7w2hRVzVx5zH8WZnIHYcym+Oy9O2pF6YC83BNtyoEBgss2itFUYDfCYFHa/FfwCung+umGsiZwiLnkFzTnXKQgRv2cg/FuwNOogz2IEoW7av0shF6B0+sZA6tqh7Hy9pHsu4ZBDj68HU1rPfoH6PVxuHxLFc1FG246pA7PpA8F5hDfViislEcrKlodmJwDI0A4muQ+huEhqzo2UZ06w/twoqevOizZPKsk0WN2RawQyBYR2KtOHWE4K3Wgfk/yIVLfHIemNzvkgIGTnj8ZtvgjQ4cN+Pi1a32kz2G3oPeWQipdClVHA6eFQ1sqdY7k9XgynrxY5ps3t3cpCuVkU2FODxklRlUiya3L13eahc+xDkbPn3kc7ygdYRcvsFPk9tR1vCz7B0664F037ISP0lxRb8DVp6eFCHDvTdvSZySqT/JFtgiv6egk5qIXCgl9TeJN9w8WYHRHGGi7abK8vvQ7oC16F1O8Her4gnG6DqiLHPrZ9fvbO9y86H58VOgNvw48F8MXgt22/wGS5uYb
+sidebar_class_name: "post api-method"
+info_path: api/xenforo-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Generates a token that can automatically log into a specific XenForo user when the login URL is visited"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/auth/login-token"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+Generates a token that can automatically log into a specific XenForo user when the login URL is visited. If the visitor is already logged into a XenForo account, they will not be logged into the specified account. Only available to super user keys.
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"login_token":{"type":"string"},"login_url":{"type":"string","description":"Direct user to this URL to trigger a login"},"expiry_date":{"type":"integer","description":"Unix timestamp of when the token expires. An error will be displayed if the token is expired or invalid"}}}}}}}}
+>
+  
+</StatusCodes>
+
+      

@@ -1,0 +1,48 @@
+---
+id: get-users
+title: "Gets a list of users (alphabetically)"
+description: "Gets a list of users (alphabetically)"
+sidebar_label: "Gets a list of users (alphabetically)"
+hide_title: true
+hide_table_of_contents: true
+api: eJytV19v2zYQ/yqEXtYCrpPtMXsKlrYItmFDk2AFgkKgpJPFliIVkrKrGvnuvTvKiWKLnocuD0lE3n/e/e5um9kOnAzKmusqu8hWEPLeg/N5tsiCXPns4j67o4Ps0yKrwJdOdUSNtO8heCGFVj4IWwtmE6+k7hpZQFCl1Hp4jWI66WQLgWRc3G8zgx/I3ckV4KUiSQ89uAE/fNlAK7OLbRaGjoiUCbAClz0+onYHvrPGgyeCX87P6c9Li276sgTv616LHTFKLS1KMYHIZddpNIzIzz574tkeKrXFZygDGe4oOEFFjezfhEw6J8loFaD1c+wvbbs2tXUtqxaysH0QoQEO2lJcqboGhzYKNaHaKK1FAXhW6r6CShTS42+8Qata5T0S4QOYSqzBFdarMCwPrGZVE+t8cMqsssdFJsug1siTr5VXhYYJUWGtBmmYagUz77Hv3O3oyk9elL1jT5BxKf4yeni2X9VCrqXSErUtWbhGQ3PbhZc27kX2/hOTarvJO+tDjg7W6oW9E6eYzEEJag25gY3Pa4DqCK0HU+UYMMwGqXPMFQyml9GvJNNawSZXFfqpdoE+RnnU4rUM0uW90yck0Z+y86J2thVefQNBxF4EK+4+/MEBHRXlhTQG/i+hpTQkcD4/6HIMWiKDiAIqFdK3taVQpe/Vylh3RHoiK/aoEi9xhIoF+zTtRrpUVCLk5L6hDEP7ZeiTHjjgdENxoWxyH2SYz5Sy98G2ea1AV6c9K8Fy5BLMJb7AMCKG1D345UQsZvJchu5L/YdAqZFrQORnIVzVOy0sBK894hYY4TsoVR07gfAQfhWdA0Q6xoqoEdHBB5AVm1LZ4t/9usL4kGOFcqFBkMRfA0i3EC0GvWHvKjmwqywUwV3p2YDyTW5Nquonj7RysU5n5RAqOoLT5CNOJCmfy6pVCT14y7VbJa8r5UvbO4TXNE0sqFmCA+R28QmpGVEjCNYJhXDAEtA/vMDP2KYO0HzCYCxCvlhhUoXlaEUs2x8wggX8mA2trWi8sS4ZK98j+B97Ei0RXXbN8oReeGfUVyyEFq2QbbebjLAzkiCxE7Q47Ibalum+0/W+OS1VI+UpPXXXJtn5fL9OJiI9oNpKuiFfOdt32PmODEIsmoEPyzmvkoXwRELVmyCZQc7nkFCMv1kzf4kxz0Mt5+Uy/OxcmRs3R5I0Fj8D2Oz10ZGK2gbSYXdBff6EjPptHKlGRhEZOWc2UGD6p4zAVoYjQNqBY87HMX2GExPbI/pgJvYmzPM/UAkSGnqre/7nCLGDFW4QaM1eqkxIAo60zZAO2FjJQdb1fMixxUZ4Rux0CSVrGyB9z/nGz83rEB/gCqNMqmTjD4UrNHZcrXgZCg1+nPE2cUY7D7j1bjXix8rOZKcOcuAjmHfWWXH597XAiZVDkdFWhLXZO0YmFPDx3ZvLTr35HQauw8n1DW05cVKdEj0XcafoYFzIGuzInIjjsjZh2TeMDMJeix3DCdkjgpswblgU1JGRQ/YflTHPAbjiobi+ovEUX1TgoPHKwUOvcN0TjOQMtmI06jU/E+1UrHx8v0koUT4FP8r+eXm+PE8G/sPbm1uWW9myb9HLJx9pSmzjfDx6cOpm/ELT9nlRPVnAGM8AX8NZp6WK6BZLPmba/bi3LjJa4Bs0lc62W9ol75x+fKTjuH9TAuF0Qf0I87WW2sMi+0JZslvWeeDDT068tXRKMsgx4o+vSEIizyXu4l2YcB0s3yTlqTzev73F1/oOQKLOWA==
+sidebar_class_name: "get api-method"
+info_path: api/xenforo-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Gets a list of users (alphabetically)"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/users/"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+Gets a list of users (alphabetically)
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"users":{"type":"array","items":{"type":"object","description":"Information about the user. Different information will be included based on permissions and verbosity.","properties":{"about":{"type":"string"},"activity_visible":{"type":"boolean"},"age":{"type":"integer","description":"The user's current age. Only included if available."},"alert_optout":{"type":"array","items":[]},"allow_post_profile":{"type":"string"},"allow_receive_news_feed":{"type":"string"},"allow_send_personal_conversation":{"type":"string"},"allow_view_identities":{"type":"string"},"allow_view_profile":{"type":"string"},"avatar_urls":{"type":"object","description":"Maps from size types to URL."},"profile_banner_urls":{"type":"object","description":"Maps from size types to URL."},"can_ban":{"type":"boolean"},"can_converse":{"type":"boolean"},"can_edit":{"type":"boolean"},"can_follow":{"type":"boolean"},"can_ignore":{"type":"boolean"},"can_post_profile":{"type":"boolean"},"can_view_profile":{"type":"boolean"},"can_view_profile_posts":{"type":"boolean"},"can_warn":{"type":"boolean"},"content_show_signature":{"type":"boolean"},"creation_watch_state":{"type":"string"},"custom_fields":{"type":"object","description":"Map of custom field keys and values."},"custom_title":{"type":"string","description":"Will have a value if a custom title has been specifically set; prefer user_title instead."},"dob":{"type":"object","description":"Date of birth with year, month and day keys."},"email":{"type":"string"},"email_on_conversation":{"type":"boolean"},"gravatar":{"type":"string"},"interaction_watch_state":{"type":"boolean"},"is_admin":{"type":"boolean"},"is_banned":{"type":"boolean"},"is_discouraged":{"type":"boolean"},"is_followed":{"type":"boolean","description":"True if the visitor is following this user. Only included if visitor is not a guest."},"is_ignored":{"type":"boolean","description":"True if the visitor is ignoring this user. Only included if visitor is not a guest."},"is_moderator":{"type":"boolean"},"is_super_admin":{"type":"boolean"},"last_activity":{"type":"integer","description":"Unix timestamp of user's last activity, if available."},"location":{"type":"string"},"push_on_conversation":{"type":"boolean"},"push_optout":{"type":"array","items":[]},"receive_admin_email":{"type":"boolean"},"secondary_group_ids":{"type":"array","items":[]},"show_dob_date":{"type":"boolean"},"show_dob_year":{"type":"boolean"},"signature":{"type":"string"},"timezone":{"type":"string"},"use_tfa":{"type":"boolean"},"user_group_id":{"type":"integer"},"user_state":{"type":"string"},"user_title":{"type":"string"},"visible":{"type":"boolean"},"warning_points":{"type":"integer","description":"Current warning points."},"website":{"type":"string"},"view_url":{"type":"string"},"user_id":{"type":"integer"},"username":{"type":"string"},"message_count":{"type":"integer"},"question_solution_count":{"type":"integer"},"register_date":{"type":"integer"},"trophy_points":{"type":"integer"},"is_staff":{"type":"boolean"},"reaction_score":{"type":"integer"},"vote_score":{"type":"integer"}},"title":"User"}},"pagination":{"type":"string"}}}}}}}}
+>
+  
+</StatusCodes>
+
+      

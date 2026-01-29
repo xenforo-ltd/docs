@@ -1,4 +1,5 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import apiSidebar from './docs/api/sidebar';
 
 const sidebars: SidebarsConfig = {
   manualSidebar: [
@@ -347,6 +348,8 @@ const sidebars: SidebarsConfig = {
       ],
     },
   ],
+
+  apiSidebar,
 };
 
 export default sidebars;

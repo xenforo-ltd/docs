@@ -1,0 +1,48 @@
+---
+id: get-attachments-id
+title: "Gets information about the specified attachment"
+description: "Gets information about the specified attachment."
+sidebar_label: "Gets information about the specified attachment"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVU1v2zAM/SuCTi2QNtmOuQXYWhS7DP0AChSBodhMzNaxVIlK1xn57yNlp/FSZ0WXS2w9fj490o22DrwhtPVVoad6BZQZIpOXa6gpZFhkeqTJrIKePujZHtHzkS4g5B6dOLPrJVBQWC+tX6d4yixsJEUlqOAgxyVCofaxzzmuM96sgcBL9EbX/MKBsGAIJaQzVPKzh+eIHrg+8hFGOuQlrI2eNppenXgE8liv9PawJL2di3dwtg4QxOHrZCJ/f5vdxDyHEJaxUjtjzprbmrhOMTfOVZinrsaPQXya90XYxSPkJF154ZSwzbjv+GPbJVbQkjDQmoBZwN99FLnEFXiBS8BVScPYCxZM5CBEZVwvaoNVFn01mNcDYW2yjw0LvqOcjsIYsg0WYHvgwtoKTN2hJhZ4BN2TyIocbqS7rqxFBvLvDI4FaHNkhaEjDG8QXrLcxnqQZeESqZKz/ZjwcfqNNMu8tN2EJeXLhehxb9bGDRbbMWMB/GY3EolMNnOoD8V9D/WF9VbNfl4pqAtnUfLNxT+PHuk1Bbi/OJs5PPsB8jrvwzci4FZ3faO3zjinHHSjWIIpuM3Rbkh7LoeFSUFP8Kp4EygTef5r6oZHWOwc77jLzyZLPofZ5FBdfVNklclJmaBOun0RVIg8XCqKRVfUaboo2VIpeXdhPSo5vpDfxv5yPjmfHCX++vvNbYpb2DzKFb716GygtUlrouvgk8vxMGez30b/s2c7kgl+0dhVBlOR3Zy2SnzojVhgj2lawrLkS+5F8KZZmAB3vtpu5fg5gk+SYr6MR7MQIllvBQZ5ZqUvTRXgH32cXHdr/VQdK3EnjlqUsTFVlDd+fBKhyndiO0+bL6lFsrfAjNe5o57Lu/0tc/A2kZffb1kVfwAWpWsJ
+sidebar_class_name: "get api-method"
+info_path: api/xenforo-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Gets information about the specified attachment"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/attachments/{id}/"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+Gets information about the specified attachment.
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"attachment":{"type":"object","properties":{"filename":{"type":"string"},"file_size":{"type":"integer"},"height":{"type":"integer"},"width":{"type":"integer"},"thumbnail_url":{"type":"string"},"retina_thumbnail_url":{"type":"string"},"direct_url":{"type":"string"},"is_video":{"type":"boolean"},"is_audio":{"type":"boolean"},"attachment_id":{"type":"integer"},"content_type":{"type":"string"},"content_id":{"type":"integer"},"attach_date":{"type":"integer"},"view_count":{"type":"integer"}},"title":"Attachment"}}}}}}}}
+>
+  
+</StatusCodes>
+
+      

@@ -1,0 +1,48 @@
+---
+id: post-attachments-new-key
+title: "Creates a new attachment key, allowing attachments to be uploaded separately from the related content"
+description: "Creates a new attachment key, allowing attachments to be uploaded separately from the related content."
+sidebar_label: "Creates a new attachment key, allowing attachments to be uploaded separately from the related content"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV01v2zgQ/SsET1tAdrJ7zM3bDyDIYYvaBQoYgTAWxxZbStSSlB3X0H/vDCnbiiOj6aWn5hKbM5wZznvzSB+kbdBB0La+V/JONtaHHEKAoqywDj6vcZd/w73MZICNl3dLOTtb5WMmFfrC6YYj0P63DiGgFyBoozgHEhQjE2CM3el6MzB4EaxYoWgbY0GhEh4boILQ7MXa2UqEEoVDQytKFLYOtGdK1Tj8v0Uf/rVqL+8OsrfwR2gao4t4pJunyW63m6ytqyatM1gXllKwky9KrIA/hX2DVLhdfcUiUODGcUeCRn+2nrx8cFS+vDz1gmrsKxDsKew61n0+5lS8wzW0Jtm90HVhWoWC+53x3i06H2vOK/QeNjgVM6Umtvaigr0ApURlHU5ll6XDPoVBXeAcMEY6YOVf1ttdFvyA+8kWTEsFgHaeGtw49FQngxOOp3kKYwdZlNqLnTZGbMHthcIGa8X7bP28CVCrtLngrARyDA7fsJ6KOUZUcQvknRy8IJzEunW0x1HYANr4eN5z9tdBsaYjhSH5EsXAe1voSKSdDmWsjVlK1KQ0XeKUdkyQZcryyKtDPn31nOQPff7Q55X0Seu+ofoSI/65veV/z7PO26Ig2NatEUdnmV3TtF/lIKv3q879XK1FEaVc9Yj50rZGRaX21AFqSVJsppbmIGCocYa4SSiQ9dSts7IPRT920EaoTqJ+Daor5+JsNVQj80WB2Jh7/X1o1ZRng47NJepNGcZtO61COW4KZVutaiJWTrfJaF6HNAOQ/9xREVOKcNWsfb7VCu3AuLLWINS9FVqlr1jPTcy1Gj9I3/N8XJ8GDtcCpBy5IoDHHbaaHg6FbevRLnMvdTC8dn5OvCDl/ZreEYyk2IEXhD63RJ2EoScg2/xpgDIyHQUmRSPKHkd1oEOyS3+ZrDCU9vj2YZYBwy9vBnS9oc2T9Ary6FhracYPMoJHjo1+UfoXrD9YZ8Xs470gfWssHV12j7y/aJ0O+xjgy4fJrNGTB57Q5ePQPOfhTjwfOp0Vu9EPsR7N2UqkAXP0Lc3DcMtlYVwQTzeLJbTUGBLtJCyMWr/xM53yV5PFPZfZeFHcv4uCUJCmevFXr5KMGQ0zq4kTfVFvIjFY3z6dX3fvn6BqzOgterrIlse1x+cSMhyoep3GpafdACCKxJCmiv+e3k5vr8L56f18EatVtmg5x6lzTJ4KojD3ffktT+HLSgcv4d/3Fu9xYSxuGgM6NqRXtjRNywEsnqnTzxPhVfLUkcPhsAKPn53pOl4m/F2cCgIHnIYVo0Yzkh35x/MTrzb5NlUyWXAZ7E4Pk8jan/0O6LJjiBnJRxOubI4XLg/nSSk+/jdfkPOq//FRUTRaHUTOhl+47K77AahmvQg=
+sidebar_class_name: "post api-method"
+info_path: api/xenforo-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Creates a new attachment key, allowing attachments to be uploaded separately from the related content"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/attachments/new-key"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+Creates a new attachment key, allowing attachments to be uploaded separately from the related content.
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"key":{"type":"string","description":"The attachment key created. This should be used to upload additional files or to associate uploaded attachments with other content."},"attachment":{"type":"object","properties":{"filename":{"type":"string"},"file_size":{"type":"integer"},"height":{"type":"integer"},"width":{"type":"integer"},"thumbnail_url":{"type":"string"},"retina_thumbnail_url":{"type":"string"},"direct_url":{"type":"string"},"is_video":{"type":"boolean"},"is_audio":{"type":"boolean"},"attachment_id":{"type":"integer"},"content_type":{"type":"string"},"content_id":{"type":"integer"},"attach_date":{"type":"integer"},"view_count":{"type":"integer"}},"title":"Attachment","description":"If a file was provided and the upload was successful, this will describe the new attachment."}}}}}}}}
+>
+  
+</StatusCodes>
+
+      
