@@ -8,7 +8,7 @@ const config: Config = {
   tagline: 'Documentation for XenForo',
   favicon: 'img/favicon.png',
 
-  url: 'https://xenforo.com',
+  url: 'https://docs.xenforo.com',
   baseUrl: '/docs/',
 
   organizationName: 'xenforo-ltd',
@@ -123,6 +123,12 @@ const config: Config = {
           position: 'right',
         },
       ],
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true
+      }
     },
     footer: {
       style: 'dark',
