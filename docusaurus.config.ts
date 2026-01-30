@@ -58,7 +58,6 @@ const config: Config = {
   ],
 
   plugins: [
-    'docusaurus-markdown-source-plugin',
     [
       'docusaurus-plugin-openapi-docs',
       {
