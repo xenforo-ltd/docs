@@ -85,6 +85,7 @@ const config: Config = {
     colorMode: {
       defaultMode: 'light',
       respectPrefersColorScheme: true,
+      disableSwitch: true,
     },
     navbar: {
       title: 'Documentation',
@@ -125,7 +126,6 @@ const config: Config = {
     },
     docs: {
       sidebar: {
-        hideable: true,
         autoCollapseCategories: true
       }
     },
