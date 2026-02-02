@@ -67,7 +67,7 @@ You **must** specify a node name in which these blog forums will be created duri
 
 #### Blog attachments
 
-As with [attachments and avatars](import-notes-vbulletin.md#avatars-and-attachments), if your blog attachments are stored in the filesytem rather than the database, you must provide the full file system path to your blog attachments folder during the import configuration process.
+As with [attachments and avatars](import-notes-vbulletin.md#avatars-and-attachments), if your blog attachments are stored in the filesystem rather than the database, you must provide the full file system path to your blog attachments folder during the import configuration process.
 
 ### vBulletin 4 with Blog
 

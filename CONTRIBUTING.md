@@ -85,7 +85,7 @@ Once you've ascertained the section you would like to change, just edit the file
 
 ## Adding new pages/sections
 
-If you'd like to add entirely new pages/sections, you can either add new sections to an exisitng page under an appropriate header (again, denoted by `##` characters) or create new pages entirely.
+If you'd like to add entirely new pages/sections, you can either add new sections to an existing page under an appropriate header (again, denoted by `##` characters) or create new pages entirely.
 
 Creating new pages involves creating the actual pages themselves, and also modifying the `docs/mkdocs.yml` file to reference those pages.
 

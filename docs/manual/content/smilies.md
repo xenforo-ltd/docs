@@ -27,7 +27,7 @@ Within the smilie editor, you can make all necessary changes to your smilies. Th
 Use this box to enter the text combination(s) that you would like to have replaced by this smilie icon. If you would like to have multiple text combinations apply to a single smilie, enter each one on a single line in the text box.
 
 :::note
-Smilie text combinations **must** be unique. If you try to apply the same combination to more than one smilie, the system will alert you that the text combinaiton is already in use, and prevent you from saving the smilie data.
+Smilie text combinations **must** be unique. If you try to apply the same combination to more than one smilie, the system will alert you that the text combination is already in use, and prevent you from saving the smilie data.
 :::
 
 #### Image replacement URL

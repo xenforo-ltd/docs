@@ -76,7 +76,7 @@ Let's fill in some of these details:
 
 We have now added a `description`, the developer's name (`dev`) and specified that we want to display an icon (`icon`). The icon can either be a path (relative to your add-on root) or the name of a [Font Awesome icon](http://fontawesome.io/icons/) as we've done here.
 
-As we're not superceding a XenForo 1 addon, we can disregard `legacy_addon_id`. For a full explaination of all of the properties in the `addon.json` file, refer to the [Add-on structure section](add-on-structure.md#addonjson-file).
+As we're not superceding a XenForo 1 addon, we can disregard `legacy_addon_id`. For a full explanation of all of the properties in the `addon.json` file, refer to the [Add-on structure section](add-on-structure.md#addonjson-file).
 
 ## Creating the Setup class
 
@@ -684,7 +684,7 @@ At this stage, we're not going to worry about modifying the base finder we've re
 
 Now, admittedly, there's **a lot** going on here. Although it may look daunting, it's mostly just markup to display our featured threads in a reasonable style. There's a few things worth paying attention to, though.
 
-We start off the template with a condition that reads `<xf:if is="$featuredThreads is not empty">`. This is to chceck that the object returned by the finder actually contains featured thread records. If it doesn't, then we display an appropriate message.
+We start off the template with a condition that reads `<xf:if is="$featuredThreads is not empty">`. This is to check that the object returned by the finder actually contains featured thread records. If it doesn't, then we display an appropriate message.
 
 If we do have some records, we need to loop through each to display it. For each record, we call a `macro`. Macros are reusable portions of template code which are self documenting (in that you see which arguments are supported) and maintain their own scope which cannot be polluted with the arguments in the template calling the macro; meaning that macros are only aware of the arguments that are explicitly passed in and the global `$xf` param.
 
@@ -821,7 +821,7 @@ class Editor extends XFCP_Editor
 
 This is a little bit more involved than the code in the creator service. For example, there may be situations where a thread is edited, and the user has no permission to edit the thread, and therefore we don't show the checkboxes. In these cases, we do not want to automatically assume the thread should be unfeatured. As the class `$featureThread` property defaults to `null` we can use this so that essentially the property has three states. In this case `null` will mean "no change", `true` will mean we feature the thread and `false` will mean we unfeature it.
 
-In the case of unfeaturing, we actually just delete the featured thread entity by calling the `delete()` method. In both cases we use the `fastUpdate()` method again to update the cached value in the thread entity to represent the curent featured state.
+In the case of unfeaturing, we actually just delete the featured thread entity by calling the `delete()` method. In both cases we use the `fastUpdate()` method again to update the cached value in the thread entity to represent the current featured state.
 
 Before we finish the process of editing, we need to add code to our extended thread controller, and specifically extend the `setupThreadEdit()` method. The entire extended thread controller code will look like this:
 
@@ -1101,7 +1101,7 @@ To:
 $perPage = $this->options()->demoPortalFeaturedPerPage;
 ```
 
-It's probably not going to hurt to add another option. Perhaps another useful option would be to be able to change the default sort order from `xf_demo_portal_featured_thread.feartured_date` to `xf_thread.post_date`. Go back to the "Demo - Portal options" group, and click "Add option".
+It's probably not going to hurt to add another option. Perhaps another useful option would be to be able to change the default sort order from `xf_demo_portal_featured_thread.featured_date` to `xf_thread.post_date`. Go back to the "Demo - Portal options" group, and click "Add option".
 
 Set "Option ID" to `demoPortalDefaultSort`, "Title" to `Default sort order` and "Edit format" to `Radio buttons`. For the "Format parameters" set those as follows:
 

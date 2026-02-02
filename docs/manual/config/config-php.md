@@ -102,7 +102,7 @@ Normally, XenForo will send a Content-Length HTTP header. In some server configu
 
 #### enableTfa
 
-Disables **two-factor authentication** (2FA), the system whereby users need to log in with a username and password, and an additonal piece of information, such as a code from their phone. Useful if you have lost access to your admin control panel, or if you want to prevent any users from employing 2FA at all.
+Disables **two-factor authentication** (2FA), the system whereby users need to log in with a username and password, and an additional piece of information, such as a code from their phone. Useful if you have lost access to your admin control panel, or if you want to prevent any users from employing 2FA at all.
 
 #### enableLivePayments
 

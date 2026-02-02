@@ -170,7 +170,7 @@ protected function _matchCriterion1Rule(array $data, \XF\Entity\User $user)
 
 If some method can't be found in class, `isMatched()` calls `isUnknownMatched()` which behaviour can be set in `AbstractCriteria` ancestors (returns `false` by default).
 
-If none criteria were selected, `isMatched()` returns `$matchOnEmpty` variable which equals `true` by default. You can change this behaviour by calling `$crteriaObj->setMatchOnEmpty(false)` **before** using `isMatched()` method:
+If none criteria were selected, `isMatched()` returns `$matchOnEmpty` variable which equals `true` by default. You can change this behaviour by calling `$criteriaObj->setMatchOnEmpty(false)` **before** using `isMatched()` method:
 
 ```php
 $visitor= \XF::visitor();
@@ -421,7 +421,7 @@ Again, if you don't have any saved or even don't suppose to have it, pass `{{ []
 
 ### Adding custom criteria type to "helper_criteria"
 
-If you want to add a custom criteria type to `helper_criteira` template, you will need to create a template modification of `helper_criteria` template.
+If you want to add a custom criteria type to `helper_criteria` template, you will need to create a template modification of `helper_criteria` template.
 
 Go to "Appearance > Template modifications" in ACP, switch to "Admin" tab and hit "Add template modification" button.
 
@@ -749,7 +749,7 @@ protected function isUnknownMatchedPost($rule, array $data, \XF\Entity\Post $pos
 
 We simply used `isMatched(...)` method code replacing `$user` variable of User entity type with `$post` variable of Post entity type.
 
-As we do not plan to handle special and unknown criteria we return null in `isSpecialMatchedPost` and `false` in `isUnknownMathcedPost` methods.
+As we do not plan to handle special and unknown criteria we return null in `isSpecialMatchedPost` and `false` in `isUnknownMatchedPost` methods.
 
 ### Template
 

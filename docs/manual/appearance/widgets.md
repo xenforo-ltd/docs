@@ -30,7 +30,7 @@ Widgets definitions are usually created by developers, who build a widget that c
 
 When you hit *Add widget* from the widget manager, the first thing you will be asked to decide is which widget definition you would like to use for your new widget deployment.
 
-For the most part, widget definitions have fairly self-explanitory names, so you can just choose the most appropriate one from the menu.
+For the most part, widget definitions have fairly self-explanatory names, so you can just choose the most appropriate one from the menu.
 
 Behind the scenes, the widget definition will reference PHP code that does all the work to fetch the necessary data for your widget, and format it into the final display that you see on screen.
 
