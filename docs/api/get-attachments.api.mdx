@@ -1,0 +1,48 @@
+---
+id: get-attachments
+title: "Gets the attachments associated with the provided API attachment key"
+description: "Gets the attachments associated with the provided API attachment key. Only returns attachments that have not been associated with content."
+sidebar_label: "Gets the attachments associated with the provided API attachment key"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVUtrGzEQ/itCpwQc2+0xN0OTEFJoyQMCwSyyduyddFdSpJFT1/i/V7O7jjf2uqHQQ30xq3l98/hm1tI68IrQmutcnssFUKaIlC4qMBQyOZCkFkGeP8nJ7llOBzKHoD06tkx2V0BBUAGiYyxUCFajIsjFK1JRy523S8zTy+T7dUdZ/IDVUHwz5Up4oOhNeOeJCkWiUEsQxpKYAZgD59oaSrrDhNgpryog8Ix7LU36SBBThCRDRvsSwfNH0AVUSp6vJa0c6wTyaBZys5/efUJ+CDh58PAS0UMqHfkImym/BGdNgMBuP4/H/Pfe2V3UGkKYx1JslZOnFj+rK+dK1HVTRs+BbdaHUO3sGTRxtp5bSNhE7FSto6y8V3X2BFX42MkcS2iq1lMZFmYBf3WlmLAvwLO4AFwU1C97xZyKfhEVsZoZhWUWfdkbN80FGpV9rJinhmg6KsaQ8QTajnBmbQnKtFIVczwi3VU3w7w/kbaPWSPpib9VOOagiZHlabT7FZYIr5m20fRWmWuJVPLbjrGHE/0VAwk7F5UiXSRkXboNk5f6N5CJRoVtF0PNLO6fHHWUR8wj8Mst2+qyJw2Hcj/mI5hL623NJDC5s8jIpmyvo0da1Q4eL88mDs9ugD+nXfEdc6CZ0K7Sbsod3uxIXoDKU0EGW/53TPaBMaDEZzG3XqiY1pShln9cuNbwIWX5t8Fqm/1o/CiuvwiyQmlKi0yctGskiBATDUVkjRbUad1SNPNmJNvWdkqZ/HPxG9+fhuPh+Gjhby/u7mu/udWRu/eWo7OBKlVvmjaDf7HR94Gsd1vu/7oYbU8JftLIlQrrmrQLpJn5p3ebdSD5BBapaCxZr2cqwIMvNxt+bq4Lj3KOQc1Kvg5zVQb4QzVObttDciqO3ppekCza3ralKiNr1JxaKo8cvCbRYDugjKoxmaQj5KhjdXB12Msb/68u7tMg/gYQxNZ3
+sidebar_class_name: "get api-method"
+info_path: api/xenforo-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Gets the attachments associated with the provided API attachment key"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/attachments/"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+Gets the attachments associated with the provided API attachment key. Only returns attachments that have not been associated with content.
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"attachments":{"type":"array","items":{"type":"object","properties":{"filename":{"type":"string"},"file_size":{"type":"integer"},"height":{"type":"integer"},"width":{"type":"integer"},"thumbnail_url":{"type":"string"},"retina_thumbnail_url":{"type":"string"},"direct_url":{"type":"string"},"is_video":{"type":"boolean"},"is_audio":{"type":"boolean"},"attachment_id":{"type":"integer"},"content_type":{"type":"string"},"content_id":{"type":"integer"},"attach_date":{"type":"integer"},"view_count":{"type":"integer"}},"title":"Attachment"},"description":"List of matching attachments."}}}}}}}}
+>
+  
+</StatusCodes>
+
+      
