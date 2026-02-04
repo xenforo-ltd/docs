@@ -1,0 +1,48 @@
+---
+id: get-search-id
+title: "Retrieves search results for a given search"
+description: "Retrieves search results for a given search"
+sidebar_label: "Retrieves search results for a given search"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVdtO4zAQ/RXLTyAV2t3HviEtrNA+7IqChISqyk2miSG1jS/draL8+844bhralAsvqHM5M3MyZ1xzbcAKL7W6zfmUF+AXDoTNyoXMF3zEvSgcnz7xWTTy+Yjn4DIrDaVgwh14K2EDjrVpzIILlXdspS0TrJAbUMmFaEZYsQYPljBrrvAHYsgcXZLQjPAUZuE1SAvYkLcBRtxlJawFn9bcbw1lOCyqCt4cdoOWDtWIAna4rwHslg8ASeWhAMubZk5lndHKgaOA75MJ/XuLPwtZBs6tQsV2wYiaaURRnsKFMZXMIp/jZ0c59XFRvXyGzBMdltj3sq2YWPpkHH6foTniFPgBFpkObUvHEQmgdQxwmvwtae8E4NxoE4jsemHCWkFcSw9r+szzfYK2OXbwDmJhdTBk2scsta5AKAr6K6xC50fFggN7kp1UKBcehgPi1ItSuHKgUfR76SsyJUF0hH/UFa6jVKLdowECSHi6QnoWCa5rUSv4vYpyOWq2M6lQVbyZN+3fiKPGSp30HGWHsprycTv8uJZ5MyY1gN3spBhsRRHCSH4oqkdQN9pqdvXnloHKjcYGOOnFQRas9NsI8HhzcWXkxS/YxoF77hntf7u6/aA9W0aSIUm1BEFLMtrJuJdy2Bg19ALb9tQEX6IGk/aI0ZT44N6s3KeKxZzDamRktz+Y10xkngnHztKdwtsXUJ+MFo+lps7jski10rF4WpoelYhP5LfY3y4nl5OTxN9dz+4jbq6zsMYpuxmNdn4t4kalCb52j9/Uq/eH7IswiVsP//zYVHgQqLe4UXXavSfeBU/juaeXpMTuyVXXS+HgwVZNQ+Z0d3CncunEsqJ3YCUqhw/BCy3O7rJvRBUgHv05/bCSYofzTs55dpeemnN2ao7d4qhtv+auFxymIXmnTaLqreMKXwrjeylHTwO13Qn15/U9bsx/ftaUNw==
+sidebar_class_name: "get api-method"
+info_path: api/xenforo-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Retrieves search results for a given search"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/search/{id}/"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+Retrieves search results for a given search
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"search":{"type":"object","properties":{"search_id":{"type":"integer"},"result_count":{"type":"integer"},"search_type":{"type":"string"},"search_query":{"type":"string"},"search_constraints":{"type":"array","items":[]},"search_order":{"type":"string"},"search_grouping":{"type":"boolean"},"warnings":{"type":"array","items":[]},"user_id":{"type":"integer"},"search_date":{"type":"integer"},"query_hash":{"type":"string"}},"title":"Search"},"results":{"type":"array","items":[]},"pagination":{"type":"string"},"get_older_results_date":{"oneOf":[{"type":"integer"},{"type":"null"}]}}}}}}}}
+>
+  
+</StatusCodes>
+
+      

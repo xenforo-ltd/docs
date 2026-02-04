@@ -1,0 +1,48 @@
+---
+id: get-attachments-id-thumbnail
+title: "Gets the URL to the attachment's thumbnail, if it has one"
+description: "Gets the URL to the attachment's thumbnail, if it has one. URL returned via a 301 redirect."
+sidebar_label: "Gets the URL to the attachment's thumbnail, if it has one"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1VW1r2zAQ/itCX9ZCmqTbPuVbYG0pK6P0BQpbSBXrEqu1JVc6hwXj/7472U2cl3ZsbP4SSff+3HOXSroCvELj7KWWI7kAnCpElaQ5WAxTo6eYlvnMKpPJnkS1CHL0XY43KnLSkxpC4k3BXsjHBWAQmIK4v7kS6OJx4/MDy1qPPWHmwqBIVRDOQj9aeMDSW9BiaZRQ4tPwlJ608ZBgn1IolFc5IHhOpJKWLhTTaBIZjl4oTOns4aUkG6oJfQk9GZIUciVHlcRVwRYBvbELWe9mL+sJW4fC2QCBDT4Oh/yzrXZbJgmEMC8z8apMURNnkWpkdVUUmUkisoOnwDbVfhJu9kRlcVWe+4CmiVj6bD/T3UTvthFegypMeA9Dwv/KNXmJFJQG35d1/Hry86FKr10IZpaBAO+dD6Mf9kQ8WofTuSutfhyJbw5FPHM3t5sttIMgSJlavCSB6JLpH4HVpNXRU96rFdMBIQ+/t0+choO8yKm/anFYFll40LnS2nAdKrvuhGES1uuPfWPq2oGLpCbSjuSgM3qDyuh60MUrgF++0j4yhPQLs8eLB7Dnzjsxvr4UYHXhDGHMpA6QlN7gKjp4OD8ZF+bkK/B10hXfMu4NNF2lDbyF4Yd23BoK0a0dxI7JbmKc0DOsiCteqJKIYrHtOSPaGt5TlX8aLNrsRuNHcfmFx0MlKGjDHLU7IYhQUmNEyRptUseSu2Ls3MXgBjPYhpL8M/iN79P+sD98E/ibs9u76Fe7pORermssXMBcRXa3Ffz1rtyNXm3G6T8v4LYzCD9xUGTKxMrajdXw+Lvs8JgsRnE7b6hMZEsJCVasqpkKcO+zuubnlxJ8JCShrbxRM24DsVWbwGcamLnKArxT+9FNu/iPxVu5vlLLMq+WKiv5Rsdnpjn/k9QT0mq5xtEbwZgWfoEdk72lxVO0HuyLszvi1C/O34R/
+sidebar_class_name: "get api-method"
+info_path: api/xenforo-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Gets the URL to the attachment's thumbnail, if it has one"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/attachments/{id}/thumbnail"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+Gets the URL to the attachment's thumbnail, if it has one. URL returned via a 301 redirect.
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"url":{"type":"string","description":"The URL to the thumbnail is returned via a 301 redirect's Location header."}}}}}},"400":{"description":"Possible errors:\n- `not_found`: Not found if the attachment does not have a thumbnail","content":{"application/json":{"schema":{"type":"object","properties":{"errors":{"type":"array","items":{"type":"object","properties":{"code":{"type":"string"},"message":{"type":"string"},"params":{"type":"object","additionalProperties":true}}}}}}}}}}}
+>
+  
+</StatusCodes>
+
+      

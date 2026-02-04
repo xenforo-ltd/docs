@@ -1,0 +1,48 @@
+---
+id: get-stats
+title: "Gets site statistics and general activity information"
+description: "Gets site statistics and general activity information"
+sidebar_label: "Gets site statistics and general activity information"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVE1v2zAM/SuCThvgNtmOvQVYWwS7DEsLFAiCQLFZW60tqSIVLDDy30cqTpsEzT7qiy368fHrUb32AaIh69200le6BloiGcKlLjSZGvXVXM/EoBeFrgDLaIOgGXsLhAotgRIPi2RLVMZVqgbHnK0yJdm1pY2y7tHHLkdh2ggYvENg7l5/HY/ldcw8S2UJiI+pVXsw+5XeETgSuAmhtWUmHD2h+PQaywY6I1+0CcAsfvUEJbFjiFIk2V1E8mRanFMTwVS4OHCwzF9D1NtiD+o4C1PDX1AJIZ6DtIYAaSmQjFva6h+RznRwCEWK1tWnyAg1d555KzaeYfautQ7mOds/QzroVudrGUB14ujvY3ZPoTugxg96kgEYavgwysoasYEzX3McFlevU2zlnwlWnyrsAdyNj15NfkwVuCp4DqS3C/EvU2RlZYKHm4tJsBffQY6Lw98zkcRu6oeg17w5phgKLoBPDeuBiyi0dF6iv7mcJiYJPcNGsayVSdSwLAc5Sp8Gx3uu8n+DZZ/TaGJU02+KvKyUMqg+RXhJlndDYWJpK5GCGpL6rGUCsnI5uKUWjlvJ/NL8HfeXy/Hl+Gzjf17P7jJv5cvUcZWvNQaP1Jm8eEMFH70OjiL3b1v+YcKh3wS/aBRaY3O+WWX9oMS5zkpkrNxqDZcitr5fGYT72G63Yn5JELOiuF0mWrOSPrK+iv3sRHvPoic94esqiNDXpk27WZ/cT6LK16W4vb7jGf0GRfDnQg==
+sidebar_class_name: "get api-method"
+info_path: api/xenforo-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Gets site statistics and general activity information"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/stats/"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+Gets site statistics and general activity information
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"totals[threads]":{"type":"integer"},"totals[messages]":{"type":"integer"},"totals[users]":{"type":"integer"},"latest_user[user_id]":{"type":"integer"},"latest_user[username]":{"type":"string"},"latest_user[register_date]":{"type":"integer"},"online[total]":{"type":"integer"},"online[members]":{"type":"integer"},"online[guests]":{"type":"integer"}}}}}}}}
+>
+  
+</StatusCodes>
+
+      
