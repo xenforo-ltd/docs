@@ -4,7 +4,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
 const config: Config = {
-  title: "Documentation",
+  title: "XenForo",
   tagline: "Documentation for XenForo",
   favicon: "img/favicon.png",
 
