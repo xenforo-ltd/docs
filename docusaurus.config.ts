@@ -19,6 +19,11 @@ const config: Config = {
   onBrokenLinks: "throw",
   onBrokenAnchors: "warn",
 
+  future: {
+    v4: true,
+    experimental_faster: true,
+  },
+
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: "warn",
