@@ -11,20 +11,20 @@ jobs:
     name: Build
     runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
-          cache: npm
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
+
       - name: Build website
         run: npm run build
 
-      - name: Upload Build Artifact
+      - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: build
