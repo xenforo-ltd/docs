@@ -9,11 +9,11 @@ api: eJzdVttu4zYQ/RWCTy3gS1r0yW9uuwsEi6LBxgEWcAMtJY4t7kqkSo7ipIb+vTOUbDGJjHSBAgX
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Uploads an attachment. An API attachment key must be created first. Must be submitted using multipart/form-data encoding.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"key":{"type":"string","description":"The API attachment key to associated with"},"attachment":{"type":"string","description":"The attachment file"}},"required":["key","attachment"]}},"application/json":{"schema":{"type":"object","properties":{"key":{"type":"string","description":"The API attachment key to associated with"},"attachment":{"type":"string","description":"The attachment file"}},"required":["key","attachment"]}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Uploads an attachment. An API attachment key must be created first. Must be subm
 >
   
 </StatusCodes>
+
 
       

@@ -9,11 +9,11 @@ api: eJztWm2P2zYS/iuEv1wCeL179zH3Kdc0QND2GiQbXIEgEGiJtthIoo6k7HUX/u/3zJCyZVvUetM
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Moves the specified thread to a different forum. Only simple title/prefix updates are supported at the same time
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"target_node_id":{"type":"integer"},"prefix_id":{"type":"integer","description":"If set, will update the thread's prefix. Prefix must be valid in the target forum."},"title":{"type":"string","description":"If set, updates the thread's title"},"notify_watchers":{"type":"boolean","description":"If true, users watching the target forum will receive a notification as if this thread were created in the target forum"},"starter_alert":{"type":"boolean","description":"If true, the thread starter will receive an alert notifying them of the move"},"starter_alert_reason":{"type":"boolean","description":"The reason for the move to include with the thread starter alert"}},"required":["target_node_id"]}},"application/json":{"schema":{"type":"object","properties":{"target_node_id":{"type":"integer"},"prefix_id":{"type":"integer","description":"If set, will update the thread's prefix. Prefix must be valid in the target forum."},"title":{"type":"string","description":"If set, updates the thread's title"},"notify_watchers":{"type":"boolean","description":"If true, users watching the target forum will receive a notification as if this thread were created in the target forum"},"starter_alert":{"type":"boolean","description":"If true, the thread starter will receive an alert notifying them of the move"},"starter_alert_reason":{"type":"boolean","description":"The reason for the move to include with the thread starter alert"}},"required":["target_node_id"]}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Moves the specified thread to a different forum. Only simple title/prefix update
 >
   
 </StatusCodes>
+
 
       

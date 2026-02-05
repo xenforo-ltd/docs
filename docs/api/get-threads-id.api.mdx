@@ -9,11 +9,11 @@ api: eJztXdtu40YS/RVCLzsBHHl2H2efBpkka+Syg4kHGyAwiBbZkjqhSKa7aY/W8L9vVTUpUSKbki8
 sidebar_class_name: "get api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Gets information about the specified thread.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""},{"name":"with_posts","in":"query","schema":{"type":"boolean"},"description":"If specified, the response will include a page of posts."},{"name":"page","in":"query","schema":{"type":"integer"},"description":"The page of posts to include"},{"name":"with_first_post","in":"query","schema":{"type":"boolean"},"description":"If specified, the response will contain the first post in the thread."},{"name":"with_last_post","in":"query","schema":{"type":"boolean"},"description":"If specified, the response will contain the last post in the thread."},{"name":"order","in":"query","schema":{"type":"string"},"description":"Request a particular sort order for posts from the available options for the thread type"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Gets information about the specified thread.
 >
   
 </StatusCodes>
+
 
       

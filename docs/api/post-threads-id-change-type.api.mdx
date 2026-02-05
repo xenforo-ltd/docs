@@ -9,11 +9,11 @@ api: eJzFWW2P2zYS/iuEvlwC7HrT+7j3aS9pgEV71yDZ4AoEgUBLlMVGFnUkZa8b+L/3mSG1lm1R66Q
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Converts a thread to the specified type. Additional thread type data can be set using input specific to the new thread type.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"new_thread_type_id":{"type":"string"}},"required":["new_thread_type_id"]}},"application/json":{"schema":{"type":"object","properties":{"new_thread_type_id":{"type":"string"}},"required":["new_thread_type_id"]}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Converts a thread to the specified type. Additional thread type data can be set 
 >
   
 </StatusCodes>
+
 
       

@@ -2,6 +2,8 @@ import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
+import { createApiPageMD } from "./src/openapi/createApiPageMD";
+import { createInfoPageMD } from "./src/openapi/createInfoPageMD";
 
 const config: Config = {
   title: "XenForo",
@@ -74,6 +76,9 @@ const config: Config = {
               categoryLinkSource: "tag",
             },
             hideSendButton: false,
+            markdownGenerators: {
+              createInfoPageMD,
+            },
           } satisfies OpenApiPlugin.Options,
         },
       },

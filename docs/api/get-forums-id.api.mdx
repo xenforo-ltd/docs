@@ -9,11 +9,11 @@ api: eJztW22P2zYS/iuEvlwCON70Pu59CpqkWLS9C/KCBkgDgZZoi40sqiTljbvY/37PDCVbtkXZu0m
 sidebar_class_name: "get api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Gets information about the specified forum
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""},{"name":"with_threads","in":"query","schema":{"type":"boolean"},"description":"If true, gets a page of threads in this forum"},{"name":"page","in":"query","schema":{"type":"integer"}},{"name":"prefix_id","in":"query","schema":{"type":"integer"},"description":"Filters to only threads with the specified prefix."},{"name":"starter_id","in":"query","schema":{"type":"integer"},"description":"Filters to only threads started by the specified user ID."},{"name":"last_days","in":"query","schema":{"type":"integer"},"description":"Filters to threads that have had a reply in the last X days."},{"name":"unread","in":"query","schema":{"type":"boolean"},"description":"Filters to unread threads only. Ignored for guests."},{"name":"thread_type","in":"query","schema":{"type":"string"},"description":"Filters to threads of the specified thread type."},{"name":"order","in":"query","schema":{"type":"string"},"description":"Method of ordering: last_post_date, post_date. When in a specific forum context: title, reply_count, view_count, vote_score, first_post_reaction_score."},{"name":"direction","in":"query","schema":{"type":"string"},"description":"Either \"asc\" or \"desc\" for ascending or descending. Applies only if an order is provided."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Gets information about the specified forum
 >
   
 </StatusCodes>
+
 
       

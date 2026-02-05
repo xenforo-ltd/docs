@@ -9,11 +9,11 @@ api: eJztWt1v2zYQ/1cIvawFHMfbYzcM6PoBBNvQommwAkYg0BJls5VFjaTseIH/990dJeuLlB10wF7
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Creates a user.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"option[creation_watch_state]":{"type":"string"},"option[interaction_watch_state]":{"type":"string"},"option[content_show_signature]":{"type":"boolean"},"option[email_on_conversation]":{"type":"boolean"},"option[push_on_conversation]":{"type":"boolean"},"option[receive_admin_email]":{"type":"boolean"},"option[show_dob_year]":{"type":"boolean"},"option[show_dob_date]":{"type":"boolean"},"profile[location]":{"type":"string"},"profile[website]":{"type":"string"},"profile[about]":{"type":"string"},"profile[signature]":{"type":"string"},"privacy[allow_view_profile]":{"type":"string"},"privacy[allow_post_profile]":{"type":"string"},"privacy[allow_receive_news_feed]":{"type":"string"},"privacy[allow_send_personal_conversation]":{"type":"string"},"privacy[allow_view_identities]":{"type":"string"},"visible":{"type":"boolean"},"activity_visible":{"type":"boolean"},"timezone":{"type":"string"},"custom_title":{"type":"string"},"option[is_discouraged]":{"type":"boolean"},"username":{"type":"string"},"email":{"type":"string"},"user_group_id":{"type":"integer"},"secondary_group_ids":{"type":"array","items":{"type":"integer"}},"user_state":{"type":"string"},"is_staff":{"type":"boolean"},"message_count":{"type":"integer"},"reaction_score":{"type":"integer"},"trophy_points":{"type":"integer"},"username_change_visible":{"type":"boolean","description":"If true and the username is changed, the change will be visible (shown in the public list of previous usernames)."},"password":{"type":"string"},"dob[day]":{"type":"integer"},"dob[month]":{"type":"integer"},"dob[year]":{"type":"integer"},"custom_fields[<name>]":{"type":"string"}}}},"application/json":{"schema":{"type":"object","properties":{"option[creation_watch_state]":{"type":"string"},"option[interaction_watch_state]":{"type":"string"},"option[content_show_signature]":{"type":"boolean"},"option[email_on_conversation]":{"type":"boolean"},"option[push_on_conversation]":{"type":"boolean"},"option[receive_admin_email]":{"type":"boolean"},"option[show_dob_year]":{"type":"boolean"},"option[show_dob_date]":{"type":"boolean"},"profile[location]":{"type":"string"},"profile[website]":{"type":"string"},"profile[about]":{"type":"string"},"profile[signature]":{"type":"string"},"privacy[allow_view_profile]":{"type":"string"},"privacy[allow_post_profile]":{"type":"string"},"privacy[allow_receive_news_feed]":{"type":"string"},"privacy[allow_send_personal_conversation]":{"type":"string"},"privacy[allow_view_identities]":{"type":"string"},"visible":{"type":"boolean"},"activity_visible":{"type":"boolean"},"timezone":{"type":"string"},"custom_title":{"type":"string"},"option[is_discouraged]":{"type":"boolean"},"username":{"type":"string"},"email":{"type":"string"},"user_group_id":{"type":"integer"},"secondary_group_ids":{"type":"array","items":{"type":"integer"}},"user_state":{"type":"string"},"is_staff":{"type":"boolean"},"message_count":{"type":"integer"},"reaction_score":{"type":"integer"},"trophy_points":{"type":"integer"},"username_change_visible":{"type":"boolean","description":"If true and the username is changed, the change will be visible (shown in the public list of previous usernames)."},"password":{"type":"string"},"dob[day]":{"type":"integer"},"dob[month]":{"type":"integer"},"dob[year]":{"type":"integer"},"custom_fields[<name>]":{"type":"string"}}}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Creates a user.
 >
   
 </StatusCodes>
+
 
       

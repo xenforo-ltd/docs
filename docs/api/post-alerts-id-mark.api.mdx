@@ -9,11 +9,11 @@ api: eJztVcFu2zAM/RVBpxZw4mzH3LKtBYJhWNG0QIEhKBSLadTakibJTYPA/z5SlhsnXbZ26HG5xJJ
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Marks the alert as viewed/read/unread. (Marking as unviewed is not supported.)
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"read":{"type":"boolean","description":"If specified, marks the alert as read."},"unread":{"type":"boolean","description":"If specified, marks the alert as unread."},"viewed":{"type":"boolean","description":"If specified, marks all alerts as viewed."}}}},"application/json":{"schema":{"type":"object","properties":{"read":{"type":"boolean","description":"If specified, marks the alert as read."},"unread":{"type":"boolean","description":"If specified, marks the alert as unread."},"viewed":{"type":"boolean","description":"If specified, marks all alerts as viewed."}}}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Marks the alert as viewed/read/unread. (Marking as unviewed is not supported.)
 >
   
 </StatusCodes>
+
 
       

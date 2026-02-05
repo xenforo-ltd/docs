@@ -9,11 +9,11 @@ api: eJztVl1v2jAU/SuWnzYpfGyPfWNbK1Xb1KpQqVKHkHEujUtie7YDRSj/ffc6IQRQ1SHtaSovJPb
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Sends an alert to the specified user. Only available to super user keys.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"to_user_id":{"type":"integer","description":"ID of the user to receive the alert"},"alert":{"type":"string","description":"Text of the alert. May use the placeholder \"{link}\" to have the link automatically inserted."},"from_user_id":{"type":"integer","description":"If provided, the user to send the alert from. Otherwise, uses the current API user. May be 0 for an anonymous alert."},"link_url":{"type":"string","description":"URL user will be taken to when the alert is clicked."},"link_title":{"type":"string","description":"Text of the link URL that will be displayed. If no placeholder is present in the alert, will be automatically appended."}},"required":["to_user_id","alert"]}},"application/json":{"schema":{"type":"object","properties":{"to_user_id":{"type":"integer","description":"ID of the user to receive the alert"},"alert":{"type":"string","description":"Text of the alert. May use the placeholder \"{link}\" to have the link automatically inserted."},"from_user_id":{"type":"integer","description":"If provided, the user to send the alert from. Otherwise, uses the current API user. May be 0 for an anonymous alert."},"link_url":{"type":"string","description":"URL user will be taken to when the alert is clicked."},"link_title":{"type":"string","description":"Text of the link URL that will be displayed. If no placeholder is present in the alert, will be automatically appended."}},"required":["to_user_id","alert"]}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Sends an alert to the specified user. Only available to super user keys.
 >
   
 </StatusCodes>
+
 
       

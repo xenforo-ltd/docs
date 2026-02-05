@@ -9,11 +9,11 @@ api: eJztVUtv2zAM/iuCLt0A57Eec+vWFgh2WJGkQIEiCBSZqdXYkibJTQLD/32k7CSu12Irdt3JFt/
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Revokes an access token or refresh token.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"client_id":{"type":"string"},"client_secret":{"type":"string"},"token":{"type":"string"},"token_type_hint":{"type":"string","description":"Defaults to 'access_token' but can be 'refresh_token' to revoke a refresh token."}},"required":["client_id","client_secret","token"]}},"application/json":{"schema":{"type":"object","properties":{"client_id":{"type":"string"},"client_secret":{"type":"string"},"token":{"type":"string"},"token_type_hint":{"type":"string","description":"Defaults to 'access_token' but can be 'refresh_token' to revoke a refresh token."}},"required":["client_id","client_secret","token"]}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Revokes an access token or refresh token.
 >
   
 </StatusCodes>
+
 
       

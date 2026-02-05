@@ -9,11 +9,11 @@ api: eJy1U8FuGjEQ/ZWRT61EgPbIDakkiipVVSFSpIAiszuwTnZtxx7ToBX/3hnvFghRDj2Uy2J73sy
 sidebar_class_name: "get api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,22 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Gets a flattened node tree. Traversing this will return a list of nodes in the expected order.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +59,6 @@ Gets a flattened node tree. Traversing this will return a list of nodes in the e
 >
   
 </StatusCodes>
+
 
       

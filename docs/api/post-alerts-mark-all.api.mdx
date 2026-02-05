@@ -9,11 +9,11 @@ api: eJztVVtr2zAU/itCL9vATrI95i3rWgijrDQpFJpSFPmkVmNbmi65EPzfd47sJE5GNzrGnhYwsaR
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Marks all of the API user's alerts as read or viewed. Must specify "read" or "viewed" parameters.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"read":{"type":"boolean","description":"If specified, marks all alerts as read."},"viewed":{"type":"boolean","description":"If specified, marks all alerts as viewed. This will remove the alert counter but keep unactioned alerts highlighted."}}}},"application/json":{"schema":{"type":"object","properties":{"read":{"type":"boolean","description":"If specified, marks all alerts as read."},"viewed":{"type":"boolean","description":"If specified, marks all alerts as viewed. This will remove the alert counter but keep unactioned alerts highlighted."}}}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Marks all of the API user's alerts as read or viewed. Must specify "read" or "vi
 >
   
 </StatusCodes>
+
 
       

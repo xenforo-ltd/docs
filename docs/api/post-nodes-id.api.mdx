@@ -9,11 +9,11 @@ api: eJztVk2P2zYQ/SuETgkgf7RH37ZNAiwCtMF+AAEWhkBL4zUTimRJyl7B0H/vDEXb1NryJr0VyB7
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Updates the specified node
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"node[title]":{"type":"string"},"node[node_name]":{"type":"string"},"node[description]":{"type":"string"},"node[parent_node_id]":{"type":"integer"},"node[display_order]":{"type":"integer"},"node[display_in_list]":{"type":"boolean"},"type_data":{"type":"array","items":[],"description":"Type-specific node data. The available options will vary based on the node type involved."}}}},"application/json":{"schema":{"type":"object","properties":{"node[title]":{"type":"string"},"node[node_name]":{"type":"string"},"node[description]":{"type":"string"},"node[parent_node_id]":{"type":"integer"},"node[display_order]":{"type":"integer"},"node[display_in_list]":{"type":"boolean"},"type_data":{"type":"array","items":[],"description":"Type-specific node data. The available options will vary based on the node type involved."}}}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Updates the specified node
 >
   
 </StatusCodes>
+
 
       

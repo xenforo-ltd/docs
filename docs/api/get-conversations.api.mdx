@@ -9,11 +9,11 @@ api: eJytWEtv2zgQ/iuELrsLuE52j91T0ReCfaJpsAWKQqAlypqWFlWSsusa+e87M5RsyRZlJ2kOSWz
 sidebar_class_name: "get api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Gets the API user's list of conversations.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"page","in":"query","schema":{"type":"integer"}},{"name":"starter_id","in":"query","schema":{"type":"integer"}},{"name":"receiver_id","in":"query","schema":{"type":"integer"}},{"name":"starred","in":"query","schema":{"type":"boolean"},"description":"Only gets starred conversations if specified"},{"name":"unread","in":"query","schema":{"type":"boolean"},"description":"Only gets unread conversations if specified"},{"name":"label_id","in":"query","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Gets the API user's list of conversations.
 >
   
 </StatusCodes>
+
 
       

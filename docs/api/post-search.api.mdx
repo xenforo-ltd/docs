@@ -9,11 +9,11 @@ api: eJzVVUtP20AQ/iurPbWSQ9IeudEWJNRDEQEJKYqizXqIF2zvdh8EK/J/78x6kzgQN/RYLjgz37x
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Creates a new search
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"search_type":{"type":"string"},"keywords":{"type":"string"},"c":{"type":"array","items":[]},"order":{"type":"string"},"grouped":{"type":"boolean"}}}},"application/json":{"schema":{"type":"object","properties":{"search_type":{"type":"string"},"keywords":{"type":"string"},"c":{"type":"array","items":[]},"order":{"type":"string"},"grouped":{"type":"boolean"}}}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Creates a new search
 >
   
 </StatusCodes>
+
 
       

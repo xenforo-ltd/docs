@@ -12,6 +12,10 @@ The API is enabled by default. If necessary, all API access can quickly be disab
 $config['enableApi'] = false;
 ```
 
+:::tip Looking for API endpoints?
+For detailed API endpoint documentation, request/response formats, and error handling, see the [API Reference](/api/xenforo-api).
+:::
+
 ## API keys
 
 API keys are created via the admin control panel by going to **Setup > API keys**. As generating API keys can allow access to highly privileged data, only super administrators may access this system. All super admins will receive an email when an API key is generated to ensure that the request is valid.
@@ -62,13 +66,13 @@ Error messages have a standardized format. Here is an example:
 
 ```json title="Error response"
 {
-    "errors": [
-        {
-            "code": "api_key_not_found",
-            "message": "API key provided in request was not found.",
-            "params": []
-        }
-    ]
+  "errors": [
+    {
+      "code": "api_key_not_found",
+      "message": "API key provided in request was not found.",
+      "params": []
+    }
+  ]
 }
 ```
 
@@ -77,11 +81,3 @@ The top level will be an object with an `errors` key. This will be an array with
 - `code` - this is a machine readable code for the error. There are many possible error codes as they are situation dependent.
 - `message` - a human readable version of the error. This may change or may be translated and should not be used to identify the type of error.
 - `params` - this is a list of key-value parameters that are relevant to the error triggered. They may supplement the error code and message to give more specific details about the error.
-
-## API endpoints
-
-The API features a number of endpoints and actions that can be taken. Additional endpoints and data may be added in the future.
-
-**[View the API endpoint documentation](https://docs.xenforo.com/api/xenforo-api)**
-
-This endpoint documentation has been generated from the API data and comments in the code. It will be expanded and updated over time.

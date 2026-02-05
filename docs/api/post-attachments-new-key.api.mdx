@@ -9,11 +9,11 @@ api: eJztV01v2zgQ/SsET1tAdrJ7zM3bDyDIYYvaBQoYgTAWxxZbStSSlB3X0H/vDCnbiiOj6aWn5hK
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Creates a new attachment key, allowing attachments to be uploaded separately from the related content.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"type":{"type":"string","description":"The content type of the attachment. Default types include post, conversation_message. Add-ons may add more."},"context":{"type":"array","items":{"type":"string"},"description":"Key-value pairs representing the context of the attachment. This will vary depending on content type and the action being taken. See relevant actions for further details."},"attachment":{"type":"string","description":"The first attachment to be associated with the new key."}},"required":["type"]}},"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","description":"The content type of the attachment. Default types include post, conversation_message. Add-ons may add more."},"context":{"type":"array","items":{"type":"string"},"description":"Key-value pairs representing the context of the attachment. This will vary depending on content type and the action being taken. See relevant actions for further details."},"attachment":{"type":"string","description":"The first attachment to be associated with the new key."}},"required":["type"]}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Creates a new attachment key, allowing attachments to be uploaded separately fro
 >
   
 </StatusCodes>
+
 
       

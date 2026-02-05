@@ -9,11 +9,11 @@ api: eJztV01v2zgQ/SsEL9sFZMfdY27eTbswtkCDfAAF0sCgyZHNmiK1JOUPBPrvO0NKtuw02/bSQ9t
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Generates a token that can automatically log into a specific XenForo user when the login URL is visited. If the visitor is already logged into a XenForo account, they will not be logged into the specified account. Only available to super user keys.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"user_id":{"type":"integer"},"limit_ip":{"type":"string","description":"If provided, locks the token to the specified IP for additional security"},"return_url":{"type":"string","description":"If provided, after logging the user will be returned to this URL. Otherwise they'll go to the XenForo index."},"force":{"type":"boolean","description":"If provided, the login URL will forcibly replace the currently logged in user if a user is already logged in and different to the currently logged in user. Defaults to false."},"remember":{"type":"boolean","description":"Controls whether the a \"remember me\" cookie will be set when the user logs in. Defaults to true."}},"required":["user_id"]}},"application/json":{"schema":{"type":"object","properties":{"user_id":{"type":"integer"},"limit_ip":{"type":"string","description":"If provided, locks the token to the specified IP for additional security"},"return_url":{"type":"string","description":"If provided, after logging the user will be returned to this URL. Otherwise they'll go to the XenForo index."},"force":{"type":"boolean","description":"If provided, the login URL will forcibly replace the currently logged in user if a user is already logged in and different to the currently logged in user. Defaults to false."},"remember":{"type":"boolean","description":"Controls whether the a \"remember me\" cookie will be set when the user logs in. Defaults to true."}},"required":["user_id"]}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Generates a token that can automatically log into a specific XenForo user when t
 >
   
 </StatusCodes>
+
 
       

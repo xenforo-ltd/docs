@@ -9,11 +9,11 @@ api: eJzNVE1v2zAM/SuCLtsAp8l2zC3rWiAYhhVNAhQogkKxmVqtbWkS3SQw/N9Hyh91GgRrb8slFkU
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Updates the current user's avatar
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"avatar":{"type":"string","description":"The uploaded new avatar"}},"required":["avatar"]}},"application/json":{"schema":{"type":"object","properties":{"avatar":{"type":"string","description":"The uploaded new avatar"}},"required":["avatar"]}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Updates the current user's avatar
 >
   
 </StatusCodes>
+
 
       

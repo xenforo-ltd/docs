@@ -9,11 +9,11 @@ api: eJztWN9v2zYQ/lcIvWwDbCfbY/aUNS0QrEWLJsECtIFASyeLrSRqJGXHDfy/7ztSsmVbctO1jy0
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
-hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
@@ -35,7 +35,30 @@ import Translate from "@docusaurus/Translate";
   
 </MethodEndpoint>
 
+
+
 Looks up the active XenForo user based on session ID or remember cookie value. This can be used to help with seamless SSO with XF, assuming the session or remember cookies are available to your page. At least one of session_id and remember_cookie must be provided. Only available to super user keys.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"session_id":{"type":"string","description":"If provided, checks for an active session with that ID."},"remember_cookie":{"type":"string","description":"If provided, checks to see if this is an active \"remember me\" cookie value."}}}},"application/json":{"schema":{"type":"object","properties":{"session_id":{"type":"string","description":"If provided, checks for an active session with that ID."},"remember_cookie":{"type":"string","description":"If provided, checks to see if this is an active \"remember me\" cookie value."}}}}}}}
+>
+  
+</RequestSchema>
 
 <StatusCodes
   id={undefined}
@@ -44,5 +67,6 @@ Looks up the active XenForo user based on session ID or remember cookie value. T
 >
   
 </StatusCodes>
+
 
       
