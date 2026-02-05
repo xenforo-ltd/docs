@@ -153,9 +153,9 @@ Each item of add-on data is stored in a separate file. Mostly they are stored as
 
 ### \_no_upload directory
 
-If your add-on directory contains a `_no_upload` directory, any files within it will be included in the built release ZIP but placed outside the `upload` directory and therefore not uploaded to the XenForo installation.
+If your add-on directory contains a `_no_upload` directory, any files within it will be included in the built release ZIP but placed alongside the `upload` directory and therefore not uploaded to the XenForo installation.
 
-This can be useful for including files such as README, CHANGELOG, LICENSE, or other documentation that you want to ship with the download for reference, but which do not need to be present in the installed add-on files.
+This is useful for bundling files like README, CHANGELOG, LICENSE, or other documentation that should ship with the download but do not need to be uploaded to the server.
 
 ## Setup class
 
