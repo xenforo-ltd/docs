@@ -158,6 +158,14 @@ If your add-on directory contains a `_no_upload` directory, any files within it 
 
 This is useful for bundling files like README, CHANGELOG, LICENSE, or other documentation that should ship with the download but do not need to be uploaded to the server.
 
+### \_stubs directory
+
+The `_stubs` directory contains customized "stub" templates used by XenForo's xf-make:* commands when generating new classes for your add-on. 
+
+When you run a make command (e.g. xf-make:entity), XenForo first checks for a matching stub file in your add-on's _stubs/ directory before falling back to the core stubs. This allows you to customize the boilerplate code generated for entities, controllers, services, and other class types. 
+
+Use `php cmd.php xf-make:stub-publish` to copy core stub templates into your add-on for customization. For example, `php cmd.php xf-make:stub-publish entity --addon=Vendor/AddOn` publishes the entity stub, which you can then modify to include your preferred code style, default methods, or documentation blocks.
+
 ## Setup class
 
 To create a Setup class for your add-on, all you need to do is create a file named `Setup.php` in the root of your add-on directory.
