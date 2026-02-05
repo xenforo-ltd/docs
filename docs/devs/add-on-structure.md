@@ -25,7 +25,7 @@ The vendor type add-on ID should adhere to the following rules:
 - Can contain a single `/` character but not at the start or the end
 - Can contain 0-9 but not at the start of either part of the add-on ID
 
-Once you have decided what your add-on ID is, we know exactly where the files for this add-on will be stored. All XF 2.0 add-ons are stored within a subdirectory of the `src/addons` directory.
+Once you have decided what your add-on ID is, we know exactly where the files for this add-on will be stored. All XenForo add-ons are stored within a subdirectory of the `src/addons` directory.
 
 If you have a simple add-on ID, e.g. `Demo`, the files for your add-on will be stored in the following location:
 `src/addons/Demo`.
@@ -37,7 +37,7 @@ The add-on ID you choose will also become your class namespace prefix (see [Name
 
 ## Recommended version string format
 
-XF itself uses a MAJOR.MINOR.PATCH principle (e.g. 2.0.0 for the first stable XF2 release) to its version numbering and we recommend a similar approach is taken towards the versioning of your own add-ons. In basic terms, increment the
+XF itself uses a MAJOR.MINOR.PATCH principle (e.g. 2.0.0 for the first stable XF 2 release) for its version numbering, and we recommend a similar approach is taken towards the versioning of your own add-ons. In basic terms, increment the
 
 - MAJOR version when you make major feature changes, especially changes that break backwards compatibility
 - MINOR version when you add functionality preferably in a backwards compatible manner, and
@@ -61,7 +61,7 @@ There are a number of files and directories within an add-on's directory that ha
 
 ### addon.json file
 
-`addon.json` is a file which contains a number of pieces of information which are required to help XF 2.0 identify the
+`addon.json` is a file which contains a number of pieces of information which are required to help XenForo identify the
 add-on and display information about it in the Admin CP. At minimum, your `addon.json` file should look like this:
 
 ```json title="addon.json"

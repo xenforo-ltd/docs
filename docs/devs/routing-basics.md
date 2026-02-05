@@ -1,8 +1,8 @@
 # Routing basics
 
-Within a PHP application, like XF2, we need a way of being able to take a user request for a specific URL, understand which controller, action and what data that URL represents, so that can present the appropriate response to the user. The concept of converting a URL to a location within the code is known as "Routing".
+Within a PHP application, like XenForo, we need a way of being able to take a user request for a specific URL, understand which controller, action and what data that URL represents, so that can present the appropriate response to the user. The concept of converting a URL to a location within the code is known as "Routing".
 
-In XF2, routing is almost entirely managed from one location within the Admin CP. That location is `Admin CP > Development > Routes`. Routes are grouped by one of two types, Public and Admin types and they provide the routing of requests within the Public and Admin apps respectively.
+In XenForo, routing is almost entirely managed from one location within the Admin CP. That location is `Admin CP > Development > Routes`. Routes are grouped by one of two types, Public and Admin types and they provide the routing of requests within the Public and Admin apps respectively.
 
 ## A simple example
 

@@ -1,6 +1,6 @@
 # Development tools
 
-XF2 provides developers with a number of built in tools you can use to expedite development of add-ons and we'll go through some of these below.
+XenForo provides developers with a number of built in tools you can use to expedite development of add-ons and we'll go through some of these below.
 
 ## Debug mode
 
@@ -65,7 +65,7 @@ You should never apply the above code to the config of a live/production site.
 
 ## Development commands
 
-XF 2.0 ships with a number of general development and add-on CLI commands which are aimed to help you develop more efficiently or even possibly automate/script some common processes.
+XenForo ships with a number of general development and add-on CLI commands which are aimed to help you develop more efficiently or even possibly automate/script some common processes.
 
 In this section we'll go through some of the common tools and explain what they do.
 
@@ -224,7 +224,7 @@ This will export all data currently associated to your add-on in the database to
 
 ## Debugging code
 
-It should be possible to set up your favourite debugger tool (XDebug, Zend Debugger etc.) to work with XF2. Though, sometimes, debugging code can be as rudimentary as just quickly seeing what value (or value type) a variable holds at a given time.
+It is possible to set up your favourite debugger tool (XDebug, Zend Debugger etc.) to work with XenForo. Though, sometimes, debugging code can be as rudimentary as just quickly seeing what value (or value type) a variable holds at a given time.
 
 ### Dump a variable
 

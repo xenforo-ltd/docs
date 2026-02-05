@@ -4,7 +4,7 @@ We've taken a look at some of the new approaches available for interacting with 
 
 ## The database adapter
 
-The default database adapter in XF2 is based on MySQL and PHP's mysqli extension. The configured database adapter is accessible in any XF class using the following:
+The default database adapter in XenForo is based on MySQL and PHP's mysqli extension. The configured database adapter is accessible in any XF class using the following:
 
 ```php
 $db = \XF::db();

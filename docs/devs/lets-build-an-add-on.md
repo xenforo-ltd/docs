@@ -1,6 +1,6 @@
 # Let's build an add-on
 
-For some people, getting stuck straight into a project is the best way to learn, and the aim is that in the following sections you will learn how to build an add-on, from scratch. Be prepared; this isn't a simple 'Hello world' type demo. This is actually a fairly full featured demo add-on which covers a number of concepts within XF2.
+For some people, getting stuck straight into a project is the best way to learn, and the aim is that in the following sections you will learn how to build an add-on, from scratch. Be prepared; this isn't a simple 'Hello world' type demo. This is actually a fairly full featured demo add-on which covers a number of concepts within XenForo.
 
 The add-on we're going to build will allow users with the appropriate permission to "feature" a thread, and allow that thread to be displayed on a new page. We'll even set up a process which automatically features threads in specific forums. We will use a new route for this named `portal` and eventually set that as the index page route and set the "Home" tab to be selected when viewing that page.
 
@@ -423,7 +423,7 @@ The code we added above lets us set our `demo_portal_auto_feature` column in the
 
 We've added a new column to the forum entity which will allow us to automatically feature a thread when it is newly created in this forum, so now it's time to add the code which will do this.
 
-In XF2, we make heavy use of Service objects. These typically take a "setup and go" type approach; you setup your configuration and then call a method to complete the action. We use a service object to setup and perform the thread creation, so this is a perfect place to add the code we need. It all starts with another class extension, so go to the "Add class extension" page.
+In XenForo, we make heavy use of Service objects. These typically take a "setup and go" type approach; you setup your configuration and then call a method to complete the action. We use a service object to setup and perform the thread creation, so this is a perfect place to add the code we need. It all starts with another class extension, so go to the "Add class extension" page.
 
 This time, the base class will be `XF\Service\Thread\Creator` and the extension class will be `Demo\Portal\XF\Service\Thread\Creator` and, as usual, this new class will look something like the code below. Create that code in the path `src/addons/Demo/Portal/XF/Service/Thread/Creator.php` then click "Save" to create the extension.
 
