@@ -13,7 +13,7 @@ $config['enableApi'] = false;
 ```
 
 :::tip Looking for API endpoints?
-For detailed API endpoint documentation, request/response formats, and error handling, see the [API Reference](/api/xenforo-api).
+For detailed API endpoint documentation, request/response formats, and error handling, see the [API Reference](/api).
 :::
 
 ## API keys

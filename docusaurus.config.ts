@@ -70,6 +70,7 @@ const config: Config = {
           xenforo: {
             specPath: "static/api/openapi.json",
             outputDir: "docs/api",
+            infoTemplate: "./src/openapi/infoTemplate.mustache",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
