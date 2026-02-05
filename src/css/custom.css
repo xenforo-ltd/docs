@@ -1,0 +1,118 @@
+:root {
+  --xf-primary: hsl(205 60% 60%);
+  --xf-primary-hover: hsl(205 60% 75%);
+  --xf-dark-surface: hsl(205 60% 10%);
+  --xf-muted-text: #6b7280;
+  --xf-nav-link: rgb(163 212 245);
+  --xf-nav-link-hover: rgb(232 244 252);
+  --xf-nav-link-active: rgb(20 116 184);
+  --xf-border-subtle: rgb(55 62 71);
+  --xf-border-hover: rgb(69 77 88);
+}
+
+html[data-theme="light"] {
+  --ifm-navbar-background-color: hsl(205 80% 30%);
+  --ifm-color-primary: var(--xf-primary);
+  --ifm-link-color: var(--xf-primary);
+  --ifm-link-hover-color: var(--xf-primary-hover);
+  --ifm-navbar-link-color: var(--xf-nav-link);
+  --ifm-navbar-link-hover-color: var(--xf-nav-link-hover);
+  --ifm-navbar-link-active-color: var(--xf-nav-link-active);
+  --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
+  --ifm-footer-background-color: rgb(15 87 138);
+  --ifm-footer-color: var(--xf-nav-link-hover);
+  --ifm-footer-link-color: var(--xf-nav-link);
+  --ifm-footer-link-hover-color: var(--xf-nav-link-hover);
+
+  /* Mobile sidebar - override menu colors for dark blue background */
+  .navbar-sidebar {
+    --ifm-menu-color: var(--xf-nav-link);
+    --ifm-menu-color-active: var(--xf-nav-link-hover);
+    --ifm-menu-color-background-active: rgb(255 255 255 / 10%);
+    --ifm-menu-color-background-hover: rgb(255 255 255 / 10%);
+  }
+
+  .navbar-sidebar__close {
+    color: var(--xf-nav-link);
+
+    &:hover {
+      color: var(--xf-nav-link-hover);
+    }
+  }
+}
+
+html[data-theme="dark"] {
+  --ifm-color-primary: var(--xf-primary);
+  --ifm-link-color: var(--xf-primary);
+  --ifm-link-hover-color: var(--xf-primary-hover);
+  --ifm-menu-color-active: var(--xf-primary);
+  --ifm-background-color: #000;
+  --ifm-background-surface-color: var(--xf-dark-surface);
+  --ifm-navbar-background-color: var(--xf-dark-surface);
+  --ifm-footer-background-color: transparent;
+  --ifm-footer-color: rgb(153 196 230);
+  --ifm-footer-link-color: rgb(153 196 230);
+  --ifm-footer-link-hover-color: var(--xf-nav-link-hover);
+  --ifm-navbar-link-color: var(--xf-nav-link);
+  --ifm-navbar-link-hover-color: var(--xf-nav-link-hover);
+  --ifm-navbar-link-active-color: var(--xf-nav-link-active);
+  --docsearch-key-background: var(--xf-dark-surface);
+  --ifm-pre-background: inherit;
+
+  .clean-btn {
+    color: var(--ifm-navbar-link-color);
+
+    &:hover {
+      color: var(--ifm-navbar-link-hover-color);
+    }
+  }
+
+  code {
+    background-color: rgb(255 255 255 / 10%);
+  }
+
+  .navbar .DocSearch-Button {
+    background-color: var(--xf-dark-surface);
+    border: 1px solid var(--xf-border-subtle);
+    border-radius: 4px;
+    color: var(--xf-muted-text);
+
+    &:hover {
+      background-color: #2a3038;
+      border-color: var(--xf-border-hover);
+      box-shadow: none;
+    }
+
+    .DocSearch-Search-Icon,
+    &-Placeholder {
+      color: var(--xf-muted-text);
+    }
+
+    &-Keys {
+      color: var(--ifm-navbar-link-color);
+    }
+  }
+
+  .DocSearch-Button-Key {
+    background: #1a5276;
+  }
+
+  .DocSearch-Modal {
+    --docsearch-modal-background: #161a1f;
+    --docsearch-searchbox-background: #22272e;
+    --docsearch-hit-background: #1e2228;
+    --docsearch-footer-background: #161a1f;
+    --docsearch-key-gradient: linear-gradient(-26.5deg, #22272e, #373e47);
+  }
+}
+
+.navbar__logo img {
+  height: 26px;
+}
+
+.openapi-tabs__code-container:not(.openapi-tabs__code-container-inner) {
+  &,
+  &:hover {
+    box-shadow: none !important;
+  }
+}

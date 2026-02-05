@@ -1,2 +1,7 @@
 .idea
-site/
+.docusaurus
+.cache-loader
+.DS_Store
+
+/node_modules
+/build
