@@ -15,7 +15,7 @@ Alternatively, if you are a [XenForo Cloud](https://xenforo.com/solutions/#cloud
 
 ## The admin control panel
 
-This manual primarily concerns operations you will perform within the XenForo *admin control panell*, sometimes known as the *ACP*. Separate from the public-facing side or *front-end* of XenForo that is accessible to regular visitors, the Admin Control Panel is reserved for those with [Administrative](access-privileges/staff.md#administrators) access privileges.
+This manual primarily concerns operations you will perform within the XenForo *admin control panel*, sometimes known as the *ACP*. Separate from the public-facing side or *front-end* of XenForo that is accessible to regular visitors, the Admin Control Panel is reserved for those with [Administrative](access-privileges/staff.md#administrators) access privileges.
 
 To access the admin control panel, either navigate directly to your site URL with `/admin.php` added to the address, or click the *Admin* link available when logged in to the front-end with a user account that has administrative privileges.
 
