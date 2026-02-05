@@ -1,0 +1,61 @@
+name: Algolia recrawl
+
+on:
+  workflow_run:
+    workflows: ["Deploy"]
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  recrawl:
+    name: Trigger Algolia recrawl
+    runs-on: blacksmith-4vcpu-ubuntu-2404
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 2
+
+      - name: Check for documentation changes
+        id: docs-changed
+        run: |
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
+          if echo "$CHANGED_FILES" | grep -qE '^docs/.*\.(md|mdx)$|^docusaurus\.config\.|^sidebars\.'; then
+            echo "docs_changed=true" >> $GITHUB_OUTPUT
+            echo "Documentation changes detected - will trigger recrawl"
+          else
+            echo "docs_changed=false" >> $GITHUB_OUTPUT
+            echo "No documentation changes - skipping recrawl"
+          fi
+
+      - name: Trigger Algolia Crawler reindex
+        if: steps.docs-changed.outputs.docs_changed == 'true'
+        env:
+          CRAWLER_USER_ID: ${{ secrets.CRAWLER_USER_ID }}
+          CRAWLER_API_KEY: ${{ secrets.CRAWLER_API_KEY }}
+          CRAWLER_ID: ${{ secrets.CRAWLER_ID }}
+        run: |
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
+            "https://crawler.algolia.com/api/1/crawlers/${CRAWLER_ID}/reindex" \
+            -H "Authorization: Basic $(echo -n "${CRAWLER_USER_ID}:${CRAWLER_API_KEY}" | base64)" \
+            -H "Content-Type: application/json")
+
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+
+          echo "Response: $BODY"
+          echo "HTTP Status: $HTTP_CODE"
+
+          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+            echo "Algolia crawler reindex triggered successfully"
+          else
+            echo "Failed to trigger Algolia crawler reindex"
+            exit 1
+          fi
