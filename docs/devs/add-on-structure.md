@@ -152,6 +152,12 @@ The `_output` directory is not required for a successful installation of an add-
 
 Each item of add-on data is stored in a separate file. Mostly they are stored as JSON files, but in the case of phrases they are stored as TXT files and for templates they are stored as HTML/CSS/LESS files. All template types are editable in the filesystem directly, and changes made to these files are written back to the database automatically on load.
 
+### \_no_upload directory
+
+If your add-on directory contains a `_no_upload` directory, any files within it will be included in the built release ZIP but placed alongside the `upload` directory and therefore not uploaded to the XenForo installation.
+
+This is useful for bundling files like README, CHANGELOG, LICENSE, or other documentation that should ship with the download but do not need to be uploaded to the server.
+
 ## Setup class
 
 To create a Setup class for your add-on, all you need to do is create a file named `Setup.php` in the root of your add-on directory.
