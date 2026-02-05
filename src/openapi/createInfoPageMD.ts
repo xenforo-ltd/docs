@@ -1,8 +1,49 @@
 import type { InfoPageMetadata } from "docusaurus-plugin-openapi-docs/lib/types";
-import { createInfoPageMD as defaultCreateInfoPageMD } from "docusaurus-plugin-openapi-docs/lib/markdown";
+import type {
+  ContactObject,
+  LicenseObject,
+  SecuritySchemeObject,
+} from "docusaurus-plugin-openapi-docs/lib/openapi/types";
+import { render } from "docusaurus-plugin-openapi-docs/lib/markdown/utils";
+import { createAuthentication } from "docusaurus-plugin-openapi-docs/lib/markdown/createAuthentication";
+import { createContactInfo } from "docusaurus-plugin-openapi-docs/lib/markdown/createContactInfo";
+import { createDescription } from "docusaurus-plugin-openapi-docs/lib/markdown/createDescription";
+import { createDownload } from "docusaurus-plugin-openapi-docs/lib/markdown/createDownload";
+import { createHeading } from "docusaurus-plugin-openapi-docs/lib/markdown/createHeading";
+import { createLicense } from "docusaurus-plugin-openapi-docs/lib/markdown/createLicense";
+import { createLogo } from "docusaurus-plugin-openapi-docs/lib/markdown/createLogo";
+import { createTermsOfService } from "docusaurus-plugin-openapi-docs/lib/markdown/createTermsOfService";
 
-export function createInfoPageMD(pageData: InfoPageMetadata): string {
-  const defaultContent = defaultCreateInfoPageMD(pageData);
+export function createInfoPageMD({
+  info: {
+    title,
+    description,
+    contact,
+    license,
+    termsOfService,
+    logo,
+    darkLogo,
+  },
+  securitySchemes,
+  downloadUrl,
+}: InfoPageMetadata): string {
+  const defaultContent = render([
+    `import ApiLogo from "@theme/ApiLogo";\n`,
+    `import Heading from "@theme/Heading";\n`,
+    `import SchemaTabs from "@theme/SchemaTabs";\n`,
+    `import TabItem from "@theme/TabItem";\n`,
+    `import Export from "@theme/ApiExplorer/Export";\n\n`,
+
+    // Omit createVersionBadge(version) to hide version badge
+    createDownload(downloadUrl),
+    createHeading(title),
+    createLogo(logo, darkLogo),
+    createDescription(description),
+    createAuthentication(securitySchemes as unknown as SecuritySchemeObject),
+    createContactInfo(contact as ContactObject),
+    createTermsOfService(termsOfService),
+    createLicense(license as LicenseObject),
+  ]);
 
   const additionalContent = `
 ## Accessing the API
