@@ -82,6 +82,6 @@ The top level will be an object with an `errors` key. This will be an array with
 
 The API features a number of endpoints and actions that can be taken. Additional endpoints and data may be added in the future.
 
-**[View the API endpoint documentation](https://xenforo.com/community/pages/api-endpoints/)**
+**[View the API endpoint documentation](https://docs.xenforo.com/api/xenforo-api)**
 
 This endpoint documentation has been generated from the API data and comments in the code. It will be expanded and updated over time.
