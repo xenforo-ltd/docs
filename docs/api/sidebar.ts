@@ -780,6 +780,242 @@ const sidebar: SidebarsConfig = {
         },
       ],
     },
+    {
+      type: "category",
+      label: "resource-categories",
+      link: {
+        type: "doc",
+        id: "api/resource-categories",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/get-resource-categories",
+          label: "GET resource-categories/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-resource-categories",
+          label: "POST resource-categories/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-resource-categories-flattened",
+          label: "GET resource-categories/flattened",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-resource-categories-id",
+          label: "GET resource-categories/{id}/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-resource-categories-id",
+          label: "POST resource-categories/{id}/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/delete-resource-categories-id",
+          label: "Deletes the specified category",
+          className: "api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api/get-resource-categories-id-resources",
+          label: "Gets a page of resources from the specified category",
+          className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "resource-reviews",
+      link: {
+        type: "doc",
+        id: "api/resource-reviews",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/get-resource-reviews",
+          label: "GET resource-reviews/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-resource-reviews",
+          label: "POST resource-reviews/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-resource-reviews-id",
+          label: "GET resource-reviews/{id}/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/delete-resource-reviews-id",
+          label: "DELETE resource-reviews/{id}/",
+          className: "api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api/post-resource-reviews-id-author-reply",
+          label: "POST resource-reviews/{id}/author-reply",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/delete-resource-reviews-id-author-reply",
+          label: "DELETE resource-reviews/{id}/author-reply",
+          className: "api-method delete",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "resource-updates",
+      link: {
+        type: "doc",
+        id: "api/resource-updates",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/post-resource-updates",
+          label: "POST resource-updates/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-resource-updates-id",
+          label: "GET resource-updates/{id}/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-resource-updates-id",
+          label: "POST resource-updates/{id}/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/delete-resource-updates-id",
+          label: "DELETE resource-updates/{id}/",
+          className: "api-method delete",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "resource-versions",
+      link: {
+        type: "doc",
+        id: "api/resource-versions",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/post-resource-versions",
+          label: "POST resource-versions/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-resource-versions-id",
+          label: "GET resource-versions/{id}/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/delete-resource-versions-id",
+          label: "DELETE resource-versions/{id}/",
+          className: "api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api/get-resource-versions-id-download",
+          label: "GET resource-versions/{id}/download",
+          className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "resources",
+      link: {
+        type: "doc",
+        id: "api/resources",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/get-resources",
+          label: "GET resources/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-resources",
+          label: "POST resources/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-resources-id",
+          label: "GET resources/{id}/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-resources-id",
+          label: "POST resources/{id}/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/delete-resources-id",
+          label: "DELETE resources/{id}/",
+          className: "api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api/post-resources-id-feature",
+          label: "Creates or edits the feature for the specified media",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-resources-id-reviews",
+          label: "GET resources/{id}/reviews",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-resources-id-unfeature",
+          label: "Deletes the feature for the specified media",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-resources-id-updates",
+          label: "GET resources/{id}/updates",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-resources-id-versions",
+          label: "GET resources/{id}/versions",
+          className: "api-method get",
+        },
+      ],
+    },
   ],
 };
 

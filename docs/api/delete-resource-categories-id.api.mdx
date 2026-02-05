@@ -1,0 +1,72 @@
+---
+id: delete-resource-categories-id
+title: "Deletes the specified category"
+description: "Deletes the specified category"
+sidebar_label: "Deletes the specified category"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1VE1rGzEQ/StClybg2G6PvgXigGmhJR9QKMbI2nF2EllSJG1Ss/i/d0YrO44/CDnUF++uZt68N/M0rXQegkro7KSSI1mBgQSzANE1QcNMqwQPLiDEGVYz2ZNJPUQ5+iM3ERdvEXLao/yoA3rGI7SrjBZFqkFEDxoXCJUoGStC8yqoJYUExmylpRdKw4qOkAG8SjU9B3huMAARTKGBnoy6hqWSo1amleeMmALaB7neJ0BftqhFmq7RVAHspsRzA5nKAebcOQPKHoJOFiLTEBlKWEfH4hWNEXMQXZWqL36S6PCKkeLoabUN0M5a0BQikqMTjBngSxTUC7CpL9dTFhy9s5F6Sny+DYf8957EbaM1xLhojNgEkwgCTwTC4cp7gzpPdvAYOac91Ojmj8SFBxHYBwm7irEDP9Lg7teTNLTavRkmj5JGNZKDI8YYtFitB9xjCC+bWTfBcLjyKPcb/BvstQtOXP6aCLCVd0iSuC0RdBMwrTLA7+uLS48X34Ffp7vHtyyzU7IbtBVDNflDMUANqoJAb8UnOyn7xJjQE81y4YJQDY3VptJidklJvCeVny2Wc/ar8UcxuWKfKJ2EiuKsXIQoYkPjEg1HFFLnkueCduFycUwG3reS8Ln5HfbX/rA/PNn4m/HtXcatnG6WpHKr0buYliqbqSj48I6/K9G+WfTjzNLBBH/TwBuFmUH2TVvsdnwP9eQorxBeSDUR5ri2nasI98Gs1/y5u/VsowqjmhveLQtl6Lae5vuf7/0JvU9s3SPL60WZBvKKm/JLQFbxSUVnN2WxnotT5Tcutqvdmhta1Ob1lKKKrbl6d3BJC8SnnZSDdcS0t1vkavxjfDcmB/8D418+sg==
+sidebar_class_name: "delete api-method"
+info_path: api/xenforo-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Deletes the specified category"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/resource-categories/{id}/"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Deletes the specified category
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""},{"name":"delete_children","in":"query","schema":{"type":"boolean"},"description":"If true, child nodes will be deleted. Otherwise, they will be connected to this node's parent."}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"string"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -7180,6 +7180,849 @@
                     }
                 }
             }
+        },
+        "/resource-categories/": {
+            "get": {
+                "operationId": "get_resource_categories_",
+                "tags": [
+                    "resource-categories"
+                ],
+                "summary": "GET resource-categories/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_resource_categories_",
+                "tags": [
+                    "resource-categories"
+                ],
+                "summary": "POST resource-categories/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resource-categories/flattened": {
+            "get": {
+                "operationId": "get_resource_categories_flattened",
+                "tags": [
+                    "resource-categories"
+                ],
+                "summary": "GET resource-categories/flattened",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resource-categories/{id}/": {
+            "get": {
+                "operationId": "get_resource_categories_id_",
+                "tags": [
+                    "resource-categories"
+                ],
+                "summary": "GET resource-categories/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_resource_categories_id_",
+                "tags": [
+                    "resource-categories"
+                ],
+                "summary": "POST resource-categories/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "delete_resource_categories_id_",
+                "tags": [
+                    "resource-categories"
+                ],
+                "summary": "Deletes the specified category",
+                "description": "Deletes the specified category",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    },
+                    {
+                        "name": "delete_children",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean"
+                        },
+                        "description": "If true, child nodes will be deleted. Otherwise, they will be connected to this node's parent."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "success": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resource-categories/{id}/resources": {
+            "get": {
+                "operationId": "get_resource_categories_id_resources",
+                "tags": [
+                    "resource-categories"
+                ],
+                "summary": "Gets a page of resources from the specified category",
+                "description": "Gets a page of resources from the specified category.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "resources": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "description": "Resources on this page"
+                                        },
+                                        "pagination": {
+                                            "type": "string",
+                                            "description": "Pagination information"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resource-reviews/": {
+            "get": {
+                "operationId": "get_resource_reviews_",
+                "tags": [
+                    "resource-reviews"
+                ],
+                "summary": "GET resource-reviews/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_resource_reviews_",
+                "tags": [
+                    "resource-reviews"
+                ],
+                "summary": "POST resource-reviews/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resource-reviews/{id}/": {
+            "get": {
+                "operationId": "get_resource_reviews_id_",
+                "tags": [
+                    "resource-reviews"
+                ],
+                "summary": "GET resource-reviews/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "delete_resource_reviews_id_",
+                "tags": [
+                    "resource-reviews"
+                ],
+                "summary": "DELETE resource-reviews/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resource-reviews/{id}/author-reply": {
+            "post": {
+                "operationId": "post_resource_reviews_id_author_reply",
+                "tags": [
+                    "resource-reviews"
+                ],
+                "summary": "POST resource-reviews/{id}/author-reply",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "delete_resource_reviews_id_author_reply",
+                "tags": [
+                    "resource-reviews"
+                ],
+                "summary": "DELETE resource-reviews/{id}/author-reply",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resource-updates/": {
+            "post": {
+                "operationId": "post_resource_updates_",
+                "tags": [
+                    "resource-updates"
+                ],
+                "summary": "POST resource-updates/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resource-updates/{id}/": {
+            "get": {
+                "operationId": "get_resource_updates_id_",
+                "tags": [
+                    "resource-updates"
+                ],
+                "summary": "GET resource-updates/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_resource_updates_id_",
+                "tags": [
+                    "resource-updates"
+                ],
+                "summary": "POST resource-updates/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "delete_resource_updates_id_",
+                "tags": [
+                    "resource-updates"
+                ],
+                "summary": "DELETE resource-updates/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resource-versions/": {
+            "post": {
+                "operationId": "post_resource_versions_",
+                "tags": [
+                    "resource-versions"
+                ],
+                "summary": "POST resource-versions/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resource-versions/{id}/": {
+            "get": {
+                "operationId": "get_resource_versions_id_",
+                "tags": [
+                    "resource-versions"
+                ],
+                "summary": "GET resource-versions/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "delete_resource_versions_id_",
+                "tags": [
+                    "resource-versions"
+                ],
+                "summary": "DELETE resource-versions/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resource-versions/{id}/download": {
+            "get": {
+                "operationId": "get_resource_versions_id_download",
+                "tags": [
+                    "resource-versions"
+                ],
+                "summary": "GET resource-versions/{id}/download",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resources/": {
+            "get": {
+                "operationId": "get_resources_",
+                "tags": [
+                    "resources"
+                ],
+                "summary": "GET resources/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_resources_",
+                "tags": [
+                    "resources"
+                ],
+                "summary": "POST resources/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resources/{id}/": {
+            "get": {
+                "operationId": "get_resources_id_",
+                "tags": [
+                    "resources"
+                ],
+                "summary": "GET resources/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_resources_id_",
+                "tags": [
+                    "resources"
+                ],
+                "summary": "POST resources/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "delete_resources_id_",
+                "tags": [
+                    "resources"
+                ],
+                "summary": "DELETE resources/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resources/{id}/feature": {
+            "post": {
+                "operationId": "post_resources_id_feature",
+                "tags": [
+                    "resources"
+                ],
+                "summary": "Creates or edits the feature for the specified media",
+                "description": "Creates or edits the feature for the specified media",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "description": "A custom title, if desired."
+                                    },
+                                    "snippet": {
+                                        "type": "string",
+                                        "description": "A custom snippet, if desired."
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "description": "A custom image, if desired."
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "description": "A custom feature date, if desired."
+                                    },
+                                    "unfeature_days": {
+                                        "type": "integer",
+                                        "description": "A custom number of days after which to unfeature the content, if desired."
+                                    },
+                                    "always_visible": {
+                                        "type": "boolean",
+                                        "description": "Whether or not the feature should be visible even when the visitor may not view the content."
+                                    }
+                                }
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "description": "A custom title, if desired."
+                                    },
+                                    "snippet": {
+                                        "type": "string",
+                                        "description": "A custom snippet, if desired."
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "description": "A custom image, if desired."
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "description": "A custom feature date, if desired."
+                                    },
+                                    "unfeature_days": {
+                                        "type": "integer",
+                                        "description": "A custom number of days after which to unfeature the content, if desired."
+                                    },
+                                    "always_visible": {
+                                        "type": "boolean",
+                                        "description": "Whether or not the feature should be visible even when the visitor may not view the content."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "success": {
+                                            "type": "string"
+                                        },
+                                        "feature": {
+                                            "$ref": "#/components/schemas/FeaturedContent"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/{id}/reviews": {
+            "get": {
+                "operationId": "get_resources_id_reviews",
+                "tags": [
+                    "resources"
+                ],
+                "summary": "GET resources/{id}/reviews",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resources/{id}/unfeature": {
+            "post": {
+                "operationId": "post_resources_id_unfeature",
+                "tags": [
+                    "resources"
+                ],
+                "summary": "Deletes the feature for the specified media",
+                "description": "Deletes the feature for the specified media",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "success": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/{id}/updates": {
+            "get": {
+                "operationId": "get_resources_id_updates",
+                "tags": [
+                    "resources"
+                ],
+                "summary": "GET resources/{id}/updates",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/resources/{id}/versions": {
+            "get": {
+                "operationId": "get_resources_id_versions",
+                "tags": [
+                    "resources"
+                ],
+                "summary": "GET resources/{id}/versions",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -8375,6 +9218,503 @@
                         "description": "If this field type supports grouping, the group this field belongs to."
                     }
                 }
+            },
+            "XFMG_Album": {
+                "type": "object",
+                "properties": {
+                    "album_id": {
+                        "type": "integer"
+                    },
+                    "category_id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "create_date": {
+                        "type": "integer"
+                    },
+                    "last_update_date": {
+                        "type": "integer"
+                    },
+                    "view_privacy": {
+                        "type": "string"
+                    },
+                    "add_privacy": {
+                        "type": "string"
+                    },
+                    "album_state": {
+                        "type": "string"
+                    },
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "media_count": {
+                        "type": "integer"
+                    },
+                    "view_count": {
+                        "type": "integer"
+                    },
+                    "warning_message": {
+                        "type": "string"
+                    },
+                    "last_comment_date": {
+                        "type": "integer"
+                    },
+                    "last_comment_id": {
+                        "type": "integer"
+                    },
+                    "last_comment_user_id": {
+                        "type": "integer"
+                    },
+                    "last_comment_username": {
+                        "type": "string"
+                    },
+                    "comment_count": {
+                        "type": "integer"
+                    },
+                    "rating_count": {
+                        "type": "integer"
+                    },
+                    "rating_avg": {
+                        "type": "number"
+                    },
+                    "rating_weighted": {
+                        "type": "number"
+                    },
+                    "reaction_score": {
+                        "type": "integer"
+                    },
+                    "User": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                }
+            },
+            "XFMG_Category": {
+                "type": "object",
+                "properties": {
+                    "category_id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "category_type": {
+                        "type": "string"
+                    },
+                    "media_count": {
+                        "type": "integer"
+                    },
+                    "album_count": {
+                        "type": "integer"
+                    },
+                    "comment_count": {
+                        "type": "integer"
+                    },
+                    "allowed_types": {
+                        "type": "array",
+                        "items": []
+                    },
+                    "min_tags": {
+                        "type": "integer"
+                    },
+                    "category_index_limit": {
+                        "type": "integer"
+                    },
+                    "parent_category_id": {
+                        "type": "integer"
+                    },
+                    "display_order": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "XFMG_MediaField": {
+                "type": "object",
+                "properties": {
+                    "field_id": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "display_order": {
+                        "type": "integer"
+                    },
+                    "field_type": {
+                        "type": "string"
+                    },
+                    "field_choices": {
+                        "type": "object",
+                        "description": "For choice types, an ordered list of choices, with \"option\" and \"name\" keys for each."
+                    },
+                    "match_type": {
+                        "type": "string"
+                    },
+                    "match_params": {
+                        "type": "array",
+                        "items": []
+                    },
+                    "max_length": {
+                        "type": "integer"
+                    },
+                    "required": {
+                        "type": "boolean"
+                    },
+                    "display_group": {
+                        "type": "string",
+                        "description": "If this field type supports grouping, the group this field belongs to."
+                    }
+                }
+            },
+            "XFMG_MediaItem": {
+                "type": "object",
+                "properties": {
+                    "media_id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "media_date": {
+                        "type": "integer"
+                    },
+                    "last_edit_date": {
+                        "type": "integer"
+                    },
+                    "media_type": {
+                        "type": "string"
+                    },
+                    "media_state": {
+                        "type": "string"
+                    },
+                    "album_id": {
+                        "type": "integer"
+                    },
+                    "album_state": {
+                        "type": "string"
+                    },
+                    "category_id": {
+                        "type": "integer"
+                    },
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "view_count": {
+                        "type": "integer"
+                    },
+                    "warning_message": {
+                        "type": "string"
+                    },
+                    "last_comment_date": {
+                        "type": "integer"
+                    },
+                    "last_comment_id": {
+                        "type": "integer"
+                    },
+                    "last_comment_user_id": {
+                        "type": "integer"
+                    },
+                    "last_comment_username": {
+                        "type": "string"
+                    },
+                    "comment_count": {
+                        "type": "integer"
+                    },
+                    "rating_count": {
+                        "type": "integer"
+                    },
+                    "rating_avg": {
+                        "type": "number"
+                    },
+                    "rating_weighted": {
+                        "type": "number"
+                    },
+                    "reaction_score": {
+                        "type": "integer"
+                    },
+                    "featured": {
+                        "type": "boolean"
+                    },
+                    "User": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                }
+            },
+            "XFRM_Category": {
+                "type": "object",
+                "properties": {
+                    "resource_category_id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "resource_count": {
+                        "type": "integer"
+                    },
+                    "last_update": {
+                        "type": "integer"
+                    },
+                    "last_resource_title": {
+                        "type": "string"
+                    },
+                    "last_resource_id": {
+                        "type": "integer"
+                    },
+                    "allow_local": {
+                        "type": "boolean"
+                    },
+                    "allow_external": {
+                        "type": "boolean"
+                    },
+                    "allow_commercial_external": {
+                        "type": "boolean"
+                    },
+                    "allow_fileless": {
+                        "type": "boolean"
+                    },
+                    "min_tags": {
+                        "type": "integer"
+                    },
+                    "enable_versioning": {
+                        "type": "boolean"
+                    },
+                    "enable_support_url": {
+                        "type": "boolean"
+                    },
+                    "parent_category_id": {
+                        "type": "integer"
+                    },
+                    "display_order": {
+                        "type": "integer"
+                    }
+                }
+            },
+            "XFRM_ResourceField": {
+                "type": "object",
+                "properties": {
+                    "field_id": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "display_order": {
+                        "type": "integer"
+                    },
+                    "field_type": {
+                        "type": "string"
+                    },
+                    "field_choices": {
+                        "type": "object",
+                        "description": "For choice types, an ordered list of choices, with \"option\" and \"name\" keys for each."
+                    },
+                    "match_type": {
+                        "type": "string"
+                    },
+                    "match_params": {
+                        "type": "array",
+                        "items": []
+                    },
+                    "max_length": {
+                        "type": "integer"
+                    },
+                    "required": {
+                        "type": "boolean"
+                    },
+                    "display_group": {
+                        "type": "string",
+                        "description": "If this field type supports grouping, the group this field belongs to."
+                    }
+                }
+            },
+            "XFRM_ResourceItem": {
+                "type": "object",
+                "properties": {
+                    "resource_id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "tag_line": {
+                        "type": "string"
+                    },
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "resource_state": {
+                        "type": "string"
+                    },
+                    "resource_type": {
+                        "type": "string"
+                    },
+                    "resource_date": {
+                        "type": "integer"
+                    },
+                    "resource_category_id": {
+                        "type": "integer"
+                    },
+                    "external_url": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number"
+                    },
+                    "currency": {
+                        "type": "string"
+                    },
+                    "view_count": {
+                        "type": "integer"
+                    },
+                    "download_count": {
+                        "type": "integer"
+                    },
+                    "rating_count": {
+                        "type": "integer"
+                    },
+                    "rating_avg": {
+                        "type": "number"
+                    },
+                    "rating_weighted": {
+                        "type": "number"
+                    },
+                    "last_update": {
+                        "type": "integer"
+                    },
+                    "alt_support_url": {
+                        "type": "string"
+                    },
+                    "prefix_id": {
+                        "type": "integer"
+                    },
+                    "featured": {
+                        "type": "boolean"
+                    },
+                    "Category": {
+                        "$ref": "#/components/schemas/XFRM_Category"
+                    },
+                    "User": {
+                        "$ref": "#/components/schemas/User"
+                    }
+                }
+            },
+            "XFRM_ResourcePrefix": {
+                "type": "object",
+                "properties": {
+                    "prefix_id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "usage_help": {
+                        "type": "string"
+                    },
+                    "is_usable": {
+                        "type": "boolean",
+                        "description": "True if the acting user can use (select) this prefix."
+                    },
+                    "prefix_group_id": {
+                        "type": "integer"
+                    },
+                    "display_order": {
+                        "type": "integer"
+                    },
+                    "materialized_order": {
+                        "type": "integer",
+                        "description": "Effective order, taking group ordering into account."
+                    }
+                }
+            },
+            "XFRM_ResourceReviewField": {
+                "type": "object",
+                "properties": {
+                    "field_id": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "display_order": {
+                        "type": "integer"
+                    },
+                    "field_type": {
+                        "type": "string"
+                    },
+                    "field_choices": {
+                        "type": "object",
+                        "description": "For choice types, an ordered list of choices, with \"option\" and \"name\" keys for each."
+                    },
+                    "match_type": {
+                        "type": "string"
+                    },
+                    "match_params": {
+                        "type": "array",
+                        "items": []
+                    },
+                    "max_length": {
+                        "type": "integer"
+                    },
+                    "required": {
+                        "type": "boolean"
+                    },
+                    "display_group": {
+                        "type": "string",
+                        "description": "If this field type supports grouping, the group this field belongs to."
+                    }
+                }
+            },
+            "XFRM_ResourceVersion": {
+                "type": "object",
+                "properties": {
+                    "resource_version_id": {
+                        "type": "integer"
+                    },
+                    "resource_id": {
+                        "type": "integer"
+                    },
+                    "version_string": {
+                        "type": "string"
+                    },
+                    "release_date": {
+                        "type": "integer"
+                    },
+                    "download_count": {
+                        "type": "integer"
+                    },
+                    "rating_count": {
+                        "type": "integer"
+                    },
+                    "version_state": {
+                        "type": "string"
+                    }
+                }
             }
         },
         "securitySchemes": {
@@ -8451,6 +9791,21 @@
         },
         {
             "name": "oembed"
+        },
+        {
+            "name": "resource-categories"
+        },
+        {
+            "name": "resource-reviews"
+        },
+        {
+            "name": "resource-updates"
+        },
+        {
+            "name": "resource-versions"
+        },
+        {
+            "name": "resources"
         }
     ]
 }

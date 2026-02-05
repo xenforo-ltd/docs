@@ -1,0 +1,72 @@
+---
+id: get-resource-categories-id-resources
+title: "Gets a page of resources from the specified category"
+description: "Gets a page of resources from the specified category."
+sidebar_label: "Gets a page of resources from the specified category"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVNtu2zAM/RVBTy2QJtke8xZgbVHspegFKDAEgWIzCVtbUiWqWGD430fayqVJO2z1i3UhD8nDIzbaeQiG0NmbUk/0CmgeILoUCpgXhmDlAkKcY7k7jnqgyayinvzS27OLvameDXQJsQjoBZUxr4GiMsqbFSi3VDsctQyuVrQGFT0UuEQoVcbZDDmIN8HUQBAkVKMtbxgNS75CwfWG1rwO8JowAGdPIcFAx2INtdGTRtPGi0ekgHal2+O8dDsT7+idjZw3O3wfj+X33uw+FZxsXKZKbY05auEsgSUxN95XWHQcjp6j+DSnSbjFMxQkVQVhnLCPuCd1b2pCMBspkqCO/1DH3Y5QZ5lOjB3VYsd/tKY3O4Y5Rrnd2Sq0Sxfq3q/tv4HmTqxdlkjXHCZ/okcfKGDUYNmODuUSIbxt25hCJX7G40kKT2CvXHBqenujwJbeIRMsTYpQpIC06QCeri6mHi9+gmxnh9f3QnpP5aHRnliPcpDlswZTQuBdFtaBy3FiktALbBTTokxixVrKDReWs+MjV/m/wTqf42hyqG5+KHLKFKRMVGdZ41HFxOJRSSxyUudauiMt64IjVfCeSsYX8nvsb8PxcPwp8XeX9w8dbumKVHOVuxq9i1SbTka5gq+86uPAzf4ZfXlKZLoJftPIVwa7dDuRNVmkH4+pgZ50o2SvU1bSmssUh6ZZmAiPoWpbOX5NEDq1MZUmoFkIxyzFEqOs+VUsTRXhL9Wd3eUpda4+y3mrGys0vZkqyY6XL6JhGXvtjK2ykCR6fzHl6eTpwOVkHMkT2b3e68sHFswffTcMyw==
+sidebar_class_name: "get api-method"
+info_path: api/xenforo-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Gets a page of resources from the specified category"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/resource-categories/{id}/resources"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Gets a page of resources from the specified category.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"resources":{"type":"array","items":{"type":"string"},"description":"Resources on this page"},"pagination":{"type":"string","description":"Pagination information"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
