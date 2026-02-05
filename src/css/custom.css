@@ -24,6 +24,15 @@ html[data-theme="light"] {
   --ifm-footer-link-color: var(--xf-nav-link);
   --ifm-footer-link-hover-color: var(--xf-nav-link-hover);
 
+  .clean-btn {
+    color: var(--ifm-navbar-link-color);
+
+    &:hover {
+      background: transparent;
+      color: var(--ifm-navbar-link-hover-color);
+    }
+  }
+
   /* Mobile sidebar - override menu colors for dark blue background */
   .navbar-sidebar {
     --ifm-menu-color: var(--xf-nav-link);

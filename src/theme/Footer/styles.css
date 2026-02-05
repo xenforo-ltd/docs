@@ -34,12 +34,11 @@ html[data-theme='dark'] .p-footer {
 
 .p-footer-row {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 10px;
 
-	&-main,
 	&-opposite {
 		display: flex;
 		align-items: center;
@@ -177,30 +176,6 @@ html[data-theme='dark'] .p-footer {
 	}
 }
 
-.p-footer-colorMode {
-	background: none;
-	border: none;
-	color: var(--ifm-footer-link-color);
-	cursor: pointer;
-	padding: 0;
-	display: flex;
-	align-items: center;
-	transition: color 0.2s ease;
-
-	&:hover {
-		color: var(--ifm-footer-link-hover-color);
-	}
-
-	&-icon {
-		display: inline-flex;
-		font-size: 1.25em;
-
-		svg {
-			width: 1em;
-			height: 1em;
-		}
-	}
-}
 
 @media (max-width: 850px) {
 	.p-footer-inner {
