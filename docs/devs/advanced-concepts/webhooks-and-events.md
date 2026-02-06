@@ -321,7 +321,8 @@ The key part is the call to `queueWebhook()`, which takes these parameters:
 - `event`: The event name (report)
 - `payload`: The data to send with the webhook
 
-!!! reminder
+:::note Reminder
     Keep in mind that earlier we also added an event `report` to the `getEvents()` method.
+:::
 
 This allows you to create custom webhook events beyond the standard entity operations, which can be useful for periodic reports, bulk operations, or other special events that aren't tied directly to entity CRUD operations.
