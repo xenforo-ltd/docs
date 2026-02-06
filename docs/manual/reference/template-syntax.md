@@ -186,7 +186,7 @@ The for-each tag takes the following attributes:
 - `value` - A variable name to use within the loop, containing the current array item.
 - `i` - A variable name to use in the loop for the current index.
 
-:::example Example Output
+:::note Example Output
     > Hello there, Patrick. This is name number 1. Array key of this element: 0
     >
     > Hello there, Theresa. This is name number 2. Array key of this element: 1
@@ -311,10 +311,11 @@ The UserBanners tag takes the following attributes:
 
 - `user` - The user to display the user banners of.
 
-!!! example "Example of usage"
-    ![An example result of the UserBanners tag.](files/images/example-userbanners-tag.png)
+:::note Example of usage
+    ![An example result of the UserBanners tag.](/img/docs/example-userbanners-tag.png)
     
     An example result of the UserBanners tag.
+:::
 
 #### xf:useractivity
 Displays the status of a user, in terms of their last action and when that action occurred.
@@ -538,7 +539,7 @@ The fa tag takes the following attributes:
 
 - `icon`: The Font Awesome icon class to use (required). Must include the fa- prefix.
 
-:::example "Example of usage"
+:::note Example of usage
     ```html title="Template"
     <!-- Spinning animation -->
     <xf:fa icon="fa-circle-notch fa-spin" /> Loading...
@@ -581,7 +582,7 @@ The fa tag takes the following attributes:
     <xf:fa icon="fa-star fa-9x" />
     ```
 
-    ![An example of the font awesome icons](files/images/example-font-awesome-icons.png)
+    ![An example of the font awesome icons](/img/docs/example-font-awesome-icons.png)
 :::
 
 ### Advanced tags
