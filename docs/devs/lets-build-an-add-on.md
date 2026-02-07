@@ -1291,4 +1291,4 @@ php cmd.php xf-addon:build-release Demo/Portal
 
 :::
 
-So, with that, that concludes our demo add-on! If you would like to download the source code for this add-on, built using the very commands demonstrated above, click here: [Demo-Portal-1.0.0 Alpha.zip](/files/Demo-Portal-1.0.0 Alpha.zip).
+So, with that, that concludes our demo add-on! If you would like to download the source code for this add-on, built using the very commands demonstrated above, click here: [Demo-Portal-1.0.0 Alpha.zip](/files/Demo-Portal-1.0.0%20Alpha.zip).
