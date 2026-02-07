@@ -76,7 +76,7 @@ Let's fill in some of these details:
 
 We have now added a `description`, the developer's name (`dev`) and specified that we want to display an icon (`icon`). The icon can either be a path (relative to your add-on root) or the name of a [Font Awesome icon](http://fontawesome.io/icons/) as we've done here.
 
-As we're not superceding a XenForo 1 addon, we can disregard `legacy_addon_id`. For a full explanation of all of the properties in the `addon.json` file, refer to the [Add-on structure section](../add-on-structure.md#addonjson-file).
+As we're not superceding a XenForo 1 addon, we can disregard `legacy_addon_id`. For a full explanation of all of the properties in the `addon.json` file, refer to the [Add-on structure section](docs/devs/add-on-structure.md#addonjson-file).
 
 ## Creating the Setup class
 
@@ -102,7 +102,7 @@ class Setup extends AbstractSetup
 
 We talked a little bit already about the Setup class. We're going to be breaking the install, upgrade and uninstall processes into separate steps.
 
-Let's start by importing some useful Schema classes. If you want to learn more about them, you can refer to the [Managing the Schema section](../managing-the-schema.md).
+Let's start by importing some useful Schema classes. If you want to learn more about them, you can refer to the [Managing the Schema section](docs/devs/managing-the-schema.md).
 Just after the last `use` declaration, add the following lines:
 
 ```php title="src/addons/Demo/Portal/Setup.php"
@@ -195,7 +195,7 @@ php cmd.php xf-addon:install-step Demo/Portal 3
 So far we've added a column to the `xf_forum` table, it's now time to extend the Forum entity structure. We need to do this so that the entity knows about our new column, and so that data can be read from and written to it via the entity.
 
 :::note
-The following steps will require [Development mode](../development-tools.md#enabling-development-mode) to be enabled. Remember to set `Demo/Portal` as the `defaultAddOn` value in `config.php`.
+The following steps will require [Development mode](docs/devs/development-tools.md#enabling-development-mode) to be enabled. Remember to set `Demo/Portal` as the `defaultAddOn` value in `config.php`.
 
 :::
 
@@ -279,7 +279,7 @@ $structure->relations['FeaturedThread'] = [
 ];
 ```
 
-See [Relations](../entities-finders-repositories.md#relations) for more information about relations. Hit "Save" to save the listener.
+See [Relations](docs/devs/entities-finders-repositories.md#relations) for more information about relations. Hit "Save" to save the listener.
 
 ## Creating a new entity
 
@@ -385,9 +385,9 @@ class Forum extends XFCP_Forum
 }
 ```
 
-See [Extending classes](../general-concepts.md#extending-classes) and [Type hinting](../general-concepts.md#type-hinting) for more information.
+See [Extending classes](docs/devs/general-concepts.md#extending-classes) and [Type hinting](docs/devs/general-concepts.md#type-hinting) for more information.
 
-Click save to save the Class extension. Now we can add some code. The particular method we need to extend is a protected function called `saveTypeData`. When extending any existing method in any class, it is important to inspect the original method for a couple of reasons. The first being we want to make sure the arguments we use in the extended method, match that of the method we're extending. The second being that we need to know what this method actually does. For example, should the method be returning something of a particular type, or a certain object? This is certainly the case in most controller actions as we mentioned in the [Modifying a controller action reply (properly)](../controller-basics.md#modifying-a-controller-action-reply-properly) section. However, although this method is within a controller, it isn't actually a controller action itself. In fact, this particular method is a "void" method; it isn't expected to return anything. However, we should always ensure we call the parent method in our extended method so let's just add the new method itself, without the new code we need to add:
+Click save to save the Class extension. Now we can add some code. The particular method we need to extend is a protected function called `saveTypeData`. When extending any existing method in any class, it is important to inspect the original method for a couple of reasons. The first being we want to make sure the arguments we use in the extended method, match that of the method we're extending. The second being that we need to know what this method actually does. For example, should the method be returning something of a particular type, or a certain object? This is certainly the case in most controller actions as we mentioned in the [Modifying a controller action reply (properly)](docs/devs/controller-basics.md#modifying-a-controller-action-reply-properly) section. However, although this method is within a controller, it isn't actually a controller action itself. In fact, this particular method is a "void" method; it isn't expected to return anything. However, we should always ensure we call the parent method in our extended method so let's just add the new method itself, without the new code we need to add:
 
 ```php title="src/addons/Demo/Portal/XF/Admin/Controller/Forum.php"
 protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Entity\AbstractNode $data)
@@ -546,7 +546,7 @@ public function actionIndex()
 
 Now, this won't exactly work, yet, because we haven't created the template, yet, but this is enough, for now, to at least demonstrate our route and controller are talking to each other. So visiting `index.php?portal` should at the very least display a 'Template error'.
 
-As was mentioned in the [View reply](../controller-basics.md#view-reply) section, the first argument is a view class, but we don't need to actually create this class. This class could be extended by other add-ons, if necessary, even if it doesn't exist. The second argument is the template, which we need to create now in the path `src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html`. That template, for now, should simply contain the following:
+As was mentioned in the [View reply](docs/devs/controller-basics.md#view-reply) section, the first argument is a view class, but we don't need to actually create this class. This class could be extended by other add-ons, if necessary, even if it doesn't exist. The second argument is the template, which we need to create now in the path `src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html`. That template, for now, should simply contain the following:
 
 ```html title="src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html"
 <xf:title>Portal</xf:title>
@@ -1181,7 +1181,7 @@ To:
 
 ## Unfeaturing on visibility changes
 
-To approach this, we are going to need to modify the Thread entity again but this time we'll be doing that with the `entity_post_save` event. As we mentioned in [The Entity life cycle](../entities-finders-repositories.md#the-entity-life-cycle), the `_postSave()` method is where actions can be performed as a result of an entity being inserted or updated. Initially we will be unfeaturing a thread when that thread is no longer visible.
+To approach this, we are going to need to modify the Thread entity again but this time we'll be doing that with the `entity_post_save` event. As we mentioned in [The Entity life cycle](docs/devs/entities-finders-repositories.md#the-entity-life-cycle), the `_postSave()` method is where actions can be performed as a result of an entity being inserted or updated. Initially we will be unfeaturing a thread when that thread is no longer visible.
 
 So, head back into the "Add code event listeners" page, and this time listen to the `entity_post_save` event. The event hint this time will be `XF\Entity\Thread`. For the execute callback, we will use the same class as we did before (`Demo\Portal\Listener`) but we will add a new method here named `threadEntityPostSave`. Let's add that method now so it's there when we save the listener:
 
