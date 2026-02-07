@@ -47,9 +47,9 @@ Setting things up yourself is more complicated, but tends to give you more contr
 
 Luckily, we have created some walkthroughs on how to setup a local dev environment for your favourite OS:
 
-* [macOS Dev Environment](macos-dev.md)
-* [Linux Dev Environment](linux-dev.md)
-* [Windows Dev Environment](windows-dev.md)
+* [macOS Dev Environment](appendix/macos-dev.md)
+* [Linux Dev Environment](appendix/linux-dev.md)
+* [Windows Dev Environment](appendix/windows-dev.md)
 
 ### Pre-built stack
 
