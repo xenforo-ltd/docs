@@ -306,4 +306,4 @@ This command performs several important tasks:
 Congratulations on completing your XenForo add-on from start to finish!
 You have learned how to create permissions, templates, phrases, and extend classes.
 
-You are welcome to download a copy of the completed add-on here: [Demo-ToolTip-1.0.0 Alpha.zip](files/Demo-ToolTip-1.0.0 Alpha.zip).
+You are welcome to download a copy of the completed add-on here: [Demo-ToolTip-1.0.0 Alpha.zip](/files/Demo-ToolTip-1.0.0%20Alpha.zip).
