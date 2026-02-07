@@ -328,7 +328,14 @@ const sidebars: SidebarsConfig = {
         'devs/entities-finders-repositories',
         'devs/criteria',
         'devs/managing-the-schema',
-        'devs/lets-build-an-add-on',
+        {
+            type: 'category',
+            label: 'Add-on examples',
+            items: [
+                'devs/add-on-examples/lets-build-an-add-on',
+                'devs/add-on-examples/demo-tooltip-addon',
+            ],
+        },
         {
             type: 'category',
             label: 'Appendix',

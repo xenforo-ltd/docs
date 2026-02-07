@@ -7,12 +7,13 @@ To begin, similar to the Demo/Portal add-on, we'll run a command and provide som
 php cmd.php xf-addon:create
 ```
 
-!!! example "Terminal output"
+:::note Terminal output
     **Enter an ID for this add-on:** Demo/ToolTip
 
     **Enter a title:** Demo - ToolTip
 
     **Enter a version ID:** This integer will be used for internal variable comparisons.
+    
     Each release of your addon should increase this number:  1000010
 
     Version string set to: 1.0.0 Alpha
@@ -26,6 +27,7 @@ php cmd.php xf-addon:create
     **Does your Setup need to support running multiple steps? (y/n)** y
 
     The Setup.php file was successfully written out to /var/www/src/addons/Demo/ToolTip/Setup.php
+:::
 
 After this has been done, we can do a couple of things to make our development a little easier. All we need to do is make sure this exists:
 ```php title="config.php"
@@ -110,7 +112,7 @@ With this template in place, we now have content to display when users lack perm
 
 ## Modifying the controller
 Site actions are managed through controllers.
-For more information on how controllers work, refer to the [Controller Basics](controller-basics.md) page.
+For more information on how controllers work, refer to the [Controller Basics](docs/devs/controller-basics.md) page.
 
 Open your IDE. It's time to write some code. Don't worry, this part is straight forward as well!
 
@@ -274,13 +276,17 @@ you need to run the following command:
 php cmd.php xf-addon:build-release Demo/ToolTip
 ```
 
-!!! example "Terminal output"
+:::note Terminal output
     Performing add-on export.
     
     Exporting data for Demo - ToolTip to /var/www/html/src/addons/Demo/ToolTip/_data.
+
     27/27 [============================] 100%
+
     Written successfully.
+
     Attempting to validate addon.json file...
+
     JSON file validates successfully!
     
     Building release ZIP.
@@ -288,6 +294,7 @@ php cmd.php xf-addon:build-release Demo/ToolTip
     Writing release ZIP to /var/www/html/src/addons/Demo/ToolTip/_releases.
     
     Release written successfully.
+:::
 
 ### What Just Happened?
 This command performs several important tasks:
