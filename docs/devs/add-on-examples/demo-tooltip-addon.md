@@ -238,7 +238,7 @@ Open the file located at src/addons/Demo/ToolTip/addon.json in your IDE:
 }
 ```
 
-Here's what you need to know when customising this file [add-on structure properties](add-on-structure.md/#properties).
+Here's what you need to know when customising this file [add-on structure properties](docs/devs/add-on-structure.md#properties).
 
 ## Registering the class extension
 
