@@ -331,6 +331,13 @@ const sidebars: SidebarsConfig = {
         'devs/lets-build-an-add-on',
         {
             type: 'category',
+            label: 'Advanced concepts',
+            items: [
+                'devs/advanced-concepts/thread-and-forum-types',
+            ],
+        },
+        {
+            type: 'category',
             label: 'Appendix',
             items: [
                 'devs/appendix/macos-dev',
