@@ -7066,6 +7066,856 @@
                 }
             }
         },
+        "/media/": {
+            "get": {
+                "operationId": "get_media_",
+                "tags": [
+                    "media"
+                ],
+                "summary": "GET media/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_media_",
+                "tags": [
+                    "media"
+                ],
+                "summary": "POST media/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media/{id}/": {
+            "get": {
+                "operationId": "get_media_id_",
+                "tags": [
+                    "media"
+                ],
+                "summary": "GET media/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_media_id_",
+                "tags": [
+                    "media"
+                ],
+                "summary": "POST media/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "delete_media_id_",
+                "tags": [
+                    "media"
+                ],
+                "summary": "DELETE media/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media/{id}/comments": {
+            "get": {
+                "operationId": "get_media_id_comments",
+                "tags": [
+                    "media"
+                ],
+                "summary": "GET media/{id}/comments",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media/{id}/data": {
+            "get": {
+                "operationId": "get_media_id_data",
+                "tags": [
+                    "media"
+                ],
+                "summary": "GET media/{id}/data",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media/{id}/feature": {
+            "post": {
+                "operationId": "post_media_id_feature",
+                "tags": [
+                    "media"
+                ],
+                "summary": "Creates or edits the feature for the specified media",
+                "description": "Creates or edits the feature for the specified media",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "description": "A custom title, if desired."
+                                    },
+                                    "snippet": {
+                                        "type": "string",
+                                        "description": "A custom snippet, if desired."
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "description": "A custom image, if desired."
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "description": "A custom feature date, if desired."
+                                    },
+                                    "unfeature_days": {
+                                        "type": "integer",
+                                        "description": "A custom number of days after which to unfeature the content, if desired."
+                                    },
+                                    "always_visible": {
+                                        "type": "boolean",
+                                        "description": "Whether or not the feature should be visible even when the visitor may not view the content."
+                                    }
+                                }
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "description": "A custom title, if desired."
+                                    },
+                                    "snippet": {
+                                        "type": "string",
+                                        "description": "A custom snippet, if desired."
+                                    },
+                                    "image": {
+                                        "type": "string",
+                                        "description": "A custom image, if desired."
+                                    },
+                                    "date": {
+                                        "type": "string",
+                                        "description": "A custom feature date, if desired."
+                                    },
+                                    "unfeature_days": {
+                                        "type": "integer",
+                                        "description": "A custom number of days after which to unfeature the content, if desired."
+                                    },
+                                    "always_visible": {
+                                        "type": "boolean",
+                                        "description": "Whether or not the feature should be visible even when the visitor may not view the content."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "success": {
+                                            "type": "string"
+                                        },
+                                        "feature": {
+                                            "$ref": "#/components/schemas/FeaturedContent"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/media/{id}/react": {
+            "post": {
+                "operationId": "post_media_id_react",
+                "tags": [
+                    "media"
+                ],
+                "summary": "POST media/{id}/react",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media/{id}/unfeature": {
+            "post": {
+                "operationId": "post_media_id_unfeature",
+                "tags": [
+                    "media"
+                ],
+                "summary": "Deletes the feature for the specified media",
+                "description": "Deletes the feature for the specified media",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "success": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/media-albums/": {
+            "get": {
+                "operationId": "get_media_albums_",
+                "tags": [
+                    "media-albums"
+                ],
+                "summary": "GET media-albums/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_media_albums_",
+                "tags": [
+                    "media-albums"
+                ],
+                "summary": "POST media-albums/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media-albums/{id}/": {
+            "get": {
+                "operationId": "get_media_albums_id_",
+                "tags": [
+                    "media-albums"
+                ],
+                "summary": "GET media-albums/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_media_albums_id_",
+                "tags": [
+                    "media-albums"
+                ],
+                "summary": "POST media-albums/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "delete_media_albums_id_",
+                "tags": [
+                    "media-albums"
+                ],
+                "summary": "DELETE media-albums/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media-albums/{id}/comments": {
+            "get": {
+                "operationId": "get_media_albums_id_comments",
+                "tags": [
+                    "media-albums"
+                ],
+                "summary": "GET media-albums/{id}/comments",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media-albums/{id}/media": {
+            "get": {
+                "operationId": "get_media_albums_id_media",
+                "tags": [
+                    "media-albums"
+                ],
+                "summary": "GET media-albums/{id}/media",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media-albums/{id}/react": {
+            "post": {
+                "operationId": "post_media_albums_id_react",
+                "tags": [
+                    "media-albums"
+                ],
+                "summary": "POST media-albums/{id}/react",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media-categories/": {
+            "get": {
+                "operationId": "get_media_categories_",
+                "tags": [
+                    "media-categories"
+                ],
+                "summary": "GET media-categories/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_media_categories_",
+                "tags": [
+                    "media-categories"
+                ],
+                "summary": "POST media-categories/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media-categories/flattened": {
+            "get": {
+                "operationId": "get_media_categories_flattened",
+                "tags": [
+                    "media-categories"
+                ],
+                "summary": "GET media-categories/flattened",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media-categories/{id}/": {
+            "get": {
+                "operationId": "get_media_categories_id_",
+                "tags": [
+                    "media-categories"
+                ],
+                "summary": "GET media-categories/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_media_categories_id_",
+                "tags": [
+                    "media-categories"
+                ],
+                "summary": "POST media-categories/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "delete_media_categories_id_",
+                "tags": [
+                    "media-categories"
+                ],
+                "summary": "Deletes the specified category",
+                "description": "Deletes the specified category",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    },
+                    {
+                        "name": "delete_children",
+                        "in": "query",
+                        "schema": {
+                            "type": "boolean"
+                        },
+                        "description": "If true, child nodes will be deleted. Otherwise, they will be connected to this node's parent."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "success": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/media-categories/{id}/content": {
+            "get": {
+                "operationId": "get_media_categories_id_content",
+                "tags": [
+                    "media-categories"
+                ],
+                "summary": "Gets a page of content from the specified category",
+                "description": "Gets a page of content from the specified category.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "albums": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/XFMG_Album"
+                                            },
+                                            "description": "If an album category, albums on this page"
+                                        },
+                                        "media": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "description": "If a media category, media on this page"
+                                        },
+                                        "pagination": {
+                                            "type": "string",
+                                            "description": "Pagination information"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/media-comments/": {
+            "get": {
+                "operationId": "get_media_comments_",
+                "tags": [
+                    "media-comments"
+                ],
+                "summary": "GET media-comments/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_media_comments_",
+                "tags": [
+                    "media-comments"
+                ],
+                "summary": "POST media-comments/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media-comments/{id}/": {
+            "get": {
+                "operationId": "get_media_comments_id_",
+                "tags": [
+                    "media-comments"
+                ],
+                "summary": "GET media-comments/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_media_comments_id_",
+                "tags": [
+                    "media-comments"
+                ],
+                "summary": "POST media-comments/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "delete_media_comments_id_",
+                "tags": [
+                    "media-comments"
+                ],
+                "summary": "DELETE media-comments/{id}/",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
+        "/media-comments/{id}/react": {
+            "post": {
+                "operationId": "post_media_comments_id_react",
+                "tags": [
+                    "media-comments"
+                ],
+                "summary": "POST media-comments/{id}/react",
+                "deprecated": false,
+                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            }
+        },
         "/oauth2/revoke": {
             "post": {
                 "operationId": "post_oauth2_revoke",
@@ -9785,6 +10635,18 @@
         },
         {
             "name": "Users"
+        },
+        {
+            "name": "media"
+        },
+        {
+            "name": "media-albums"
+        },
+        {
+            "name": "media-categories"
+        },
+        {
+            "name": "media-comments"
         },
         {
             "name": "oauth2"

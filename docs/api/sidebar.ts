@@ -738,6 +738,232 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "media",
+      link: {
+        type: "doc",
+        id: "api/media",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/get-media",
+          label: "GET media/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-media",
+          label: "POST media/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-media-id",
+          label: "GET media/{id}/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-media-id",
+          label: "POST media/{id}/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/delete-media-id",
+          label: "DELETE media/{id}/",
+          className: "api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api/get-media-id-comments",
+          label: "GET media/{id}/comments",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-media-id-data",
+          label: "GET media/{id}/data",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-media-id-feature",
+          label: "Creates or edits the feature for the specified media",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/post-media-id-react",
+          label: "POST media/{id}/react",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/post-media-id-unfeature",
+          label: "Deletes the feature for the specified media",
+          className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "media-albums",
+      link: {
+        type: "doc",
+        id: "api/media-albums",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/get-media-albums",
+          label: "GET media-albums/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-media-albums",
+          label: "POST media-albums/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-media-albums-id",
+          label: "GET media-albums/{id}/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-media-albums-id",
+          label: "POST media-albums/{id}/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/delete-media-albums-id",
+          label: "DELETE media-albums/{id}/",
+          className: "api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api/get-media-albums-id-comments",
+          label: "GET media-albums/{id}/comments",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-media-albums-id-media",
+          label: "GET media-albums/{id}/media",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-media-albums-id-react",
+          label: "POST media-albums/{id}/react",
+          className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "media-categories",
+      link: {
+        type: "doc",
+        id: "api/media-categories",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/get-media-categories",
+          label: "GET media-categories/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-media-categories",
+          label: "POST media-categories/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-media-categories-flattened",
+          label: "GET media-categories/flattened",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/get-media-categories-id",
+          label: "GET media-categories/{id}/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-media-categories-id",
+          label: "POST media-categories/{id}/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/delete-media-categories-id",
+          label: "Deletes the specified category",
+          className: "api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api/get-media-categories-id-content",
+          label: "Gets a page of content from the specified category",
+          className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "media-comments",
+      link: {
+        type: "doc",
+        id: "api/media-comments",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/get-media-comments",
+          label: "GET media-comments/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-media-comments",
+          label: "POST media-comments/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-media-comments-id",
+          label: "GET media-comments/{id}/",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-media-comments-id",
+          label: "POST media-comments/{id}/",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/delete-media-comments-id",
+          label: "DELETE media-comments/{id}/",
+          className: "api-method delete",
+        },
+        {
+          type: "doc",
+          id: "api/post-media-comments-id-react",
+          label: "POST media-comments/{id}/react",
+          className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "oauth2",
       link: {
         type: "doc",
