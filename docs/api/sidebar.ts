@@ -612,6 +612,40 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "OAuth2",
+      link: {
+        type: "doc",
+        id: "api/o-auth-2",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/post-oauth-2-introspect",
+          label: "Introspects an OAuth token to determine its validity and metadata (RFC 7662)",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/post-oauth-2-revoke",
+          label: "Revokes an access token or refresh token",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/get-oauth-2-token",
+          label: "Gets information about an OAuth token",
+          className: "api-method get",
+        },
+        {
+          type: "doc",
+          id: "api/post-oauth-2-token",
+          label: "Exchanges an authorization code or refresh token for an access token",
+          className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Posts",
       link: {
         type: "doc",
@@ -1200,44 +1234,16 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "oauth2",
+      label: "oEmbed",
       link: {
         type: "doc",
-        id: "api/oauth-2",
-      },
-      items: [
-        {
-          type: "doc",
-          id: "api/post-oauth-2-revoke",
-          label: "Revokes an access token or refresh token",
-          className: "api-method post",
-        },
-        {
-          type: "doc",
-          id: "api/get-oauth-2-token",
-          label: "GET oauth2/token",
-          className: "api-method get",
-        },
-        {
-          type: "doc",
-          id: "api/post-oauth-2-token",
-          label: "POST oauth2/token",
-          className: "api-method post",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "oembed",
-      link: {
-        type: "doc",
-        id: "api/oembed",
+        id: "api/o-embed",
       },
       items: [
         {
           type: "doc",
           id: "api/get-oembed",
-          label: "GET oembed/",
+          label: "Returns oEmbed data for the given URL (oEmbed 1",
           className: "api-method get",
         },
       ],

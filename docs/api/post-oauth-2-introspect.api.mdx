@@ -1,0 +1,72 @@
+---
+id: post-oauth-2-introspect
+title: "Introspects an OAuth token to determine its validity and metadata (RFC 7662)"
+description: "Introspects an OAuth token to determine its validity and metadata (RFC 7662)."
+sidebar_label: "Introspects an OAuth token to determine its validity and metadata (RFC 7662)"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVktP4zAQ/iuWLxSppV0OrMSty4JU7UqgPrRIqKrcZEoMie21Hdqqyn/fGSctaSiiSBy3hzSx5/HN+JsZb7g2YIWXWg1ifsmNdn6mRe6T85lU3mpnIPK8zb14dPzygd/2aY9P2zwGF1lpSBUVBzthx4RiQYx5/QwKnywGDzaTCpjE/ReRylj6NQrGLAMvYuEFaw1vrtj3i4vz0zP0Z+FvDs7/0PGaX254pJUH5elVGJPKKEDurjrL5bKz0Dbr5DYFFekYYhJyUQKZoDe/NoD49PypDMRYithLcMFuKtHsTMY1UeetVI+8aG93HUQW/EGJEOH7OzNaniVSHdBuZvBa+gQsOxFRBM7Ngv4J07hiYWHBJdUSL4oyPdJSrA+1GJqIt/impFLP25PT6n+aDqSpVHJGK1dGft7r0d8+hlEenC/ylG2Fyehhjn421yLy8gVqcnOtUxDqTSb+JBBSgY+q0qRjUW4tgkixuEo7GJCLtIGPMzsyIoKOAyOwIUDMUuk80wsW1F3toA/RoGlsjKBKccQnfA3kUjgE6nL04DVZzR1YJbIjEJJRkmbCOR3JgHIpqdFsre9T6ng2zUFYsId51OawMjVTSFN4BPvW1spIu2ZeZti4RGZIEzEeoTmgdOwrunx+xInlgUKsFZIy+HkaXDr3sWbwaFlrroWN2WT4G1XLX5tjR070dhgQPYVP8KtbjoXu3lhAvy9gaTJsOHZgEhNGvnF3D+pGW836dwMGKjaaSr2Ykj4SFkdBMHB/0+kb2fkF9Dmtb4+odsryqAvtokSftIDBk7cERByyXLKqrtIERoCeYc1whDAKD/la1S2lslKcYJSfdRZ0mt4m5THRRMTqRBazVtWhHHM59oCS3RWo09DCqH0MX4fh9QoJkkKjKb8ec6MXv25ULbixUO+8ta4s1UKHiKVPYf/8UJNOvAzo21nvrPfuaQ+vR+MQTKyjPENYu8QSszIR2mKVtq+8PzQB1a4PX35PqTjhYeW7JhUyhBcqYVMVzgMvCycQZlc6SO6Eygu3N5u5cDCxaVHQMh61DQWAiRZWijmdAJZDe0s1KpVnoj+/KsPqjAkEiad5SdCPbkhFe2uij5PM+HeUw+iiOty1hLvb0RiF59W1LENruFqz3K5/EOyi+AeenZrL
+sidebar_class_name: "post api-method"
+info_path: api/xenforo-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Introspects an OAuth token to determine its validity and metadata (RFC 7662)"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/oauth2/introspect"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Introspects an OAuth token to determine its validity and metadata (RFC 7662).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"client_id":{"type":"string"},"client_secret":{"type":"string"},"token":{"type":"string"},"token_type_hint":{"type":"string","description":"Either 'access_token' or 'refresh_token'"}},"required":["client_id","client_secret","token"]}},"application/json":{"schema":{"type":"object","properties":{"client_id":{"type":"string"},"client_secret":{"type":"string"},"token":{"type":"string"},"token_type_hint":{"type":"string","description":"Either 'access_token' or 'refresh_token'"}},"required":["client_id","client_secret","token"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"active":{"type":"boolean","description":"Whether the token is currently active"},"scope":{"type":"string","description":"Space-separated list of scopes"},"client_id":{"type":"string","description":"The client that the token was issued to"},"username":{"type":"string","description":"The user associated with the token"},"token_type":{"type":"string","description":"Either 'bearer' or 'refresh_token'"},"exp":{"type":"integer","description":"Expiry timestamp"},"iat":{"type":"integer","description":"Issue timestamp"},"sub":{"type":"string","description":"Subject (user ID)"},"iss":{"type":"string","description":"Issuer (board URL)"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

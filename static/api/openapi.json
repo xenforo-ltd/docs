@@ -5361,6 +5361,388 @@
                 }
             }
         },
+        "/oauth2/introspect": {
+            "post": {
+                "operationId": "post_oauth2_introspect",
+                "tags": [
+                    "OAuth2"
+                ],
+                "summary": "Introspects an OAuth token to determine its validity and metadata (RFC 7662)",
+                "description": "Introspects an OAuth token to determine its validity and metadata (RFC 7662).",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "client_id": {
+                                        "type": "string"
+                                    },
+                                    "client_secret": {
+                                        "type": "string"
+                                    },
+                                    "token": {
+                                        "type": "string"
+                                    },
+                                    "token_type_hint": {
+                                        "type": "string",
+                                        "description": "Either 'access_token' or 'refresh_token'"
+                                    }
+                                },
+                                "required": [
+                                    "client_id",
+                                    "client_secret",
+                                    "token"
+                                ]
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "client_id": {
+                                        "type": "string"
+                                    },
+                                    "client_secret": {
+                                        "type": "string"
+                                    },
+                                    "token": {
+                                        "type": "string"
+                                    },
+                                    "token_type_hint": {
+                                        "type": "string",
+                                        "description": "Either 'access_token' or 'refresh_token'"
+                                    }
+                                },
+                                "required": [
+                                    "client_id",
+                                    "client_secret",
+                                    "token"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "active": {
+                                            "type": "boolean",
+                                            "description": "Whether the token is currently active"
+                                        },
+                                        "scope": {
+                                            "type": "string",
+                                            "description": "Space-separated list of scopes"
+                                        },
+                                        "client_id": {
+                                            "type": "string",
+                                            "description": "The client that the token was issued to"
+                                        },
+                                        "username": {
+                                            "type": "string",
+                                            "description": "The user associated with the token"
+                                        },
+                                        "token_type": {
+                                            "type": "string",
+                                            "description": "Either 'bearer' or 'refresh_token'"
+                                        },
+                                        "exp": {
+                                            "type": "integer",
+                                            "description": "Expiry timestamp"
+                                        },
+                                        "iat": {
+                                            "type": "integer",
+                                            "description": "Issue timestamp"
+                                        },
+                                        "sub": {
+                                            "type": "string",
+                                            "description": "Subject (user ID)"
+                                        },
+                                        "iss": {
+                                            "type": "string",
+                                            "description": "Issuer (board URL)"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/oauth2/revoke": {
+            "post": {
+                "operationId": "post_oauth2_revoke",
+                "tags": [
+                    "OAuth2"
+                ],
+                "summary": "Revokes an access token or refresh token",
+                "description": "Revokes an access token or refresh token.",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "client_id": {
+                                        "type": "string"
+                                    },
+                                    "client_secret": {
+                                        "type": "string"
+                                    },
+                                    "token": {
+                                        "type": "string"
+                                    },
+                                    "token_type_hint": {
+                                        "type": "string",
+                                        "description": "Defaults to 'access_token' but can be 'refresh_token' to revoke a refresh token."
+                                    }
+                                },
+                                "required": [
+                                    "client_id",
+                                    "client_secret",
+                                    "token"
+                                ]
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "client_id": {
+                                        "type": "string"
+                                    },
+                                    "client_secret": {
+                                        "type": "string"
+                                    },
+                                    "token": {
+                                        "type": "string"
+                                    },
+                                    "token_type_hint": {
+                                        "type": "string",
+                                        "description": "Defaults to 'access_token' but can be 'refresh_token' to revoke a refresh token."
+                                    }
+                                },
+                                "required": [
+                                    "client_id",
+                                    "client_secret",
+                                    "token"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "success": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/oauth2/token": {
+            "get": {
+                "operationId": "get_oauth2_token",
+                "tags": [
+                    "OAuth2"
+                ],
+                "summary": "Gets information about an OAuth token",
+                "description": "Gets information about an OAuth token.",
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user_id": {
+                                            "type": "integer"
+                                        },
+                                        "scope": {
+                                            "type": "object",
+                                            "description": "Key-value pairs of granted scopes"
+                                        },
+                                        "expires_in": {
+                                            "type": "integer",
+                                            "description": "Remaining lifetime in seconds"
+                                        },
+                                        "issue_date": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "operationId": "post_oauth2_token",
+                "tags": [
+                    "OAuth2"
+                ],
+                "summary": "Exchanges an authorization code or refresh token for an access token",
+                "description": "Exchanges an authorization code or refresh token for an access token.",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "client_id": {
+                                        "type": "string"
+                                    },
+                                    "client_secret": {
+                                        "type": "string",
+                                        "description": "Required for confidential clients."
+                                    },
+                                    "grant_type": {
+                                        "type": "string",
+                                        "description": "Either 'authorization_code' or 'refresh_token'."
+                                    },
+                                    "code": {
+                                        "type": "string",
+                                        "description": "Required when grant_type is 'authorization_code'."
+                                    },
+                                    "refresh_token": {
+                                        "type": "string",
+                                        "description": "Required when grant_type is 'refresh_token'."
+                                    },
+                                    "code_verifier": {
+                                        "type": "string",
+                                        "description": "Required for public clients using PKCE with 'authorization_code' grant."
+                                    },
+                                    "redirect_uri": {
+                                        "type": "string",
+                                        "description": "Required when grant_type is 'authorization_code'."
+                                    }
+                                },
+                                "required": [
+                                    "client_id",
+                                    "grant_type"
+                                ]
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "client_id": {
+                                        "type": "string"
+                                    },
+                                    "client_secret": {
+                                        "type": "string",
+                                        "description": "Required for confidential clients."
+                                    },
+                                    "grant_type": {
+                                        "type": "string",
+                                        "description": "Either 'authorization_code' or 'refresh_token'."
+                                    },
+                                    "code": {
+                                        "type": "string",
+                                        "description": "Required when grant_type is 'authorization_code'."
+                                    },
+                                    "refresh_token": {
+                                        "type": "string",
+                                        "description": "Required when grant_type is 'refresh_token'."
+                                    },
+                                    "code_verifier": {
+                                        "type": "string",
+                                        "description": "Required for public clients using PKCE with 'authorization_code' grant."
+                                    },
+                                    "redirect_uri": {
+                                        "type": "string",
+                                        "description": "Required when grant_type is 'authorization_code'."
+                                    }
+                                },
+                                "required": [
+                                    "client_id",
+                                    "grant_type"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string"
+                                        },
+                                        "refresh_token": {
+                                            "type": "string"
+                                        },
+                                        "token_type": {
+                                            "type": "string",
+                                            "description": "Always 'bearer'"
+                                        },
+                                        "expires_in": {
+                                            "type": "integer",
+                                            "description": "Token lifetime in seconds"
+                                        },
+                                        "scope": {
+                                            "type": "string",
+                                            "description": "Space-separated list of granted scopes"
+                                        },
+                                        "issue_date": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/posts/": {
             "post": {
                 "operationId": "post_posts_",
@@ -11326,117 +11708,68 @@
                 }
             }
         },
-        "/oauth2/revoke": {
-            "post": {
-                "operationId": "post_oauth2_revoke",
-                "tags": [
-                    "oauth2"
-                ],
-                "summary": "Revokes an access token or refresh token",
-                "description": "Revokes an access token or refresh token.",
-                "requestBody": {
-                    "content": {
-                        "application/x-www-form-urlencoded": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "client_id": {
-                                        "type": "string"
-                                    },
-                                    "client_secret": {
-                                        "type": "string"
-                                    },
-                                    "token": {
-                                        "type": "string"
-                                    },
-                                    "token_type_hint": {
-                                        "type": "string",
-                                        "description": "Defaults to 'access_token' but can be 'refresh_token' to revoke a refresh token."
-                                    }
-                                },
-                                "required": [
-                                    "client_id",
-                                    "client_secret",
-                                    "token"
-                                ]
-                            }
-                        },
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "client_id": {
-                                        "type": "string"
-                                    },
-                                    "client_secret": {
-                                        "type": "string"
-                                    },
-                                    "token": {
-                                        "type": "string"
-                                    },
-                                    "token_type_hint": {
-                                        "type": "string",
-                                        "description": "Defaults to 'access_token' but can be 'refresh_token' to revoke a refresh token."
-                                    }
-                                },
-                                "required": [
-                                    "client_id",
-                                    "client_secret",
-                                    "token"
-                                ]
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful response"
-                    }
-                }
-            }
-        },
-        "/oauth2/token": {
-            "get": {
-                "operationId": "get_oauth2_token",
-                "tags": [
-                    "oauth2"
-                ],
-                "summary": "GET oauth2/token",
-                "deprecated": false,
-                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
-                "responses": {
-                    "200": {
-                        "description": "Successful response"
-                    }
-                }
-            },
-            "post": {
-                "operationId": "post_oauth2_token",
-                "tags": [
-                    "oauth2"
-                ],
-                "summary": "POST oauth2/token",
-                "deprecated": false,
-                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
-                "responses": {
-                    "200": {
-                        "description": "Successful response"
-                    }
-                }
-            }
-        },
         "/oembed/": {
             "get": {
                 "operationId": "get_oembed_",
                 "tags": [
-                    "oembed"
+                    "oEmbed"
                 ],
-                "summary": "GET oembed/",
-                "deprecated": false,
-                "description": "\n\n**Note:** This endpoint documentation is incomplete.",
+                "summary": "Returns oEmbed data for the given URL (oEmbed 1",
+                "description": "Returns oEmbed data for the given URL (oEmbed 1.0 consumer endpoint).",
+                "parameters": [
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The URL of the content to retrieve oEmbed data for.",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Successful response"
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "version": {
+                                            "type": "string",
+                                            "description": "oEmbed version (always '1.0')"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "description": "oEmbed type (e.g. 'rich')"
+                                        },
+                                        "provider_name": {
+                                            "type": "string"
+                                        },
+                                        "provider_url": {
+                                            "type": "string"
+                                        },
+                                        "author_name": {
+                                            "type": "string"
+                                        },
+                                        "author_url": {
+                                            "type": "string"
+                                        },
+                                        "html": {
+                                            "type": "string",
+                                            "description": "HTML embed code"
+                                        },
+                                        "referrer": {
+                                            "type": "string"
+                                        },
+                                        "cache_age": {
+                                            "type": "integer",
+                                            "description": "Recommended cache lifetime in seconds"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -13693,6 +14026,9 @@
             "name": "Nodes"
         },
         {
+            "name": "OAuth2"
+        },
+        {
             "name": "Posts"
         },
         {
@@ -13729,10 +14065,7 @@
             "name": "Users"
         },
         {
-            "name": "oauth2"
-        },
-        {
-            "name": "oembed"
+            "name": "oEmbed"
         }
     ]
 }

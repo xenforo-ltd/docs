@@ -1,11 +1,11 @@
 ---
 id: post-oauth-2-token
-title: "POST oauth2/token"
-description: "**Note:** This endpoint documentation is incomplete."
-sidebar_label: "POST oauth2/token"
+title: "Exchanges an authorization code or refresh token for an access token"
+description: "Exchanges an authorization code or refresh token for an access token."
+sidebar_label: "Exchanges an authorization code or refresh token for an access token"
 hide_title: true
 hide_table_of_contents: true
-api: eJylU1FLIzEQ/ithnrTUtudj3wQVinAnVwVBi8Ts9Da4m8RkclxZ9r87k25LW/BB7mnJZOb75vvybQc+YNRkvVtUMIfgE716nam+fCX/jg7GQPpPgvkzbMuwGkOFIaLRhDyy1k1CKSUTbRAghnlxL240+ukJ56OReqhtUuiq4K0jVXmTW3RUSBXfWGd8GxoknDBbxBS8S8iUHVzOZvI5Bl9mYzCldW7Urhn6fgwtUu13IhgpaKr5NN3uPd3JSRj/YhRFHeTYSIcOFk4lPKG79dGrq/vFfnfoVzJvcrS0KQBPtxdXwV7coRxXh9dLU2O7VXHY1AFtAjI+c0phDFbYatQVRj453crtwcjpYrLQO27U2kclythKa4qZwCYMg4+s8rtkZeaUTYpqca3IK21I6aTOIn5ky86rlDk7KkvHsNR5eQjr1r6QW2rw2ErGF/O32D8ms8nsS+N/3ywfCu5RYESjvG+rnVAMCu5/ce/JOx+hdmC8Iwb5v3AOdhL+o2lotC3rlBB1Q9z2vwk3l0U4ErXkkW+67k0nfIxN30v5I2MssWFPdLT6TcziEB0kWXSxpZ9M9zsS
+api: eJztVktv4jAQ/iuWL+xK4bE99sZ2qVT10KpQqVKFkEkmxG0Se21ngUX57ztjhxJoUVtt97BSOQCxZ755fTOZDVcajHBSlRcJP+VaWTdTonLZycypRyh5xJ1YWH56z6+GdMynEU/AxkZq0kKd0SrORLkAy0TJSFUZ+dtDslglwJRhBlIDNmMekqV4QqJxDNaGsx7aMfCzAuu+q2TNTzc8VqWD0tFfoXUuYw/ZX3WXy2UXIYpuZXIoyURCQjbOoBD0z601oF9q/gCxQ2BtKEgnwXrcXCLsTCYtUeuMLBe8jra3FmID7rnEYew36LM0kPiY0ONUJqguRc4CkO0R6MIIxAxIryGOpMvAsM5eImcUZYcy2WlSGarT8fB0+Q5XlxnWYOcSk/ZFax56z9pf2jji+ewXGJlKMO/Mtq7mSIptnlllUYNdX56N2BJT+HICvUdNYAkixW5WGflPclcHQpMWNc+OdXt0mJJcm94PVpWfbP5k8//K5iBptSptIOjJYEA/+x6MKz/70ypnW2EeHZv4722J8F45VuTXaYAS/uaNFB/mS7HGxM1BGDAdUoeVxkzZmWyjSwxugbw41J/4d2IuU3CywBqUDNtVlYklJBurt/gw1iKGrgUt8F2Ohc2ldUylobb47GE8oLS2glmCUi+4VodPxAtAEmz3AUqwcBk+9cNm0N9uBhYM0p2Wgw3HlzFJCC2feXcH5bkyig2vLxiUiVZoj9dT0o+RsG7tAe7Ou0Mtu5dAj9P29ZgKH2rbFnpyH23SAQZH1jIQiU9zKQq6bak8Kx069AjrsJBgZDTsAukoVY3ird1r5jcZ8zqH1uiQXfzAhQdXH8eEZV+anrLMVkhg7Hr8apz66puOuH+z24tGK1HoHA4G/44VB/N+d9Ge2S1xP2p3zweNsS/YmmxtjfbgaXWQLFPlsyZdDvscQDViTUjKt96gNzjKmJvReOITkqi4KjC0p+IQMQvh+6tJ/UesoYeOtLbQD1tzmyI4WLm+zoX04fju2TR9ds9Dn/FmENHKnVEj4s1mMxcWbk1e13SMzDC+XzCnwkgxp2Rj90RbZlJnPVK38LMQSXdC9kk8rwKfX9ut62gLMcRQtDui7Mc0te3T8Li+Gk9QeN4s9EVgWws5aj+Q23X9B9YFbQ0=
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
@@ -23,7 +23,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"POST oauth2/token"}
+  children={"Exchanges an authorization code or refresh token for an access token"}
 >
 </Heading>
 
@@ -37,9 +37,15 @@ import Translate from "@docusaurus/Translate";
 
 
 
+Exchanges an authorization code or refresh token for an access token.
 
-
-**Note:** This endpoint documentation is incomplete.
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
 
 <ParamsDetails
   parameters={undefined}
@@ -49,7 +55,7 @@ import Translate from "@docusaurus/Translate";
 
 <RequestSchema
   title={"Body"}
-  body={undefined}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"client_id":{"type":"string"},"client_secret":{"type":"string","description":"Required for confidential clients."},"grant_type":{"type":"string","description":"Either 'authorization_code' or 'refresh_token'."},"code":{"type":"string","description":"Required when grant_type is 'authorization_code'."},"refresh_token":{"type":"string","description":"Required when grant_type is 'refresh_token'."},"code_verifier":{"type":"string","description":"Required for public clients using PKCE with 'authorization_code' grant."},"redirect_uri":{"type":"string","description":"Required when grant_type is 'authorization_code'."}},"required":["client_id","grant_type"]}},"application/json":{"schema":{"type":"object","properties":{"client_id":{"type":"string"},"client_secret":{"type":"string","description":"Required for confidential clients."},"grant_type":{"type":"string","description":"Either 'authorization_code' or 'refresh_token'."},"code":{"type":"string","description":"Required when grant_type is 'authorization_code'."},"refresh_token":{"type":"string","description":"Required when grant_type is 'refresh_token'."},"code_verifier":{"type":"string","description":"Required for public clients using PKCE with 'authorization_code' grant."},"redirect_uri":{"type":"string","description":"Required when grant_type is 'authorization_code'."}},"required":["client_id","grant_type"]}}}}}
 >
   
 </RequestSchema>
@@ -57,7 +63,7 @@ import Translate from "@docusaurus/Translate";
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response"}}}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"access_token":{"type":"string"},"refresh_token":{"type":"string"},"token_type":{"type":"string","description":"Always 'bearer'"},"expires_in":{"type":"integer","description":"Token lifetime in seconds"},"scope":{"type":"string","description":"Space-separated list of granted scopes"},"issue_date":{"type":"integer"}}}}}}}}
 >
   
 </StatusCodes>

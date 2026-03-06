@@ -1,11 +1,11 @@
 ---
 id: get-oembed
-title: "GET oembed/"
-description: "**Note:** This endpoint documentation is incomplete."
-sidebar_label: "GET oembed/"
+title: "Returns oEmbed data for the given URL (oEmbed 1"
+description: "Returns oEmbed data for the given URL (oEmbed 1.0 consumer endpoint)."
+sidebar_label: "Returns oEmbed data for the given URL (oEmbed 1"
 hide_title: true
 hide_table_of_contents: true
-api: eJylU8FqGzEQ/RUxp8ZsbCdH3wJNgimUEjsQaEyQteOs6K6kSKNQs+y/d0beprahh9LTohnNe2+e3vbgA0ZN1rtlDQt4RXrx2G2xfoEKSL8mWHyHQwU2FdQYIhpNfFrsdJtQSslEGwSCAZ7ds5tMvnrCxWSi1o1NCl0dvHWkam9yh44KneKOdcZ3oUXCKbNFTMG7hEzZw/V8Lp9T8FU2BlPa5Vb9vgzDUEGH1PhRPgMFTQ0fZgfZM64kjO8YZZcecmylqYOFc/FP6O589Orm2/JDNQwbmTc5WtoXgKe7y5tgL7+gHDfH7ZVpsDvoP77UA+0DMj5zSqECK2wN6hojn5zupHs0ci5MBP3Avdr5qHSmhk20ptgIvP44+Mhb/itZmTlnk6JaflbklTakdFKfIr5ly56rlDkvKsuNUdRFeQLrdr6QW2rx1ErGF/MP2FfT+XT+V+MfblfrgnsSFdkx+ESddkIxbnB/u1Z/XvgErwfjHfH4/wVyNJLwJ81Cq20RUuLTjxn7+DUqkL+jYZFS7PutTvgY22GQ8lvGWLLCRuho9VYc4uQcBZeXYRt/AbJbMTM=
+api: eJytVVFr2zAQ/itCL00gTbI95q2wdivrYCQpFEYJin221dqWK529BZP/vjtZyRInLd1YX4qlu/u+O33fpZWmAqtQm/I2ljOZAq4MFGuIV3IkUaVOzn5Ic80n8nEkY3CR1RXHU/QcsLalE929iBUqkRgrMAOR6gZKcT+/E4Nw/WE8FZEpXV2AFVDGldElDseEUymrCkCwjNbKkj6oem1zutMM9FKD3dCHizIolJy1EjcVxzi0ukzlts9sSQwY2ySeDMEilCjQCAuUAg30STMPCy+1ttTpDG0N20c+cRVRBseYH6dT/neMtKijCJxL6lzsgqlSAORwVVW5jvyIJ0+Oc9rTPsz6CSLkUVh+ENQdYkMj0V3KccP9fkMzIV4MVP5TbZy4oJlfDHk8Xfo7y3CQGMA4HYsLq6OsK0HUGh2DXXXvc+YN9hH8dOcCVI2ZeaNAuH8tPcPizEW/iS/Lb3fCa5jePQZOtJCAtWDPVo0UvcZKpYeUSJmQUvyp4iNTFCReLs55ItcJoC5A6FI4ui1jJ7fd30iSqDMTfOV1jhl9TDqHTVjQYJud7H3XcqIqfQL7AOWNsUZcfb/dO0eyPgmxtho3vsDDzeVVpS+/An8+Hl4vWG+dpA6D9u0SJh8Et2WgYt97MOJBSp8YE3qGjXc9Px5pPmidJxsS793R5N8F5nP6aHwobj+xjVWEQjkxCJZ1wtXkG1FzRCBFot0ySGI8uMYcjkdJ9fcGk+SU8fTVwc+vF0tfNzYR7a8S9z1WxmGhvEVDB3+5FfuY7Z/l8d8WbJg8wi+cVLnSnnlwWSdKWvJelBTMez6jrviwbdfKwb3Nt1s+7vYway3WTq1zXpWJyh280cNgHrbqUPzbVj5L/pn1G34iGpXXHOEd0SirmZm3wGgnL6bcpVzRuq7wIOtkP3OVvXE/Xy9JRr8BhDpsPg==
 sidebar_class_name: "get api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
@@ -23,7 +23,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"GET oembed/"}
+  children={"Returns oEmbed data for the given URL (oEmbed 1"}
 >
 </Heading>
 
@@ -37,12 +37,18 @@ import Translate from "@docusaurus/Translate";
 
 
 
+Returns oEmbed data for the given URL (oEmbed 1.0 consumer endpoint).
 
-
-**Note:** This endpoint documentation is incomplete.
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
 
 <ParamsDetails
-  parameters={undefined}
+  parameters={[{"name":"url","in":"query","schema":{"type":"string"},"description":"The URL of the content to retrieve oEmbed data for.","required":true}]}
 >
   
 </ParamsDetails>
@@ -57,7 +63,7 @@ import Translate from "@docusaurus/Translate";
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response"}}}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"version":{"type":"string","description":"oEmbed version (always '1.0')"},"type":{"type":"string","description":"oEmbed type (e.g. 'rich')"},"provider_name":{"type":"string"},"provider_url":{"type":"string"},"author_name":{"type":"string"},"author_url":{"type":"string"},"html":{"type":"string","description":"HTML embed code"},"referrer":{"type":"string"},"cache_age":{"type":"integer","description":"Recommended cache lifetime in seconds"}}}}}}}}
 >
   
 </StatusCodes>

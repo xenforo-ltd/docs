@@ -1,11 +1,11 @@
 ---
 id: get-oauth-2-token
-title: "GET oauth2/token"
-description: "**Note:** This endpoint documentation is incomplete."
-sidebar_label: "GET oauth2/token"
+title: "Gets information about an OAuth token"
+description: "Gets information about an OAuth token."
+sidebar_label: "Gets information about an OAuth token"
 hide_title: true
 hide_table_of_contents: true
-api: eJylU11LKzEQ/SthnrTUttfHvgl+UASR2wqCFonZqRvcTWIyudyy7H93Jl2lLdyHi09LJjPnzDk524EPGDVZ7xYVzOEN6cXrTPX5C/l3dDAG0m8J5k+wK8N6DBWGiEYT8sRGNwmllEy0QXAY5dk9u9HozhPORyO1qm1S6KrgrSNVeZNbdFQ4Fd9YZ3wbGiScMFvEFLxLyJQdnM9m8jkEX2ZjMKVNbtRXM/T9GFqk2g8aGChoqvkw3a09/VKTMP7BKII6yLGRDh0sHCt4RHfto1cX94vv1aFfy7zJ0dK2ADxen10Ee3aLclzvXy9Nje1OxH5TB7QNyPjMKYUxWGGrUVcY+eR0K7d7I8eLyULvuFUbH5UoYyetKV4CezAMPrDK/yUrM8dsUlSLS0VeaUNKJ3US8SNbNl6lzMlRWTqGpU7LO1i38YXcUoOHVjK+mL/D/jWZTWb/NP731XJVcA/yIhqDT9RqJxSDgpurlTp65gPQDox3xBg/i+bgJuFfmoZG27JNyVA3pO37J+HmsggnouZ15abrXnXCh9j0vZQ/MsaSGrZER6tfxSvO0F6OWRYb+gkiujk6
+api: eJy1VE1rGzEQ/StCpwTWsZujb4YmwfTQYicQCMbIu2Nb8a6kaKQQs/i/d0a7/k5KWhpfjGZn3rx5eppaWgdeBW3NsJB9uYAwtSqG5fU02BUYmcmgFij7T/LngMNykskCMPfacRGV3EFAoc3c+irhCDWzMQhlRKoQCeeKgJzyqoIAnuFqaehA5XmpwYSpLihDM95LBL+mA+ZLqJTs1zKsHWdi8Nos5CaTHl6i9kCEg4+wyU7BEHIP4X8AbkX4R6AJR9BZg4Ccf93r8d+xgOOY54A4j6XYJlOT3JpAs3C6cq7UeRK3+4xcU59zsLNnyHlm5/lKg246RgTP4u4TNeEuwDNbzC2HzjGOCf6AdedVlRGEU9qjsHOx8IpgCpEQkLHgzdHgONXmnV6niCPirg1pJko9h6ArIAcJujZrioSmESNMCxXgPebNL5PkpqVtbZsMFpZ06DYG7m7vjhR43Zou+pIzlNNnnB7B3FpvxeDXUIApnKV2km+QaEWvwzoBPN52Bk53SBI6Tg4/j/lGGtEPk3bsqScHWi8tQRVJmNZoByWnxJjQCtaCXpjgycgVrRtYqbbwgab822ap5rQbB8XwOz1boXJ6xiguWlOjwEjOEmwp0ZK6lHwP/PpTcx1KOJaS8Fn8BvvbVe+q96Hwo5vxfcItbB4rmnI3o7MYKpWM1U7wqaVz2qneP6rPb61W0ABvoetKci0TSjaqW8M9ycZwnJzakimWxJi/1PVMITz4crPhcLNB2EeFRjUreVHMVYnwB6YXo3anXIqP6KzYaEebND1XikneZV/Xa7dov7rf9j73fSZ88JobpZeYbV3O6jZFA9qr7pDd2SJllN0Subu5Jzf/Bs4QaAU=
 sidebar_class_name: "get api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
@@ -23,7 +23,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"GET oauth2/token"}
+  children={"Gets information about an OAuth token"}
 >
 </Heading>
 
@@ -37,12 +37,18 @@ import Translate from "@docusaurus/Translate";
 
 
 
+Gets information about an OAuth token.
 
-
-**Note:** This endpoint documentation is incomplete.
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
 
 <ParamsDetails
-  parameters={undefined}
+  parameters={[{"name":"client_id","in":"query","schema":{"type":"string"},"required":true},{"name":"client_secret","in":"query","schema":{"type":"string"},"required":true},{"name":"token","in":"query","schema":{"type":"string"},"required":true}]}
 >
   
 </ParamsDetails>
@@ -57,7 +63,7 @@ import Translate from "@docusaurus/Translate";
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response"}}}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"user_id":{"type":"integer"},"scope":{"type":"object","description":"Key-value pairs of granted scopes"},"expires_in":{"type":"integer","description":"Remaining lifetime in seconds"},"issue_date":{"type":"integer"}}}}}}}}
 >
   
 </StatusCodes>
