@@ -1,11 +1,11 @@
 ---
 id: post-media-categories
-title: "POST media-categories/"
-description: "**Note:** This endpoint documentation is incomplete."
-sidebar_label: "POST media-categories/"
+title: "Creates a media category"
+description: "Creates a media category"
+sidebar_label: "Creates a media category"
 hide_title: true
 hide_table_of_contents: true
-api: eJylU11rGzEQ/Ctinxpz/kge/RZoAibQhjqBQGOMolvnRO8kRVqVmuP+e3eVS2ub5KH06dDuamZnNNeDDxg1We9WNSwh+ETbDmurt0YTPvtoMW2hAtLPCZbfofSmf3uwqaDGEFFKjLDTbUIpJRNtEFxGfXSPbjL54gmXk4m6a2xS6OrgrSNVe5M7dFR2UNyxzvgutEg4Y96IKXiXmGjZw8ViIZ9j8HU2BlPa5Va9DcMwVLwpNf5NEyMFTQ2f5qcK5txLGH9iFIE95NjKmA4WTnU8oLv20avL29UfATBs5L7J0dK+ADxcTy+Dnd6gHDeH7bVpsHuVcjjUA+0DMj5zSqECK2wN6hojn5zupHtw5XQxWegH7tXOR6UzNeynNcVRYCfGi/es8l/Jyp1TNimq1WdFXmlDSif1KeJLtmy/SpnzpLJMjEudldewbucLuaUWj61kfDH/Fft8tpgtPjT+29X6ruAepUY0yiN32gnFqOD2K8++99hH0D0Y74iR/i+mo6eEv2geWm3LTiVJ/Ri8d36dCuTvaSSe3O77J53wPrbDIOWXjLEEiN3R0eonsY3jdBBsUcjm/gZI7EbA
+api: eJztVl1v2jAU/SuWnzYJCttj37qunaqpWlVaqRJCkYkv4DaOM9sBIpT/vnudENKUr0l73BMh99PnnnOdDTcZWOGVSe8kv+SZcT7SIJWIYuFhbqwCF/Ee92Lu+OWY35ON7Wx80uMSXGxVRkkwxbUFtDommG77FpjEwu8cnP9mZMEvNzw2qYfU06PIskTFoY/Bur9arfozY3U/twmksZEgycnFC9CCnnyRAZYy01eIPSbOLB3DUz9kVT6BlpvzVqVzXqKfsFhwe7QiUrLlprCbOVjye3eiPXmkclkiishYiQF7U2iVRhVo+6xNB5VpTwmRJGYFMji0kwhrBWGpPGi3J5JCc2+iGU4ht+3cU2MSECm6BKcW4q+uOud/gP8ZwORmwWUmdVX2r8Mh/bzXyiiPY3Bulids64yVD+jib6fkquR7D9+I8mSWOHfe6GimIJFHYBp/3AMhkIVAJmGmUkUWXAxLoRIxTYCplPmFcrsVETpLIyHlPlh7fKlgFeFSOHqmg6Q7TNtTdDzNpnpnmrya28fiIpnm+phDbLQO2jmW4yzKjifny0OlEtZRorQ6UPNsRZ9S7G4A/OX2/kd03Qx9qxcNfmG2txARUfgF/hsEbPu7O2eANgd2CZYOu+GBEHwgMsW7JHyB9NZYw64e7hikMjPYDi8nFB/nVvkiJHi57V9lqv8TigBeyzwirVVYt512yGeKXiD0VG0Bgg7f46nQ1TmbkG5j1NAbFAyvOYbrZIEY1zonMOvAZ/cOyrOKhZhuNXrJ7r4zb5iIPROOfaK7WOHSYS5HtbOcPOqmPodh0bp53F3YN2uhs1o+9Rhr9u/nyLDbQ+PdYcqwzdXhB63t4jrsH28tk+5C9jaHklCamXa7LS5gNmJP1diXi+HF8CBzHm9GTwEYaeKcBNoMiViqRVgY9QiOfPp0Nkyz4o/F1AB4WPsBIqZC1Xr7VdoY8642MIwAWZCC0LzZTIWDZ5uUJb3GadqiWtZLYRUt4Xpd1GwiNbwRw/l11WH/iZog9ySvOHjqQ63sbVNc4f2T+QPB4TYjqTWqf/g1ekLnaf11qDEbvm1l7rX/UNtl+Qfnj8GS
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
@@ -23,7 +23,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"POST media-categories/"}
+  children={"Creates a media category"}
 >
 </Heading>
 
@@ -37,9 +37,15 @@ import Translate from "@docusaurus/Translate";
 
 
 
+Creates a media category
 
-
-**Note:** This endpoint documentation is incomplete.
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
 
 <ParamsDetails
   parameters={undefined}
@@ -49,7 +55,7 @@ import Translate from "@docusaurus/Translate";
 
 <RequestSchema
   title={"Body"}
-  body={undefined}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"title":{"type":"string"},"parent_category_id":{"type":"integer"},"description":{"type":"string"},"display_order":{"type":"integer"},"min_tags":{"type":"integer"},"category_type":{"type":"string"},"allowed_types":{"type":"array","items":{"type":"string"}},"auto_feature":{"type":"boolean"}}}},"application/json":{"schema":{"type":"object","properties":{"title":{"type":"string"},"parent_category_id":{"type":"integer"},"description":{"type":"string"},"display_order":{"type":"integer"},"min_tags":{"type":"integer"},"category_type":{"type":"string"},"allowed_types":{"type":"array","items":{"type":"string"}},"auto_feature":{"type":"boolean"}}}}}}}
 >
   
 </RequestSchema>
@@ -57,7 +63,7 @@ import Translate from "@docusaurus/Translate";
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response"}}}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"string"},"category":{"type":"object","properties":{"custom_fields":{"type":"array","items":[],"description":"Custom field definitions available in this category"},"can_add":{"type":"boolean"},"view_url":{"type":"string"},"category_id":{"type":"integer"},"title":{"type":"string"},"description":{"type":"string"},"category_type":{"type":"string"},"media_count":{"type":"integer"},"album_count":{"type":"integer"},"comment_count":{"type":"integer"},"allowed_types":{"type":"array","items":[]},"min_tags":{"type":"integer"},"category_index_limit":{"type":"integer"},"parent_category_id":{"type":"integer"},"display_order":{"type":"integer"}},"title":"XFMG_Category"}}}}}}}}
 >
   
 </StatusCodes>

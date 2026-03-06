@@ -1,11 +1,11 @@
 ---
 id: delete-media-albums-id
-title: "DELETE media-albums/{id}/"
-description: "**Note:** This endpoint documentation is incomplete."
-sidebar_label: "DELETE media-albums/{id}/"
+title: "Deletes the specified album"
+description: "Deletes the specified album. Defaults to soft deletion."
+sidebar_label: "Deletes the specified album"
 hide_title: true
 hide_table_of_contents: true
-api: eJylU9tqG0EM/ZVhnhLjW/u4b4E4YFpKiR0INMaMZ+WsyO7MZC6hZtl/rzTeJGtTP5Q+zUXS0dGR1ErrwKuI1ixLWcgSaoiwbaBEtVX1LjVhi+VWjmVUz0EWv2Q2TY4muRlThPOgVQQK36s6AH8F7dExKEE+mSczGv2wEYrRSKwrDAJM6SyaKEqrUwMmZgKCLGi0bRxzmFJOp7xq6O45cysNPQgQSzIhQzsVK7p7eE3omUD0ifIHXUGjZNHKeHAcEaJH8yy7c2qy23B0cNYECBzwdT7n49RtlbSGEPapFu/OsiMwolbZT9UyYSJUyNlQpFmLZTcjYwD/9l5K8jX7KYfynNQjmDvrrbj5ufwQKhMNoJPHeMgAj3eTG4eTb8DPzdC84uqP1QydPsSgnPzRS1iBKsHTqxd3EHJOjAm9wEHsrRcqxYr6hjp3jpXtAx+oyn9NlmPOs/GnWN6KaIXSUaggrvo+BxESDa1I7NGTus4NQbO3OTnGGk6lJHwW/4j9ZTqfzi8Kf79YrTPuyXRyjc6G2CjDKfoKbhffF+uF+Gu/T9Bbqa2JBPZ/G9HLGuF3nLlaYaaVh6nth+9sQ8eyyPvCq1oRfXZo250K8ODrruPv1wQ+TxFJpDyqHWtHI1Zi4PuFvR4WdHXfb+C1uMTxfR4MD8ObqhO/6PrCs8kr3W2GG3XUlZr6B28xjj0=
+api: eJylVF1r2zAU/StCTy2kSbbHvAWSQtgGo2mhUIJR7OtarWyp+igLJv9998p26rpJt2x5caR7z7lfR7fm2oAVXupqlfEZz0CBh6SETIpEqG0oXSKzhI+4F4+Ozx74DzKxxsQ3I0S41EpDDIhfRLxjvgDmDKQyl5A13mO2gFwE5dGqmdO5ZzEaAsfIb4QVJWItRal5hQfkkxmaJDEb4Qv8b+ElSAuYq7cBRtylBZSCz2rud4YQzltZPfL9MDO8ObAWwmZJU2pH/xLA7vgRvq3WCkTF9z28BeGQ9E/QLpUeUgRfaIudBev/KXSfIDk3jw31zxldOXBk/zqd0ud9o9YhTcG5PCjWOSNpqisPlSd3YYySadTM5Ini492HmHr7BCmVaCwpzMsmomvIjyUXfyOOGij0mxSjMnDyMz6JorxqlDepZbafULFgXzvNBKvITxjJh9O/h+paW83mP1cMqsxoibVQPxykwUq/iwT311dzI6++AR03ffOa6mtK6DsdqsCYdNFOogCRgcVTO7QeZJgYJfQMO5Zry2i22OO2tyThFniHVZ4bLGKG0eiSrRb0AEXqmXDson1QjrmAc2KBPNqkLkl5GCTXMbj0Ct63Evmp+Q33l/F0PD3Z+Jvl+jbyZjoNJVZ5qNFo50sRVdRW8MkSGfLXb8L8j93T9tXDLz8xSsiYV1RT3arvgffVh5BZ3Ey0AAvMnxzqeisc3Fm139N18xpJVZl0YqtoZeVCOdxZzySdwRJ6FSpAt6ZOIA7P/W+cB5vmXEhyJNiGDlYS9HhhJ0dzcdOu7Ut2qt2dtqtdP2aXGnZ7v0GvVuwUvTHMcZ+YfoEfthOlfVgqi+X35e0Sdf0bLShbtQ==
 sidebar_class_name: "delete api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
@@ -23,7 +23,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"DELETE media-albums/{id}/"}
+  children={"Deletes the specified album"}
 >
 </Heading>
 
@@ -37,9 +37,7 @@ import Translate from "@docusaurus/Translate";
 
 
 
-
-
-**Note:** This endpoint documentation is incomplete.
+Deletes the specified album. Defaults to soft deletion.
 
 <Heading
   id={"request"}
@@ -50,7 +48,7 @@ import Translate from "@docusaurus/Translate";
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""}]}
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""},{"name":"hard_delete","in":"query","schema":{"type":"boolean"}},{"name":"reason","in":"query","schema":{"type":"string"}},{"name":"author_alert","in":"query","schema":{"type":"boolean"}},{"name":"author_alert_reason","in":"query","schema":{"type":"string"}}]}
 >
   
 </ParamsDetails>
@@ -65,7 +63,7 @@ import Translate from "@docusaurus/Translate";
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response"}}}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"string"}}}}}}}}
 >
   
 </StatusCodes>

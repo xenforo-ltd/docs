@@ -1,11 +1,11 @@
 ---
 id: post-media-comments-id-react
-title: "POST media-comments/{id}/react"
-description: "**Note:** This endpoint documentation is incomplete."
-sidebar_label: "POST media-comments/{id}/react"
+title: "Reacts to the specified comment"
+description: "Reacts to the specified comment"
+sidebar_label: "Reacts to the specified comment"
 hide_title: true
 hide_table_of_contents: true
-api: eJylU9tq4zAQ/RWhpzbktvvot8JuIRR2S9NCYRuCKk/qobak6lI2GP/7zih2ibNkYemTJXnmzJkzZ1ppHXgV0ZpVKQvpbIjbBkpUW22bBkwMWyy3HpSOciqjegmy+CVzxGyIkJupLMF50CoCoexUHYCfgvboGJuQn8yTmUx+2AjFZCLuKwwCTOksmihKqxMjZR6C/qAhbFdDhDlVdcqrhs6ea7fS0IUAsaRfyNBOxYrOHt4SeiYQfaL6QVfQKFm0Mu4dZ4To0bzI7pSa7DacHZw1AQInfF0u+TMOWyetIYRdqsUQLDsCI2qVHcTLdIlOIRdjkRYtlt1iEDKAfx/6Sb7mcOVQnjJ7BHNtvRVXt6sPtTLbADp5jPsM8Hg9u3I4uwG+bo5/r1mCQ0vHQR+KUE1+6HWsQJXg6dYrfJRySowJvcJe7KwXKsWKOkSdx8fy9okP1OX/Fss5p9X4Uay+iWgFySdUEBf9sIMIiQwsEkf0pC7zVNDsbC6OsYaxlITP4h+wv8yX8+VZ4e++r+8z7sii3CMPu1GGS/Qd3P6k2H8NfVSildqaSEGf241e2wi/48LVCjO37Ki2N+Jf2zqVRd6dAy1yS8W+pbi2fVYBHnzddfz8lsBnR5FcyqN6Zh3JbiUGPp9Z9OO+Lu76lbwU56gO3jBsjHdVJ77R8ZV9yjvebY5XjDWm8f4BSqKYrw==
+api: eJzVVd9v2jAQ/lcsP7USAbZH3rqtlappWgVUqtQiZOKjcZvEnu1AUeT/fXdO0gYY6/q4J2L7fnz33XdHzbUBK7zS5bXkE26088sCpBLLVBcFlN4tlVxaEKnnA+7Fo+OTe/6DLFhnwRcDLsGlVhkKhGGmZO+Y18xnwJyBVK0VyM4DI1n4VYHzX7Tc8UnNU116esBPYUyu0ghp9JJst9tkrW2RVDaHMtUSJBm5NINC0JffGcCMevUEEaKxVJFX4Og1AsdIWETPWGGyR7D8EPb1N6bXEXLnRyVUDobs1kF8SCtrEeibAfqQTSn1kIfQFKYsobzfy76gx35tT45y/qel0LMRVhTgwZIkal7igQBJxKIIghE+4/0o3lYwOK7XeavKRx4OS+BhQd7O6NI1FHwej+ln32xWpSk4t65y1hlj1hOC+ijprgn+R7QNIcdPh3U8IB0OQz5wpi17wNccWcPTSjicCSR+mwE2xO63ayscE1KShcXbQm9AUl9Cwz4yn+luZAk3sT3hozi8STeao1rJMOrGF1FsunbhPJG5MOoI8B2UV9pqdnFzzaCURqPIYjMcoGaU38UAd1fJhVHJd6Djov88I3Ib/vpGrzxhTrpoZZKBkFHArYB6LofACNAz7BguBCYqZKv0bWOpH60jytt+NFn0OcxGl+1MIH0M23HWatkxV6FIaJwsa0Gdx5EhfU3fVtvliyhMDkfjOw6EZ60jTuVz2GcdoVCfGhifhuPh+GSPppezeYQgdVpRy1/pIF0UIuqzLfb9rbyXo7eV/8G1pdvDix+ZXKiIIYqsbrV5z/e1iU6TuC0aeaKAMpIy2tU1jcatzUOga6TTRpEhLcIqsSK+UIFSOfpGPtcid/AX+GfTdgmds1NQO7mUpJWNyCs64eczSZe2WligVasfyt48fG1yJHNyf3N8/08sDLoQF7hijD/hHBcWDdfrvN/8nM3ReNX+cxYYDW97kQf9A41mCL8BZra4/w==
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
@@ -23,7 +23,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"POST media-comments/{id}/react"}
+  children={"Reacts to the specified comment"}
 >
 </Heading>
 
@@ -37,9 +37,7 @@ import Translate from "@docusaurus/Translate";
 
 
 
-
-
-**Note:** This endpoint documentation is incomplete.
+Reacts to the specified comment
 
 <Heading
   id={"request"}
@@ -57,7 +55,7 @@ import Translate from "@docusaurus/Translate";
 
 <RequestSchema
   title={"Body"}
-  body={undefined}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"reaction_id":{"type":"integer","description":"ID of the reaction to use. Use the current reaction ID to undo."}},"required":["reaction_id"]}},"application/json":{"schema":{"type":"object","properties":{"reaction_id":{"type":"integer","description":"ID of the reaction to use. Use the current reaction ID to undo."}},"required":["reaction_id"]}}}}}
 >
   
 </RequestSchema>
@@ -65,7 +63,7 @@ import Translate from "@docusaurus/Translate";
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response"}}}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"string"},"action":{"type":"string","description":"\"insert\" or \"delete\" based on whether the reaction was added or removed."}}}}}}}}
 >
   
 </StatusCodes>

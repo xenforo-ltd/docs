@@ -1,11 +1,11 @@
 ---
 id: post-media-albums-id-react
-title: "POST media-albums/{id}/react"
-description: "**Note:** This endpoint documentation is incomplete."
-sidebar_label: "POST media-albums/{id}/react"
+title: "Reacts to the specified album"
+description: "Reacts to the specified album"
+sidebar_label: "Reacts to the specified album"
 hide_title: true
 hide_table_of_contents: true
-api: eJylU01r4zAQ/StCpzbka/foW2G3EBba0rRQ2IagyJN6qC2p+igbjP/7zihOcQw5LHuyLM28efPmTSutA68iWrMqZSGdDXHbQIlqq+pdasIWy60HpaOcyqjegix+y/w+O77LzVSW4DxoFYEQ9qoOwFdBe3SMS6iv5tVMJnc2QjGZiKcKgwBTOosmitLq1ICJmYOgFzTaNq6GCHOq6ZRXDZ09V26loR8CxJKekKGdihWdPXwk9Ewg+kT1g66gUbJoZTw4zgjRo3mT3Zia7DacHZw1AQInfF8u+XMetk5aQwj7VItTsOwIjKhV9iRcpkt0CrkYSrRosewWJxED+M9TN8nXHKwcyjGvFzC31ltx87D60ipzDaCTx3jIAC+3sxuHs1/Av5vh85oFODY0DPrSg2ryRa9iBaoET3+9voOUMTEm9A4HsbdeqBQrGh3qPDwWt098pi7/tVjOGVfjS7H6IaIVJJ9QQVz1ow4iJLKuSBzRk7rOM0Gzt7k4xhrOpSR8Fv+I/W2+nC8vCv/4c/2Ucc8Myj3yqBtluETfwcM9xV4e+VmBVmprIuH93170ykb4ExeuVpiZZT+1vQlHezqVRd6aIylySsWOpai23akAz77uOr7+SOCzm0gq5VHtWEOyWomBzxdWfNjV1WO/jNfiEtGTLwyb4lPVif/o+M4e5e3uNsPlYn1ptH8BWb6URQ==
+api: eJzVVd9v2jAQ/lcsP7USAbZH3rq1lappWgVUqtQiZOKjcZvEnu1AUZT/fXd20gYYq/q4J2Lfr++++87UXBuwwitd3kg+4UY7vyxAKrEU+aoq3FLJpQWRej7gXjw5PnngP8nOop0vBlyCS60ylARTTMnbMa+Zz4A5A6laK5DRH7NY+F2B89+03PFJzVNdeig9fQpjcpUGMKPXZLvdJmtti6SyOZSpliDJyaUZFIK+/M4A1tOrZwjwjKVevAJH1gAaM2EDPWeFxZ7A8kPQN5dMrwPgLo4aqBwM2Z2DYEgraxHouwPGkE8p9ZA3TWxMWUL5sFd9QcZ+b8+Oav6nrZDZCCsK8GBJDjUv8UCAJGJRBMEIn/F+Fm8rGBz367xV5RNvDlvgzYKindGlixR8HY/pZ99tVqUpOLeuctY5Y9UTgvos6S4m/yvaSMix6bCPR6TDYcpHzrRlj2jNkTU8rYTDjUDitxngQOz+uLbCMSEleVi8LfQGJM2liewj85nulpVwE9sTPgprm8S1HNVKNqNucRHDphsWbhM5C6OO4N5Dea2tZhe3NwxKaTRKLIzCASpG+V1IcH+dXBiV/AA6LvrmGVEb2es7vbGENemiFUkGQgb5tvLphRwCI0AvsGP4HDBRIVelb8dK02gDUdz2s8VCzGE1umw3AuljOIyzVsmOuQolQstkWQvqPCwMqWv6/rBdvYrC5HC0vOOG8Kx1wKl8DvusIxSaU4TxZTgejk/OaHo1mwcIUqdVgYS80UGqKERQZ9vsRy/yXoXei/xhYEu1h1c/MrlQoX4QWN2q8oH3VYkhk/BKRGGidDKSMHrVNa3Enc2bhq6RSBvkhYQIq8SKmELtSeXoG5lci9zBP6CfTdvH55ydAtoJpSSVbERe0Qk/X0i09Jo1C/RqlUPVo+F7rJHMKfw98OM/r2bQpbjAp8X4E8HhoaK1etvz21+zOTqv2n/MArPhbS/zoH+gpWyaPxuNstE=
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
@@ -23,7 +23,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"POST media-albums/{id}/react"}
+  children={"Reacts to the specified album"}
 >
 </Heading>
 
@@ -37,9 +37,7 @@ import Translate from "@docusaurus/Translate";
 
 
 
-
-
-**Note:** This endpoint documentation is incomplete.
+Reacts to the specified album
 
 <Heading
   id={"request"}
@@ -57,7 +55,7 @@ import Translate from "@docusaurus/Translate";
 
 <RequestSchema
   title={"Body"}
-  body={undefined}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"reaction_id":{"type":"integer","description":"ID of the reaction to use. Use the current reaction ID to undo."}},"required":["reaction_id"]}},"application/json":{"schema":{"type":"object","properties":{"reaction_id":{"type":"integer","description":"ID of the reaction to use. Use the current reaction ID to undo."}},"required":["reaction_id"]}}}}}
 >
   
 </RequestSchema>
@@ -65,7 +63,7 @@ import Translate from "@docusaurus/Translate";
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response"}}}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"string"},"action":{"type":"string","description":"\"insert\" or \"delete\" based on whether the reaction was added or removed."}}}}}}}}
 >
   
 </StatusCodes>

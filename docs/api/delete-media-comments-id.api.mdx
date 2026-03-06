@@ -1,11 +1,11 @@
 ---
 id: delete-media-comments-id
-title: "DELETE media-comments/{id}/"
-description: "**Note:** This endpoint documentation is incomplete."
-sidebar_label: "DELETE media-comments/{id}/"
+title: "Deletes the specified comment"
+description: "Deletes the specified comment. Defaults to soft deletion."
+sidebar_label: "Deletes the specified comment"
 hide_title: true
 hide_table_of_contents: true
-api: eJylU9tqG0EM/ZVhnhLjW/u4b4E4YFpKiR0INMZMZuWsyO7MZC6hZtl/rzReJ2sXP5Q+zUXS0dGR1ErrwKuI1ixLWcgSaoiwbaBEtdW2acDEsMVyK8cyqpcgi18yGydHo9yMKcp50CoCQexUHYC/gvboGJhgn8yTGY1+2AjFaCTWFQYBpnQWTRSl1YmRMglBFjSE7ZjHlLI65VVDd8+5W2noQYBYkgkZ2qlY0d3DW0LPBKJPlD/oCholi1bGveOIED2aF9mdU5PdhqODsyZA4ICv8zkfp26rpDWEsEu1ODrLjsCIWmU/lcuEiVAhZ6cyzVosuxmZA/j3YzHJ1+ypHMpzWo9g7qy34ubn8kOqTDWATh7jPgM83k1uHE6+AT83Q/OK6z/UM3T6kINy8kcvYgWqBE+vXt5ByDkxJvQKe7GzXqgUKyoOde4da9sHPlCV/5osx5xn40+xvBXRCqWjUEFc9Z0OIiQaXZHYoyd1nVuCZmdzcow1nEpJ+Cz+AfvLdD6dXxT+frFaZ9yT+eQanQ2xUYZT9BXcLr4v1gtxoeMn+K3U1kSy/99W9MJG+B1nrlaYieVxavsB/GtPx7LIW8MLW1EJ7NK2zyrAg6+7jr/fEvg8SSST8qieWT8asxID3y9s97Ckq/t+D6/FJZbHmTA8EO+qTvyi6yvPJy92txnu1UFbauwfKA2Spw==
+api: eJylVNtq20AQ/ZVlnxLwrX30m8EOmLZQ4gQCwYi1NIo2WWs3ewk1wv/emZXkyIqd1q1f5N2ZOWcuZ6fi2oAVXupymfEpz0CBh2QLmRRJqrdbKL1LZJbwAffiyfHpI/9BRtYa+XqAUS610hAKYswjhmO+AOYMpDKXkLX+IzaHXATl0a6Z07lnkRNDR8hhhBVbjLbEVPESD4goMzRJwjbCF/jfwmuQFjBjbwMMuEsL2Ao+rbjfGYpw3sryie/7ueHNAbUQNkvqglv41wB2x0/gbbRWIEq+78RbEA5B/xTaptKJFMEX2iZCgfX/RN0FSC7NY039c0aXDhzZv04m9Dlu1CqkKTiXB8VaZwRNdelxiOQujFEyjcoZPxM/3n3g1JtnSKlEY0lnXtaMrgY/lVz8DThqoNDvgozKwMlP+ThKc9iqb1zJbD+mcsG+taoJVpGnMJL35/8A5Y22ms1+LhmUmdESq6GOOEiDlX4XAR5uhjMjh9+AjuuueUUV1kV0nQ51ICddNLMoQGRg8dSMrRPST4wSeoEdy7VlNF0srukuibgJvMcqLyWLMX02umTLOT1BkXomHLtqnpRjLuCkWCCPJqlr0h6S5DqSS6/guJWIT82vsb+MJqPJ2cbfLlZ3ETfTaaARHmo02vmtiDpqKvh0kfQZqndx/tcGanrr4ZcfGyVkzC0qqmo0+MiPNYhB07ihaBUWWAW5VNVGOLi3ar+n6/pVkrYy6cRG0erKhXK4u15IQL1l9CZUgHZdnYk4PPu/ce5tnEtDkhNkazpYSaGnCzs7nqvbZn1fs3MNbxVe7rqcbWrY7f0avRrJE3ttmOFeMd0CP2wpSvuwXOaL74u7Bar7N850YeM=
 sidebar_class_name: "delete api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
@@ -23,7 +23,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"DELETE media-comments/{id}/"}
+  children={"Deletes the specified comment"}
 >
 </Heading>
 
@@ -37,9 +37,7 @@ import Translate from "@docusaurus/Translate";
 
 
 
-
-
-**Note:** This endpoint documentation is incomplete.
+Deletes the specified comment. Defaults to soft deletion.
 
 <Heading
   id={"request"}
@@ -50,7 +48,7 @@ import Translate from "@docusaurus/Translate";
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""}]}
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""},{"name":"hard_delete","in":"query","schema":{"type":"boolean"}},{"name":"reason","in":"query","schema":{"type":"string"}},{"name":"author_alert","in":"query","schema":{"type":"boolean"}},{"name":"author_alert_reason","in":"query","schema":{"type":"string"}}]}
 >
   
 </ParamsDetails>
@@ -65,7 +63,7 @@ import Translate from "@docusaurus/Translate";
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response"}}}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"string"}}}}}}}}
 >
   
 </StatusCodes>

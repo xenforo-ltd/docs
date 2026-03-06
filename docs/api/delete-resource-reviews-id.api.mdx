@@ -1,11 +1,11 @@
 ---
 id: delete-resource-reviews-id
-title: "DELETE resource-reviews/{id}/"
-description: "**Note:** This endpoint documentation is incomplete."
-sidebar_label: "DELETE resource-reviews/{id}/"
+title: "Deletes the specified review"
+description: "Deletes the specified review. Defaults to soft deletion."
+sidebar_label: "Deletes the specified review"
 hide_title: true
 hide_table_of_contents: true
-api: eJylU01rGzEQ/StCp8T4qz3uLRAHTEIpsQOBxhhFO84OWUuKPtyaZf97Z+R1ai/1ofSkkTTz5s2bmUZaB15FtGZeykKWUEOEtYdgk9ds7BB+hjWWazmUUb0FWfyQx+9R9y1XQ4p0HrSKQDAbVQfgp6A9OgYn6BfzYgaDbzZCMRiIZYVBgCmdRRNFaXXagomZiKAfNNpuHXMZU16nvNqS7Tl7Iw1dCBBL+kKGdipWZHv4SOiZQPSJ8gddwVbJopFx7zgiRI/mTbZ9arJdcXRw1gQIHPB1OuXj3G2RtIYQNqkWR2fZEhhRq+wf9TJhIlTISV+oSYNlOyGHAH53LCf5mn2VQ9kn9gzmznorbr7PP8XKZAPo5DHuM8Dz3ejG4ege+Lo6/V6wAoeKTp0+BaGc/NDJWIEqwdOtE/gkpE+MCb3DXmysFyrFinqHOneP1e0Cn6jKf02WY/rZ+FHMb0W0QukoVBBXXa+DCIkGWCT26Ehd56ag2dicHGMN51ISPot/wP4yno6nF4V/nC2WGfdsQrlGZ0PcKsMpugpuZw+z5Uxc7PlZhkZqayIB/t9mdNJG+BUnrlaYqeWBaroh/Mu2DmWRd4fXtqIy2KlpXlWAJ1+3LT9/JPB5mkgq5VG9soY0aiUGti/s+GlRV4/dNl6LSzyPc2F4KHaqTnwj851nlNe7XZ1u10Ffau5vLYuXyg==
+api: eJylVE1v2zAM/SuCTi2QJtmOuRVIChTbYUhaoEARGIpN12oVS9VHt8DIfx8py6nrJt265RJLIt/jo57YcG3ACi91fV3wGS9AgYfMgtPB5vTxIuGny2SR8RH34sHx2T1fpmOWjvl6hJkut9IQEuLMI45jvgLmDOSylFCk8DGbQymC8nismdOlZ5EWM8dIYoQVW0y2RNXwGhcIKAs8kgRthK/w28JzkBawaG8DjLjLK9gKPmu43xnKcN7K+oHvh6XhzgG1ErbIWs0d/HMAu+NH8DZaKxA13/fyLQiHoH9K7UrpZYrgK20zocD6f6LuA2SfrWNN/XNG1w4cnX+dTunvbaNWIc/BuTIo1gUjaK5rD7WncGGMknk0z+SR+HHvHafePEJOEo0lq3nZMroW/Fhx8Tfi6IFKv3oyOgNvfsYnnTsvkv0mjSz2ExIM9qXzTbCKYoWRfOiAO6ivtNXs8sc1g7owWqIe6omDPFjpdxHg7uri0siLb0DLdf94RRpbGf2ggxLkpI10GxWIAiyu0sX1UoaFUUFPsGOltozuF/uc+ks2Tom3qPKzZDFnyEab7HpOj1DkngnHztKjcswFvCsWKCIVdU7uQ5JSR3LpFbxtJeJT81vsL+PpeHqy8cvF6ibiFjoPW1R50Gi081sRnZQUfDRJhgTNqzv/ZwKlznr45SdGCRkri35qkgfv+dCDmDaLM4pmYYUqKKhpNsLBrVX7PW2375K8VUgnNoqGVymUw+n1RAYajKMXoQJ0A+tExuHh/03wYOZ8NiU7QramhZWUelzYyfs5W6YBfs5OtbxzeL3rc3alYbf3a4xKlif29uASJ4vpC3w3p6jsw3iZL74vbhbo7t9OuWTc
 sidebar_class_name: "delete api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
@@ -23,7 +23,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"DELETE resource-reviews/{id}/"}
+  children={"Deletes the specified review"}
 >
 </Heading>
 
@@ -37,9 +37,7 @@ import Translate from "@docusaurus/Translate";
 
 
 
-
-
-**Note:** This endpoint documentation is incomplete.
+Deletes the specified review. Defaults to soft deletion.
 
 <Heading
   id={"request"}
@@ -50,7 +48,7 @@ import Translate from "@docusaurus/Translate";
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""}]}
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""},{"name":"hard_delete","in":"query","schema":{"type":"boolean"}},{"name":"reason","in":"query","schema":{"type":"string"}},{"name":"author_alert","in":"query","schema":{"type":"boolean"}},{"name":"author_alert_reason","in":"query","schema":{"type":"string"}}]}
 >
   
 </ParamsDetails>
@@ -65,7 +63,7 @@ import Translate from "@docusaurus/Translate";
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response"}}}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"string"}}}}}}}}
 >
   
 </StatusCodes>

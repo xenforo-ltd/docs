@@ -1,11 +1,11 @@
 ---
 id: delete-resources-id
-title: "DELETE resources/{id}/"
-description: "**Note:** This endpoint documentation is incomplete."
-sidebar_label: "DELETE resources/{id}/"
+title: "Deletes the specified resource"
+description: "Deletes the specified resource. Defaults to soft deletion."
+sidebar_label: "Deletes the specified resource"
 hide_title: true
 hide_table_of_contents: true
-api: eJylU1FrGzEM/ivGT21Ik2yP91ZoCmFjjCaFwhqC61N6pne2a8tl4bj/Psm5pJeMPIw92ZalT58+Sa10HoJC4+yilIUsoQaETYDoUtAQN6bcyLFE9Rpl8Use7XI9Jl8fQCsECtyqOgKbog7GMxyBPdtnOxr9cAjFaCRWlYkCbOmdsShKp1MDFnNqQT/Gatd4zj6hhF4F1dA9cNpWWnoQoCnpyzC0V1jRPcB7MoEJYEiUP+oKGiWLVuLOc0TEYOyr7M6pyW7N0dE7G6kaCvg6m/Fx6rZMmoqN21SLg7PsCIyoVe5Tr0yYCBVyelRo2pqym9JPhPBxqCOFmp2UN/Kc0RPYexecuP25OKqUWUbQKRjcZYCn+5tbb26+AT/Xw+8ll74vZeh0VIJysqHXrwJVQqBXr+wg5JwYE3qDndi6IFTCippmdG4by9oHPlKV/5osx5xnY6NY3Al0QmkUKoqrvslRxESzKhJ79KSuczeM3bqc3GANp1ISPou/x/4ymU1mF4V/mC9XGfdkNLlG7yI2ynKKvoK7+ff5ai7+bvYJdCu1s0hI/7cLvaYIv3Hqa2UypzxJbT92w8UcyyKvCW9oRcT5t21fVITHUHcdm98ThDw/JI4KRr2wajRcpYl8v7DOw2quHvrFuxaXCB4mwfIYfKg68YuubzyVvMnderhIe0WpnX8At6uJ3Q==
+api: eJylVMtu2zAQ/BWCpwRwbLdH3wzYAYz2UNgJECAwBFpaRUxokeEjqCH437tLPaIodlu3uTgid2b2MdyKawNWeKnLVcZnPAMFHhILTgebgktklvAR9+LJ8dkjX7fnfDvCWJdaaQiLyEVEOuYLYM5AKnMJGWuJxmwBuQjKY4BmTueeRSnEjpHfCCv2CLekUvESP5BSZnglidwIX+D/Fl6DtICJehtgxF1awF7wWcX9wRDCeSvLJ34cJocnHWshbJbUdbb0rwHsgZ/g22mtQJT82MNbEA5J/wRtU+khRfCFtolQYP0/SfcJkkvz2FL/nNGlw/Hh/dfplH4+NmoTUpyuy4NibTCSprr0UHoKF8YomUbDTJ5JH88+aerdM6RUorFkLy9rRVeTn0ou/o04eqDQ7z6MzsDJz/ikc+SkktlxQpWCfWsNE6yiIGEkH47+AcpbbTWb/1gxKDOjJRZCzXCQBiv9IRI83N7Mjbz5BvS57V9vqLg6/35QVwJq0kEzhgJEBha/mon1IMPEKKEXOLBcW0aDxQY3jSX/NsB7rPJSsYgZqtEhWy3o9YnUM+HYVfOaHHMBh8QCRTRJXZPtUCTXUVx6BR9bifzU/Jr7y3g6np5t/Hq5uYu8mU7DHqvsajTa+b2IFmoq+P0SGUpU78b8v/XTdNfDTz8xSsiYXfRU1RjwkXcGxPhZ3Ey0AwssgW6raicc3Ft1PNJx/RrJWJl0YqdoZeVCOdxZL+SewRJ6EypAu6bOILrn/jfBg01zKSQ5IbalDysJerqws6O5Wjdr+5qd63Vr7/LQ12xTw24ftxjV+J3U64s57hPTL/DTdqK0u6WyWH5f3i3R2r8AKBJcPQ==
 sidebar_class_name: "delete api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
@@ -23,7 +23,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"DELETE resources/{id}/"}
+  children={"Deletes the specified resource"}
 >
 </Heading>
 
@@ -37,9 +37,7 @@ import Translate from "@docusaurus/Translate";
 
 
 
-
-
-**Note:** This endpoint documentation is incomplete.
+Deletes the specified resource. Defaults to soft deletion.
 
 <Heading
   id={"request"}
@@ -50,7 +48,7 @@ import Translate from "@docusaurus/Translate";
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""}]}
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""},{"name":"hard_delete","in":"query","schema":{"type":"boolean"}},{"name":"reason","in":"query","schema":{"type":"string"}},{"name":"author_alert","in":"query","schema":{"type":"boolean"}},{"name":"author_alert_reason","in":"query","schema":{"type":"string"}}]}
 >
   
 </ParamsDetails>
@@ -65,7 +63,7 @@ import Translate from "@docusaurus/Translate";
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response"}}}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"string"}}}}}}}}
 >
   
 </StatusCodes>

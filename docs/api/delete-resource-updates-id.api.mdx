@@ -1,11 +1,11 @@
 ---
 id: delete-resource-updates-id
-title: "DELETE resource-updates/{id}/"
-description: "**Note:** This endpoint documentation is incomplete."
-sidebar_label: "DELETE resource-updates/{id}/"
+title: "Deletes the specified resource update"
+description: "Deletes the specified resource update. Defaults to soft deletion. Cannot be used on description updates."
+sidebar_label: "Deletes the specified resource update"
 hide_title: true
 hide_table_of_contents: true
-api: eJylU9tqGzEQ/RWhp8T41j7uWyAOmJZSYgcCjTGKNM6KrCVFl1Cz7L93RpaT9VI/lD7pMjNnzpyZabl14EXU1iwVr7iCBiJsPQSbvIRtckpECFuttnzMo3gJvPrFT+ZJMfPNGCOdB4kvhNmJJgB9Bem1I3CEfjJPZjT6YSNUoxFb1zowMMpZbSJTVqY9mJiJMLRoI+3eEZcp5nXCiz3ePWVvucEHAmqFJk3QTsQa7x7ekvZEIPqE+YOsYS941fJ4cBQRotfmhXdDarzbUHRw1gSsBgO+zud0nLutkpQQwi417OTMOwRDarX9VC8TRkIVnw2FmrVadTN0CODfT+Uk35CvcJoPiT2CubPespufyw+xMtkAMnkdDxng8W5y4/TkG9Bz0zevSIFjRX2nD0EwJ30UGWsQCjy+isC9kCExIvQKB7aznokUa+ydlrl7pG4JfMAq/zVZjhlmo0+2vGXRMiEjE4FdlV4HFhIOMEvkUUhd56Zos7M5uY4NnEuJ+CT+EfvLdD6dXxT+frFaZ9yzCaUanQ1xLwylKBXcLr4v1gt2sednGVourYkI+H+bUaSN8DvOXCN0ppYHqi1D+JdtHfMq7w6tbY1lkFPbPosAD77pOvp+S+DzNKFUwmvxTBriqCkd6H5hx/tFXd2Xbbxml3ie5sLQULyLJtELr680o7Te3aa/XUd9sbl/AFXwl38=
+api: eJy9VE1P4zAQ/SuWTyCVtrvH3tC2SGj3sGpBQkJV5CYTYnBt4w+0VdT/vjOJU0JoBexhuZTYM+/Nm3memhsLTgRp9HXBZ7wABQEyB95El0MWbSEC+EwWGR/xIB48n93zZbpm6ZqvR5jpcyctISHOvMHxLFTAvIVclhIK5t7mjdkcShFVwDjDvCkDa/gRYsx+CK1NYBsM9phqNOsxdMRjLMoKJ7ZI5qi0mmv8wAJkgVeSSrEiVPi/g+coHaDI4CKMuM8r2Ao+q3nYWcrwwUn9wPdDKXhyQK2EK7K2Rx38cwS340fwNsYoEJrve/kOhEfQj1K7UnqZIobKuEwocOGfqPsA2VfrWFP/vDXa47Dx/vt0Sj9vG7WKeQ7el1GxLhhBc6MD6EDhwlol88Zsk0fix7N3nGbzCDlJtI6sGWTL6FvwY8U1fyOOHqjMq4cbZ+DkZ3zS2e4iuWZSy2I/IcHgXjrfRKcoVljJhw64A31lnGGXv68Z6MIaiXqoJx7y6GTYNQB3VxeXVl78BPpc969XpLGV0Q86KEFOOkjTqEAU4PArDa6XMiyMCnqCHSuNYzRf7HPqL9k4Jd6iyq+SNTlDNjpk13N6qyIPTHh2lh6VZz7irOilOpaKOif3IUlpGnIZFLxtJeJT81vsb+PpeHqy8cvF6qbBLUwet6jyoNEaH7aicVJS8KnNM2SqX236P1dXGkmAP2FilZCNpMaIdTLvPR+aF9NmzXKjpVuhfAqq643wcOvUfk/H7YMmUxbSi42irVcK5XHtPZHzBnvsRagI3aY7kXHYGJ8JHiyrr6ZkR8jW9OEkpR4XdnKeZ8u0+c/ZqZZ3T0Pv+pxdadjt/Rqj0lsh9vbiEleS7Qt8t+Co7MNemi9+LW4W+Cz+AuEXi4s=
 sidebar_class_name: "delete api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
@@ -23,7 +23,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"DELETE resource-updates/{id}/"}
+  children={"Deletes the specified resource update"}
 >
 </Heading>
 
@@ -37,9 +37,7 @@ import Translate from "@docusaurus/Translate";
 
 
 
-
-
-**Note:** This endpoint documentation is incomplete.
+Deletes the specified resource update. Defaults to soft deletion. Cannot be used on description updates.
 
 <Heading
   id={"request"}
@@ -50,7 +48,7 @@ import Translate from "@docusaurus/Translate";
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""}]}
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""},{"name":"hard_delete","in":"query","schema":{"type":"boolean"}},{"name":"reason","in":"query","schema":{"type":"string"}},{"name":"author_alert","in":"query","schema":{"type":"boolean"}},{"name":"author_alert_reason","in":"query","schema":{"type":"string"}}]}
 >
   
 </ParamsDetails>
@@ -65,7 +63,7 @@ import Translate from "@docusaurus/Translate";
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response"}}}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"string"}}}}}}}}
 >
   
 </StatusCodes>

@@ -1,11 +1,11 @@
 ---
 id: post-media-id-react
-title: "POST media/{id}/react"
-description: "**Note:** This endpoint documentation is incomplete."
-sidebar_label: "POST media/{id}/react"
+title: "Reacts to the specified media item"
+description: "Reacts to the specified media item"
+sidebar_label: "Reacts to the specified media item"
 hide_title: true
 hide_table_of_contents: true
-api: eJylU01rGzEQ/StCp8Q4ttvj3gJNwBTaECcQaIxRpHF2yK6k6CPULPvfOyPvBtvUh9LTaqWZN2/evOmk8xBUQmeXRlbSu5g2LRhUGzSbAEonOZVJvUZZ/ZLlQa6n0oAPoFUCytmqJgJfRR3QMxLhPNtnO5n8cAmqyUQ81BgFWOMd2iSM07kFm0pVQS9otWt9AwlmVMyroFo6By7ZSUs/BIiGnpChvUo1nQO8ZwxMIIVM9aOuoVWy6mTaec6IKaB9lf0pNdmvOTt6ZyNETvi6WPDnOGyVtYYYt7kRY7DsCYyo1W6UqtAlOpWcF23mHZp+PsoWIXyMbeTQcJTyKE8JPYG9dcGJ67vlp0iFZASdA6ZdAXi6vbr2ePUd+Hd9+LzizvedHAZ9CkE1+WKQrwZlINDfIOxByikxJvQGO7F1QaicapoZ6jI1VnVIfKQu/7VYyTmtxpdi+U0kJ0g+oaK4GGYcRczkUpE5YiB1WYaBdutKcUwNHEtJ+Cz+HvvLbDFbnBX+/mb1UHCPnMk98oxbZbnE0MHdT4r9y6yPkDupnU0E9H+bMEia4Hea+0ZhoVSM1A22G1dyKquyIHs25I2azUnPXfeiIjyGpu/5+j1DKP4hcVRA9cKqkbkMRj6f2ebDdi7uh727FOcYjk6wbIMP1WT+o+Mbu5IXuV8f7hErSsP8AymEhp4=
+api: eJzVVU1PGzEQ/SuWTyDlqz3mRluQUFUVJSAhQRQ56wlr2F27tpcQrfzfO+P1wiZpWjj2lLXn6/nNm0nDtQErvNLVpeRTbrTzyxKkEksllxZE5vmAe/Hg+PSO/yADXwy4BJdZZSgMg2bk5pjXzOfAnIFMrRVIFvMw5aHEHBZ+1eD8Fy23fNrwTFceKk+fwphCZRHD+GW42WyGa23LYW0LqDItQZKTy3IoBX35rQEsqlePEMEZS0/wChxZI2TMhPB7zgqLPYDl+8gvvzG9jqi7OHpF7WDEbhxEQ1Zbi0DfHDCGfCqpRzyE9mHKEsq7neoLMvbf9uio5n/6FDIbYUUJHiyJoeEVHgiQRCyKIBjhc97P4m0Ng8P3Om9V9cDD/hN4WFC0M7pyLQWfJxP62XWb11kGzq3rgnXOWPWIoD5KumuT/xFtS8ihaf8d90iHw5T3nGnL7tFaIGt4WgmHY4HEb3LAhtjddm2EY0JK8rB4W+pnkNSX0LKPzOe6m1HCTWxP+ThO2bhRMoy7ecXiz12XcIzISxh1gPMWqgttNTu7umRQSaNRW7EHDlAqym9jgtuL4ZlRw+9Ax0XfPCdOW9r6Tq/0YE26SOrIQcio26SbXsg+MAL0BFuGe4CJGkmqfOontSEFoqrtR4vFmP1qdJlGAelj2IWTJGHHXI3aoCmyLIE6jZNCspq9bbTzF1GaAg6mdhIIz1pHnMoXsMs6QqE+tTA+jSajydEezc7n1xGC1FldIiGvdJAcShFlmR77rn28U6a3j98XnUj38OLHphAqIolSa5Iw73gMQN9p3BCtNlE9OckXzU1D43BjixDoGrm0UWHIibBKrIgslJ9Ujr6RzLUoHPwF+MksLZ5Tdgxhp5WKhPIsippO+PlEuqVNFhbolcRD1VvD17bG8JrC3wL//ccVBl2KM1wrxh8JjkuKJut1xq9+zq/ReZX+LUvMhre9zIP+geYyhN8rlq0i
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
@@ -23,7 +23,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"POST media/{id}/react"}
+  children={"Reacts to the specified media item"}
 >
 </Heading>
 
@@ -37,9 +37,7 @@ import Translate from "@docusaurus/Translate";
 
 
 
-
-
-**Note:** This endpoint documentation is incomplete.
+Reacts to the specified media item
 
 <Heading
   id={"request"}
@@ -57,7 +55,7 @@ import Translate from "@docusaurus/Translate";
 
 <RequestSchema
   title={"Body"}
-  body={undefined}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"reaction_id":{"type":"integer","description":"ID of the reaction to use. Use the current reaction ID to undo."}},"required":["reaction_id"]}},"application/json":{"schema":{"type":"object","properties":{"reaction_id":{"type":"integer","description":"ID of the reaction to use. Use the current reaction ID to undo."}},"required":["reaction_id"]}}}}}
 >
   
 </RequestSchema>
@@ -65,7 +63,7 @@ import Translate from "@docusaurus/Translate";
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response"}}}
+  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"string"},"action":{"type":"string","description":"\"insert\" or \"delete\" based on whether the reaction was added or removed."}}}}}}}}
 >
   
 </StatusCodes>

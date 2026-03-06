@@ -1,11 +1,11 @@
 ---
 id: get-resource-versions-id-download
-title: "GET resource-versions/{id}/download"
-description: "**Note:** This endpoint documentation is incomplete."
-sidebar_label: "GET resource-versions/{id}/download"
+title: "Downloads a file from the specified resource version"
+description: "Downloads a file from the specified resource version. For external downloads, redirects to the external URL."
+sidebar_label: "Downloads a file from the specified resource version"
 hide_title: true
 hide_table_of_contents: true
-api: eJylU9tqGzEQ/RWhp8T41j7uW6BJMYVSYgcCjTGKduwV2ZUUXdyaZf+9M6rWrJ2aEvK0knZmzpkzZ1puLDgRlNGLkhd8B2HjwJvoJGz24Dz+8BtVbkrzS9dGlHzMg9h5Xvzkfdykj+PrMS/BOpAiAFbbitoDPXnplCUMRHjST3o0+m4CFKMRW1XKM9ClNUoHVhoZG9Ah8WH4R2lpGltDgCkCW+FEg2dH8C3XeMGCijgpKm1FqPDs4DUqRwSCi4jvZQWN4EXLw8FShg9O6R3vzqnxbk3Z3mIv4Cnh83xOn9OwZZQSvN/GmvXBvMNiSK0yWcTEFtkUfPZGplmrym42ENSD2/dNRVdTkrCKn9N7BH1nnGE3PxZHyRJlDzI6FQ6pwOPd5MaqyTeg63r4e0k6/O1rGHSUBTHpIYtZgSjB4S3LPEg5J0aEXuDAtsYxEUOFE1QyzZA0zokP2OV7wVLOORo9ssUXFgwTMjDh2VWeuGc+optZpIhM6jqNRumtSeAq1HAqJdbPg8H3T9P5dH5R+Pvb5SrVPfEp9WiND43QBJE7+Hq7Yv+f/AlOy6XRAct+bEuywAF+h5mthUoEk63a7Ml/re6YF2mRjuTQOBV2RdFt+yw8PLi66+j5NYJL5kLlhFPimSRF55XK0/nC4g+7u7rPK3rNLhHubaLJI3tRR7rh8YUsSzvfrYcrh3LjoP8AkMejYg==
+api: eJy9VEtrGzEQ/itCpwSctdujb4YkxbSHYscQCMYo0qxXZC1t9HBrlv3vnVFWZmPXhZTSk63Z0cz3mFHLbQNOBG3NXPEp30LYOPA2OgmbPTiPH/xGq42yP0xtheIjHsTW8+kTX/R5LOfx9Ygr8NLphgpiudv+lmeClboGVjq7Y6EC5huQutSgmDspU7B76xj8DOCMqFlu7EeYqbQDGTwLNhU5Jq0W3wpE1ggndoAxwtdygwcEoQm0JjiNCBX+d/AasRDyDS7CiHtZwU7wacvDoaEbPjhttrw7pYORY1Wik+u+RnAH/ptC2gTYgjuvNAtByGoHJrD5LbNlopMUQmqZcsEWPVJWoiS1lUM9Ct6tiYtvUHrw1PXzZEI/71sto5TgfRlrlpN5h4BQqMr2niftUJspH2c7brKr41arbjzw34PbZ4mjq+mSaDQ/pfgIBo20bPZ9zsCoxqIYCbIHGZ0Oh1Tg8f5m1uibr0DH9fDzksR84zVMOmqLPSnQW1CBUCj0KNszuHKmPQJ6gUPSVEQU3gQt0wqQT/3FFbL8aLN057QbBclj9FXIwIRnV/38eeYjLh+LlNGDuk7WaFPa1FyHGt5LifV7YzD+qZgUk4vCL+6WD6musjLSqB05NtaHnTDUomfwN4t62rjl0uK8o8v/ffF7lwLGx00tdGKZZrPtB/uJnw023pumt+E42zh9FUpD2W37LDysXN11FH7bcBpYpb14runxKEXt4Q8a/JMdv8DthVYhv0F7UUdIz9OaDk4TwA+CvcowrtmlnnkVzGHYM2NBJbv18Fn5cveAw/wL2IAw3Q==
 sidebar_class_name: "get api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
@@ -23,7 +23,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"GET resource-versions/{id}/download"}
+  children={"Downloads a file from the specified resource version"}
 >
 </Heading>
 
@@ -37,9 +37,7 @@ import Translate from "@docusaurus/Translate";
 
 
 
-
-
-**Note:** This endpoint documentation is incomplete.
+Downloads a file from the specified resource version. For external downloads, redirects to the external URL.
 
 <Heading
   id={"request"}
@@ -50,7 +48,7 @@ import Translate from "@docusaurus/Translate";
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""}]}
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""},{"name":"file","in":"query","schema":{"type":"integer"},"description":"Attachment ID of the file to download. Required for local downloads."}]}
 >
   
 </ParamsDetails>
