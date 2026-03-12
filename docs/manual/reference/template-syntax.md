@@ -166,7 +166,7 @@ Macros also support inheritance. A macro can extend another macro from a differe
 </xf:macro>
 ```
 
-The `extends` attribute uses the format `template_name::macro_id`.
+The `extends` attribute uses the format `template_name::macro_name`.
 
 ## Macros
 
@@ -182,7 +182,7 @@ Macros are reusable blocks of template code.
 </xf:macro>
 ```
 
-- `id` - The name of the macro.
+- `id` - The macro identifier.
 - `arg-{name}` - Declares an argument. Inside the macro, available as `{$name}` (without the `arg-` prefix). Set the value to `!` to make it required.
 
 :::note
@@ -202,11 +202,10 @@ Use the self-closing form to call a macro:
 <xf:macro id="my_macro" arg-message="Hello!" />
 
 <!-- Different template -->
-<xf:macro template="my_macro_template" id="my_macro" arg-message="Hello!" />
+<xf:macro id="my_macro_template::my_macro" arg-message="Hello!" />
 ```
 
-- `template` - The template containing the macro definition (omit if in the current template).
-- `id` - The name of the macro to call.
+- `id` - The macro to call. Use `macro_name` for the current template, or `template_name::macro_name` for a macro in a different template.
 - `arg-{name}` - Values to pass as arguments.
 
 See also [`<xf:include>`](#includes) for including a full template without arguments.

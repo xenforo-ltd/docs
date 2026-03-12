@@ -222,7 +222,7 @@ Use macros when you have a self-contained block of markup that needs to be calle
 
 ```html title="Template: demo_item_list"
 <xf:foreach loop="$items" value="$item">
-    <xf:macro template="demo_macros" id="item_row" arg-item="{$item}" />
+    <xf:macro id="demo_macros::item_row" arg-item="{$item}" />
 </xf:foreach>
 ```
 
