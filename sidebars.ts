@@ -329,6 +329,7 @@ const sidebars: SidebarsConfig = {
         'devs/entities-finders-repositories',
         'devs/criteria',
         'devs/managing-the-schema',
+        'devs/handlers/index',
         'devs/lets-build-an-add-on',
         {
             type: 'category',
