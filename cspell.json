@@ -343,7 +343,11 @@
     "penalizable",
     "warnable",
     "bannable",
-    "infractable"
+    "infractable",
+    "corejs",
+    "lcfirst",
+    "ucfirst",
+    "ucwords"
   ],
   "flagWords": [],
   "dictionaries": [

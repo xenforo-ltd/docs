@@ -323,6 +323,7 @@ const sidebars: SidebarsConfig = {
         'devs/add-on-structure',
         'devs/development-tools',
         'devs/general-concepts',
+        'devs/template-basics',
         'devs/routing-basics',
         'devs/controller-basics',
         'devs/entities-finders-repositories',
