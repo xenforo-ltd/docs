@@ -11298,8 +11298,8 @@
                 "tags": [
                     "Resources"
                 ],
-                "summary": "Delete the feature for the specified media",
-                "description": "Delete the feature for the specified media.",
+                "summary": "Delete the feature for the specified resource",
+                "description": "Delete the feature for the specified resource.",
                 "operationId": "postResourcesIdUnfeature",
                 "responses": {
                     "200": {
@@ -13695,6 +13695,7 @@
                     {
                         "name": "email",
                         "in": "query",
+                        "required": true,
                         "schema": {
                             "type": "string"
                         }
@@ -13775,6 +13776,7 @@
                     {
                         "name": "username",
                         "in": "query",
+                        "required": true,
                         "schema": {
                             "type": "string"
                         }

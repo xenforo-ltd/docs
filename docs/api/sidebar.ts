@@ -991,7 +991,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/post-resources-id-unfeature",
-          label: "Delete the feature for the specified media",
+          label: "Delete the feature for the specified resource",
           className: "api-method post",
         },
         {
