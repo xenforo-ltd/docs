@@ -71,6 +71,7 @@ const config: Config = {
             specPath: "static/api/openapi.json",
             outputDir: "docs/api",
             infoTemplate: "./src/openapi/infoTemplate.mustache",
+            downloadUrl: "https://docs.xenforo.com/api/openapi.json",
             hideSendButton: true,
             sidebarOptions: {
               groupPathsBy: "tag",
