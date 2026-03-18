@@ -79,6 +79,7 @@ const config: Config = {
             markdownGenerators: {
               createInfoPageMD,
             },
+            showSchemas: true,
           } satisfies OpenApiPlugin.Options,
         },
       },
