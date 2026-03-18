@@ -71,11 +71,11 @@ const config: Config = {
             specPath: "static/api/openapi.json",
             outputDir: "docs/api",
             infoTemplate: "./src/openapi/infoTemplate.mustache",
+            hideSendButton: true,
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
             },
-            hideSendButton: false,
             markdownGenerators: {
               createInfoPageMD,
             },
