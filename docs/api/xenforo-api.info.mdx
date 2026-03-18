@@ -1,7 +1,7 @@
 ---
 id: xenforo-api
 title: "XenForo API"
-description: "XenForo REST API documentation"
+description: "Community platform by XenForo®"
 sidebar_label: Introduction
 sidebar_position: 0
 hide_title: true
@@ -15,6 +15,13 @@ import SchemaTabs from "@theme/SchemaTabs";
 import TabItem from "@theme/TabItem";
 import Export from "@theme/ApiExplorer/Export";
 
+<Export
+  url={"https://docs.xenforo.com/api/openapi.json"}
+  proxy={undefined}
+>
+  
+</Export>
+
 <Heading
   as={"h1"}
   className={"openapi__heading"}
@@ -24,7 +31,7 @@ import Export from "@theme/ApiExplorer/Export";
 
 
 
-XenForo REST API documentation
+Community platform by XenForo®
 
 <div
   style={{"marginBottom":"2rem"}}
@@ -39,12 +46,123 @@ XenForo REST API documentation
     className={"openapi-tabs__security-schemes"}
   >
     <TabItem
+      label={"OAuth 2.0: XF-OAuth2"}
+      value={"XF-OAuth2"}
+    >
+      
+      
+      
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                oauth2
+              </td>
+            </tr><tr>
+              <th>
+                OAuth Flow (authorizationCode):
+              </th><td>
+                <div>
+                  Token URL: https://example.com/api/oauth2/token
+                </div><div>
+                  Authorization URL: https://example.com/oauth2/authorize
+                </div><div>
+                  Refresh URL: https://example.com/api/oauth2/token
+                </div><span>
+                  Scopes:
+                </span><ul>
+                  <li>
+                    alert:read: Covers viewing the active user's alerts. Also includes read/unread marking of these alerts.
+                  </li><li>
+                    alert:write: Covers creating custom user alerts. Applies to super-user keys only.
+                  </li><li>
+                    attachment:delete: Covers deleting attachments.
+                  </li><li>
+                    attachment:read: Covers viewing attachment data.
+                  </li><li>
+                    attachment:write: Covers uploading new attachments.
+                  </li><li>
+                    conversation:read: Covers viewing direct messages.
+                  </li><li>
+                    conversation:write: Covers creating or updating direct messages.
+                  </li><li>
+                    feature:read: Covers reading featured content.
+                  </li><li>
+                    media:delete_hard: Covers hard-deleting media, albums and their comments.
+                  </li><li>
+                    media:read: Covers viewing media, albums, and their comments.
+                  </li><li>
+                    media:write: Covers creating, updating and soft-deleting media, albums and their comments.
+                  </li><li>
+                    media_category:delete: Covers deleting a media category.
+                  </li><li>
+                    media_category:read: Covers view media categories or the list of categories.
+                  </li><li>
+                    media_category:write: Covers updating or creating a media category.
+                  </li><li>
+                    node:delete: Covers deleting a node.
+                  </li><li>
+                    node:read: Covers reading the list of nodes or an individual node.
+                  </li><li>
+                    node:write: Covers creating or updating a node. Node deletion is not included.
+                  </li><li>
+                    profile_post:delete_hard: Covers hard-deleting profile posts and profile post comments.
+                  </li><li>
+                    profile_post:read: Covers viewing profile posts and profile post comments.
+                  </li><li>
+                    profile_post:write: Covers creating, updating and soft-deleting profile posts and profile post comments.
+                  </li><li>
+                    resource:delete_hard: Covers hard-deleting resources.
+                  </li><li>
+                    resource:read: Covers viewing resources and their content.
+                  </li><li>
+                    resource:write: Covers creating, updating and soft-deleting resources and their content.
+                  </li><li>
+                    resource_category:delete: Covers deleting a resource category.
+                  </li><li>
+                    resource_category:read: Covers viewing resource categories or the list of categories.
+                  </li><li>
+                    resource_category:write: Covers updating or creating a resource category.
+                  </li><li>
+                    resource_rating:delete_hard: Covers hard-deleting resource ratings/reviews.
+                  </li><li>
+                    resource_rating:read: Covers viewing resource ratings/reviews.
+                  </li><li>
+                    resource_rating:write: Covers creating, updating and soft-deleting resource ratings/reviews.
+                  </li><li>
+                    search:read: Covers viewing searches.
+                  </li><li>
+                    search:write: Covers creating searches.
+                  </li><li>
+                    thread:delete_hard: Covers hard-deleting threads and posts.
+                  </li><li>
+                    thread:read: Covers reading thread and post information.
+                  </li><li>
+                    thread:write: Covers creating, updating and soft-deleting threads and posts.
+                  </li><li>
+                    user:delete: Covers deleting a user.
+                  </li><li>
+                    user:read: Covers reading user profile information. Note that some profile details may be returned with other data.
+                  </li><li>
+                    user:write: Covers updating user profile information.
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem><TabItem
       label={"API Key: XF-Api-Key"}
       value={"XF-Api-Key"}
     >
       
       
-      API key for authentication
+      
       
       <div>
         <table>
@@ -60,33 +178,6 @@ XenForo REST API documentation
                 Header parameter name:
               </th><td>
                 XF-Api-Key
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </TabItem><TabItem
-      label={"API Key: XF-Api-User"}
-      value={"XF-Api-User"}
-    >
-      
-      
-      User ID to act as (requires super user API key)
-      
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <th>
-                Security Scheme Type:
-              </th><td>
-                apiKey
-              </td>
-            </tr><tr>
-              <th>
-                Header parameter name:
-              </th><td>
-                XF-Api-User
               </td>
             </tr>
           </tbody>

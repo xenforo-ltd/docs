@@ -1,0 +1,33 @@
+---
+id: node
+title: "Node"
+description: ""
+sidebar_label: "Node"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"breadcrumbs":[null],"type_data":{},"view_url":"string","node_id":0,"title":"string","node_name":"string","description":"string","node_type_id":"string","parent_node_id":0,"display_order":0,"display_in_list":true}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Node"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"breadcrumbs":{"type":"array","items":{},"description":"A list of breadcrumbs for this node, including the node_id, title, and node_type_id"},"type_data":{"type":"object","description":"Data related to the specific node type this represents. Contents will vary significantly."},"view_url":{"type":"string"},"node_id":{"type":"integer"},"title":{"type":"string"},"node_name":{"type":"string"},"description":{"type":"string"},"node_type_id":{"type":"string"},"parent_node_id":{"type":"integer"},"display_order":{"type":"integer"},"display_in_list":{"type":"boolean"}},"title":"Node"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

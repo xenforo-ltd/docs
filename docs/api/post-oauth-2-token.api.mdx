@@ -1,14 +1,15 @@
 ---
 id: post-oauth-2-token
-title: "Exchanges an authorization code or refresh token for an access token"
-description: "Exchanges an authorization code or refresh token for an access token."
-sidebar_label: "Exchanges an authorization code or refresh token for an access token"
+title: "Exchange a token grant"
+description: "Exchange a token grant."
+sidebar_label: "Exchange a token grant"
 hide_title: true
 hide_table_of_contents: true
-api: eJztVktv4jAQ/iuWL+xK4bE99sZ2qVT10KpQqVKFkEkmxG0Se21ngUX57ztjhxJoUVtt97BSOQCxZ755fTOZDVcajHBSlRcJP+VaWTdTonLZycypRyh5xJ1YWH56z6+GdMynEU/AxkZq0kKd0SrORLkAy0TJSFUZ+dtDslglwJRhBlIDNmMekqV4QqJxDNaGsx7aMfCzAuu+q2TNTzc8VqWD0tFfoXUuYw/ZX3WXy2UXIYpuZXIoyURCQjbOoBD0z601oF9q/gCxQ2BtKEgnwXrcXCLsTCYtUeuMLBe8jra3FmID7rnEYew36LM0kPiY0ONUJqguRc4CkO0R6MIIxAxIryGOpMvAsM5eImcUZYcy2WlSGarT8fB0+Q5XlxnWYOcSk/ZFax56z9pf2jji+ewXGJlKMO/Mtq7mSIptnlllUYNdX56N2BJT+HICvUdNYAkixW5WGflPclcHQpMWNc+OdXt0mJJcm94PVpWfbP5k8//K5iBptSptIOjJYEA/+x6MKz/70ypnW2EeHZv4722J8F45VuTXaYAS/uaNFB/mS7HGxM1BGDAdUoeVxkzZmWyjSwxugbw41J/4d2IuU3CywBqUDNtVlYklJBurt/gw1iKGrgUt8F2Ohc2ldUylobb47GE8oLS2glmCUi+4VodPxAtAEmz3AUqwcBk+9cNm0N9uBhYM0p2Wgw3HlzFJCC2feXcH5bkyig2vLxiUiVZoj9dT0o+RsG7tAe7Ou0Mtu5dAj9P29ZgKH2rbFnpyH23SAQZH1jIQiU9zKQq6bak8Kx069AjrsJBgZDTsAukoVY3ird1r5jcZ8zqH1uiQXfzAhQdXH8eEZV+anrLMVkhg7Hr8apz66puOuH+z24tGK1HoHA4G/44VB/N+d9Ge2S1xP2p3zweNsS/YmmxtjfbgaXWQLFPlsyZdDvscQDViTUjKt96gNzjKmJvReOITkqi4KjC0p+IQMQvh+6tJ/UesoYeOtLbQD1tzmyI4WLm+zoX04fju2TR9ds9Dn/FmENHKnVEj4s1mMxcWbk1e13SMzDC+XzCnwkgxp2Rj90RbZlJnPVK38LMQSXdC9kk8rwKfX9ut62gLMcRQtDui7Mc0te3T8Li+Gk9QeN4s9EVgWws5aj+Q23X9B9YFbQ0=
+api: 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
 sidebar_class_name: "post api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
@@ -23,7 +24,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"Exchanges an authorization code or refresh token for an access token"}
+  children={"Exchange a token grant"}
 >
 </Heading>
 
@@ -37,7 +38,7 @@ import Translate from "@docusaurus/Translate";
 
 
 
-Exchanges an authorization code or refresh token for an access token.
+Exchange a token grant.
 
 <Heading
   id={"request"}
@@ -48,14 +49,14 @@ Exchanges an authorization code or refresh token for an access token.
 </Heading>
 
 <ParamsDetails
-  parameters={undefined}
+  parameters={[{"name":"XF-Api-User","in":"header","description":"User ID to execute the request as. Requires a super user API key.","schema":{"type":"integer"}},{"name":"api_bypass_permissions","in":"query","description":"Whether or not to bypass the context user permissions. Requires a super user API key.","schema":{"type":"boolean"}}]}
 >
   
 </ParamsDetails>
 
 <RequestSchema
   title={"Body"}
-  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"client_id":{"type":"string"},"client_secret":{"type":"string","description":"Required for confidential clients."},"grant_type":{"type":"string","description":"Either 'authorization_code' or 'refresh_token'."},"code":{"type":"string","description":"Required when grant_type is 'authorization_code'."},"refresh_token":{"type":"string","description":"Required when grant_type is 'refresh_token'."},"code_verifier":{"type":"string","description":"Required for public clients using PKCE with 'authorization_code' grant."},"redirect_uri":{"type":"string","description":"Required when grant_type is 'authorization_code'."}},"required":["client_id","grant_type"]}},"application/json":{"schema":{"type":"object","properties":{"client_id":{"type":"string"},"client_secret":{"type":"string","description":"Required for confidential clients."},"grant_type":{"type":"string","description":"Either 'authorization_code' or 'refresh_token'."},"code":{"type":"string","description":"Required when grant_type is 'authorization_code'."},"refresh_token":{"type":"string","description":"Required when grant_type is 'refresh_token'."},"code_verifier":{"type":"string","description":"Required for public clients using PKCE with 'authorization_code' grant."},"redirect_uri":{"type":"string","description":"Required when grant_type is 'authorization_code'."}},"required":["client_id","grant_type"]}}}}}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","required":["client_id","grant_type"],"properties":{"client_id":{"type":"string"},"client_secret":{"type":"string","description":"Required for confidential clients."},"grant_type":{"type":"string","description":"Either 'authorization_code' or 'refresh_token'."},"code":{"type":"string","description":"Required when grant_type is 'authorization_code'."},"refresh_token":{"type":"string","description":"Required when grant_type is 'refresh_token'."},"code_verifier":{"type":"string","description":"Required for public clients using PKCE with 'authorization_code' grant."},"redirect_uri":{"type":"string","description":"Required when grant_type is 'authorization_code'."}}}}},"required":true}}
 >
   
 </RequestSchema>
@@ -63,7 +64,7 @@ Exchanges an authorization code or refresh token for an access token.
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"access_token":{"type":"string"},"refresh_token":{"type":"string"},"token_type":{"type":"string","description":"Always 'bearer'"},"expires_in":{"type":"integer","description":"Token lifetime in seconds"},"scope":{"type":"string","description":"Space-separated list of granted scopes"},"issue_date":{"type":"integer"}}}}}}}}
+  responses={{"200":{"description":"OK","headers":{"XF-Latest-Api-Version":{"description":"The latest API version available.","schema":{"type":"integer"}},"XF-Used-Api-Version":{"description":"The API version used to render the response.","schema":{"type":"integer"}},"XF-Request-User":{"description":"The user ID of the request user.","schema":{"type":"integer"}},"XF-Request-User-Extras":{"description":"Additional information about the request user in JSON encoding. Requires XF-Request-User header to be non-zero.","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"type":"object","properties":{"access_token":{"type":"string"},"refresh_token":{"type":"string"},"token_type":{"type":"string","description":"Always 'bearer'"},"expires_in":{"type":"integer","description":"Token lifetime in seconds"},"scope":{"type":"string","description":"Space-separated list of granted scopes"},"issue_date":{"type":"integer"}}}}}},"default":{"description":"Error","headers":{"XF-Latest-Api-Version":{"description":"The latest API version available.","schema":{"type":"integer"}},"XF-Used-Api-Version":{"description":"The API version used to render the response.","schema":{"type":"integer"}},"XF-Request-User":{"description":"The user ID of the request user.","schema":{"type":"integer"}},"XF-Request-User-Extras":{"description":"Additional information about the request user in JSON encoding. Requires XF-Request-User header to be non-zero.","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"type":"object","properties":{"errors":{"type":"array","items":{"type":"object","properties":{"code":{"type":"string"},"message":{"type":"string"},"params":{"type":"object","additionalProperties":true}}}}}}}}}}}
 >
   
 </StatusCodes>

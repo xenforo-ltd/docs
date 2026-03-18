@@ -1,0 +1,33 @@
+---
+id: search
+title: "Search"
+description: ""
+sidebar_label: "Search"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"search_id":0,"result_count":0,"search_type":"string","search_query":"string","search_constraints":[null],"search_order":"string","search_grouping":true,"warnings":[null],"user_id":0,"search_date":0,"query_hash":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Search"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"search_id":{"type":"integer"},"result_count":{"type":"integer"},"search_type":{"type":"string"},"search_query":{"type":"string"},"search_constraints":{"type":"array","items":{}},"search_order":{"type":"string"},"search_grouping":{"type":"boolean"},"warnings":{"type":"array","items":{}},"user_id":{"type":"integer"},"search_date":{"type":"integer"},"query_hash":{"type":"string"}},"title":"Search"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

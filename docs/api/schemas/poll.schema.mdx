@@ -1,0 +1,33 @@
+---
+id: poll
+title: "Poll"
+description: ""
+sidebar_label: "Poll"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"can_vote":true,"has_voted":true,"responses":[null],"poll_id":0,"question":"string","voter_count":0,"public_votes":true,"max_votes":0,"close_date":0,"change_vote":true,"view_results_unvoted":true}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Poll"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"can_vote":{"type":"boolean"},"has_voted":{"type":"boolean"},"responses":{"type":"array","items":{},"description":"List of possible responses with text, vote count (if visible) and whether the API user has voted for each"},"poll_id":{"type":"integer"},"question":{"type":"string"},"voter_count":{"type":"integer"},"public_votes":{"type":"boolean"},"max_votes":{"type":"integer"},"close_date":{"type":"integer"},"change_vote":{"type":"boolean"},"view_results_unvoted":{"type":"boolean"}},"title":"Poll"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

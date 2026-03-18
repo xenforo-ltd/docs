@@ -1,0 +1,33 @@
+---
+id: forum
+title: "Forum"
+description: ""
+sidebar_label: "Forum"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"forum_type_id":"string","allow_posting":true,"require_prefix":true,"min_tags":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Forum"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"forum_type_id":{"type":"string"},"allow_posting":{"type":"boolean"},"require_prefix":{"type":"boolean"},"min_tags":{"type":"integer"}},"title":"Forum"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

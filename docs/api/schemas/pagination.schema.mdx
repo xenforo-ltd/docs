@@ -1,0 +1,33 @@
+---
+id: pagination
+title: "Pagination"
+description: "Pagination details for paginated responses."
+sidebar_label: "Pagination"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"current_page":0,"last_page":0,"per_page":0,"shown":0,"total":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Pagination"}
+>
+</Heading>
+
+
+
+Pagination details for paginated responses.
+
+<Schema
+  schema={{"type":"object","description":"Pagination details for paginated responses.","properties":{"current_page":{"type":"integer","description":"The current page number."},"last_page":{"type":"integer","description":"The last page number."},"per_page":{"type":"integer","description":"The number of items per page."},"shown":{"type":"integer","description":"The number of items returned."},"total":{"type":"integer","description":"The total number of items."}},"title":"Pagination"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

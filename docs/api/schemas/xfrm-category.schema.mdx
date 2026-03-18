@@ -1,0 +1,33 @@
+---
+id: xfrm-category
+title: "XFRM_Category"
+description: ""
+sidebar_label: "XFRM_Category"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"prefixes":[{"prefix_id":0,"title":"string","description":"string","usage_help":"string","is_usable":true,"prefix_group_id":0,"display_order":0,"materialized_order":0}],"custom_fields":[{}],"can_add":true,"can_upload_images":true,"view_url":"string","resource_category_id":0,"title":"string","description":"string","resource_count":0,"last_update":0,"last_resource_title":"string","last_resource_id":0,"allow_local":true,"allow_external":true,"allow_commercial_external":true,"allow_fileless":true,"min_tags":0,"enable_versioning":true,"enable_support_url":true,"parent_category_id":0,"display_order":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"XFRM_Category"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"prefixes":{"type":"array","items":{"type":"object","properties":{"prefix_id":{"type":"integer"},"title":{"type":"string"},"description":{"type":"string"},"usage_help":{"type":"string"},"is_usable":{"type":"boolean","description":"True if the acting user can use (select) this prefix."},"prefix_group_id":{"type":"integer"},"display_order":{"type":"integer"},"materialized_order":{"type":"integer","description":"Effective order, taking group ordering into account."}},"title":"XFRM_ResourcePrefix"}},"custom_fields":{"type":"array","items":{"type":"object"}},"can_add":{"type":"boolean"},"can_upload_images":{"type":"boolean"},"view_url":{"type":"string"},"resource_category_id":{"type":"integer"},"title":{"type":"string"},"description":{"type":"string"},"resource_count":{"type":"integer"},"last_update":{"type":"integer"},"last_resource_title":{"type":"string"},"last_resource_id":{"type":"integer"},"allow_local":{"type":"boolean"},"allow_external":{"type":"boolean"},"allow_commercial_external":{"type":"boolean"},"allow_fileless":{"type":"boolean"},"min_tags":{"type":"integer"},"enable_versioning":{"type":"boolean"},"enable_support_url":{"type":"boolean"},"parent_category_id":{"type":"integer"},"display_order":{"type":"integer"}},"title":"XFRM_Category"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

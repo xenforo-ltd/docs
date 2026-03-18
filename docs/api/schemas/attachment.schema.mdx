@@ -1,0 +1,33 @@
+---
+id: attachment
+title: "Attachment"
+description: ""
+sidebar_label: "Attachment"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"filename":"string","file_size":0,"height":0,"width":0,"thumbnail_url":"string","retina_thumbnail_url":"string","direct_url":"string","is_video":true,"is_audio":true,"attachment_id":0,"content_type":"string","content_id":0,"attach_date":0,"view_count":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Attachment"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"filename":{"type":"string"},"file_size":{"type":"integer"},"height":{"type":"integer"},"width":{"type":"integer"},"thumbnail_url":{"type":"string"},"retina_thumbnail_url":{"type":"string"},"direct_url":{"type":"string"},"is_video":{"type":"boolean"},"is_audio":{"type":"boolean"},"attachment_id":{"type":"integer"},"content_type":{"type":"string"},"content_id":{"type":"integer"},"attach_date":{"type":"integer"},"view_count":{"type":"integer"}},"title":"Attachment"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

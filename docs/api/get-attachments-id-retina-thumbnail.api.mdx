@@ -1,14 +1,15 @@
 ---
 id: get-attachments-id-retina-thumbnail
-title: "Gets the URL to the attachment's thumbnail, if it has one"
-description: "Gets the URL to the attachment's thumbnail, if it has one. URL returned via a 301 redirect."
-sidebar_label: "Gets the URL to the attachment's thumbnail, if it has one"
+title: "Get an attachment thumbnail URL"
+description: "Get an attachment thumbnail URL. URL returned via a 301 redirect."
+sidebar_label: "Get an attachment thumbnail URL"
 hide_title: true
 hide_table_of_contents: true
-api: eJy1VdtOGzEQ/RXLLwUpN9o+5S1SAaGiCnGRkCAKznqSNWzsxZ6NGq323zvjXZLNBapWbV5ie+5nzsyW0uXgFRpnL7QcyjngRCGqJF2AxTAxeuIBjVUTTIvF1CqTyY5ENQ9y+CBHG0057kgNIfEmZ2fk6hwwCExB3F1fCnTxuHH9iWWNx44wM2FQpCoIZ6EXLShs4S1osTRKKPFlcEJP2nhIsEcp5MqrBSB4TqSUli4U02gSGY6eK0zp7OG1IBsqDX0BHRmSFBZKDkuJq5wtAnpj57LazV5WY7YOubMBAht8Hgz4b1vtpkgSCGFWZOJNmaImziLVyOoqzzOTRID7z4Ftyv0k3PSZyuKqPLcDTR2x8Nl+pruJ3m4jvAZVmPARhoT/pavzEikoDb4nq/jryK+HKr1yIZhpBgK8dz4MH21XPFmHk5krrH4aih8ORTxzN7ebLbSDIEiZWrwkgWiT6R+BVafV0lPeqxXTAWERfm+fOA0HebGg/qr5YVlk4UHnSmvDdajsqhWGSVitf+wbU9fMXSQ1kXYo+60J7JdGV/16Brtt2AL45Rv7I1HILDd79LgHe+a8E6OrCwFW584Q1MztAEnhDa6ig/uz7ig33e/A13FbfMPw1wi1lTYo54YfmqmrmUS3Zh5bJruJcUIvsCLKeKEK4ovFpvUMbGN4R1X+abBosxuNH8XFN54SlaCgRXPUrIYgQkH9EQVrNEkdS26OsTMXgxvMYBtK8s/g175PeoPe4F3gr09vbqNf7ZKCW7quMXcBFyqSvKngr1fmbvRyM1X/eQ83nUH4if08UyZW1iyums4PskVnshjGJb3HaOJcSoCwfllOVYA7n1UVP78W4CMvCXTljZpyN4i02gQ+0/jMVBbgAwiOrpvPwLF4L+U3hlmm11JlBd/o+MJs5+9KNSathnIcvRaMaP3n2DLZW2E8TOsxPz+9JWr9Ak91jME=
+api: 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
 sidebar_class_name: "get api-method"
 info_path: api/xenforo-api
 custom_edit_url: null
+hide_send_button: true
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
@@ -23,7 +24,7 @@ import Translate from "@docusaurus/Translate";
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"Gets the URL to the attachment's thumbnail, if it has one"}
+  children={"Get an attachment thumbnail URL"}
 >
 </Heading>
 
@@ -37,7 +38,7 @@ import Translate from "@docusaurus/Translate";
 
 
 
-Gets the URL to the attachment's thumbnail, if it has one. URL returned via a 301 redirect.
+Get an attachment thumbnail URL. URL returned via a 301 redirect.
 
 <Heading
   id={"request"}
@@ -48,7 +49,7 @@ Gets the URL to the attachment's thumbnail, if it has one. URL returned via a 30
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"description":""}]}
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"}},{"name":"XF-Api-User","in":"header","description":"User ID to execute the request as. Requires a super user API key.","schema":{"type":"integer"}},{"name":"api_bypass_permissions","in":"query","description":"Whether or not to bypass the context user permissions. Requires a super user API key.","schema":{"type":"boolean"}}]}
 >
   
 </ParamsDetails>
@@ -63,7 +64,7 @@ Gets the URL to the attachment's thumbnail, if it has one. URL returned via a 30
 <StatusCodes
   id={undefined}
   label={undefined}
-  responses={{"200":{"description":"Successful response","content":{"application/json":{"schema":{"type":"object","properties":{"url":{"type":"string","description":"The URL to the thumbnail is returned via a 301 redirect's Location header."}}}}}},"400":{"description":"Possible errors:\n- `not_found`: Not found if the attachment does not have a thumbnail","content":{"application/json":{"schema":{"type":"object","properties":{"errors":{"type":"array","items":{"type":"object","properties":{"code":{"type":"string"},"message":{"type":"string"},"params":{"type":"object","additionalProperties":true}}}}}}}}}}}
+  responses={{"200":{"description":"OK","headers":{"XF-Latest-Api-Version":{"description":"The latest API version available.","schema":{"type":"integer"}},"XF-Used-Api-Version":{"description":"The API version used to render the response.","schema":{"type":"integer"}},"XF-Request-User":{"description":"The user ID of the request user.","schema":{"type":"integer"}},"XF-Request-User-Extras":{"description":"Additional information about the request user in JSON encoding. Requires XF-Request-User header to be non-zero.","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"type":"object","properties":{"url":{"type":"string","description":"The URL to the thumbnail is returned via a 301 redirect's Location header."}}}}}},"default":{"description":"Not found if the attachment does not have a thumbnail\n\n**Possible errors**\n- `not_found`: Not found if the attachment does not have a thumbnail","headers":{"XF-Latest-Api-Version":{"description":"The latest API version available.","schema":{"type":"integer"}},"XF-Used-Api-Version":{"description":"The API version used to render the response.","schema":{"type":"integer"}},"XF-Request-User":{"description":"The user ID of the request user.","schema":{"type":"integer"}},"XF-Request-User-Extras":{"description":"Additional information about the request user in JSON encoding. Requires XF-Request-User header to be non-zero.","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"type":"object","properties":{"errors":{"type":"array","items":{"type":"object","properties":{"code":{"type":"string"},"message":{"type":"string"},"params":{"type":"object","additionalProperties":true}}}}}}}}}}}
 >
   
 </StatusCodes>

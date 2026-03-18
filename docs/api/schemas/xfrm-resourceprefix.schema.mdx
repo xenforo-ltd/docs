@@ -1,0 +1,33 @@
+---
+id: xfrm-resourceprefix
+title: "XFRM_ResourcePrefix"
+description: ""
+sidebar_label: "XFRM_ResourcePrefix"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"prefix_id":0,"title":"string","description":"string","usage_help":"string","is_usable":true,"prefix_group_id":0,"display_order":0,"materialized_order":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"XFRM_ResourcePrefix"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"type":"object","properties":{"prefix_id":{"type":"integer"},"title":{"type":"string"},"description":{"type":"string"},"usage_help":{"type":"string"},"is_usable":{"type":"boolean","description":"True if the acting user can use (select) this prefix."},"prefix_group_id":{"type":"integer"},"display_order":{"type":"integer"},"materialized_order":{"type":"integer","description":"Effective order, taking group ordering into account."}},"title":"XFRM_ResourcePrefix"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            
