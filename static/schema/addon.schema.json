@@ -1,0 +1,370 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "https://docs.xenforo.com/schemas/addon.schema.json",
+	"title": "XenForo add-on manifest",
+	"description": "A manifest describing a XenForo add-on\nhttps://docs.xenforo.com/devs/add-on-structure#addonjson-file",
+	"examples": [
+		{
+			"title": "Acme Add-on",
+			"description": "Adds cool new features.",
+			"version_id": 1000010,
+			"version_string": "1.0.0"
+		},
+		{
+			"legacy_addon_id": "AcmeAddOn",
+			"title": "Acme Add-on",
+			"description": "Adds cool new features.",
+			"version_id": 1000010,
+			"version_string": "1.0.0",
+			"dev": "Acme Inc.",
+			"dev_url": "https://example.com",
+			"faq_url": "https://example.com/pages/faq",
+			"support_url": "https://example.com/pages/support",
+			"extra_urls": {
+				"Documentation": "https://example.com/pages/docs"
+			},
+			"require": {
+				"php": [
+					"8.5.0",
+					"PHP 8.5+"
+				],
+				"php-ext/acme": [
+					"*",
+					"Acme PHP extension"
+				],
+				"database/acme": [
+					"8.0",
+					"Acme Database 8.0+"
+				],
+				"XF": [
+					2030070,
+					"XenForo 2.3+"
+				],
+				"Acme/Helper": [
+					1000010,
+					"Acme Helper 1.0+"
+				]
+			},
+			"icon": "fa-puzzle-piece",
+			"options": "acme-addon/options",
+			"composer_autoload": "vendor/composer"
+		}
+	],
+	"type": "object",
+	"required": [
+		"title",
+		"version_id",
+		"version_string"
+	],
+	"properties": {
+		"legacy_addon_id": {
+			"description": "The XenForo 1 add-on ID, for upgrading legacy add-ons",
+			"examples": [
+				"AcmeAddOn"
+			],
+			"type": "string",
+			"minLength": 1
+		},
+		"title": {
+			"description": "The title of the add-on",
+			"examples": [
+				"Acme Add-on"
+			],
+			"type": "string",
+			"maxLength": 75,
+			"minLength": 1
+		},
+		"description": {
+			"description": "A short summary of what the add-on does",
+			"examples": [
+				"Adds cool new features."
+			],
+			"type": "string",
+			"minLength": 1
+		},
+		"version_id": {
+			"description": "The numeric version of the add-on\nhttps://docs.xenforo.com/devs/add-on-structure#recommended-version-id-format",
+			"examples": [
+				1000010
+			],
+			"type": "integer",
+			"minimum": 0
+		},
+		"version_string": {
+			"description": "The human-readable version of the add-on\nhttps://docs.xenforo.com/devs/add-on-structure#recommended-version-string-format",
+			"examples": [
+				"1.0.0"
+			],
+			"type": "string",
+			"maxLength": 30,
+			"minLength": 1
+		},
+		"dev": {
+			"description": "The developer of the add-on",
+			"examples": [
+				"Acme Inc."
+			],
+			"type": "string",
+			"minLength": 1
+		},
+		"dev_url": {
+			"description": "The URL of the add-on developer",
+			"examples": [
+				"https://example.com"
+			],
+			"type": "string",
+			"format": "uri"
+		},
+		"faq_url": {
+			"description": "The URL of the add-on frequently asked questions page",
+			"examples": [
+				"https://example.com/pages/faq"
+			],
+			"type": "string",
+			"format": "uri"
+		},
+		"support_url": {
+			"description": "The URL of the add-on support page",
+			"examples": [
+				"https://example.com/pages/support"
+			],
+			"type": "string",
+			"format": "uri"
+		},
+		"extra_urls": {
+			"description": "Additional URLs related to the add-on, keyed by label",
+			"type": "object",
+			"minProperties": 1,
+			"propertyNames": {
+				"examples": [
+					"Documentation"
+				],
+				"minLength": 1
+			},
+			"additionalProperties": {
+				"description": "An additional URL, keyed by label",
+				"examples": [
+					"https://example.com/pages/docs"
+				],
+				"type": "string",
+				"format": "uri"
+			}
+		},
+		"require": {
+			"description": "The requirements for the add-on, keyed by requirement type\nSupported requirement types:\n- php: The required PHP version\n- php-ext/{extension}: A required PHP extension\n- database/{database}: A required database\n- XF: The required XenForo version\n- {addon}: A required add-on",
+			"type": "object",
+			"minProperties": 1,
+			"patternProperties": {
+				"^php$": {
+					"description": "The PHP version requirement",
+					"examples": [
+						[
+							"8.5.0",
+							"PHP 8.5+"
+						]
+					],
+					"type": "array",
+					"maxItems": 2,
+					"minItems": 2,
+					"items": [
+						{
+							"$ref": "#/definitions/requirementVersionString"
+						},
+						{
+							"$ref": "#/definitions/requirementLabel"
+						}
+					],
+					"additionalItems": false
+				},
+				"^php-ext/": {
+					"description": "A PHP extension requirement, keyed by extension name",
+					"examples": [
+						[
+							"*",
+							"Acme PHP extension"
+						]
+					],
+					"type": "array",
+					"maxItems": 2,
+					"minItems": 2,
+					"items": [
+						{
+							"oneOf": [
+								{
+									"$ref": "#/definitions/requirementVersionString"
+								},
+								{
+									"$ref": "#/definitions/requirementAny"
+								}
+							]
+						},
+						{
+							"$ref": "#/definitions/requirementLabel"
+						}
+					],
+					"additionalItems": false
+				},
+				"^database/": {
+					"description": "A database requirement, keyed by database type",
+					"examples": [
+						[
+							"8.0",
+							"Acme Database 8.0+"
+						]
+					],
+					"type": "array",
+					"maxItems": 2,
+					"minItems": 2,
+					"items": [
+						{
+							"$ref": "#/definitions/requirementVersionString"
+						},
+						{
+							"$ref": "#/definitions/requirementLabel"
+						}
+					],
+					"additionalItems": false
+				},
+				"^XF$": {
+					"description": "The XenForo version requirement",
+					"examples": [
+						[
+							2030070,
+							"XenForo 2.3+"
+						]
+					],
+					"type": "array",
+					"maxItems": 2,
+					"minItems": 2,
+					"items": [
+						{
+							"allOf": [
+								{
+									"$ref": "#/definitions/requirementVersionId"
+								}
+							],
+							"minimum": 2000010
+						},
+						{
+							"$ref": "#/definitions/requirementLabel"
+						}
+					],
+					"additionalItems": false
+				},
+				"^(?!php$)(?!XF$)(?!mysql$)(?!php-ext/)(?!database/)[A-Za-z][A-Za-z0-9]*(/[A-Za-z][A-Za-z0-9]*)?$": {
+					"description": "An add-on requirement, keyed by add-on ID",
+					"examples": [
+						[
+							1000010,
+							"Acme Helper 1.0+"
+						]
+					],
+					"type": "array",
+					"maxItems": 2,
+					"minItems": 2,
+					"items": [
+						{
+							"oneOf": [
+								{
+									"$ref": "#/definitions/requirementVersionId"
+								},
+								{
+									"$ref": "#/definitions/requirementAny"
+								}
+							]
+						},
+						{
+							"$ref": "#/definitions/requirementLabel"
+						}
+					],
+					"additionalItems": false
+				},
+				"^mysql$": {
+					"description": "DEPRECATED: The MySQL version requirement",
+					"type": "array",
+					"maxItems": 2,
+					"minItems": 2,
+					"items": [
+						{
+							"$ref": "#/definitions/requirementVersionString"
+						},
+						{
+							"$ref": "#/definitions/requirementLabel"
+						}
+					],
+					"additionalItems": false
+				}
+			},
+			"additionalProperties": false
+		},
+		"icon": {
+			"description": "The class or relative path of the add-on icon",
+			"oneOf": [
+				{
+					"examples": [
+						"fa-puzzle-piece",
+						"fas fa-puzzle-piece"
+					],
+					"type": "string",
+					"pattern": "^(?:fa[bdlrs] )?fa-(?!-)[a-z0-9-]+$"
+				},
+				{
+					"examples": [
+						"icon.svg"
+					],
+					"type": "string",
+					"not": {
+						"pattern": "^(?:fa[bdlrs] )?fa-(?!-)[a-z0-9-]+$"
+					},
+					"format": "uri-reference"
+				}
+			]
+		},
+		"options": {
+			"description": "The route of the add-on options page",
+			"examples": [
+				"custom-options"
+			],
+			"type": "string",
+			"format": "uri-reference"
+		},
+		"composer_autoload": {
+			"description": "The relative path to the Composer autoload directory",
+			"examples": [
+				"vendor/composer"
+			],
+			"type": "string",
+			"format": "uri-reference"
+		}
+	},
+	"definitions": {
+		"requirementVersionString": {
+			"description": "The minimum required version",
+			"examples": [
+				"1.0.0"
+			],
+			"type": "string",
+			"pattern": "^\\d+(?:\\.\\d+){0,2}$"
+		},
+		"requirementVersionId": {
+			"description": "The minimum required version ID",
+			"examples": [
+				1000010
+			],
+			"type": "integer",
+			"minimum": 0
+		},
+		"requirementAny": {
+			"description": "Matches any version",
+			"const": "*"
+		},
+		"requirementLabel": {
+			"description": "The label for the requirement",
+			"examples": [
+				"Acme 1.0+"
+			],
+			"type": "string",
+			"minLength": 1
+		}
+	}
+}
