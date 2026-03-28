@@ -326,6 +326,7 @@ const sidebars: SidebarsConfig = {
         'devs/template-basics',
         'devs/routing-basics',
         'devs/controller-basics',
+        'devs/cli-command-basics',
         'devs/entities-finders-repositories',
         'devs/criteria',
         'devs/managing-the-schema',
