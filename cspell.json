@@ -347,7 +347,8 @@
     "corejs",
     "lcfirst",
     "ucfirst",
-    "ucwords"
+    "ucwords",
+    "strtoupper"
   ],
   "flagWords": [],
   "dictionaries": [
