@@ -343,6 +343,7 @@
     "lcfirst",
     "ucfirst",
     "ucwords",
+    "strtoupper",
     "apcu",
     "enabletfa",
     "enableaddonarchiveinstaller"
