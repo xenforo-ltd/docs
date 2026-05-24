@@ -15,8 +15,7 @@ Before upgrading, it is strongly recommend that you backup your XenForo database
 
 You may need to upgrade add-ons for them to be compatible with the new version. Contact the add-on authors for details.
 
-### Upgrading from XenForo 1 {/* #upgrading-from-xenforo-1 */}
-
+### Upgrading from XenForo 1
 If you are upgrading from XenForo 1, there are some important things to keep in mind. This is a particularly significant upgrade.
 
 - XenForo 1 add-ons are not compatible with XenForo 2. You will need to contact the add-on author to see if they have an updated version of any add-ons you use. If you do not intend to use an add-on any longer, if possible, we recommend uninstalling it before upgrading. Not doing so may leave orphaned data in your database.
@@ -30,8 +29,7 @@ It is vital that you backup your site before upgrading to XenForo 2. You **canno
 :::
 
 <span id="upgrading-in-xenforo-21"></span>
-### One-click upgrades {/* #one-click-upgrades */}
-
+### One-click upgrades
 XenForo 2.1 and above includes a "one-click upgrade" system to simplify the upgrade process, providing your server configuration meets the requirements. To upgrade from an earlier version, you will need to use the manual upgrade approach detailed below.
 
 XenForo will periodically check to see if your license has access to a newer version. To manually check, you can go to the **Tools > Upgrade check** page of the control panel. If a new version is available, you will be given the option to upgrade to it. From here, you can follow the on-screen instructions. It is strongly recommended that you backup your XenForo files and database before proceeding.
@@ -42,8 +40,7 @@ You must keep your browser window open until the upgrade is complete.
 
 If a one-click upgrade is not possible because of server configuration or an error occurs while attempting to complete it, please follow the below instructions to perform a manual upgrade as described below.
 
-### 1. Downloading {/* #1-downloading */}
-
+### 1. Downloading
 To begin, you must first download the zip file that contains XenForo from the [XenForo customer area](https://xenforo.com/customers/).
 
 Click the **Download XenForo** link next to the license for the site you are upgrading. Before downloading, ensure that the **Download the upgrade package only** option is selected.
@@ -52,8 +49,7 @@ Click the **Download XenForo** link next to the license for the site you are upg
 If you have multiple licenses, please ensure that you use the files associated with the correct license for each site. There may be differences in the downloads (such as branding removal being applied) that could lead to accidental licensing violations.
 :::
 
-### 2. Uploading {/* #2-uploading */}
-
+### 2. Uploading
 On your computer, unzip the file that you downloaded in step 1. Within it, you will see an `upload` directory. You will be uploading the contents of this directory to your server (not the directory itself).
 
 Connect to your server using your FTP client and navigate to your XenForo root directory (the directory you installed XenForo into). In this directory, you should see files such as `admin.php` and `css.php`.
@@ -66,8 +62,7 @@ When uploading files, it's very important that you "merge" files with what's on 
 
 This upload may take some time. Once the upload is complete, you must continue with the next step. Your site will be closed until this step is complete.
 
-### 3. Upgrading {/* #3-upgrading */}
-
+### 3. Upgrading
 Direct your browser to the `install` directory under your XenForo root URL. For example, if your XenForo root URL was `www.example.com/community/`, you would direct your browser to `www.example.com/community/install/`. If you have the correct URL, you should see the XenForo installer.
 
 You may be prompted to login with an administrator user name and password. From there, follow the on-screen instructions to complete the upgrade. Once complete, your site will automatically reopen.
@@ -78,22 +73,19 @@ If you are upgrading from XenForo 1, you may need to save a new config file. You
 Additionally, if you'd like to add emoji support see our [Emoji support](https://xenforo.com/xf2-docs/manual/unicode/) page.
 :::
 
-### 4. Post-upgrade checks {/* #4-post-upgrade-checks */}
-
+### 4. Post-upgrade checks
 When you upgrade XenForo, we will not automatically overwrite any template or phrase customizations you have made. You should check if there are any outdated entries here under **Appearance > Outdated templates** and **Appearance > Outdated phrases**. You can use the template merging tools to attempt to automatically incorporate the core changes into your customizations. [Customized phrases](../appearance/phrases.mdx#upgrading-with-customized-phrases) are unlikely to have an negative impact upon the version of XenForo to which you are upgrading.
 
 If you are using a third-party provided style or language, you may wish to see if they have a release that is designed for the version of XenForo you are now running.
 
-### Upgrading with customized templates {/* #upgrading-with-customized-templates */}
-
+### Upgrading with customized templates
 When you customize a [template](../appearance/templates.mdx), the changes are saved and will not be overwritten unless you specifically instruct the system to do so.
 
 While this can prevent unwanted changes, it also means that your customized templates may become outdated when it comes time to upgrade XenForo to a newer version, if that newer version contains an updated version of the template you have customized.
 
 There are two tools available to help you avoid this.
 
-#### Outdated templates {/* #outdated-templates */}
-
+#### Outdated templates
 After you run a XenForo upgrade, the system will alert you to any templates that you have customized that have become outdated.
 
 A list of these templates will be displayed, along with a *Merge* option, which will compare your customized template to the new version and attempt to merge your customizations into the newly updated version of the template.
@@ -106,18 +98,15 @@ When you select the *Merge* link for a template that is listed as being outdated
 :::
 After running a XenForo upgrade, you should check **immediately** to ensure that your templates are not outdated, because important or new functionality may be broken or missing if an outdated template remains unmanaged.
 
-### Common upgrading problems {/* #common-upgrading-problems */}
-
-#### Attempting a fresh install instead of an upgrade {/* #attempting-a-fresh-install-instead-of-an-upgrade */}
-
+### Common upgrading problems
+#### Attempting a fresh install instead of an upgrade
 If after uploading the files and going to `www.example.com/community/install/`, you are taken to perform a fresh install, this indicates that the files have not been merged correctly when uploading. It is possible that files have been removed unexpectedly.
 
 At a minimum, you need to create the `internal_data/install-lock.php` file. The contents do not matter. Once done, you can direct your browser to `www.example.com/community/install/`. If it still takes you to a fresh install, please contact support.
 
 If your `internal_data` or `data` directories are missing or empty, then attachments and avatars may have been removed. We strongly recommend restoring them from a backup.
 
-#### No upgrade found {/* #no-upgrade-found */}
-
+#### No upgrade found
 If after uploading the files and going to `www.example.com/community/install/`, it reports no upgrade is found, then the files have not been uploaded to the correct location.
 
 In many cases, this indicates that the `upload` directory itself has been uploaded, rather than the contents. You should ensure that what you are uploading overwrites existing files.

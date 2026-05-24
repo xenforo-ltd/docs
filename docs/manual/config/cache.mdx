@@ -4,8 +4,7 @@ For larger XenForo installations, it can be advantageous to define a **cache** i
 
 XenForo has the ability to store and retrieve various data from a cache, which can be configured in your **src/config.php** file.
 
-## Supported providers {/* #supported-providers */}
-
+## Supported providers
 XenForo ships with several popular cache providers including:
 
 * APC
@@ -20,8 +19,7 @@ Many of the cache providers will require software to be explicitly installed on 
 
 Let's look at how to configure some of these cache providers. All configuration is done within **src/config.php**
 
-### APC {/* #apc */}
-
+### APC
 ```php
 $config['cache']['enabled'] = true;
 $config['cache']['provider'] = 'ApcCache';
@@ -29,8 +27,7 @@ $config['cache']['provider'] = 'ApcCache';
 
 This provider has no additional configuration options.
 
-### File system cache {/* #file-system-cache */}
-
+### File system cache
 ```php
 $config['cache']['enabled'] = true;
 $config['cache']['provider'] = 'Filesystem';
@@ -42,8 +39,7 @@ $config['cache']['config'] = [
 :::note
 Ensure that the directory exists, is writable by the web server user, and is not publicly accessible!
 :::
-### Memcached {/* #memcached */}
-
+### Memcached
 ```php
 $config['cache']['enabled'] = true;
 $config['cache']['provider'] = 'Memcached';
@@ -54,8 +50,7 @@ $config['cache']['config'] = [
 
 It is also possible to configure an array of servers, if required.
 
-### Redis {/* #redis */}
-
+### Redis
 ```php
 $config['cache']['enabled'] = true;
 $config['cache']['provider'] = 'Redis';
@@ -77,8 +72,7 @@ Redis has a number of additional configuration options. The following list will 
 'persistent_id' => ''
 ```
 
-### WinCache {/* #wincache */}
-
+### WinCache
 ```php
 $config['cache']['enabled'] = true;
 $config['cache']['provider'] = 'WinCache';
@@ -86,8 +80,7 @@ $config['cache']['provider'] = 'WinCache';
 
 This provider has no additional configuration options.
 
-### XCache {/* #xcache */}
-
+### XCache
 ```php
 $config['cache']['enabled'] = true;
 $config['cache']['provider'] = 'XCache';
@@ -95,8 +88,7 @@ $config['cache']['provider'] = 'XCache';
 
 This provider has no additional configuration options.
 
-## Session caching {/* #session-caching */}
-
+## Session caching
 In addition to various data caches, it is possible to also cache XenForo user sessions. To cache sessions add the following to **src/config.php**:
 
 ```php
@@ -108,8 +100,7 @@ $config['cache']['sessions'] = true;
 Your cache must have enough space to hold the sessions, or users may not be able to login properly. We do not recommend writing sessions to the cache if you are using APC as your cache provider.
 :::
 
-## Cache contexts {/* #cache-contexts */}
-
+## Cache contexts
 Starting in XenForo 2.1, a different cache configuration may be specified for different scenarios (contexts). For example, this allows a global cache to be defined, but for a different cache to be used for sessions or guest page caching.
 
 To specify a cache for a specific context, you would add code similar to the following to **src/config.php**:
@@ -142,8 +133,7 @@ $config['cache']['context']['CONTEXT_NAME']['namespace'] = 'value';
 
 If not specified, the global cache namespace will be used.
 
-## Guest page caching {/* #guest-page-caching */}
-
+## Guest page caching
 XenForo 2.1 has the option to cache guest page views for a period of time. This can reduce the overhead caused by guests browsing the site, potentially reducing overall server load.
 
 Guest page caching can cause a large amount of data to be cached. Therefore, the page cache requires that you setup a specific `page` cache context. If this is not done, page caching will not be enabled. We recommend using a separate cache "instance" for the global and page caches to ensure that the page cache does not force data such as sessions out of the global cache.
@@ -161,8 +151,7 @@ The `CacheProvider` value and the configuration for that provider will need to b
 
 When a page is served from the cache, a `X-XF-Cache-Status: HIT` header will be present in the response.
 
-### Advanced guest page caching configuration {/* #advanced-guest-page-caching-configuration */}
-
+### Advanced guest page caching configuration
 Additional configuration options are available to tune the guest page caching system:
 
 * `$config['pageCache']['lifetime']` (default: `300`) - the amount of time, in seconds, that a page will be cached for.

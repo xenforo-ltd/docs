@@ -2,8 +2,7 @@
 
 There are a number of ways to interact with data within XF2. In XF1 this was mostly geared towards writing out raw SQL statements inside Model files. The approach in XF2 has moved away from this, and we have added a number of new ways in its place. We'll first look at the preferred method for performing database queries - the finder.
 
-## The Finder {/* #the-finder */}
-
+## The Finder
 We have introduced a new "Finder" system which allows queries to be built up programmatically in a object oriented way so that raw database queries do not need to be written. The Finder system works hand in hand with the Entity system, which we talk about in more detail below. The first argument passed into the finder method is the short class name for the Entity you want to work with. Let's just convert some of the queries mentioned in the section above to use the Finder system instead. For example, to access a single user record:
 
 ```php
@@ -40,8 +39,7 @@ $usernames = $finder->limit(10)->pluckFrom('username')->fetch();
 
 So far we've seen the Finder apply somewhat simple where and limit constraints. So let's look at the Finder in more detail, including a bit more detail about the `where` method itself.
 
-### where method {/* #where-method */}
-
+### where method
 The `where` method can support up to three arguments. The first being the condition itself, e.g. the column you are querying. The second would ordinarily be the operator. The third is the value being searched for. If you supply only two arguments, as you have seen above, then it automatically implies the operator is `=`. Below is a list of the other operators which are valid:
 
 - `=`
@@ -74,8 +72,7 @@ $users = $finder->where([
 
 It wouldn't usually be recommended or clear to mix the usage like this, but it does demonstrate the flexibility of the method somewhat. Now that the conditions are in an array, we can either specify the column name (as the array key) and value for an implied `=` operator or we can actually define another array containing the column, operator and value.
 
-### whereOr method {/* #whereor-method */}
-
+### whereOr method
 With the above examples, both conditions need to be met, i.e. each condition is joined by the `AND` operator. However, sometimes it is necessary to only meet part of your condition, and this is possible by using the `whereOr` method. For example, if you wanted to search for users who are either not valid or have posted zero messages, you can build that as follows:
 
 ```php
@@ -97,8 +94,7 @@ $users = $finder->whereOr([
 ])->fetch();
 ```
 
-### with method {/* #with-method */}
-
+### with method
 The `with` method is essentially equivalent to using the `INNER|LEFT JOIN` syntax, though it relies upon the Entity having had its "Relations" defined. We won't go into that until the next page, but this should just give you an understanding of how it works. Let's now use the Thread finder to retrieve a specific thread:
 
 ```php
@@ -124,10 +120,8 @@ $finder = \XF::finder('XF:Thread');
 $thread = $finder->with('Forum', true)->with('User')->where('thread_id', 123)->fetchOne();
 ```
 
-### order, limit and limitByPage methods {/* #order-limit-and-limitbypage-methods */}
-
-#### order method {/* #order-method */}
-
+### order, limit and limitByPage methods
+#### order method
 This method allows you to modify your query so the results are fetched in a specific order. It takes two arguments, the first is the column name, and the second is, optionally, the direction of the sort. So, if you wanted to list the 10 users who have the most messages, you could build the query like this:
 
 ```php
@@ -148,8 +142,7 @@ $finder = \XF::finder('XF:User');
 $users = $finder->order('message_count', 'DESC')->order('register_date')->limit(10);
 ```
 
-#### limit method {/* #limit-method */}
-
+#### limit method
 We've already seen how to limit a query to a specific number of records being returned:
 
 ```php
@@ -173,8 +166,7 @@ $users = $finder->limit(10, 100)->fetch();
 
 The offset value here essentially means the first 100 results will be discarded, and the first 10 after that will be returned. This kind of approach is useful for providing paginated results, though we actually also have an easier way to do that...
 
-#### limitByPage method {/* #limitbypage-method */}
-
+#### limitByPage method
 This method is a sort of helper method which ultimately sets the appropriate limit and offset based on the "page" you're currently viewing and how many "per page" you require.
 
 ```php
@@ -193,8 +185,7 @@ $users = $finder->limitByPage(3, 20, 1);
 
 This will get a total of up to **21** users (20 + 1) starting at page 3.
 
-### getQuery method {/* #getquery-method */}
-
+### getQuery method
 When you first start working with the finder, as intuitive as it is, you may occasionally wonder whether you're using it correctly, and whether it is going to build the query you expect it to. We have a method named `getQuery` which can tell us the current query that will be built with the current finder object. For example:
 
 ```php
@@ -214,8 +205,7 @@ WHERE (`xf_user`.`user_id` = 1)"
 
 You probably won't need it very often, but it can be useful if the finder isn't quite returning the results you expected. Read more about the `dumpSimple` method in the [Dump a variable](development-tools.mdx#dump-a-variable) section.
 
-### Custom finder methods {/* #custom-finder-methods */}
-
+### Custom finder methods
 So far we have seen the finder object get setup with an argument similar to `XF:User` and `XF:Thread`. For the most part, this identifies the Entity class the finder is working with and will resolve to, for example, `XF\Entity\User`. However, it can additionally represent a finder class. Finder classes are optional, but they serve as a way to add custom finder methods to specific finder types. To see this in action, let's look at the finder class that relates to `XF:User` which can be found in the `XF\Finder\User` class.
 
 Here's an example finder method from that class:
@@ -239,48 +229,41 @@ This query, which earlier just returned 10 users in descending message count ord
 
 Even though for a lot of entity types a finder class doesn't exist, it is still possible to extend these non existent classes in the same way as mentioned in the [Extending classes](general-concepts.mdx#extending-classes) section.
 
-## The Entity system {/* #the-entity-system */}
-
+## The Entity system
 If you're familiar with XF1, you may be familiar with some of the concepts behind Entities because they have ultimately derived from the DataWriter system there. In case you're not so familiar with them, the following section should give you some idea.
 
-### Entity structure {/* #entity-structure */}
-
+### Entity structure
 The `Structure` object consists of a number of properties which define the structure of the Entity and the database table it relates to. The structure object itself is setup inside the entity it relates to. Let's look at some of the common properties from the User entity:
 
-#### Table {/* #table */}
-
+#### Table
 ```php
 $structure->table = 'xf_user';
 ```
 
 This tells the Entity which database table to use when updating and inserting records, and also tells the Finder which table to read from when building queries to execute. Additionally, it plays a part in knowing which other tables your query needs to join to.
 
-#### Short name {/* #short-name */}
-
+#### Short name
 ```php
 $structure->shortName = 'XF:User';
 ```
 
 This is the just the short class name of both the Entity itself and the Finder class (if applicable).
 
-#### Content type {/* #content-type */}
-
+#### Content type
 ```php
 $structure->contentType = 'user';
 ```
 
 This defines what content type this Entity represents. This will not be needed in most entity structures. It is used to connect to specific things used by the "content type" system (which will be covered in another section).
 
-#### Primary key {/* #primary-key */}
-
+#### Primary key
 ```php
 $structure->primaryKey = 'user_id';
 ```
 
 Defines the column which represents the primary key in the database table. If a table supports more than a single column as a primary key, then this can be defined as an array.
 
-#### Columns {/* #columns */}
-
+#### Columns
 ```php
 $structure->columns = [
     'user_id' => ['type' => self::UINT, 'autoIncrement' => true, 'nullable' => true, 'changeLog' => false],
@@ -297,8 +280,7 @@ Based on the `type`, the entity manager knows whether to encode or decode a valu
 
 Occasionally it is necessary to do some additional verification or modification of a value before it is written. As an example, in the User entity, look at the `verifyStyleId()` method. When a value is set on the `style_id` field, we automatically check to see if a method named `verifyStyleId()` exists, and if it does, we run the value through that first.
 
-#### Behaviors {/* #behaviors */}
-
+#### Behaviors
 ```php
 $structure->behaviors = [
     'XF:ChangeLoggable' => []
@@ -307,8 +289,7 @@ $structure->behaviors = [
 
 This is an array of behavior classes which should be used by this entity. Behavior classes are a way of allowing certain code to be reused generically across multiple entity types (only when the entity changes, not on reads). A good example of this is the `XF:Likeable` behavior which is able to automatically execute certain actions on entities which support content which can be "liked". This includes automatically recalculating counts when visibility changes occur within the content and automatically deleting likes when the content is deleted.
 
-#### Getters {/* #getters */}
-
+#### Getters
 ```php
 $structure->getters = [
     'is_super_admin' => true,
@@ -320,8 +301,7 @@ Getter methods are automatically called when the named fields are called. For ex
 
 Because an entity is just like any other PHP object, you can add more methods to them. A common use case for this is for adding things like permission check methods that can be called on the entity itself.
 
-#### Relations {/* #relations */}
-
+#### Relations
 ```php
 $structure->relations = [
     'Admin' => [
@@ -382,8 +362,7 @@ $finder = \XF::finder('XF:User');
 $user = $finder->where('user_id', 1)->with('ConnectedAccounts|facebook')->fetchOne();
 ```
 
-#### Options {/* #options */}
-
+#### Options
 ```php
 $structure->options = [
 	'custom_title_disallowed' => preg_split('/\r?\n/', $options->disallowedCustomTitles),
@@ -394,8 +373,7 @@ $structure->options = [
 
 Entity options are a way of modifying the behavior of the entity under certain conditions. For example, if we set `admin_edit` to true (which is the case when editing a user in the Admin CP), then certain checks will be skipped such as to allow a user's email address to be empty.
 
-### The Entity life cycle {/* #the-entity-life-cycle */}
-
+### The Entity life cycle
 The Entity plays a significant job in terms of managing the life cycle of a record within the database. As well as reading values from it, and writing values to it, the Entity can be used to delete records and trigger certain events when all of these actions occur so that certain tasks can be performed, or certain associated records can be updated as well. Let's look at some of these events that happen when an entity is saving:
 
 - `_preSave()` - This happens before the save process begins, and is primarily used to perform any additional pre-save validations or to set additional data before the save happens.
@@ -437,8 +415,7 @@ Let's look at some real examples of these methods in action, in the User entity.
 
 In the `_preSave()` example we fetch and cache the new display group ID for a user based on their changed user groups. In the `_postSave()` example, we trigger a job to run after a user's name has been changed.
 
-## Repositories {/* #repositories */}
-
+## Repositories
 Repositories are a new concept for XF2, but you might not be blamed for comparing them to the "Model" objects from XF1. We don't have a model object in XF2 because we have much better places and ways to fetch and write data to the database. So, rather than having a massive class which contains all of the queries your add-on needs, and all of the various different ways to manipulate those queries, we have the finder which adds a lot more flexibility.
 
 It's also worth bearing in mind that in XF1 the Model objects were a bit of a "dumping ground" for so many things. Many of which are now redundant. For example, in XF1 all of the permission rebuilding code was in the permission model. In XF2, we have specific services and objects which handle this.

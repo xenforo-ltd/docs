@@ -4,16 +4,14 @@ XenForo uses a "handler" pattern to allow different content types to plug into s
 
 For example, the attachment system doesn't need to know the specifics of how a post or a conversation message works. Instead, each content type provides an attachment handler that tells the system how to check permissions, manage constraints, and clean up when attachments are deleted.
 
-## How handlers work {/* #how-handlers-work */}
-
+## How handlers work
 The handler pattern in XenForo follows a consistent structure:
 
 1. **An abstract base class** defines the contract, including the methods every handler must implement and any optional hooks.
 2. **Concrete handler classes** extend the abstract class for each content type that supports the feature.
 3. **A content type field** registers the handler class against a content type, so the system can discover and instantiate it at runtime.
 
-## Content type fields {/* #content-type-fields */}
-
+## Content type fields
 At the heart of the handler system is the `xf_content_type_field` table. This table maps content types (like `post`, `thread`, `profile_post`) to handler classes for each system they participate in.
 
 Each row has three columns:
@@ -32,8 +30,7 @@ For example, the post content type registers its attachment handler like this:
 
 A single content type can register handlers for many different systems. The `post` content type, for instance, has handler registrations for attachments, alerts, reactions, reports, bookmarks, tags, and more.
 
-### Registering a handler {/* #registering-a-handler */}
-
+### Registering a handler
 Content type fields are managed through the Admin control panel at **Development > Execution manipulation > Content types**. This area is only available when [development mode](../development-tools.mdx#enabling-development-mode) is enabled.
 
 From here you can add a new content type field by specifying the content type, field name, and the fully qualified class name of the handler. You will also need to associate the content type field with your add-on.
@@ -58,8 +55,7 @@ $structure->contentType = 'demo_item';
 See [Entities, finders and repositories](../entities-finders-repositories.mdx#content-type) for more details.
 :::
 
-### How handlers are discovered {/* #how-handlers-are-discovered */}
-
+### How handlers are discovered
 At runtime, the content type fields are cached in the data registry. You can look up all handlers for a given system or retrieve a specific handler for a content type:
 
 ```php
@@ -90,8 +86,7 @@ public function getAttachmentHandler(string $type): ?AbstractHandler
 
 Note the use of `\XF::extendClass()`. This ensures that any class extensions applied by other add-ons are respected when the handler is instantiated.
 
-## Common handler systems {/* #common-handler-systems */}
-
+## Common handler systems
 The following is a list of the handler systems available in XenForo, along with their content type field name and abstract base class:
 
 | System | Field name | Base class |

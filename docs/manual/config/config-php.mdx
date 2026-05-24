@@ -18,8 +18,7 @@ In each case, the variable name is shown with its default value, for example:
 
 ---
 
-## Database connection {/* #database-connection */}
-
+## Database connection
 - `$config['db']['host']` = `'localhost'`;
 - `$config['db']['port']` = `3306`;
 - `$config['db']['socket']` = `null`;
@@ -32,8 +31,7 @@ The name or IP address, the port and socket of the database server that hosts yo
 
 The username and password you use to connect to your database server, and the name of the database hosted on your server within which your forums are installed.
 
-## Full unicode / emoji support {/* #full-unicode--emoji-support */}
-
+## Full unicode / emoji support
 - `$config['fullUnicode']` = `false`;
 
 This setting tells XenForo whether or not you have performed the steps necessary to support full unicode in your forum content. Full unicode is used to support the use of *Emoji* in text.
@@ -48,12 +46,10 @@ Full unicode support requires at least MySQL 5.5.
 
 [How to upgrade to full unicode for Emoji support](unicode.mdx)
 
-## Advanced options {/* #advanced-options */}
-
+## Advanced options
 These options are not included as standard in the config.php, because for the most part, XenForo will use the default values. If you decide to use any of these settings, be sure to fully test the operation of your forums before leaving the system to run in a production environment.
 
-### Site-wide feature disable {/* #site-wide-feature-disable */}
-
+### Site-wide feature disable
 Some XenForo systems can disabled completely from the config file, without having to enter the Admin control panel at all. Setting any of these options to `false` will disable the corresponding functionality entirely.
 
 :::note
@@ -76,64 +72,50 @@ The descriptions for these settings describe what will happen if you set their v
 - `$config['enableAddOnArchiveInstaller']` = `false`;
 - `$config['enableOneClickUpgrade']` = `true`;
 
-#### enableMail {/* #enablemail */}
-
+#### enableMail
 Completely disables all email-sending features throughout XenForo. No email will be sent at all, ever.
 
-#### enableMailQueue {/* #enablemailqueue */}
-
+#### enableMailQueue
 Disables the email queuing system. Any email remaining in the queue will not be sent, and any new email will be sent as soon as it is generated, rather than being queued for sending in a batch.
 
-#### enableListeners {/* #enablelisteners */}
-
+#### enableListeners
 Disables all code event listeners in XenForo. This will largely turn off all add-on functionality, and can be useful for recovering access to your system and control panel if an add-on has gone wrong and broken your ability to do so.
 
-#### enableTemplateModificationCallbacks {/* #enabletemplatemodificationcallbacks */}
-
+#### enableTemplateModificationCallbacks
 Disables the ability of template modifications to perform their operation using a PHP callback. Similarly to `enableListeners`, this switch can be used to regain access to a system rendered inoperable by a broken callback.
 
-#### enableGzip {/* #enablegzip */}
-
+#### enableGzip
 By default, XenForo will compress the final HTML and CSS output of pages it generates using the *gzip* compression system, which is then invisibly decompressed by your visitors' browsers when the data is received. This can significantly speed up page loading times, but if you want to disable this feature and have the HTML and CSS sent as uncompressed plain text, disable this setting. 
 
-#### enableContentLength {/* #enablecontentlength */}
-
+#### enableContentLength
 Normally, XenForo will send a Content-Length HTTP header. In some server configurations, the content may be modified between XenForo sending it and it being received by the end user. In this situation, the Content-Length header may not be updated correctly so it should be disabled.
 
-#### enableTfa {/* #enabletfa */}
-
+#### enableTfa
 Disables **two-factor authentication** (2FA), the system whereby users need to log in with a username and password, and an additional piece of information, such as a code from their phone. Useful if you have lost access to your admin control panel, or if you want to prevent any users from employing 2FA at all.
 
-#### enableLivePayments {/* #enablelivepayments */}
-
+#### enableLivePayments
 With this disabled, no payments will be processed at all. Payment providers will not be contacted and no transactions will be attempted. Useful for running a test site with a copy of a live database.
 
-#### enableClickjackingProtection {/* #enableclickjackingprotection */}
-
+#### enableClickjackingProtection
 Normally, XenForo sends the `X-Frame-Options` HTTP header with a value of `SAMEORIGIN` as a means to prevent click-jacking from malicious scripts.
 
 When enabled, this option prevents clickjacking attacks by placing your forum in an iframe and tricking the user into clicking something. However, this can also disable valid uses of iframe embedding. Disable this only if you understand the implications.
 
-#### enableReverseTabnabbingProtection {/* #enablereversetabnabbingprotection */}
-
+#### enableReverseTabnabbingProtection
 When enabled, this option prevents reverse tabnabbing-based phishing attacks that are triggered when your users click links to external sites. However, this protection may interfere with external services that rely on changing how link clicks are processed (such as to include affiliate links). Disable this only if you understand the implications.
 
-#### enableApi (2.1+) {/* #enableapi-21 */}
-
+#### enableApi (2.1+)
 Disables access to the REST API, normally accessible via `<url>/api/`.
 
-#### enableAddOnArchiveInstaller (2.1+) {/* #enableaddonarchiveinstaller-21 */}
-
+#### enableAddOnArchiveInstaller (2.1+)
 This controls access to the control panel-based add-on install/upgrade system. When enabled, this allows an admin with the necessary permissions to upload a zip file containing a XenForo add-on and automatically installs or upgrades it.
 
 This setting is disabled by default for security reasons.
 
-#### enableOneClickUpgrade (2.1+) {/* #enableoneclickupgrade-21 */}
-
+#### enableOneClickUpgrade (2.1+)
 Disables access to the one-click XenForo upgrade system in the control panel.
 
-### Cookie settings {/* #cookie-settings */}
-
+### Cookie settings
 If you need to configure settings for how cookies are set on your visitors' browsers, you can use the following settings, but be warned, incorrect or invalid values for these settings may leave you and your visitors unable to log in to your XenForo user account, including the admin control panel.
 
 The primary reason for changing these values is to accommodate multiple XenForo installations on the same domain. If you have only a single XenForo installation on your domain, there is no need to change these settings.
@@ -150,8 +132,7 @@ The value of your prefix should use letters, numbers and underscores **only**, a
 
 Using the default value of `/`, cookies set by XenForo will be available in all areas of your website. If you **need** to change this so that XenForo cookies are only available within a specific part of your website, change the value to include the directory path to the correct area of your site, starting with the root location of your site, `/`.
 
-#### Example values {/* #example-values */}
-
+#### Example values
 - `'/'` XenForo cookies are available to all areas of your website.
 - `'/forum/'` XenForo cookies can only be read by pages located within the `forum` directory, which resides at *'http://example.com/forum'*, where *example.com* is your site address.
 - `'/path/to/other/folder/'` XenForo cookies can only be read by pages located in the *path/to/other/folder* directory, located at *http://example.com/path/to/other/folder*.
@@ -171,14 +152,12 @@ Similiar to the cookie path setting, this allows you to specify a domain upon wh
 
 The reason for setting this value would be to allow cookies to be shared on multiple subdomains, for example a setting of `.example.com` would allow cookies to be accessed on all subdomains of *example.com*, such as `www.example.com` and `other.example.com`. In most instances, this setting can be left with its default setting. 
 
-#### Example values {/* #example-values-1 */}
-
+#### Example values
 - `''` allows cookies to be read **only** on the domain on which they were set
 - `'.example.com'` allows cookies to be read on *example.com* and any subdomain thereof
 - `'subdomain.example.com'` allows cookies to be read only on *subdomain.example.com*
 
-### Data and script locations {/* #data-and-script-locations */}
-
+### Data and script locations
 If you want to change the location that XenForo stores the data and scripts it keeps in files, such as avatars, attachments and javascript files, you can do so by altering these settings.
 
 - `$config['externalDataPath']` = `'data'`;
@@ -188,8 +167,7 @@ If you want to change the location that XenForo stores the data and scripts it k
 - `$config['tempDataPath']` = `'%s/temp'`;
 - `$config['javaScriptUrl']` = `'js'`;
 
-#### Path variables {/* #path-variables */}
-
+#### Path variables
 In each of these cases, a variable name ending with **Path** refers to an internal file system path on the server, relative to the directory in which XenForo is installed. Relative paths start at the XenForo installation directory. This can be set outside the web root.
 
 If your XenForo installation lives at `/users/yourname/htdocs/xenforo`, then the following examples show how different values relate to this path:
@@ -199,8 +177,7 @@ If your XenForo installation lives at `/users/yourname/htdocs/xenforo`, then the
 
 These variables can also use an absolute path from the server root, such as `/users/yourname/htdocs/xenforo/data`.
 
-#### URL variables {/* #url-variables */}
-
+#### URL variables
 Variables whose name ends with **Url** refer to a the path relative to your XenForo directory as visible from your web root. Relative URLs start at your XenForo installation directory. If your XenForo installation resides at `http://example.com/xenforo`, the following examples show how different values will be evaluated:
 
 - `data` - `http://example.com/xenforo/data`
@@ -219,38 +196,30 @@ Directories specified as paths **must** be writeable by the web server (chmod 77
 If any of these paths and URLs are set incorrectly, important XenForo functionality will be **broken**. Change them *only* if you know exactly what you're doing.
 :::
 
-#### externalDataPath {/* #externaldatapath */}
-
+#### externalDataPath
 This defines the path to the 'data' directory, in which XenForo keeps files that are served directly to the browser through the web server, such as avatar images and attachment thumbnails. This directory must be within the web root.
 
-#### externalDataUrl {/* #externaldataurl */}
-
+#### externalDataUrl
 Defines the location of the 'data' directory, in which XenForo keeps avatars and attachment thumbnails, as visible from your web server.
 
-#### internalDataPath {/* #internaldatapath */}
-
+#### internalDataPath
 Defines the path to the 'internal_data' directory, which contains files that are not served directly to web browser clients, such as attachments.
 
-#### codeCachePath {/* #codecachepath */}
-
+#### codeCachePath
 Defines the location of the 'code_cache' directory, which stores cached versions of PHP files used to speed up XenForo's execution. This normally sits in the 'internal_data' directory.
 
-#### tempDataPath {/* #tempdatapath */}
-
+#### tempDataPath
 Defines the path to the directory used to store temporary files, such as attachments that have just been uploaded and are being processed prior to being stored in their final location. This normally sits in the 'internal_data' directory.
 
-#### javaScriptUrl {/* #javascripturl */}
-
+#### javaScriptUrl
 Defines the location of the 'js' folder, in which XenForo expects to find the JavaScript files necessary for its functionality, as a path on the public web server. This directory must be within the web root.
 
-### Database adapter {/* #database-adapter */}
-
+### Database adapter
 - `$config['db']['adapterClass']` = `'XF\Db\Mysqli\Adapter'`;
 
 The name of the PHP class that is used to connect to your database. If you use a MySQL server, there is little reason to change this setting.
 
-### HTTP client settings {/* #http-client-settings */}
-
+### HTTP client settings
 These settings control the behavior of the internal XenForo HTTP client, which is used to fetch resources from across the internet, such as images and web pages when using the [Image and link proxy](../configuration/proxy.mdx).
 
 - `$config['http']['sslVerify']` = `null`;
@@ -260,8 +229,7 @@ The `sslVerify` setting will force the system the verify the SSL certificate of 
 
 If you want the internal XenForo HTTP client to perform its requests through a proxy, enter the proxy server's address in the `proxy` setting.
 
-### Other variables {/* #other-variables */}
-
+### Other variables
 - `$config['globalSalt']` = `'<unique value>'`;
 
 This variable defines a secret value which is used to *salt* the values of various caches, cookies and other data for the purpose of preventing the data being stolen or faked by malicious agents. Never reveal the global salt value to anyone as this would compromise the security of your XenForo installation.
@@ -302,8 +270,7 @@ Configures the amount of time in seconds that processing jobs will be allowed to
 
 Defines a list of file system adapters that are available for the system to use. This is an advanced power user feature that will be fully documented at a later date.
 
-## Cache settings {/* #cache-settings */}
-
+## Cache settings
 For large XenForo sites, it can be advantageous to use a cache mechanism to speed up page generation.
 
 The settings for caching all fall within the `$config['cache']` section, and are discussed in more detail in the [Cache](cache.mdx) section of this manual.
@@ -314,16 +281,13 @@ If you configure a cache, you can disable it at any time by setting the value of
 
 [Cache settings](cache.mdx)
 
-### Page-level cache settings {/* #page-level-cache-settings */}
-
+### Page-level cache settings
 When a cache mechanism has been configured, it is possible to cache entire pages for guest users using the [pageCache](cache.mdx#guest-page-caching). This extremely powerful system can consume large quantities of cache resources, so it is disabled by default until resources are allocated to it. All details and options are described in the [Cache support > Guest page caching](cache.mdx#guest-page-caching) section of this manual.
 
 - `$config['pageCache']['enabled']` = `false`;
 
-## For developers and designers {/* #for-developers-and-designers */}
-
-### Debug mode {/* #debug-mode */}
-
+## For developers and designers
+### Debug mode
 Debug mode is a special state in which XenForo will run for debugging or development purposes.
 
 - `$config['debug']` = `false`;
@@ -336,8 +300,7 @@ Never, **never** enable debug mode on a live production site exposed to the Inte
 Not only will execution and page generation run significantly more slowly than with debug mode disabled, but important information such as the state of internal SQL queries can be revealed to visiting users. Only enable debug mode if you are working on a private XenForo installation that is protected from any potential malicious visitors.
 :::
 
-### Designer mode {/* #designer-mode */}
-
+### Designer mode
 Designer mode is an advanced feature for XenForo style designers, which allows templates to be edited directly within the filesystem, rather than using the template editor in the admin control panel.
 
 - `$config['designer']['enabled']` = `false`;
@@ -347,8 +310,7 @@ The `enabled` setting switches designer mode on and off, and the `basePath` valu
 
 A more extensive discussion of [Designer mode](https://xenforo.com/xf2-docs/dev/designing-styles/) can be found in the [XenForo 2 Developer Documentation](https://xenforo.com/xf2-docs/dev/designing-styles/)
 
-### Development mode {/* #development-mode */}
-
+### Development mode
 Developer mode is another advanced feature, this time for XenForo add-on developers. 
 
 - `$config['development']['enabled']` = `false`;

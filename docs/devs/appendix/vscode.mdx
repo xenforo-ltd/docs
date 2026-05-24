@@ -6,26 +6,22 @@ Out of the box, it offers syntax highlighting and a certain degree of code intel
 
 Begin by downloading and installing [VS Code](https://code.visualstudio.com/Download).
 
-## Workspace folder {/* #workspace-folder */}
-
+## Workspace folder
 As a jumping-off point, you can point VS Code to your www folder.
 
 From the `File` menu, choose `Open Folder...` and point it to your `www` folder.
 
 Now, any files you place in that folder will appear instantly in the Explorer pane of VS Code.
 
-## Extensions {/* #extensions */}
-
+## Extensions
 Head to the `Extensions` view in the left panel of the interface - it looks like a group of three blocks with a fourth floating nearby.
 
-### Disable built-in PHP {/* #disable-built-in-php */}
-
+### Disable built-in PHP
 You must disable the built-in PHP language features, as they are superceded by those of PHP Intelephense, an extension we will install in the next step.
 
 To do so, enter `@builtin php` into the search box at the top of the extensions list. This will bring up two components: PHP Language Basics and PHP Language Features. Use the gear icon to **Disable** PHP Language Features, but leave PHP Language Basics alone, as we will still make use of the syntax highlighting elements of this component.
 
-### Install extensions {/* #install-extensions */}
-
+### Install extensions
 You will need to install a selection of extensions to enable the advanced functionality that makes VS Code into a great development environment.
 
 Use the search box to locate and install the following extensions:
@@ -37,20 +33,17 @@ Use the search box to locate and install the following extensions:
 
 After you have completed the installation of the extensions listed here, make sure that they are fully activated by quitting VS Code and restarting it. This helps to clear any cached settings and reinitialize the engine.
 
-## Debugging {/* #debugging */}
-
+## Debugging
 [Debugging](https://code.visualstudio.com/docs/editor/debugging) is a powerful programming tool that allows you to halt a program at any point and inspect its environment, status and context, then step around and into the subsequent code.
 
-### Add Xdebug helper {/* #add-xdebug-helper */}
-
+### Add Xdebug helper
 Most of the debugging you do will be triggered from your browser, so you need to install an extension that will instruct the debugger to start.
 
 For the sake of simplicity we'll detail [Xdebug helper for Google Chrome](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc), but the [Xdebug documentation](https://xdebug.org/docs/remote#browser-extensions) lists extensions for other browsers.
 
 Download the extension and install it, then switch it into **Debug** mode as described on the extension's web page.
 
-### Debugging configuration {/* #debugging-configuration */}
-
+### Debugging configuration
 Before we can start using Xdebug in VS Code, we need to add a Debug configuration.
 
 From the `Run` menu, select `Add Configuration...` and choose `PHP` from the following dialog. This will create a `launch.json` file with two configurations - 'Listen for XDebug' and 'Launch currently open script'.
@@ -65,8 +58,7 @@ To start debugging a script, place breakpoints in your code by adding a dot in t
 
 When the script runs, execution will pause whenever it reaches a breakpoint, allowing you to inspect the status and context of the application at that point.
 
-### Example debug {/* #example-debug */}
-
+### Example debug
 Open the `index.php` script that Laragon placed in the `www` folder.
 
 Place a breakpoint on line 2 - `if (!empty($_GET['q'])) {` and make sure that VS Code is in 'Listen for XDebug' mode.
@@ -79,14 +71,12 @@ In the **VARIABLES** panel, expand the **Superglobals** group, and you will see 
 
 You can now use the `Step Over` button (or press F10 on the keyboard) on the debug toolbar to allow execution to continue one line at a time until all the PHP is complete and the page will load fully in the browser.
 
-### Advanced debugging {/* #advanced-debugging */}
-
+### Advanced debugging
 It is beyond the scope of this tutorial to go into detail about how to use a Step Debugger, but there are plenty of resources online to help you get the gist.
 
 - [Visual Studio Debugging](https://code.visualstudio.com/docs/editor/debugging) (Visual Studio Code Docs)
 - [Step Into Step-through Debugging](https://www.fourkitchens.com/blog/article/step-step-through-debugging/) (Four Kitchens)
 
-## Links to resources {/* #links-to-resources */}
-
+## Links to resources
 - [XenForo requirements script](https://xenforo.com/purchase/requirements-zip)
 - [XenForo](https://xenforo.com/purchase/)

@@ -8,8 +8,7 @@ If you look at this class in the file system (see [Autoloader](general-concepts.
 
 XF controllers are responsible for returning a reply object which generally consist of one of the following types:
 
-## View reply {/* #view-reply */}
-
+## View reply
 This is one of the most common replies you will deal with during XF development. A controller which returns a view reply will usually require up to three arguments to be passed in. A view class (more on that below), a template name, and an array of `$viewParams` which is the data that should be available to the template.
 
 Here's a typical example of a controller action which returns a View reply:
@@ -46,8 +45,7 @@ The template would output the following:
 Hello world!
 ```
 
-## Redirect reply {/* #redirect-reply */}
-
+## Redirect reply
 This reply is returned when you wish to redirect a user to a different URL after they have completed some sort of action.
 
 A common use case here is after a user has submitted data through a form you may wish to redirect them to a different page, for example returning a user to a list of items.
@@ -76,8 +74,7 @@ public function actionRedirect()
 }
 ```
 
-## Error reply {/* #error-reply */}
-
+## Error reply
 As the name suggests, this reply is what you will return if you need to display an error to the user. It's somewhat simple, here's an example:
 
 ```php
@@ -89,12 +86,10 @@ public function actionError()
 
 There are only two arguments supported here. The first is the error message you want to display, and the second is the HTTP response code you want the server to send. 404 would represent an appropriate response when something was not found.
 
-## Message reply {/* #message-reply */}
-
+## Message reply
 This reply is very much similar to the error reply, and supports the same arguments. The main difference is, in terms of appearance, the message displayed is not presented as an error.
 
-## Exception reply {/* #exception-reply */}
-
+## Exception reply
 It is sometimes necessary to interrupt the normal flow of your controller code, and reply with an Exception instead. Exception replies do not necessarily have to represent an error; for example, they can be used to force your controller to perform a redirect. However, typically, they will often be used to halt the flow of your controller to display an error, as in the following example:
 
 ```php
@@ -108,8 +103,7 @@ Exception replies only accept a single argument, and actually that argument must
 
 Note that exception replies must be "thrown" using `throw` rather than being "returned" with `return`.
 
-## Reroute reply {/* #reroute-reply */}
-
+## Reroute reply
 Under certain conditions, it is necessary to reroute a user to an entirely different controller or action within the same controller, without performing a full redirect, without changing the URL the user has landed on, and without having to duplicate the code of the target action.
 
 That looks a little bit like this:
@@ -130,8 +124,7 @@ In this particular example, if a user navigated to the `index.php?demo/reroute` 
 
 The reroute reply also supports a third argument which allows various parameters to be passed from one controller action to the other. This can either be an array or a `ParameterBag` object (more on that later).
 
-## Modifying a controller action reply (properly) {/* #modifying-a-controller-action-reply-properly */}
-
+## Modifying a controller action reply (properly)
 In the [Extending classes](general-concepts.mdx#extending-classes) section, we've already seen how simple it is to extend a class, but extra care needs to be taken when extending a controller action that already exists.
 
 Unless you have a specific need to override an existing action entirely, and replace it with something new (which is generally not recommended), instead you should be modifying the existing reply of the parent class. That is done quite simply, as an example let's modify the view reply from the [View reply](#view-reply) example above.

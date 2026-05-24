@@ -2,8 +2,7 @@
 
 We've taken a look at some of the new approaches available for interacting with data. Of course there are specific circumstances where interacting with the database directly may be necessary.
 
-## The database adapter {/* #the-database-adapter */}
-
+## The database adapter
 The default database adapter in XenForo is based on MySQL and PHP's mysqli extension. The configured database adapter is accessible in any XF class using the following:
 
 ```php
@@ -74,8 +73,7 @@ $db = \XF::db();
 $db->query('DELETE FROM xf_user WHERE user_id = ?', 1);
 ```
 
-## Schema management {/* #schema-management */}
-
+## Schema management
 XF2 includes an all new way to manage the database schema which takes an object oriented approach to performing certain table operations. Let's first look at a traditional alter, using the database adapter like we have above:
 
 ```php

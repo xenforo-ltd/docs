@@ -10,8 +10,7 @@ With friendly URLs enabled, that URL would become:
 
 Note that to enable friendly URLs, configuration of the web server may be required. This is discussed below.
 
-### Configuring friendly URLs {/* #configuring-friendly-urls */}
-
+### Configuring friendly URLs
 By default, XenForo does not enable friendly URLs due to the web server configuration requirements. To enable friendly URLs, log in to your admin control panel, and go to **Options** and then **Search engine optimization (SEO)**. There are several options here which you may wish to configure:
 
 - **Use full friendly URLs** - Enabling this will change the structure of the URLs as mentioned at the beginning of this section. The requirements for this vary based on your web server and are discussed below.
@@ -21,22 +20,18 @@ By default, XenForo does not enable friendly URLs due to the web server configur
 :::
 If you enable friendly URLs but your web server can’t support them, your admin control panel will still be accessible.
 
-### Friendly URL web server requirements and setup {/* #friendly-url-web-server-requirements-and-setup */}
-
+### Friendly URL web server requirements and setup
 Enabling the **Use full friendly URLs** option requires some web server configuration or additional files. Find your web server software in the list below for more details.
 
-#### Apache {/* #apache */}
-
+#### Apache
 Apache is the most common web server available. If you are unsure what web server you are running, it is likely Apache. Therefore, XenForo includes the necessary configuration file in the root directory.
 
 If after uploading XenForo, you do not see an `.htaccess` file in your XenForo root directory, rename `htaccess.txt` to `.htaccess` (be sure to include the `.` prefix). You should now be able to enable friendly URLs. If, after enabling friendly URLs your XenForo installation does not function correctly, please contact your host to confirm that they have **mod_rewrite** installed and allow overrides via an .htaccess file.
 
-#### LiteSpeed web server {/* #litespeed-web-server */}
-
+#### LiteSpeed web server
 LiteSpeed Web Server reads and uses Apache configurations (including .htaccess files) and will work using [the above Apache documentation](friendly-urls.mdx#apache).
 
-#### IIS 7 {/* #iis-7 */}
-
+#### IIS 7
 To enable friendly URLs in IIS 7, put the following code into a `web.config` file in your XenForo root directory:
 
 ```
@@ -68,8 +63,7 @@ To enable friendly URLs in IIS 7, put the following code into a `web.config` fil
 </configuration>
 ```
 
-#### Nginx {/* #nginx */}
-
+#### Nginx
 To enable friendly URLs in Nginx, you must put the following in your server configuration:
 
 ```
@@ -106,8 +100,7 @@ The `/xf/` paths must be changed to match your XenForo installation path.
 
 This configuration also helps protect web-based access to directories that aren't normally accessible.
 
-#### Lighttpd {/* #lighttpd */}
-
+#### Lighttpd
 To enable friendly URLs in Lighttpd, ensure that you have the mod_rewrite module loaded and add the following to your server configuration:
 
 ```

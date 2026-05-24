@@ -12,21 +12,18 @@ will be familiar with, amongst other things, PHP and MySQL (or similar). It is n
 On the subsequent pages we will walk you through a brief overview of how to setup a local server, getting ready for
 installation, doing a clean install of XenForo, and run through some of the concepts of developing add-ons for XenForo.
 
-## Getting started {/* #getting-started */}
-
+## Getting started
 Getting started with XenForo development is easy. You just need to download the files, upload them to a web server and
 trigger the install.
 
 If you don't have a web server, yet, don't worry, you can set one up on your local machine.
 
-## Downloading {/* #downloading */}
-
+## Downloading
 To download XenForo, just visit the [Customer Area](https://xenforo.com/customers) and log in as normal. Locate the
 correct license and click the "Download XenForo" link. Select the version you wish to download, the package type and
 accept the license agreement. Finally, click the Download button to download the files.
 
-## XenForo system requirements {/* #xenforo-system-requirements */}
-
+## XenForo system requirements
 The recommended requirements are as follows:
 
 - PHP: 7.2 (8.4 recommended)
@@ -35,8 +32,7 @@ The recommended requirements are as follows:
 
 [Download the requirements test script.](https://xenforo.com/purchase/requirements-zip)
 
-## Setting up a local server {/* #setting-up-a-local-server */}
-
+## Setting up a local server
 It's often more convenient to set up a local web server for development. There are generally two approaches for this:
 
 1. Install Apache (or nginx), MySQL or MariaDB, and PHP yourself.
@@ -51,15 +47,13 @@ Luckily, we have created some walkthroughs on how to setup a local dev environme
 * [Linux Dev Environment](appendix/linux-dev.mdx)
 * [Windows Dev Environment](appendix/windows-dev.mdx)
 
-### Pre-built stack {/* #pre-built-stack */}
-
+### Pre-built stack
 There are many pre-built stacks out there and they may vary in feature set, performance and reliability. Bitnami maintain a number of stacks, including [LAMP](https://bitnami.com/stack/lamp),
 [MAMP](https://bitnami.com/stack/mamp) and [WAMP](https://bitnami.com/stack/wamp) stacks for use on Linux, Mac and
 Windows respectively. They all include a fully configured installation of Apache, MySQL or MariaDB and PHP and include PhpMyAdmin for
 managing MySQL or MariaDB.
 
-## Uploading {/* #uploading */}
-
+## Uploading
 To install XenForo, you simply need to extract the ZIP file downloaded from the Customer Area and upload
 some of the files and directories within.
 
@@ -67,8 +61,7 @@ Once extracted you will see a directory named `upload`. You need to go into
 that directory and upload the files and directories to your server's web root. This would usually be in a directory named
 `public_html`, `htdocs` or `www`.
 
-## Creating `src/config.php` {/* #creating-srcconfigphp */}
-
+## Creating `src/config.php`
 If using the CLI to install XenForo, you will need to create the config.php file manually. To do this, enter the `src` directory within the XenForo files you uploaded to your server. Create a new file named config.php and populate it with the host, port, username, password and database name for your MySQL or MariaDB server.
 
 :::note
@@ -90,8 +83,7 @@ $config['db']['dbname'] = 'xf2';
 
 You're now ready to install!
 
-## A note on file permissions {/* #a-note-on-file-permissions */}
-
+## A note on file permissions
 XenForo will need to write files to specific locations while running. In normal operation, this is limited to the `data` and `internal_data` directories (and their sub-directories). These file writes will be triggered by things like attachment uploads, so they will normally be triggered by the user PHP as running as within your web server. Therefore, it is necessary to ensure that permissions are set in these directories so that the web server can write to them. You will need to do this before installation can begin.
 
 When the CLI is involved, this situation gets trickier as there are now potentially two users that need to be able to write to the files. As such, it's important to take steps to avoid problems writing to these files. Here are a few options.
@@ -102,8 +94,7 @@ When the CLI is involved, this situation gets trickier as there are now potentia
 
 Note that if you are developing add-ons, you may potentially have other locations that need to be written to by the CLI and web server users. Notably, this includes the `_output` directory within add-ons. In this situation, having your web server run as your CLI user may cause the least friction. If you go down any other route, you may need to ensure that your web server can write to your entire XenForo installation; this is not recommended in production.
 
-## Installation {/* #installation */}
-
+## Installation
 The easiest way to install XenForo is via the new CLI system. A lot of development processes can only be performed
 using the CLI so let's get stuck into using it to install XenForo. To run these commands, you will need access to a
 terminal/shell, the `php` command and the current working directory should be the root of where you uploaded the
@@ -125,8 +116,7 @@ the XenForo database tables and master data will be imported.
 
 XenForo is now installed!
 
-## Reinstallation {/* #reinstallation */}
-
+## Reinstallation
 Occasionally it may be necessary to reinstall XenForo. If you are ready to do a reinstall, download the new files (if applicable) as per the [Downloading](#downloading) section above. It should generally be possible to just merge and overwrite your existing files. If you're doing a full clean re-install, you may want to save a copy of your config.php file or re-create it as per the instructions in the [Creating src/config.php](#creating-srcconfigphp).
 
 Before uploading the new files, you should delete the contents of your `data` and `internal_data` directories.
@@ -148,8 +138,7 @@ Performing a reinstall in this way is a destructive operation and it will remove
 
 :::
 
-## Verifying file integrity {/* #verifying-file-integrity */}
-
+## Verifying file integrity
 When you install XenForo, we perform a file integrity check in the installation. If necessary, and you can't otherwise perform the check via the page in the Admin CP, you can run the CLI command to perform that check.
 
 ```sh title="Terminal"
@@ -158,36 +147,31 @@ php cmd.php xf:file-check [addon_id]
 
 If you wish to do a file health check on all files, including XF itself, just omit the `[addon_id]` argument. For XF only, just use `XF` in place of the argument, or for a specific add-on, just specify the add-on ID you wish to check.
 
-## Add-on management commands {/* #add-on-management-commands */}
-
+## Add-on management commands
 In addition to the above commands for installing XF2, there are also several commands for managing add-ons.
 
-### Install {/* #install */}
-
+### Install
 Installs the specified add-on, as long as it is available, and passes the file health check. If development output is available, you will be asked to confirm if you wish to use that for the installation, instead of the exported data XML files.
 
 ```sh title="Terminal"
 php cmd.php xf:addon-install [addon_id]
 ```
 
-### Upgrade {/* #upgrade */}
-
+### Upgrade
 Upgrades the specified add-on, as long as it is upgradeable, and passes the file health check. Can optionally perform import from development output.
 
 ```sh title="Terminal"
 php cmd.php xf:addon-upgrade [addon_id]
 ```
 
-### Rebuild {/* #rebuild */}
-
+### Rebuild
 Rebuilds the master data for the specified add-on, as long as it is rebuildable, and passes the file health check. This re-imports the add-on's data. Can optionally perform import from development output.
 
 ```sh title="Terminal"
 php cmd.php xf:addon-rebuild [addon_id]
 ```
 
-### Uninstall {/* #uninstall */}
-
+### Uninstall
 Uninstalls the specified add-on, as long as it is uninstallable.
 
 ```sh title="Terminal"

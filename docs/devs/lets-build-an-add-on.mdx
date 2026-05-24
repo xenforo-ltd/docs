@@ -4,8 +4,7 @@ For some people, getting stuck straight into a project is the best way to learn,
 
 The add-on we're going to build will allow users with the appropriate permission to "feature" a thread, and allow that thread to be displayed on a new page. We'll even set up a process which automatically features threads in specific forums. We will use a new route for this named `portal` and eventually set that as the index page route and set the "Home" tab to be selected when viewing that page.
 
-## Create the add-on {/* #create-the-add-on */}
-
+## Create the add-on
 Throughout the add-on we will use the add-on ID of `Demo/Portal`. The first thing we need to do is create the add-on, for this we need to open a command prompt / shell / terminal window, change the directory to your XF installation root (where `cmd.php` is located) and run the following command, and enter the responses displayed below:
 
 ```sh title="Terminal"
@@ -78,8 +77,7 @@ We have now added a `description`, the developer's name (`dev`) and specified th
 
 As we're not superceding a XenForo 1 addon, we can disregard `legacy_addon_id`. For a full explanation of all of the properties in the `addon.json` file, refer to the [Add-on structure section](add-on-structure.mdx#addonjson-file).
 
-## Creating the Setup class {/* #creating-the-setup-class */}
-
+## Creating the Setup class
 Well, strictly speaking, the class has already been created and written out to `Setup.php` but right now it doesn't really do anything. We've basically got a skeleton class for it which looks like this:
 
 ```php title="src/addons/Demo/Portal/Setup.php"
@@ -190,8 +188,7 @@ php cmd.php xf-addon:install-step Demo/Portal 2
 php cmd.php xf-addon:install-step Demo/Portal 3
 ```
 
-## Extending the forum entity {/* #extending-the-forum-entity */}
-
+## Extending the forum entity
 So far we've added a column to the `xf_forum` table, it's now time to extend the Forum entity structure. We need to do this so that the entity knows about our new column, and so that data can be read from and written to it via the entity.
 
 :::note
@@ -255,8 +252,7 @@ $structure->columns['demo_portal_auto_feature'] = ['type' => Entity::BOOL, 'defa
 
 The forum entity is now aware of our new column, but there are a few more steps we should take care of first before we can begin to implement a way to actually start setting values on that column.
 
-## Extending the thread entity {/* #extending-the-thread-entity */}
-
+## Extending the thread entity
 Again, as we have added a new column to the xf_thread table, we should make the Thread entity aware of that. This is very similar to what we did above.
 
 Head back to "Add code event listener" and listen to `entity_structure` again. The "Event hint" this time will be `XF\Entity\Thread`. We can use the same callback class as before (`Demo\Portal\Listener`) but this time the method will be named `threadEntityStructure`. Add a description similar to before. Before saving, we should add the code, directly below the `forumEntityStructure` function:
@@ -281,8 +277,7 @@ $structure->relations['FeaturedThread'] = [
 
 See [Relations](entities-finders-repositories.mdx#relations) for more information about relations. Hit "Save" to save the listener.
 
-## Creating a new entity {/* #creating-a-new-entity */}
-
+## Creating a new entity
 Above in `installStep3()` we created a new table. We are going to need to create an entity to interact with and create new records in this table. Because this is a brand new entity we don't need to do anything other than create the class inside `src/addons/Demo/Portal/Entity/FeaturedThread.php`, the skeleton for which will look like this:
 
 ```php title="src/addons/Demo/Portal/Entity/FeaturedThread.php"
@@ -326,8 +321,7 @@ public static function getStructure(Structure $structure)
 
 The list of columns is probably self explanatory based on the MySQL we wrote earlier to create the table. The relations includes a `Thread` relation, which will allow us to get the related thread entity record (and even the thread entity relations) from this entity.
 
-## Modifying the forum edit form {/* #modifying-the-forum-edit-form */}
-
+## Modifying the forum edit form
 We now need a way to modify the `forum_edit` template to add a new checkbox there which can ultimately write back to the new column we have now created. We'll do this by creating a template modification. This is done from the Admin CP under Appearance and then click Template modifications. Click the "Admin" tab followed by the "Add template modification" button.
 
 In the "Template" field, type "forum_edit". This is the template we need to modify.
@@ -366,8 +360,7 @@ This is a fairly simple replacement. For more advanced matching, you can also us
 
 Finally, click save to save your template modification. If all has gone well, when you return to the template modifications list, you will see the log summary is displaying **1** / 0 / **0** therefore indicating that the modification successfully applied one time. An even better indicator that it has worked as planned is to go to the "Nodes" page listed under "Forums" in the Admin CP, and edit an existing forum. Our newly added template modification should now appear.
 
-## Extending the forum save process {/* #extending-the-forum-save-process */}
-
+## Extending the forum save process
 We have our column, we have a UI to pass an input to that column, now we have to handle saving data to that column. We will do this by extending the Forum controller and extending a special method which is called when a node and its data are saved. First, let's create a "Class extension" which can be found under the "Development" entry in the Admin CP. Click "Add class extension".
 
 Here we need to specify a "Base class name" which is the name of the class we are extending, which in this case will be `XF\Admin\Controller\Forum`. And we need to specify a "Extension class name" which is the class which will extend the base class. Enter this as `Demo\Portal\XF\Admin\Controller\Forum`. We should create that class before clicking Save.
@@ -419,8 +412,7 @@ Using the `FormAction` object allows us to have various extension points into th
 
 The code we added above lets us set our `demo_portal_auto_feature` column in the forum entity to whatever value is stored for the `demo_portal_auto_feature` input which we added to the forum edit page. It should now be possible to test that all of this works. Simply edit a forum of your choice and check the checkbox. You should be able to observe two things. First, when you go back into edit that forum, the checkbox should now be checked. Second, if you look in the xf_forum table for the forum you just edited, the `demo_portal_auto_feature` field should now be set to 1. Keep this value enabled for this forum, as we will eventually be automatically featuring threads from that forum.
 
-## Setting a thread to be featured automatically {/* #setting-a-thread-to-be-featured-automatically */}
-
+## Setting a thread to be featured automatically
 We've added a new column to the forum entity which will allow us to automatically feature a thread when it is newly created in this forum, so now it's time to add the code which will do this.
 
 In XenForo, we make heavy use of Service objects. These typically take a "setup and go" type approach; you setup your configuration and then call a method to complete the action. We use a service object to setup and perform the thread creation, so this is a perfect place to add the code we need. It all starts with another class extension, so go to the "Add class extension" page.
@@ -515,8 +507,7 @@ Additionally, we should set the `demo_portal_featured` field to true. Because th
 
 We now need to try this all out and make sure it works. Go to the forum which you enabled the `demo_portal_auto_feature` option on earlier, and create a new thread. The only way to tell if it is working right now is to check the `xf_demo_portal_featured_thread` table and in doing that we should see a new record in there!
 
-## Create the portal page {/* #create-the-portal-page */}
-
+## Create the portal page
 There's still a considerable amount of work to do before we're finished, but now we have the ability to feature threads, it certainly would be nice if we could display them somewhere, so let's start creating our portal page.
 
 To do this we need a new public route. Go to the Admin CP and under "Development" click "Routes" then click "Add route: Public". We're going to keep this quite simple, for now. The route prefix is going to be "portal", the section context is going to be "home" and the controller is going to be "Demo\Portal:Portal".
@@ -690,8 +681,7 @@ If we do have some records, we need to loop through each to display it. For each
 
 The thread block macro displays the basic block for the featured thread, and then that calls another macro to display each message.
 
-## Implementing the navigation tab {/* #implementing-the-navigation-tab */}
-
+## Implementing the navigation tab
 You may have spotted when setting up the route that we specified the section context as "home", and when you visited the portal page, the home tab was selected, or alternatively you may not have seen a home tab at all if a `homePageUrl` is not set in options. We want to use the default home tab rather than creating one ourselves and potentially having a duplicate tab.
 
 To do this, we should use a code event listener to change the URL to our portal URL. In the Admin CP under Development click "Code event listeners" and click "Add code event listener". Listen to the event `home_page_url`, callback class will be `Demo\Portal\Listener` again, and this time the method will be named `homePageUrl`.
@@ -711,8 +701,7 @@ While you're in the Admin CP, let's see what happens now when you click on the B
 
 As an optional step, you may choose to add some additional navigation entries under the home tab. But, for now, let's move on.
 
-## Manually featuring (or unfeaturing) threads {/* #manually-featuring-or-unfeaturing-threads */}
-
+## Manually featuring (or unfeaturing) threads
 So, we can automatically feature new threads. What about manually featuring existing threads? Or manually featuring threads during creation where auto featuring is not supported? This will be a good way to get our current portal page looking a bit more busy.
 
 To achieve this, we will add a template modification to a specific macro, and this macro is actually used during thread reply, thread edit and when creating a thread. This will involve extending the editor service and making changes to the existing code which handled the auto featuring.
@@ -909,8 +898,7 @@ This is mostly the same as we already had, for example, if the forum has auto fe
 
 We should now test creating 3 threads to ensure this is working as expected. The first in a forum with auto featuring enabled, to make sure that is still working, then in a forum without auto featuring enabled with the "Featured" checkbox checked, and again with it unchecked. Assuming that all works, let's move on.
 
-## Improving the portal page {/* #improving-the-portal-page */}
-
+## Improving the portal page
 So, the portal page looks reasonable, but we can do a bit better.
 
 First we should adjust our code so we only display X featured threads, and we should also add some page navigation. At this point, if you haven't already, it may be worth featuring some more threads so we can actually test the pagination!
@@ -1011,8 +999,7 @@ And, of course, don't forget to run this setup step for yourself:
 php cmd.php xf-addon:install-step Demo/Portal 4
 ```
 
-## Implementing permissions & optimizations {/* #implementing-permissions--optimizations */}
-
+## Implementing permissions & optimizations
 Right now, we are displaying all featured threads in the portal, regardless of whether the visitor has permission to view them or not. This isn't ideal; there may be use cases where you want to feature threads from certain restricted forums, and only have those visible by the users who can normally view that forum.
 
 To do this, we need to change our code so that we "over-fetch" the number of records that we need to display, filter out any unviewable results, and then slice the resulting collection to the actual amount we want to display per page. This is somewhat easier than it sounds.
@@ -1081,8 +1068,7 @@ return \XF::visitor()->hasNodePermission($this->node_id, 'demoPortalFeature');
 
 At this point, because permissions do not have any default values, if you go to edit any thread, you should find the "Featured" checkbox is missing. But, if you go and give yourself that permission, the checkbox will come back. So, that should demonstrate the permission is working as expected!
 
-## Creating some options {/* #creating-some-options */}
-
+## Creating some options
 We currently display only 5 featured threads per page, but it would be nice to have the option to display more. Creating options is easy. Although not essential, we'll first create a new option group and then add a new option to that group.
 
 In the Admin CP under Setup then Options click the "Add option group" button. We'll just call the "Group ID" `demoPortal` and give it a title of "Demo - Portal options". Give it an appropriate ̀"Description" and "Display order" and click "Save".
@@ -1179,8 +1165,7 @@ To:
 </li>
 ```
 
-## Unfeaturing on visibility changes {/* #unfeaturing-on-visibility-changes */}
-
+## Unfeaturing on visibility changes
 To approach this, we are going to need to modify the Thread entity again but this time we'll be doing that with the `entity_post_save` event. As we mentioned in [The Entity life cycle](entities-finders-repositories.mdx#the-entity-life-cycle), the `_postSave()` method is where actions can be performed as a result of an entity being inserted or updated. Initially we will be unfeaturing a thread when that thread is no longer visible.
 
 So, head back into the "Add code event listeners" page, and this time listen to the `entity_post_save` event. The event hint this time will be `XF\Entity\Thread`. For the execute callback, we will use the same class as we did before (`Demo\Portal\Listener`) but we will add a new method here named `threadEntityPostSave`. Let's add that method now so it's there when we save the listener:
@@ -1233,8 +1218,7 @@ public static function threadEntityPostDelete(\XF\Mvc\Entity\Entity $entity)
 
 After clicking "Save" to save the listener, it will be worth giving this a test. To test this, you might actually be better off keeping an eye on the xf_demo_portal_featured_thread table, as so far the code will already not display non-visible threads, but it's always important not to leave orphaned data. All being well, we're very nearly finished...
 
-## Some final loose ends {/* #some-final-loose-ends */}
-
+## Some final loose ends
 Speaking of orphaned data, we should tidy up the database whenever the add-on is uninstalled. We can do this in the Setup class we created earlier.
 
 We're going to create 3 new methods which correspond to our first 3 install steps:
@@ -1264,8 +1248,7 @@ public function uninstallStep3()
 
 We don't have to create an uninstall step to remove the widgets as they will be removed automatically when the widget positions are removed. The same is true for any other data we created and associated to the add-on -- it will be removed automatically on uninstall.
 
-## Building the add-on {/* #building-the-add-on */}
-
+## Building the add-on
 The final step for any add-on, is releasing it! This involves extracting the XML files from the database (which are shipped in the package and used for installation), calculating the hash of each file and adding it to our `hashes.json` and packaging only the relevant files up into a ZIP file.
 
 Thankfully, this can be done with a single CLI command! Just execute the command below:

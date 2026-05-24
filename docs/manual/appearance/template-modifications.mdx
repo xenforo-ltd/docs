@@ -8,35 +8,29 @@ Clicking on one of these modifications, or clicking the *Add template modificati
 
 Within the editor, the controls available, along with the name of the template to be modified, are as follows:
 
-### Modification key {/* #modification-key */}
-
+### Modification key
 Use this to define a unique identifier for your modification. Letters, numbers and underscores are allowed.
 
-### Description {/* #description */}
-
+### Description
 Should contain a short description of the functionality of your modification, like *Adds a new tab to the member profile page*.
 
-### Template contents {/* #template-contents */}
-
+### Template contents
 This box is for reference only, and contains the full text of the template to be modified.
 
-### Search type {/* #search-type */}
-
+### Search type
 In many cases, you will want to use a *Simple replacement* here, whereby the system will search for some text and then replace it in its entirety.
 
 You may also use a regular expression if you want to do more complex matching, or if you want to maintain some or all of the matched text in your modification.
 
 Advanced users may specify a PHP callback to have full control over the way the modification operates.
 
-### Find {/* #find */}
-
+### Find
 Enter the text here that the modification is going to replace, the type of text you specify should match the requirements of the *Search type*.
 
 Many XenForo templates include special `<!--[XF:name_goes_here]-->` place holders in useful locations, which allow you to quickly and easily enter the token code as the *Find* text for your modification.
 
 
-### Replace {/* #replace */}
-
+### Replace
 Here, you should enter the HTML code that will replace the text you specified in *Find*.
 
 As this HTML will be inserted into a template, you may make full use of XenForo *template syntax* within your code.
@@ -45,8 +39,7 @@ If you would like to include the text that was found along with your new HTML, y
 
 If your *Find* text was a regular expression, any additional matches from that expression can be inserted using `$1`, `$2` etc.
 
-### Execution order {/* #execution-order */}
-
+### Execution order
 Several template modifications may attach to the same template. The *Execution order* value is used to determine the order in which these modifications will be applied. Modifications with lower execution order numbers will run before those with higher values.
 
 :::note

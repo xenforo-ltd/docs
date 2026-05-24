@@ -14,14 +14,12 @@ Much of the explanation for what we're doing here can be found in our [macOS gui
 
 ![Screenshot: Ubuntu Linux running XenForo, being debugged by Xdebug with Visual Studio Code](/img/docs/linux-debugging.jpg)
 
-## Installing with Apt {/* #installing-with-apt */}
-
+## Installing with Apt
 This tutorial is based on an [Ubuntu](https://ubuntu.com) or [Debian](https://debian.org) system, but the principles can be applied to any Linux distribution that makes historical PHP packages available.
 
 APT is the _Advanced Package Tool_ built into Debian-based Linux distributions. It makes the job of installing pre-configured software on Linux a lot less painful than it once was.
 
-### Adding new repositories {/* #adding-new-repositories */}
-
+### Adding new repositories
 To start, we need to instruct Apt to use some additional sources from which to grab packages.
 
 In a terminal, run the following commands:
@@ -53,8 +51,7 @@ sudo curl -sSL -o /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/a
 sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 ```
 
-### Installing packages {/* #installing-packages */}
-
+### Installing packages
 Next, we'll get the software we need installed.
 
 ```bash
@@ -96,12 +93,10 @@ Given the presence of the `for` loops in this script, I'd suggest you save the c
 
 :::
 
-## Configuring {/* #configuring */}
-
+## Configuring
 With all the packages installed, we need to configure them to our needs.
 
-### MariaDB {/* #mariadb */}
-
+### MariaDB
 MariaDB / MySQL needs a little more work after it's installed.
 
 In a terminal, run the following:
@@ -128,8 +123,7 @@ FLUSH PRIVILEGES ;
 
 You can now exit mysql, and you won't need to run the MySQL client with `sudo` any more.
 
-### Apache {/* #apache */}
-
+### Apache
 We're going to keep all of our Apache configuration in one file.
 
 Open `/etc/apache2/sites-enabled/000-default.conf`, and add the following code just before the closing `</VirtualHost>` line.
@@ -159,12 +153,10 @@ Those instances of `/home/kier/Documents/www` will need to be replaced with wher
 
 Make sure the directory exists before you start the Apache service.
 
-### PHP {/* #php */}
-
+### PHP
 We don't need to change much from the default Ubuntu/Debian configuration for PHP, except for some Xdebug directives and instructions for how to run php-fpm.
 
-#### Xdebug {/* #xdebug */}
-
+#### Xdebug
 Edit `/etc/php/5.6/mods-available/xdebug.ini` and give it the following contents for Xdebug 2.5.5:
 
 ```ini
@@ -183,8 +175,7 @@ xdebug.discover_client_host = 1
 xdebug.client_port = 9000
 ```
 
-#### php-fpm {/* #php-fpm */}
-
+#### php-fpm
 Taking the PHP version number, removing the decimal point and adding the resulting integer to 9000, so that 5.6 becomes 9056 and 8.0 becomes 9080, create a file called `x.conf` in `/etc/php/(version)/fpm/pool.d/x.conf` for PHP versions 5.6, 7.4 and 8.0.
 
 Give each file the following content:
@@ -196,8 +187,7 @@ listen = 127.0.0.1:9056
 
 ... changing the username and the 90xx port number appropriately for each PHP version.
 
-## Start services {/* #start-services */}
-
+## Start services
 You can now restart all the services with the new configurations:
 
 ```terminal
@@ -215,8 +205,7 @@ Everything should now be running, so you can follow [the instructions to work wi
 
 ![Screenshot: Three versions of PHP running concurrently through the Apache webserver](/img/docs/linux-php-versions.png)
 
-## Links to resources {/* #links-to-resources */}
-
+## Links to resources
 - [dev.sury.org for PHP packages](https://deb.sury.org)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [TablePlus](https://tableplus.io/)
@@ -226,38 +215,30 @@ Everything should now be running, so you can follow [the instructions to work wi
 
 ---
 
-## Summary {/* #summary */}
-
-### Terminal commands {/* #terminal-commands */}
-
+## Summary
+### Terminal commands
 Run the installation commands for [Ubuntu](/files/linux/install-ubuntu.sh) or [Debian](/files/linux/install-debian.sh)
 
-### Configure MariaDB / MySQL {/* #configure-mariadb--mysql */}
-
+### Configure MariaDB / MySQL
 Run the [mysql client as root with sudo](#mariadb), then execute SQL queries to disable plugin-based authentication for MySQL.
 
-### Edit Apache VirtualHost {/* #edit-apache-virtualhost */}
-
+### Edit Apache VirtualHost
 Edit `/etc/apache2/sites-available/000-default.conf` to include [custom configuration](#apache).
 
-### Replace the following files {/* #replace-the-following-files */}
-
+### Replace the following files
 1. `/etc/php/5.6/mods-available/`[`xdebug.ini`](/files/linux/php56/xdebug.ini)
 1. `/etc/php/7.4/mods-available/`[`xdebug.ini`](/files/linux/php74/xdebug.ini)
 1. `/etc/php/8.0/mods-available/`[`xdebug.ini`](/files/linux/php80/xdebug.ini)
 
-### Add the following files {/* #add-the-following-files */}
-
+### Add the following files
 1. `/etc/php/5.6/fpm/pool.d/`[`x.conf`](/files/linux/php56/x.conf)
 1. `/etc/php/7.4/fpm/pool.d/`[`x.conf`](/files/linux/php74/x.conf)
 1. `/etc/php/8.0/fpm/pool.d/`[`x.conf`](/files/linux/php80/x.conf)
 
-### Restart services {/* #restart-services */}
-
+### Restart services
 Use `sudo systemctl restart ` for `elasticsearch`, `mariadb`, `apache2`, `php8.0-fpm`, `php7.4-fpm` and `php5.6-fpm`.
 
-### PHP-version-targeting .htaccess files {/* #php-version-targeting-htaccess-files */}
-
+### PHP-version-targeting .htaccess files
 The following files can be placed inside a directory on your webserver to have all PHP files within that folder use a particular version of PHP.
 
 Rename the files from `htaccess.txt` to `.htaccess` after placing them in their destination folder.
