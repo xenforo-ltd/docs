@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","required":["client_id","client_secret","token"],"properties":{"client_id":{"type":"string"},"client_secret":{"type":"string"},"token":{"type":"string"},"token_type_hint":{"type":"string","description":"Either 'access_token' or 'refresh_token'"}}}}},"required":true}}

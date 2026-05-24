@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","required":["recipient_ids"],"properties":{"recipient_ids":{"type":"array","items":{"type":"integer"},"description":"List of user IDs to invite"}}}}},"required":true}}

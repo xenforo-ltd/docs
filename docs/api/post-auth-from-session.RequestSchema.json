@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"session_id":{"type":"string","description":"If provided, checks for an active session with that ID."},"remember_cookie":{"type":"string","description":"If provided, checks to see if this is an active \"remember me\" cookie value."}}}}}}}

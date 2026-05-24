@@ -1,0 +1,1 @@
+{"schema":{"type":"object","properties":{"link_url":{"type":"string"},"redirect_count":{"type":"integer"}},"title":"LinkForum"},"schemaType":"response"}

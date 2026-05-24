@@ -49,22 +49,19 @@ Create an attachment key. Allows attachments to be uploaded separately from the 
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"XF-Api-User","in":"header","description":"User ID to execute the request as. Requires a super user API key.","schema":{"type":"integer"}},{"name":"api_bypass_permissions","in":"query","description":"Whether or not to bypass the context user permissions. Requires a super user API key.","schema":{"type":"boolean"}}]}
+  {...require("./post-attachments-new-key.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  title={"Body"}
-  body={{"content":{"multipart/form-data":{"schema":{"type":"object","required":["type"],"properties":{"type":{"type":"string","description":"The content type of the attachment. Default types include post, conversation_message. Add-ons may add more."},"context":{"type":"array","items":{"type":"string"},"description":"Key-value pairs representing the context of the attachment. This will vary depending on content type and the action being taken. See relevant actions for further details."},"attachment":{"type":"string","contentMediaType":"application/octet-stream","description":"The first attachment to be associated with the new key."}}}}},"required":true}}
+  {...require("./post-attachments-new-key.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  id={undefined}
-  label={undefined}
-  responses={{"200":{"description":"OK","headers":{"XF-Latest-Api-Version":{"description":"The latest API version available.","schema":{"type":"integer"}},"XF-Used-Api-Version":{"description":"The API version used to render the response.","schema":{"type":"integer"}},"XF-Request-User":{"description":"The user ID of the request user.","schema":{"type":"integer"}},"XF-Request-User-Extras":{"description":"Additional information about the request user in JSON encoding. Requires XF-Request-User header to be non-zero.","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"type":"object","properties":{"key":{"type":"string","description":"The attachment key created. This should be used to upload additional files or to associate uploaded attachments with other content."},"attachment":{"type":"object","properties":{"filename":{"type":"string"},"file_size":{"type":"integer"},"height":{"type":"integer"},"width":{"type":"integer"},"thumbnail_url":{"type":"string"},"retina_thumbnail_url":{"type":"string"},"direct_url":{"type":"string"},"is_video":{"type":"boolean"},"is_audio":{"type":"boolean"},"attachment_id":{"type":"integer"},"content_type":{"type":"string"},"content_id":{"type":"integer"},"attach_date":{"type":"integer"},"view_count":{"type":"integer"}},"title":"Attachment","description":"If a file was provided and the upload was successful, this will describe the new attachment."}}}}}},"default":{"description":"Error","headers":{"XF-Latest-Api-Version":{"description":"The latest API version available.","schema":{"type":"integer"}},"XF-Used-Api-Version":{"description":"The API version used to render the response.","schema":{"type":"integer"}},"XF-Request-User":{"description":"The user ID of the request user.","schema":{"type":"integer"}},"XF-Request-User-Extras":{"description":"Additional information about the request user in JSON encoding. Requires XF-Request-User header to be non-zero.","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"type":"object","properties":{"errors":{"type":"array","items":{"type":"object","properties":{"code":{"type":"string"},"message":{"type":"string"},"params":{"type":"object","additionalProperties":true}}}}}}}}}}}
+  {...require("./post-attachments-new-key.StatusCodes.json")}
 >
   
 </StatusCodes>

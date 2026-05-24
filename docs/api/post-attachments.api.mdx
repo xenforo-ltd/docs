@@ -49,22 +49,19 @@ Upload an attachment. An API attachment key must be created first. Must be submi
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"XF-Api-User","in":"header","description":"User ID to execute the request as. Requires a super user API key.","schema":{"type":"integer"}},{"name":"api_bypass_permissions","in":"query","description":"Whether or not to bypass the context user permissions. Requires a super user API key.","schema":{"type":"boolean"}}]}
+  {...require("./post-attachments.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  title={"Body"}
-  body={{"content":{"multipart/form-data":{"schema":{"type":"object","required":["key","attachment"],"properties":{"key":{"type":"string","description":"The API attachment key to associated with"},"attachment":{"type":"string","contentMediaType":"application/octet-stream","description":"The attachment file"}}}}},"required":true}}
+  {...require("./post-attachments.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  id={undefined}
-  label={undefined}
-  responses={{"200":{"description":"OK","headers":{"XF-Latest-Api-Version":{"description":"The latest API version available.","schema":{"type":"integer"}},"XF-Used-Api-Version":{"description":"The API version used to render the response.","schema":{"type":"integer"}},"XF-Request-User":{"description":"The user ID of the request user.","schema":{"type":"integer"}},"XF-Request-User-Extras":{"description":"Additional information about the request user in JSON encoding. Requires XF-Request-User header to be non-zero.","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"type":"object","properties":{"attachment":{"type":"object","properties":{"filename":{"type":"string"},"file_size":{"type":"integer"},"height":{"type":"integer"},"width":{"type":"integer"},"thumbnail_url":{"type":"string"},"retina_thumbnail_url":{"type":"string"},"direct_url":{"type":"string"},"is_video":{"type":"boolean"},"is_audio":{"type":"boolean"},"attachment_id":{"type":"integer"},"content_type":{"type":"string"},"content_id":{"type":"integer"},"attach_date":{"type":"integer"},"view_count":{"type":"integer"}},"title":"Attachment","description":"The attachment record of the successful upload"}}}}}},"default":{"description":"Triggered if the user making the request does not match the user that created the attachment key.\n\n**Possible errors**\n- `attachment_key_user_wrong`: Triggered if the user making the request does not match the user that created the attachment key.","headers":{"XF-Latest-Api-Version":{"description":"The latest API version available.","schema":{"type":"integer"}},"XF-Used-Api-Version":{"description":"The API version used to render the response.","schema":{"type":"integer"}},"XF-Request-User":{"description":"The user ID of the request user.","schema":{"type":"integer"}},"XF-Request-User-Extras":{"description":"Additional information about the request user in JSON encoding. Requires XF-Request-User header to be non-zero.","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"type":"object","properties":{"errors":{"type":"array","items":{"type":"object","properties":{"code":{"type":"string"},"message":{"type":"string"},"params":{"type":"object","additionalProperties":true}}}}}}}}}}}
+  {...require("./post-attachments.StatusCodes.json")}
 >
   
 </StatusCodes>

@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"The new message content"},"attachment_key":{"type":"string","description":"API attachment key to upload files. Attachment key content type must be conversation_message with context[message_id] set to this message ID."}}}}}}}

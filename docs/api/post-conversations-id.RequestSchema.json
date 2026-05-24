@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"title":{"type":"string","description":"Conversation title"},"open_invite":{"type":"boolean","description":"If true, any member of the conversation can add others"},"conversation_open":{"type":"boolean","description":"If false, no further replies are allowed."}}}}}}}

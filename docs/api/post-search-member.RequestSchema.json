@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","required":["user_id"],"properties":{"user_id":{"type":"integer"},"content":{"type":"string"},"type":{"type":"string"},"before":{"type":"integer"},"thread_type":{"type":"string"},"grouped":{"type":"boolean"}}}}},"required":true}}

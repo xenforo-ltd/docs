@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"read":{"type":"boolean","description":"If specified, marks all alerts as read."},"viewed":{"type":"boolean","description":"If specified, marks all alerts as viewed. This will remove the alert counter but keep unactioned alerts highlighted."}}}}}}}

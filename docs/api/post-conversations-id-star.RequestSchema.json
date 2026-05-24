@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"star":{"type":"boolean","description":"If provided, sets the star status as specified. If not provided, toggles the status."}}}}}}}

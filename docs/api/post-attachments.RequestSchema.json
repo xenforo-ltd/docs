@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"multipart/form-data":{"schema":{"type":"object","required":["key","attachment"],"properties":{"key":{"type":"string","description":"The API attachment key to associated with"},"attachment":{"type":"string","contentMediaType":"application/octet-stream","description":"The attachment file"}}}}},"required":true}}

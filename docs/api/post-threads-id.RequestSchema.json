@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"prefix_id":{"type":"integer"},"title":{"type":"string"},"discussion_open":{"type":"boolean"},"sticky":{"type":"boolean"},"custom_fields[<name>]":{"type":"string"},"add_tags":{"type":"array","items":{}},"remove_tags":{"type":"array","items":{}}}}}}}}

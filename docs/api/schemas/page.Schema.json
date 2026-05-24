@@ -1,0 +1,1 @@
+{"schema":{"type":"object","properties":{"publish_date":{"type":"integer"},"view_count":{"type":"integer"}},"title":"Page"},"schemaType":"response"}

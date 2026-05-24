@@ -25,8 +25,7 @@ import Heading from "@theme/Heading";
 Pagination details for paginated responses.
 
 <Schema
-  schema={{"type":"object","description":"Pagination details for paginated responses.","properties":{"current_page":{"type":"integer","description":"The current page number."},"last_page":{"type":"integer","description":"The last page number."},"per_page":{"type":"integer","description":"The number of items per page."},"shown":{"type":"integer","description":"The number of items returned."},"total":{"type":"integer","description":"The total number of items."}},"title":"Pagination"}}
-  schemaType={"response"}
+  {...require("./pagination.Schema.json")}
 >
   
 </Schema>

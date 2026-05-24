@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","properties":{"read":{"type":"boolean","description":"If specified, marks the alert as read."},"unread":{"type":"boolean","description":"If specified, marks the alert as unread."},"viewed":{"type":"boolean","description":"If specified, marks all alerts as viewed."}}}}}}}

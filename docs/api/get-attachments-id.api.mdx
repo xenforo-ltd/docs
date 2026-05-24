@@ -49,22 +49,19 @@ Get information about the specified attachment.
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"string"}},{"name":"XF-Api-User","in":"header","description":"User ID to execute the request as. Requires a super user API key.","schema":{"type":"integer"}},{"name":"api_bypass_permissions","in":"query","description":"Whether or not to bypass the context user permissions. Requires a super user API key.","schema":{"type":"boolean"}}]}
+  {...require("./get-attachments-id.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  title={"Body"}
-  body={undefined}
+  {...require("./get-attachments-id.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  id={undefined}
-  label={undefined}
-  responses={{"200":{"description":"OK","headers":{"XF-Latest-Api-Version":{"description":"The latest API version available.","schema":{"type":"integer"}},"XF-Used-Api-Version":{"description":"The API version used to render the response.","schema":{"type":"integer"}},"XF-Request-User":{"description":"The user ID of the request user.","schema":{"type":"integer"}},"XF-Request-User-Extras":{"description":"Additional information about the request user in JSON encoding. Requires XF-Request-User header to be non-zero.","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"type":"object","properties":{"attachment":{"type":"object","properties":{"filename":{"type":"string"},"file_size":{"type":"integer"},"height":{"type":"integer"},"width":{"type":"integer"},"thumbnail_url":{"type":"string"},"retina_thumbnail_url":{"type":"string"},"direct_url":{"type":"string"},"is_video":{"type":"boolean"},"is_audio":{"type":"boolean"},"attachment_id":{"type":"integer"},"content_type":{"type":"string"},"content_id":{"type":"integer"},"attach_date":{"type":"integer"},"view_count":{"type":"integer"}},"title":"Attachment"}}}}}},"default":{"description":"Error","headers":{"XF-Latest-Api-Version":{"description":"The latest API version available.","schema":{"type":"integer"}},"XF-Used-Api-Version":{"description":"The API version used to render the response.","schema":{"type":"integer"}},"XF-Request-User":{"description":"The user ID of the request user.","schema":{"type":"integer"}},"XF-Request-User-Extras":{"description":"Additional information about the request user in JSON encoding. Requires XF-Request-User header to be non-zero.","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"type":"object","properties":{"errors":{"type":"array","items":{"type":"object","properties":{"code":{"type":"string"},"message":{"type":"string"},"params":{"type":"object","additionalProperties":true}}}}}}}}}}}
+  {...require("./get-attachments-id.StatusCodes.json")}
 >
   
 </StatusCodes>

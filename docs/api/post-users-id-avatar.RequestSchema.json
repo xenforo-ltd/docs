@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"multipart/form-data":{"schema":{"type":"object","required":["avatar"],"properties":{"avatar":{"type":"string","contentMediaType":"application/octet-stream","description":"The uploaded new avatar"}}}}},"required":true}}

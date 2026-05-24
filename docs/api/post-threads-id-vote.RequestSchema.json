@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","required":["type"],"properties":{"type":{"type":"string","description":"Type of vote, \"up\" or \"down\". Use the current type to undo."}}}}},"required":true}}

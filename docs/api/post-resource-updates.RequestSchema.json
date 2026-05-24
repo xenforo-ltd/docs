@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/x-www-form-urlencoded":{"schema":{"type":"object","required":["resource_id","title","message"],"properties":{"resource_id":{"type":"integer"},"title":{"type":"string"},"message":{"type":"string"},"attachment_key":{"type":"string","description":"API attachment key for update images"}}}}},"required":true}}
