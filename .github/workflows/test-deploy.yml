@@ -1,7 +1,5 @@
 name: Test deployment
 
-permissions: {}
-
 on:
   workflow_dispatch:
   pull_request:
@@ -11,6 +9,8 @@ on:
 concurrency:
   group: "${{ github.workflow }}@${{ github.head_ref || github.ref_name }}"
   cancel-in-progress: true
+
+permissions: {}
 
 jobs:
   test-deploy:
@@ -33,6 +33,9 @@ jobs:
         with:
           node-version: 22
           cache: "pnpm"
+
+      - name: Uninstall yarn
+        run: sudo rm -f $(which yarn)
 
       - name: Install dependencies
         run: pnpm install
