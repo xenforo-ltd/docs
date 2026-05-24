@@ -34,6 +34,7 @@ jobs:
           node-version: 22
           cache: "pnpm"
 
+      # related to postmanlabs/postman-code-generators#792
       - name: Uninstall yarn
         run: sudo rm -f $(which yarn)
 
