@@ -44,7 +44,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Setup pnpm
+      - name: Set up pnpm
         uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093 # v6.0.8
 
       - name: Set up node
