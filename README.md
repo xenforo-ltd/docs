@@ -18,16 +18,16 @@ Welcome to the documentation for XenForo, covering both end-user guides and deve
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Start development server (http://localhost:3000)
-npm run start
+pnpm start
 
 # Build for production
-npm run build
+pnpm build
 
 # Serve production build locally
-npm run serve
+pnpm serve
 ```
 
 ### API Documentation
@@ -36,7 +36,7 @@ The API reference is generated from an OpenAPI spec using [docusaurus-openapi-do
 
 ```bash
 # Clean and regenerate API docs
-npm run clean-api-docs && npm run gen-api-docs
+pnpm clean-api-docs && pnpm gen-api-docs
 ```
 
 ## Contributing

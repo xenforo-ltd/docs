@@ -9,6 +9,12 @@ const config: Config = {
   tagline: "Documentation for XenForo",
   favicon: "img/favicon.png",
 
+  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+  future: {
+    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    faster: true, // Enable modernized build infrastructure
+  },
+
   url: "https://docs.xenforo.com",
   baseUrl: "/",
 
@@ -19,11 +25,6 @@ const config: Config = {
 
   onBrokenLinks: "throw",
   onBrokenAnchors: "warn",
-
-  future: {
-    v4: true,
-    experimental_faster: true,
-  },
 
   markdown: {
     hooks: {

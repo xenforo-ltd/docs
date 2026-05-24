@@ -1,7 +1,13 @@
-.idea
-.docusaurus
-.cache-loader
-.DS_Store
-
+# dependencies
 /node_modules
+
+# production
 /build
+
+# generated files
+/.cache-loader
+/.docusaurus
+
+# misc
+.idea
+.DS_Store

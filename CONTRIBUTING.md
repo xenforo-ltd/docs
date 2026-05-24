@@ -60,13 +60,13 @@ This will create a new directory named `docs` containing the contents of this re
 Using the command line, change directory to the new `docs` directory and install the dependencies:
 
 ```
-npm install
+pnpm install
 ```
 
 Then start the development server:
 
 ```
-npm start
+pnpm start
 ```
 
 This will load up a local web server accessible from the URL `http://localhost:3000/` and it will start watching the documentation for changes and reload automatically.

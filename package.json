@@ -19,24 +19,27 @@
     "spellcheck:changed": "git diff --name-only --diff-filter=ACMRT HEAD~1 | grep -E '\\.(md|mdx)$' | xargs -r cspell lint --config cspell.json --no-progress"
   },
   "dependencies": {
-    "@docusaurus/core": "3.9.2",
-    "@docusaurus/faster": "^3.9.2",
-    "@docusaurus/preset-classic": "3.9.2",
-    "@mdx-js/react": "^3.0.0",
-    "clsx": "^2.0.0",
-    "docusaurus-plugin-openapi-docs": "^4.6.0",
-    "docusaurus-theme-openapi-docs": "^4.6.0",
-    "prism-react-renderer": "^2.3.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@docusaurus/core": "~3.10.1",
+    "@docusaurus/faster": "~3.10.1",
+    "@docusaurus/plugin-content-docs": "~3.10.1",
+    "@docusaurus/preset-classic": "~3.10.1",
+    "@docusaurus/theme-common": "~3.10.1",
+    "@mdx-js/react": "^3.1.1",
+    "clsx": "^2.1.1",
+    "docusaurus-plugin-openapi-docs": "~5.0.2",
+    "docusaurus-theme-openapi-docs": "~5.0.2",
+    "prism-react-renderer": "^2.4.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.9.2",
-    "@docusaurus/tsconfig": "3.9.2",
-    "@docusaurus/types": "3.9.2",
-    "cspell": "^9.6.3",
-    "prettier": "3.8.1",
-    "typescript": "~5.6.2"
+    "@docusaurus/module-type-aliases": "~3.10.1",
+    "@docusaurus/tsconfig": "~3.10.1",
+    "@docusaurus/types": "~3.10.1",
+    "@types/react": "^19.2.14",
+    "cspell": "~9.8.0",
+    "prettier": "~3.8.3",
+    "typescript": "~6.0.3"
   },
   "browserslist": {
     "production": [
@@ -51,6 +54,8 @@
     ]
   },
   "engines": {
-    "node": ">=20.0"
-  }
+    "node": ">=20.0",
+    "pnpm": ">=11.2"
+  },
+  "packageManager": "pnpm@11.2.2"
 }

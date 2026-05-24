@@ -1,0 +1,14 @@
+minimumReleaseAge: 10080
+
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  core-js: true
+  core-js-pure: true
+  postman-code-generators: true
+
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  - 'chokidar@4.0.3'
+  - 'detect-port@1.6.1'
+  - 'semver@6.3.1'
