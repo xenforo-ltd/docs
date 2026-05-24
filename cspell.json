@@ -4,7 +4,6 @@
   "language": "en",
   "name": "XenForo Docs",
   "files": [
-    "docs/**/*.md",
     "docs/**/*.mdx",
     "README.md",
     "CONTRIBUTING.md"
