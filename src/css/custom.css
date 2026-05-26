@@ -119,6 +119,16 @@ html[data-theme="dark"] {
   height: 26px;
 }
 
+/* hide breadcrumb-only wrapper categories from the sidebar menu */
+.sidebar-breadcrumb-only {
+  >div {
+    display: none;
+  }
+
+  .menu__list {
+    padding-left: 0;
+  }
+}
 @media (width >=997px) {
   .theme-doc-sidebar-container nav {
     padding: .5rem;
