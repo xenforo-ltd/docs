@@ -1,29 +1,26 @@
 import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
-import rawApiSidebar from "./docs/api/sidebar";
-
-const apiSidebar = [
-  {
-    type: "category" as const,
-    label: "API",
-    className: "sidebar-breadcrumb-only",
-    collapsible: false,
-    link: { type: "doc" as const, id: "api/xenforo-api" },
-    items: rawApiSidebar.slice(1),
-  },
-];
+import rawApi from "./docs/api/sidebar";
 
 const sidebars: SidebarsConfig = {
-  manualSidebar: [
+  manual: [
     {
       type: "category",
       label: "Manual",
       className: "sidebar-breadcrumb-only",
       collapsible: false,
-      link: { type: "doc", id: "manual/index" },
+      link: {
+        type: "doc",
+        id: "manual/index",
+      },
       items: [
-        "manual/index",
         {
-          "Installing and upgrading": [
+          type: "ref",
+          id: "manual/index",
+        },
+        {
+          type: "category",
+          label: "Installing and upgrading",
+          items: [
             "manual/installing-and-upgrading/install-upgrade",
             "manual/installing-and-upgrading/install",
             "manual/installing-and-upgrading/upgrade",
@@ -32,7 +29,10 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Common concepts",
-          link: { type: "doc", id: "manual/common-concepts/index" },
+          link: {
+            type: "doc",
+            id: "manual/common-concepts/index",
+          },
           items: [
             "manual/common-concepts/display-order",
             "manual/common-concepts/criteria",
@@ -43,7 +43,10 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Users",
-          link: { type: "doc", id: "manual/users/index" },
+          link: {
+            type: "doc",
+            id: "manual/users/index",
+          },
           items: [
             "manual/users/user-security",
             "manual/users/user-profile",
@@ -88,7 +91,10 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Access privileges",
-          link: { type: "doc", id: "manual/access-privileges/index" },
+          link: {
+            type: "doc",
+            id: "manual/access-privileges/index",
+          },
           items: [
             "manual/access-privileges/groups-permissions",
             "manual/access-privileges/permissions",
@@ -113,7 +119,10 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Forums, threads and posts",
-          link: { type: "doc", id: "manual/forums/index" },
+          link: {
+            type: "doc",
+            id: "manual/forums/index",
+          },
           items: [
             "manual/forums/nodes-forums",
             {
@@ -151,7 +160,10 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "User-generated content",
-          link: { type: "doc", id: "manual/content/index" },
+          link: {
+            type: "doc",
+            id: "manual/content/index",
+          },
           items: [
             "manual/content/overview",
             "manual/content/bbcode",
@@ -181,7 +193,10 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Appearance and layout",
-          link: { type: "doc", id: "manual/appearance/index" },
+          link: {
+            type: "doc",
+            id: "manual/appearance/index",
+          },
           items: [
             "manual/appearance/navigation",
             "manual/appearance/widgets",
@@ -210,7 +225,10 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Communication",
-          link: { type: "doc", id: "manual/communication/index" },
+          link: {
+            type: "doc",
+            id: "manual/communication/index",
+          },
           items: [
             "manual/communication/overview",
             "manual/communication/notices",
@@ -222,7 +240,10 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Configuration",
-          link: { type: "doc", id: "manual/configuration/index" },
+          link: {
+            type: "doc",
+            id: "manual/configuration/index",
+          },
           items: [
             {
               type: "category",
@@ -241,7 +262,10 @@ const sidebars: SidebarsConfig = {
             {
               type: "category",
               label: "Spam management",
-              link: { type: "doc", id: "manual/configuration/spam/index" },
+              link: {
+                type: "doc",
+                id: "manual/configuration/spam/index",
+              },
               items: ["manual/configuration/spam/spam-cleaner"],
             },
             {
@@ -272,13 +296,19 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Terms and rules",
-          link: { type: "doc", id: "manual/terms-rules/index" },
+          link: {
+            type: "doc",
+            id: "manual/terms-rules/index",
+          },
           items: ["manual/terms-rules/terms"],
         },
         {
           type: "category",
           label: "Importing content",
-          link: { type: "doc", id: "manual/importing/index" },
+          link: {
+            type: "doc",
+            id: "manual/importing/index",
+          },
           items: [
             "manual/importing/overview",
             "manual/importing/import-configuration",
@@ -295,7 +325,10 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Maintenance",
-          link: { type: "doc", id: "manual/maintenance/index" },
+          link: {
+            type: "doc",
+            id: "manual/maintenance/index",
+          },
           items: [
             "manual/maintenance/rebuild-caches",
             "manual/maintenance/logs",
@@ -305,7 +338,10 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Server configuration",
-          link: { type: "doc", id: "manual/config/index" },
+          link: {
+            type: "doc",
+            id: "manual/config/index",
+          },
           items: [
             "manual/config/config-php",
             "manual/config/unicode",
@@ -315,7 +351,10 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Reference",
-          link: { type: "doc", id: "manual/reference/index" },
+          link: {
+            type: "doc",
+            id: "manual/reference/index",
+          },
           items: [
             "manual/reference/template-syntax",
             "manual/reference/rest-api",
@@ -324,7 +363,10 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Official add-ons",
-          link: { type: "doc", id: "manual/official-addons/index" },
+          link: {
+            type: "doc",
+            id: "manual/official-addons/index",
+          },
           items: [
             "manual/official-addons/media-gallery",
             "manual/official-addons/resource-manager",
@@ -335,15 +377,21 @@ const sidebars: SidebarsConfig = {
     },
   ],
 
-  developersSidebar: [
+  developers: [
     {
       type: "category",
       label: "Developers",
       className: "sidebar-breadcrumb-only",
       collapsible: false,
-      link: { type: "doc", id: "devs/index" },
+      link: {
+        type: "doc",
+        id: "devs/index",
+      },
       items: [
-        "devs/index",
+        {
+          type: "ref",
+          id: "devs/index",
+        },
         "devs/add-on-structure",
         "devs/development-tools",
         "devs/general-concepts",
@@ -358,17 +406,32 @@ const sidebars: SidebarsConfig = {
         {
           type: "category",
           label: "Appendix",
-          items: [
-            "devs/appendix/macos-dev",
-            "devs/appendix/linux-dev",
-            "devs/appendix/windows-dev",
-            "devs/appendix/vscode",
-          ],
+          items: ["devs/appendix/vscode"],
         },
       ],
     },
   ],
-  apiSidebar,
+
+  api: [
+    {
+      type: "category",
+      label: "API",
+      className: "sidebar-breadcrumb-only",
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "api/xenforo-api",
+      },
+      items: [
+        {
+          type: "ref",
+          label: "Introduction",
+          id: "api/xenforo-api",
+        },
+        ...rawApi.slice(1),
+      ],
+    },
+  ],
 };
 
 export default sidebars;

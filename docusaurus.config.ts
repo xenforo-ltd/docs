@@ -5,9 +5,18 @@ import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 import { createInfoPageMD } from "./src/openapi/createInfoPageMD";
 
 const config: Config = {
-  title: "XenForo",
+  title: "XenForo Documentation",
   tagline: "Documentation for XenForo",
   favicon: "img/favicon.png",
+
+  url: "https://docs.xenforo.com",
+  baseUrl: "/",
+  trailingSlash: false,
+
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en"],
+  },
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -15,45 +24,26 @@ const config: Config = {
     faster: true, // Enable modernized build infrastructure
   },
 
-  url: "https://docs.xenforo.com",
-  baseUrl: "/",
-
-  organizationName: "xenforo-ltd",
-  projectName: "docs",
-  deploymentBranch: "main",
-  trailingSlash: false,
-
-  onBrokenLinks: "throw",
-  onBrokenAnchors: "warn",
-
-  markdown: {
-    hooks: {
-      onBrokenMarkdownLinks: "warn",
-    },
-  },
-
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
-  },
-
   presets: [
     [
-      "classic",
+      "@docusaurus/preset-classic",
       {
-        docs: {
-          sidebarPath: "./sidebars.ts",
-          routeBasePath: "/",
-          editUrl: "https://github.com/xenforo-ltd/docs/edit/main/",
-          docItemComponent: "@theme/ApiItem",
-        },
         blog: false,
+        pages: false,
+
         theme: {
           customCss: ["./src/css/custom.css"],
         },
+
+        docs: {
+          routeBasePath: "/",
+          sidebarPath: "./sidebars.ts",
+          editUrl: "https://github.com/xenforo-ltd/docs/edit/main/",
+          docItemComponent: "@theme/ApiItem",
+        },
+
         sitemap: {
-          // https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#additional-notes-about-xml-sitemaps
-          lastmod: "date",
+          lastmod: "datetime",
           changefreq: null,
           priority: null,
         },
@@ -67,6 +57,7 @@ const config: Config = {
       {
         id: "api",
         docsPluginId: "classic",
+
         config: {
           xenforo: {
             specPath: "static/api/openapi.json",
@@ -74,14 +65,16 @@ const config: Config = {
             infoTemplate: "./src/openapi/infoTemplate.mustache",
             downloadUrl: "https://docs.xenforo.com/api/openapi.json",
             hideSendButton: true,
+            showSchemas: true,
+
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
             },
+
             markdownGenerators: {
               createInfoPageMD,
             },
-            showSchemas: true,
           } satisfies OpenApiPlugin.Options,
         },
       },
@@ -93,85 +86,94 @@ const config: Config = {
   themeConfig: {
     image: "img/xenforo-social-card.jpg",
     colorMode: {
-      defaultMode: "light",
       respectPrefersColorScheme: true,
-      disableSwitch: false,
     },
-    navbar: {
-      title: "Documentation",
-      logo: {
-        alt: "XenForo",
-        src: "img/logo.svg",
-      },
-      items: [
-        {
-          type: "docSidebar",
-          sidebarId: "manualSidebar",
-          position: "left",
-          label: "Manual",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "developersSidebar",
-          position: "left",
-          label: "Developers",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "apiSidebar",
-          position: "left",
-          label: "API",
-        },
-        {
-          href: "https://xenforo.com/community",
-          label: "Community",
-          position: "right",
-        },
-        {
-          href: "https://github.com/xenforo-ltd/docs",
-          label: "GitHub",
-          position: "right",
-        },
-      ],
-    },
+
     docs: {
       sidebar: {
         autoCollapseCategories: true,
       },
     },
-    footer: {
-      style: "dark",
-      copyright: `Documentation for XenForo® © 2010-${new Date().getFullYear()} XenForo Ltd.`,
+
+    navbar: {
+      title: "Documentation",
+
+      logo: {
+        src: "img/logo.svg",
+        alt: "XenForo",
+        width: 124,
+        height: 26,
+      },
+
+      items: [
+        {
+          type: "docSidebar",
+          sidebarId: "manual",
+          label: "Manual",
+          position: "left",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "developers",
+          label: "Developers",
+          position: "left",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "api",
+          label: "API",
+          position: "left",
+        },
+
+        {
+          label: "Community",
+          href: "https://xenforo.com/community/",
+          position: "right",
+        },
+        {
+          label: "GitHub",
+          href: "https://github.com/xenforo-ltd/docs",
+          position: "right",
+        },
+      ],
     },
+
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ["php", "bash", "json", "sql", "apacheconf", "ini"],
+      additionalLanguages: ["apacheconf", "bash", "ini", "php", "sql"],
     },
+
     algolia: {
       appId: "YW6LXZMEKF",
       apiKey: "80cdb7d3922b3717ceec76c4d13ca2d6",
       indexName: "XenForo Documentation",
     },
+
     languageTabs: [
       {
         language: "curl",
+        highlight: "bash",
         variants: ["curl"],
       },
       {
         language: "php",
+        highlight: "php",
         variants: ["guzzle"],
       },
       {
         language: "javascript",
+        highlight: "javascript",
         variants: ["fetch"],
       },
       {
         language: "go",
+        highlight: "go",
         variants: ["native"],
       },
       {
         language: "python",
+        highlight: "python",
         variants: ["requests"],
       },
     ],

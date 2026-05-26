@@ -1,6 +1,16 @@
 {
-  "name": "docs",
-  "version": "1.0.0",
+  "name": "@xenforo-ltd/docs",
+  "description": "XenForo Documentation",
+  "author": "XenForo Ltd",
+  "homepage": "https://docs.xenforo.com",
+  "bugs": {
+    "url": "https://github.com/xenforo-ltd/docs/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xenforo-ltd/docs.git"
+  },
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -36,7 +46,7 @@
     "@docusaurus/module-type-aliases": "~3.10.1",
     "@docusaurus/tsconfig": "~3.10.1",
     "@docusaurus/types": "~3.10.1",
-    "@types/react": "^19.2.14",
+    "@types/react": "^19.2.15",
     "cspell": "~10.0.0",
     "prettier": "~3.8.3",
     "typescript": "~6.0.3"
@@ -53,9 +63,16 @@
       "last 5 safari version"
     ]
   },
-  "engines": {
-    "node": ">=22.0",
-    "pnpm": ">=11.2"
-  },
-  "packageManager": "pnpm@11.2.2"
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "^22.0.0",
+      "onFail": "download"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.8.0",
+      "onFail": "download"
+    }
+  }
 }
