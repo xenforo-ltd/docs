@@ -125,7 +125,7 @@ html[data-theme="dark"] {
     display: none;
   }
 
-  .menu__list {
+  >.menu__list {
     padding-left: 0;
   }
 }
