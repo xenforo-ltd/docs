@@ -322,6 +322,10 @@
 		}
 	}
 
+	.navbar div:has(> button > svg[class*="lightToggleIcon"]) {
+		display: none;
+	}
+
 	.menu__list-item-collapsible {
 		&:not(.menu__list-item-collapsible--active) .menu__link {
 			color: var(--ifm-menu-color);

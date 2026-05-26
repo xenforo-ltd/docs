@@ -350,6 +350,163 @@ const config: Config = {
       ],
     },
 
+    footer: {
+      copyright: `&copy; 2010-${String(new Date().getFullYear())} XenForo Ltd.`,
+
+      logo: {
+        src: "img/logo.svg",
+        alt: "XenForo",
+        href: "https://xenforo.com",
+        width: 200,
+        height: 72,
+      },
+
+      links: [
+        {
+          title: "Actions",
+          className: "p-footer-buttons",
+          items: [
+            {
+              label: "Buy XenForo",
+              href: "https://xenforo.com/purchase/",
+              className: "p-footer-button",
+            },
+            {
+              label: "Try a demo",
+              href: "https://xenforo.com/demo/",
+              className: "p-footer-button",
+            },
+          ],
+        },
+        {
+          title: "Social",
+          className: "p-footer-social",
+          items: [
+            {
+              label: "@XenForo",
+              href: "https://x.com/xenforo/",
+              className: "p-footer-social--x",
+            },
+            {
+              label: "XenForo",
+              href: "https://facebook.com/XenForo/",
+              className: "p-footer-social--facebook",
+            },
+          ],
+        },
+        {
+          title: "Products",
+          items: [
+            {
+              label: "Forum",
+              href: "https://xenforo.com/solutions/#xf",
+            },
+            {
+              label: "Media gallery",
+              href: "https://xenforo.com/solutions/#xfmg",
+            },
+            {
+              label: "Resource manager",
+              href: "https://xenforo.com/solutions/#xfrm",
+            },
+            {
+              label: "Enhanced search",
+              href: "https://xenforo.com/solutions/#xfes",
+            },
+            {
+              label: "Importers",
+              href: "https://xenforo.com/solutions/#migration",
+            },
+          ],
+        },
+        {
+          title: "Sales",
+          items: [
+            {
+              label: "Features",
+              href: "https://xenforo.com/features/",
+            },
+            {
+              label: "Buy XenForo",
+              href: "https://xenforo.com/purchase/",
+            },
+            {
+              label: "Pre-sales questions",
+              href: "https://xenforo.com/community/forums/xenforo-pre-sales-and-feedback.5/",
+            },
+            {
+              label: "Admin demo",
+              href: "https://xenforo.com/demo/",
+            },
+          ],
+        },
+        {
+          title: "Customers",
+          items: [
+            {
+              label: "Account area",
+              href: "https://xenforo.com/customers/",
+            },
+            {
+              label: "Get support",
+              href: "https://xenforo.com/customers/support",
+            },
+            {
+              label: "Community",
+              href: "https://xenforo.com/community/",
+            },
+            {
+              label: "License validation",
+              href: "https://xenforo.com/customer-api/",
+            },
+          ],
+        },
+        {
+          title: "Help",
+          items: [
+            {
+              label: "Manual",
+              href: "https://docs.xenforo.com",
+            },
+            {
+              label: "Developer docs",
+              href: "https://docs.xenforo.com/devs",
+            },
+            {
+              label: "REST API docs",
+              href: "https://docs.xenforo.com/api",
+            },
+            {
+              label: "Help",
+              href: "https://xenforo.com/help/",
+            },
+            {
+              label: "Contact us",
+              href: "https://xenforo.com/contact/",
+            },
+          ],
+        },
+        {
+          title: "Legal",
+          className: "p-footer-extra-links",
+          items: [
+            {
+              label: "License agreement",
+              href: "https://xenforo.com/license-agreement/",
+            },
+            {
+              label: "Cloud service agreement",
+              href: "https://xenforo.com/cloud-service-agreement/",
+            },
+            {
+              label: "Privacy policy",
+              href: "https://xenforo.com/privacy-policy/",
+            },
+          ],
+        },
+      ],
+    },
+
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
