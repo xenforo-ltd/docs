@@ -99,5 +99,5 @@ The top level will be an object with an \`errors\` key containing an array with 
 API keys are created via the admin control panel. For detailed information about creating and managing API keys, including the different key types (Guest, User, and Super user keys) and scopes, see the [REST API manual](/manual/reference/rest-api).
 `;
 
-  return defaultContent + additionalContent;
+  return additionalContent + defaultContent;
 }

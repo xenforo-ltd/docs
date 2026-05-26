@@ -1,208 +1,376 @@
 :root {
-  --xf-primary: hsl(205 60% 60%);
-  --xf-primary-hover: hsl(205 60% 75%);
-  --xf-dark-surface: hsl(205 60% 10%);
-  --xf-muted-text: #6b7280;
-  --xf-nav-link: rgb(163 212 245);
-  --xf-nav-link-hover: rgb(232 244 252);
-  --xf-nav-link-active: rgb(20 116 184);
-  --xf-border-subtle: rgb(55 62 71);
-  --xf-border-hover: rgb(69 77 88);
-}
+	--xf-color-primary: hsl(205 80% 40%);
+	--xf-color-primary-dark: hsl(205 80% 36%);
+	--xf-color-primary-darker: hsl(205 80% 34%);
+	--xf-color-primary-darkest: hsl(205 80% 28%);
+	--xf-color-primary-light: hsl(205 80% 44%);
+	--xf-color-primary-lighter: hsl(205 80% 46%);
+	--xf-color-primary-lightest: hsl(205 80% 52%);
 
-html[data-theme="light"] {
-  --ifm-navbar-background-color: hsl(205 80% 30%);
-  --ifm-color-primary: var(--xf-primary);
-  --ifm-link-color: var(--xf-primary);
-  --ifm-link-hover-color: var(--xf-primary-hover);
-  --ifm-navbar-link-color: var(--xf-nav-link);
-  --ifm-navbar-link-hover-color: var(--xf-nav-link-hover);
-  --ifm-navbar-link-active-color: var(--xf-nav-link-active);
-  --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
-  --ifm-footer-background-color: rgb(15 87 138);
-  --ifm-footer-color: var(--xf-nav-link-hover);
-  --ifm-footer-link-color: var(--xf-nav-link);
-  --ifm-footer-link-hover-color: var(--xf-nav-link-hover);
+	--xf-color-success: hsl(122 90% 40%);
+	--xf-color-success-dark: hsl(122 90% 34%);
+	--xf-color-success-darker: hsl(122 90% 31%);
+	--xf-color-success-darkest: hsl(122 90% 24%);
+	--xf-color-success-light: hsl(122 90% 46%);
+	--xf-color-success-lighter: hsl(122 90% 52%);
+	--xf-color-success-lightest: hsl(122 90% 60%);
+	--xf-color-success-contrast-background: hsl(116 90% 95%);
+	--xf-color-success-contrast-foreground: hsl(122 90% 24%);
 
-  .clean-btn {
-    color: var(--ifm-navbar-link-color);
+	--xf-color-info: hsl(205 80% 50%);
+	--xf-color-info-dark: hsl(205 80% 44%);
+	--xf-color-info-darker: hsl(205 80% 41%);
+	--xf-color-info-darkest: hsl(205 80% 33%);
+	--xf-color-info-light: hsl(205 80% 56%);
+	--xf-color-info-lighter: hsl(205 80% 62%);
+	--xf-color-info-lightest: hsl(205 80% 70%);
+	--xf-color-info-contrast-background: hsl(206 80% 95%);
+	--xf-color-info-contrast-foreground: hsl(205 80% 22%);
 
-    &:hover {
-      background: transparent;
-      color: var(--ifm-navbar-link-hover-color);
-    }
-  }
+	--xf-color-warning: hsl(34 90% 50%);
+	--xf-color-warning-dark: hsl(34 90% 44%);
+	--xf-color-warning-darker: hsl(34 90% 41%);
+	--xf-color-warning-darkest: hsl(34 90% 33%);
+	--xf-color-warning-light: hsl(34 90% 56%);
+	--xf-color-warning-lighter: hsl(34 90% 62%);
+	--xf-color-warning-lightest: hsl(34 90% 70%);
+	--xf-color-warning-contrast-background: hsl(34 90% 95%);
+	--xf-color-warning-contrast-foreground: hsl(34 90% 22%);
 
-  /* Mobile sidebar - override menu colors for dark blue background */
-  .navbar-sidebar {
-    --ifm-menu-color: var(--xf-nav-link);
-    --ifm-menu-color-active: var(--xf-nav-link-hover);
-    --ifm-menu-color-background-active: rgb(255 255 255 / 10%);
-    --ifm-menu-color-background-hover: rgb(255 255 255 / 10%);
-  }
+	--xf-color-danger: hsl(358 90% 50%);
+	--xf-color-danger-dark: hsl(358 90% 44%);
+	--xf-color-danger-darker: hsl(358 90% 41%);
+	--xf-color-danger-darkest: hsl(358 90% 33%);
+	--xf-color-danger-light: hsl(358 90% 56%);
+	--xf-color-danger-lighter: hsl(358 90% 62%);
+	--xf-color-danger-lightest: hsl(358 90% 70%);
+	--xf-color-danger-contrast-background: hsl(358 90% 95%);
+	--xf-color-danger-contrast-foreground: hsl(358 90% 22%);
 
-  .navbar-sidebar__close {
-    color: var(--xf-nav-link);
+	--xf-text: hsl(0 0 8%);
+	--xf-text-dimmed: hsl(0 0 31%);
+	--xf-link-hover-color: var(--xf-color-primary-darker);
+	--xf-page-bg: hsl(0 0% 92%);
+	--xf-content-bg: hsl(0 0 100%);
+	--xf-content-highlight-bg: hsl(206 80% 95%);
+	--xf-border-color: hsl(0 0 84%);
+	--xf-container-background: hsl(0 0% 0% / 0.65);
 
-    &:hover {
-      color: var(--xf-nav-link-hover);
-    }
-  }
+	--xf-chrome-bg: hsl(205 80% 30%);
+	--xf-chrome-bg-hover: hsl(204 80% 80% / 6%);
+	--xf-chrome-text: hsl(204 80% 80%);
+	--xf-chrome-text-hover: var(--xf-content-bg);
+
+	--xf-line-height: 1.4;
+	--xf-border-radius: 0.25rem;
+	--xf-global-spacing: 1.25rem;
+
+	--xf-sidebar-link-text-hover: var(--xf-chrome-text-hover);
+	--xf-sidebar-close-icon-filter: brightness(0) saturate(100%) invert(61%) sepia(63%) saturate(394%) hue-rotate(163deg) brightness(90%) contrast(84%);
+	--xf-sidebar-sublist-icon-filter: invert(100%) sepia(94%) saturate(17%) hue-rotate(223deg) brightness(104%) contrast(98%);
+	--xf-sidebar-sublist-active-icon-filter: brightness(0) saturate(100%) invert(26%) sepia(64%) saturate(2506%) hue-rotate(187deg) brightness(97%) contrast(84%);
+
+	--ifm-color-primary: var(--xf-color-primary);
+	--ifm-color-primary-dark: var(--xf-color-primary-dark);
+	--ifm-color-primary-darker: var(--xf-color-primary-darker);
+	--ifm-color-primary-darkest: var(--xf-color-primary-darkest);
+	--ifm-color-primary-light: var(--xf-color-primary-light);
+	--ifm-color-primary-lighter: var(--xf-color-primary-lighter);
+	--ifm-color-primary-lightest: var(--xf-color-primary-lightest);
+
+	--ifm-color-success: var(--xf-color-success);
+	--ifm-color-success-dark: var(--xf-color-success-dark);
+	--ifm-color-success-darker: var(--xf-color-success-darker);
+	--ifm-color-success-darkest: var(--xf-color-success-darkest);
+	--ifm-color-success-light: var(--xf-color-success-light);
+	--ifm-color-success-lighter: var(--xf-color-success-lighter);
+	--ifm-color-success-lightest: var(--xf-color-success-lightest);
+	--ifm-color-success-contrast-background: var(--xf-color-success-contrast-background);
+	--ifm-color-success-contrast-foreground: var(--xf-color-success-contrast-foreground);
+
+	--ifm-color-info: var(--xf-color-info);
+	--ifm-color-info-dark: var(--xf-color-info-dark);
+	--ifm-color-info-darker: var(--xf-color-info-darker);
+	--ifm-color-info-darkest: var(--xf-color-info-darkest);
+	--ifm-color-info-light: var(--xf-color-info-light);
+	--ifm-color-info-lighter: var(--xf-color-info-lighter);
+	--ifm-color-info-lightest: var(--xf-color-info-lightest);
+	--ifm-color-info-contrast-background: var(--xf-color-info-contrast-background);
+	--ifm-color-info-contrast-foreground: var(--xf-color-info-contrast-foreground);
+
+	--ifm-color-warning: var(--xf-color-warning);
+	--ifm-color-warning-dark: var(--xf-color-warning-dark);
+	--ifm-color-warning-darker: var(--xf-color-warning-darker);
+	--ifm-color-warning-darkest: var(--xf-color-warning-darkest);
+	--ifm-color-warning-light: var(--xf-color-warning-light);
+	--ifm-color-warning-lighter: var(--xf-color-warning-lighter);
+	--ifm-color-warning-lightest: var(--xf-color-warning-lightest);
+	--ifm-color-warning-contrast-background: var(--xf-color-warning-contrast-background);
+	--ifm-color-warning-contrast-foreground: var(--xf-color-warning-contrast-foreground);
+
+	--ifm-color-danger: var(--xf-color-danger);
+	--ifm-color-danger-dark: var(--xf-color-danger-dark);
+	--ifm-color-danger-darker: var(--xf-color-danger-darker);
+	--ifm-color-danger-darkest: var(--xf-color-danger-darkest);
+	--ifm-color-danger-light: var(--xf-color-danger-light);
+	--ifm-color-danger-lighter: var(--xf-color-danger-lighter);
+	--ifm-color-danger-lightest: var(--xf-color-danger-lightest);
+	--ifm-color-danger-contrast-background: var(--xf-color-danger-contrast-background);
+	--ifm-color-danger-contrast-foreground: var(--xf-color-danger-contrast-foreground);
+
+	--ifm-page-background-color: var(--xf-page-bg);
+	--ifm-content-highlight-background-color: var(--xf-content-highlight-bg);
+
+	--ifm-color-content: var(--xf-text);
+	--ifm-color-content-secondary: var(--xf-text-dimmed);
+	--ifm-color-content-inverse: var(--xf-content-bg);
+	--ifm-background-color: var(--xf-content-bg);
+	--ifm-link-hover-color: var(--xf-link-hover-color);
+
+	--ifm-line-height-base: var(--xf-line-height);
+	--ifm-global-radius: var(--xf-border-radius);
+	--ifm-global-spacing: var(--xf-global-spacing);
+
+	--ifm-navbar-background-color: var(--xf-chrome-bg);
+	--ifm-navbar-background-color-hover: var(--xf-chrome-bg-hover);
+	--ifm-navbar-link-color: var(--xf-chrome-text);
+	--ifm-navbar-link-hover-color: var(--xf-chrome-text-hover);
+
+	--ifm-sidebar-link-hover-color: var(--xf-sidebar-link-text-hover);
+	--ifm-sidebar-close-icon-filter: var(--xf-sidebar-close-icon-filter);
+	--ifm-sidebar-sublist-icon-filter: var(--xf-sidebar-sublist-icon-filter);
+	--ifm-sidebar-sublist-active-icon-filter: var(--xf-sidebar-sublist-active-icon-filter);
+
+	--docsearch-primary-color: yellow;
+	--docsearch-soft-primary-color: green;
+	--docsearch-subtle-color: var(--xf-border-color);
+	--docsearch-text-color: var(--ifm-color-content);
+	--docsearch-error-color: var(--ifm-color-danger);
+	--docsearch-success-color: var(--ifm-color-success);
+	--docsearch-secondary-text-color: var(--ifm-color-primary);
+	--docsearch-background-color: var(--ifm-background-color);
+	--docsearch-spacing: var(--ifm-global-spacing);
+	--docsearch-focus-color: orange;
+	--docsearch-highlight-color: var(--ifm-color-content);
+	--docsearch-muted-color: var(--ifm-color-primary);
+	--docsearch-muted-color-darker: red;
+	--docsearch-icon-color: var(--ifm-color-primary);
+	--docsearch-container-background: var(--xf-container-background);
+	--docsearch-logo-color: green;
+	--docsearch-border-radius: var(--ifm-border-radius);
+
+	--docsearch-search-button-background: var(--ifm-background-color);
+	--docsearch-search-button-text-color: var(--ifm-color-content);
+
+	--docsearch-modal-background: var(--ifm-page-background-color);
+
+	--docsearch-searchbox-background: var(--ifm-background-color);
+	--docsearch-searchbox-focus-background: var(--ifm-background-color);
+
+	--docsearch-hit-color: orange;
+	--docsearch-hit-highlight-color: var(--ifm-content-highlight-background-color);
+	--docsearch-hit-background: var(--ifm-background-color);
+
+	--docsearch-footer-background: var(--ifm-background-color);
 }
 
 html[data-theme="dark"] {
-  --ifm-color-primary: var(--xf-primary);
-  --ifm-link-color: var(--xf-primary);
-  --ifm-link-hover-color: var(--xf-primary-hover);
-  --ifm-menu-color-active: var(--xf-primary);
-  --ifm-background-color: #000;
-  --ifm-background-surface-color: var(--xf-dark-surface);
-  --ifm-navbar-background-color: var(--xf-dark-surface);
-  --ifm-footer-background-color: transparent;
-  --ifm-footer-color: rgb(153 196 230);
-  --ifm-footer-link-color: rgb(153 196 230);
-  --ifm-footer-link-hover-color: var(--xf-nav-link-hover);
-  --ifm-navbar-link-color: var(--xf-nav-link);
-  --ifm-navbar-link-hover-color: var(--xf-nav-link-hover);
-  --ifm-navbar-link-active-color: var(--xf-nav-link-active);
-  --docsearch-key-background: var(--xf-dark-surface);
-  --ifm-pre-background: inherit;
+	--xf-color-primary: hsl(204 60% 60%);
+	--xf-color-primary-dark: hsl(204 60% 54%);
+	--xf-color-primary-darker: hsl(204 60% 51%);
+	--xf-color-primary-darkest: hsl(204 60% 42%);
+	--xf-color-primary-light: hsl(204 60% 66%);
+	--xf-color-primary-lighter: hsl(204 59% 69%);
+	--xf-color-primary-lightest: hsl(203 59% 78%);
 
-  .clean-btn {
-    color: var(--ifm-navbar-link-color);
+	--xf-color-success: hsl(122 70% 56%);
+	--xf-color-success-dark: hsl(122 70% 50%);
+	--xf-color-success-darker: hsl(122 70% 46%);
+	--xf-color-success-darkest: hsl(122 70% 36%);
+	--xf-color-success-light: hsl(122 70% 62%);
+	--xf-color-success-lighter: hsl(122 70% 68%);
+	--xf-color-success-lightest: hsl(122 70% 76%);
+	--xf-color-success-contrast-background: hsl(122 40% 16%);
+	--xf-color-success-contrast-foreground: hsl(122 70% 86%);
 
-    &:hover {
-      color: var(--ifm-navbar-link-hover-color);
-    }
-  }
+	--xf-color-info: hsl(204 60% 60%);
+	--xf-color-info-dark: hsl(204 60% 54%);
+	--xf-color-info-darker: hsl(204 60% 51%);
+	--xf-color-info-darkest: hsl(204 60% 42%);
+	--xf-color-info-light: hsl(204 60% 66%);
+	--xf-color-info-lighter: hsl(204 60% 72%);
+	--xf-color-info-lightest: hsl(204 60% 80%);
+	--xf-color-info-contrast-background: hsl(205 45% 16%);
+	--xf-color-info-contrast-foreground: hsl(204 70% 88%);
 
-  code {
-    background-color: rgb(255 255 255 / 10%);
-  }
+	--xf-color-warning: hsl(34 85% 60%);
+	--xf-color-warning-dark: hsl(34 85% 54%);
+	--xf-color-warning-darker: hsl(34 85% 50%);
+	--xf-color-warning-darkest: hsl(34 85% 42%);
+	--xf-color-warning-light: hsl(34 85% 66%);
+	--xf-color-warning-lighter: hsl(34 85% 72%);
+	--xf-color-warning-lightest: hsl(34 85% 80%);
+	--xf-color-warning-contrast-background: hsl(34 55% 16%);
+	--xf-color-warning-contrast-foreground: hsl(34 85% 88%);
 
-  .navbar .DocSearch-Button {
-    background-color: var(--xf-dark-surface);
-    border: 1px solid var(--xf-border-subtle);
-    border-radius: 4px;
-    color: var(--xf-muted-text);
+	--xf-color-danger: hsl(358 85% 62%);
+	--xf-color-danger-dark: hsl(358 85% 56%);
+	--xf-color-danger-darker: hsl(358 85% 52%);
+	--xf-color-danger-darkest: hsl(358 85% 43%);
+	--xf-color-danger-light: hsl(358 85% 68%);
+	--xf-color-danger-lighter: hsl(358 85% 74%);
+	--xf-color-danger-lightest: hsl(358 85% 82%);
+	--xf-color-danger-contrast-background: hsl(358 55% 16%);
+	--xf-color-danger-contrast-foreground: hsl(358 85% 90%);
 
-    &:hover {
-      background-color: #2a3038;
-      border-color: var(--xf-border-hover);
-      box-shadow: none;
-    }
+	--xf-text: hsl(0 0 88%);
+	--xf-text-dimmed: hsl(0 0 63%);
+	--xf-link-hover-color: var(--xf-color-primary-lighter);
+	--xf-page-bg: hsl(0 0% 0%);
+	--xf-content-bg: hsl(0 0 8%);
+	--xf-content-highlight-bg: hsl(205 60% 10%);
+	--xf-border-color: hsl(0 0 18%);
+	--xf-container-background: hsl(0 0% 0% / 0.15);
 
-    .DocSearch-Search-Icon,
-    &-Placeholder {
-      color: var(--xf-muted-text);
-    }
+	--xf-chrome-bg: hsl(205 60% 10%);
+	--xf-chrome-bg-hover: hsl(204 60% 60% / 6%);
+	--xf-chrome-text: hsl(204 60% 60%);
+	--xf-chrome-text-hover: var(--xf-text);
 
-    &-Keys {
-      color: var(--ifm-navbar-link-color);
-    }
-  }
-
-  .DocSearch-Button-Key {
-    background: #1a5276;
-  }
-
-  .DocSearch-Modal {
-    --docsearch-modal-background: #161a1f;
-    --docsearch-searchbox-background: #22272e;
-    --docsearch-hit-background: #1e2228;
-    --docsearch-footer-background: #161a1f;
-    --docsearch-key-gradient: linear-gradient(-26.5deg, #22272e, #373e47);
-  }
+	--xf-sidebar-link-text-hover: var(--xf-content-bg);
+	--xf-sidebar-sublist-icon-filter: brightness(0) saturate(100%) invert(63%) sepia(11%) saturate(1782%) hue-rotate(161deg) brightness(95%) contrast(95%);
+	--xf-sidebar-sublist-active-icon-filter: var(--xf-sidebar-sublist-icon-filter);
 }
 
-.navbar__logo img {
-  height: 26px;
+/* adjust navbar */
+.navbar {
+	.navbar__logo {
+		height: unset;
+	}
+
+	.clean-btn {
+		color: var(--ifm-navbar-link-color);
+
+		&:not(.navbar-sidebar__close):hover {
+			color: var(--ifm-navbar-link-color);
+			background-color: var(--ifm-navbar-background-color-hover);
+		}
+	}
+
+	.navbar-sidebar {
+		--ifm-menu-color: var(--ifm-navbar-link-color);
+		--ifm-menu-color-background-active: var(--ifm-page-background-color);
+		--ifm-menu-link-sublist-icon-filter: var(--ifm-sidebar-sublist-icon-filter);
+		--ifm-navbar-link-hover-color: var(--ifm-sidebar-link-hover-color);
+
+		.navbar-sidebar__back {
+			color: var(--ifm-menu-color-active);
+		}
+
+		.navbar-sidebar__close {
+			filter: var(--ifm-sidebar-close-icon-filter);
+		}
+
+		.menu__list-item-collapsible {
+			&:not(.menu__list-item-collapsible--active) .menu__link {
+				color: var(--ifm-menu-color);
+			}
+
+			&.menu__list-item-collapsible--active {
+				background-color: var(--ifm-menu-color-background-active);
+				--ifm-menu-link-sublist-icon-filter: var(--ifm-sidebar-sublist-active-icon-filter);
+			}
+		}
+
+		.api-method>.menu__link::after,
+		.schema>.menu__link::after {
+			text-shadow: 0 0 1px var(--ifm-menu-color);
+		}
+	}
+}
+
+.menu__list-item-collapsible {
+	&:not(.menu__list-item-collapsible--active) .menu__link {
+		color: var(--ifm-menu-color);
+	}
 }
 
 /* hide breadcrumb-only wrapper categories from the sidebar menu */
 .sidebar-breadcrumb-only {
-  >div {
-    display: none;
-  }
+	>div {
+		display: none;
+	}
 
-  >.menu__list {
-    padding-left: 0;
-  }
+	>ul {
+		padding-left: 0;
+	}
 }
+
+/* fix sidebar padding */
 @media (width >=997px) {
-  .theme-doc-sidebar-container nav {
-    padding: .5rem;
-  }
+	.menu {
+		padding: .5rem;
+	}
 }
 
-.openapi-tabs__code-container:not(.openapi-tabs__code-container-inner),
-.openapi-explorer__request-form {
-  &,
-  &:hover {
-    box-shadow: none !important;
-  }
+/* remove doc card icons */
+.theme-doc-card-icon {
+	display: none;
 }
 
-/* via https://docusaurus-openapi.tryingpan.dev/customization/styling */
+/* add API labels to sidebar */
 .api-method>.menu__link,
 .schema>.menu__link {
-  align-items: center;
-  justify-content: start;
+	justify-content: space-between;
 }
 
-.api-method>.menu__link::before,
-.schema>.menu__link::before {
-  width: 55px;
-  height: 20px;
-  font-size: 12px;
-  line-height: 20px;
-  text-transform: uppercase;
-  font-weight: 600;
-  border-radius: 0.25rem;
-  border: 1px solid;
-  margin-right: var(--ifm-spacing-horizontal);
-  text-align: center;
-  flex-shrink: 0;
-  border-color: transparent;
-  color: white;
+.api-method>.menu__link::after,
+.schema>.menu__link::after {
+	flex-shrink: 0;
+	margin-left: var(--ifm-spacing-horizontal);
+	padding: 0.25rem;
+	font-size: 0.75rem;
+	font-weight: var(--ifm-font-weight-bold);
+	text-align: right;
+	text-transform: uppercase;
 }
 
-.get>.menu__link::before {
-  content: "get";
-  background-color: var(--ifm-color-primary);
+.get>.menu__link::after {
+	content: "get";
+	color: var(--ifm-color-info);
 }
 
-.post>.menu__link::before {
-  content: "post";
-  background-color: var(--openapi-code-green);
+.post>.menu__link::after {
+	content: "post";
+	color: var(--ifm-color-success);
 }
 
-.delete>.menu__link::before {
-  content: "del";
-  background-color: var(--openapi-code-red);
+.delete>.menu__link::after {
+	content: "del";
+	color: var(--ifm-color-danger);
 }
 
-.put>.menu__link::before {
-  content: "put";
-  background-color: var(--openapi-code-blue);
+.put>.menu__link::after {
+	content: "put";
+	color: var(--ifm-color-warning);
 }
 
-.patch>.menu__link::before {
-  content: "patch";
-  background-color: var(--openapi-code-orange);
+.patch>.menu__link::after {
+	content: "patch";
+	color: var(--ifm-color-warning);
 }
 
-.head>.menu__link::before {
-  content: "head";
-  background-color: var(--ifm-color-secondary-darkest);
+.head>.menu__link::after {
+	content: "head";
+	color: var(--ifm-color-secondary-contrast-foreground);
 }
 
-.event>.menu__link::before {
-  content: "event";
-  background-color: var(--ifm-color-secondary-darkest);
+.event>.menu__link::after {
+	content: "event";
+	color: var(--ifm-color-secondary-contrast-foreground);
 }
 
-.schema>.menu__link::before {
-  content: "schema";
-  background-color: var(--ifm-color-secondary-darkest);
+.schema>.menu__link::after {
+	content: "schema";
+	color: var(--ifm-color-secondary-contrast-foreground);
 }
