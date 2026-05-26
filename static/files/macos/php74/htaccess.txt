@@ -1,3 +1,0 @@
-<FilesMatch \.php$>
-    SetHandler "proxy:fcgi://localhost:9074"
-</FilesMatch>

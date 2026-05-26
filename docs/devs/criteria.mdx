@@ -263,7 +263,7 @@ In short, `helper_criteria` is an admin template that allows to use criteria typ
 ### Tabs
 Tabs are used to distinguish different criteria types within the template they are used:
 
-![Criteria tabs demonstration.](/img/docs/helper_criteria_tabs_example.png)
+![Criteria tabs demonstration.](/img/devs/helper-criteria-tabs-example.webp)
 
 When using tabs, the first one often contains fields/options that are not related to criteria. Then goes criteria tabs.
 
@@ -578,7 +578,7 @@ Next, create a test message somewhere on you forum and then like it five times w
 
 Then, go to "Tools > Cron entries" and run "Update user trophies" cron by hitting arrows-circle button.
 
-!["All for one" trophy awarded notification.](/img/docs/example-custom-criteria-awarded.png)
+!["All for one" trophy awarded notification.](/img/devs/example-custom-criteria-awarded.webp)
 
 Nice!
 
@@ -594,7 +594,7 @@ Next, create a test message somewhere on you forum and then like it five times w
 
 Now, you should see a notice:
 
-![Notice demonstration.](/img/docs/example-custom-criteria-notice.png)
+![Notice demonstration.](/img/devs/example-custom-criteria-notice.webp)
 
 You can [download](/files/example-sources/all-for-one-criterion-2.0.10.zip) addon sources built based on this example (2.0.10).
 
@@ -844,11 +844,11 @@ Time to test our custom criteria type!
 
 I have created three posts on my test forum. The first one was liked 500 times, the second one was edited 5 times. The third one is just an ordinary untouched post without likes.
 
-![Before deleting demonstration.](/img/docs/example-custom-criteria-type-messages-before.png)
+![Before deleting demonstration.](/img/devs/example-custom-criteria-type-messages-before.webp)
 
 Now, on our "Posts Remover" ACP page, let's select "Post has at least X likes" (with value of 250) and "Post was edited at least X times" (wih value of 5):
 
-![Selected criteria.](/img/docs/example-custom-criteria-type-remover.png)
+![Selected criteria.](/img/devs/example-custom-criteria-type-remover.webp)
 
 When I hit "Delete" button, I saw a flash message telling me that nothing was deleted. Why? Obviously, because there are no posts with at least 250 likes and at least 5 edits **in the same time**.
 
@@ -856,6 +856,6 @@ That is why we need to select the first criterion only, then hit "Delete". This 
 
 As a result, only one test post survived out test:
 
-![After deleting demonstration.](/img/docs/example-custom-criteria-type-messages-after.png)
+![After deleting demonstration.](/img/devs/example-custom-criteria-type-messages-after.webp)
 
 You can [download](/files/example-sources/posts-remover-2.0.10.zip) addon sources built based on this example (2.0.10). You will find "Posts Remover" ACP page under "Tools" section.

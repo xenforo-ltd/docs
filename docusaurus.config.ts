@@ -84,7 +84,8 @@ const config: Config = {
   themes: ["docusaurus-theme-openapi-docs"],
 
   themeConfig: {
-    image: "img/xenforo-social-card.jpg",
+    image: "img/xenforo-social-card.png",
+
     colorMode: {
       respectPrefersColorScheme: true,
     },
