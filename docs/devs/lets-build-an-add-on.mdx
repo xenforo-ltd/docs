@@ -125,17 +125,17 @@ use XF\Db\Schema\Create;
 
 class Setup extends \XF\AddOn\AbstractSetup
 {
-	use StepRunnerInstallTrait;
-	use StepRunnerUpgradeTrait;
-	use StepRunnerUninstallTrait;
+    use StepRunnerInstallTrait;
+    use StepRunnerUpgradeTrait;
+    use StepRunnerUninstallTrait;
 
-	public function installStep1()
-	{
-		$this->schemaManager()->alterTable('xf_forum', function(Alter $table)
-		{
-			$table->addColumn('demo_portal_auto_feature', 'tinyint')->setDefault(0);
-		});
-	}
+    public function installStep1()
+    {
+        $this->schemaManager()->alterTable('xf_forum', function(Alter $table)
+        {
+            $table->addColumn('demo_portal_auto_feature', 'tinyint')->setDefault(0);
+        });
+    }
 }
 
 ```
@@ -217,10 +217,10 @@ use XF\Mvc\Entity\Entity;
 
 class Listener
 {
-	public static function forumEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc\Entity\Structure &$structure)
-	{
+    public static function forumEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc\Entity\Structure &$structure)
+    {
 
-	}
+    }
 }
 ```
 
@@ -260,7 +260,7 @@ Head back to "Add code event listener" and listen to `entity_structure` again. T
 ```php title="src/addons/Demo/Portal/Listener.php"
 public static function threadEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc\Entity\Structure &$structure)
 {
-	$structure->columns['demo_portal_featured'] = ['type' => Entity::BOOL, 'default' => false];
+    $structure->columns['demo_portal_featured'] = ['type' => Entity::BOOL, 'default' => false];
 }
 ```
 
@@ -268,10 +268,10 @@ This code is almost identical to what we added to the forum entity structure; re
 
 ```php title="src/addons/Demo/Portal/Listener.php"
 $structure->relations['FeaturedThread'] = [
-	'entity' => 'Demo\Portal:FeaturedThread',
-	'type' => Entity::TO_ONE,
-	'conditions' => 'thread_id',
-	'primary' => true
+    'entity' => 'Demo\Portal:FeaturedThread',
+    'type' => Entity::TO_ONE,
+    'conditions' => 'thread_id',
+    'primary' => true
 ];
 ```
 
@@ -298,24 +298,24 @@ We need to use this to define the entity structure which represents our new `xf_
 ```php title="src/addons/Demo/Portal/Entity/FeaturedThread.php"
 public static function getStructure(Structure $structure)
 {
-	$structure->table = 'xf_demo_portal_featured_thread';
-	$structure->shortName = 'Demo\Portal:FeaturedThread';
-	$structure->primaryKey = 'thread_id';
-	$structure->columns = [
-		'thread_id' => ['type' => self::UINT, 'required' => true],
-		'featured_date' => ['type' => self::UINT, 'default' => time()]
-	];
-	$structure->getters = [];
-	$structure->relations = [
-		'Thread' => [
-			'entity' => 'XF:Thread',
-			'type' => self::TO_ONE,
-			'conditions' => 'thread_id',
-			'primary' => true
-		],
-	];
+    $structure->table = 'xf_demo_portal_featured_thread';
+    $structure->shortName = 'Demo\Portal:FeaturedThread';
+    $structure->primaryKey = 'thread_id';
+    $structure->columns = [
+        'thread_id' => ['type' => self::UINT, 'required' => true],
+        'featured_date' => ['type' => self::UINT, 'default' => time()]
+    ];
+    $structure->getters = [];
+    $structure->relations = [
+        'Thread' => [
+            'entity' => 'XF:Thread',
+            'type' => self::TO_ONE,
+            'conditions' => 'thread_id',
+            'primary' => true
+        ],
+    ];
 
-	return $structure;
+    return $structure;
 }
 ```
 
@@ -342,8 +342,8 @@ And in the replace field:
 
 ```html title="Replace"
 <xf:option name="demo_portal_auto_feature" selected="$forum.demo_portal_auto_feature"
-	label="Automatically feature threads in this forum"
-	hint="If selected, any new threads posted in this forum will be automatically featured." />
+    label="Automatically feature threads in this forum"
+    hint="If selected, any new threads posted in this forum will be automatically featured." />
 $0
 ```
 
@@ -385,7 +385,7 @@ Click save to save the Class extension. Now we can add some code. The particular
 ```php title="src/addons/Demo/Portal/XF/Admin/Controller/Forum.php"
 protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Entity\AbstractNode $data)
 {
-	parent::saveTypeData($form, $node, $data);
+    parent::saveTypeData($form, $node, $data);
 }
 ```
 
@@ -399,12 +399,12 @@ So, right now, we've extended that method, and our extension should be called, b
 ```php title="src/addons/Demo/Portal/XF/Admin/Controller/Forum.php"
 protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Entity\AbstractNode $data)
 {
-	parent::saveTypeData($form, $node, $data);
+    parent::saveTypeData($form, $node, $data);
 
-	$form->setup(function() use ($data)
-	{
-		$data->demo_portal_auto_feature = $this->filter('demo_portal_auto_feature', 'bool');
-	});
+    $form->setup(function() use ($data)
+    {
+        $data->demo_portal_auto_feature = $this->filter('demo_portal_auto_feature', 'bool');
+    });
 }
 ```
 
@@ -460,9 +460,9 @@ Going back to our newly extended forum controller, we will now extend the method
 protected function setupThreadCreate(\XF\Entity\Forum $forum)
 {
     /** @var \Demo\Portal\XF\Service\Thread\Creator $creator */
-	$creator = parent::setupThreadCreate($forum);
+    $creator = parent::setupThreadCreate($forum);
 
-	return $creator;
+    return $creator;
 }
 ```
 
@@ -473,7 +473,7 @@ In between the `$creator` line and the `return` line, add:
 ```php title="src/addons/Demo/Portal/XF/Pub/Controller/Forum.php"
 if ($forum->demo_portal_auto_feature)
 {
-	$creator->setFeatureThread(true);
+    $creator->setFeatureThread(true);
 }
 ```
 
@@ -482,9 +482,9 @@ We can now add the `_save()` method to the extended creator class:
 ```php title="src/addons/Demo/Portal/XF/Service/Thread/Creator.php"
 protected function _save()
 {
-	$thread = parent::_save();
+    $thread = parent::_save();
 
-	return $thread;
+    return $thread;
 }
 ```
 
@@ -530,8 +530,8 @@ We want our portal to be displayed to people when they visit the `index.php?port
 ```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 public function actionIndex()
 {
-	$viewParams = [];
-	return $this->view('Demo\Portal:View', 'demo_portal_view', $viewParams);
+    $viewParams = [];
+    return $this->view('Demo\Portal:View', 'demo_portal_view', $viewParams);
 }
 ```
 
@@ -557,27 +557,27 @@ use XF\Mvc\Entity\Repository;
 
 class FeaturedThread extends Repository
 {
-	/**
-	 * @return Finder
-	 */
-	public function findFeaturedThreadsForPortalView()
-	{
-		$visitor = \XF::visitor();
+    /**
+     * @return Finder
+     */
+    public function findFeaturedThreadsForPortalView()
+    {
+        $visitor = \XF::visitor();
 
-		$finder = $this->finder('Demo\Portal:FeaturedThread');
-		$finder
-			->setDefaultOrder('featured_date', 'DESC')
-			->with('Thread', true)
-			->with('Thread.User')
-			->with('Thread.Forum', true)
-			->with('Thread.Forum.Node.Permissions|' . $visitor->permission_combination_id)
-			->with('Thread.FirstPost', true)
-			->with('Thread.FirstPost.User')
-			->where('Thread.discussion_type', '<>', 'redirect')
-			->where('Thread.discussion_state', 'visible');
+        $finder = $this->finder('Demo\Portal:FeaturedThread');
+        $finder
+            ->setDefaultOrder('featured_date', 'DESC')
+            ->with('Thread', true)
+            ->with('Thread.User')
+            ->with('Thread.Forum', true)
+            ->with('Thread.Forum.Node.Permissions|' . $visitor->permission_combination_id)
+            ->with('Thread.FirstPost', true)
+            ->with('Thread.FirstPost.User')
+            ->where('Thread.discussion_type', '<>', 'redirect')
+            ->where('Thread.discussion_state', 'visible');
 
-		return $finder;
-	}
+        return $finder;
+    }
 }
 ```
 
@@ -596,7 +596,7 @@ $repo = $this->repository('Demo\Portal:FeaturedThread');
 $finder = $repo->findFeaturedThreadsForPortalView();
 
 $viewParams = [
-	'featuredThreads' => $finder->fetch()
+    'featuredThreads' => $finder->fetch()
 ];
 ```
 
@@ -604,72 +604,72 @@ At this stage, we're not going to worry about modifying the base finder we've re
 
 ```html title="src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html"
 <xf:if is="$featuredThreads is not empty">
-	<xf:foreach loop="$featuredThreads" value="$featuredThread">
-		<xf:macro name="thread_block"
-			arg-thread="{$featuredThread.Thread}"
-			arg-post="{$featuredThread.Thread.FirstPost}"
-			arg-featuredThread="{$featuredThread}"
-		/>
-	</xf:foreach>
+    <xf:foreach loop="$featuredThreads" value="$featuredThread">
+        <xf:macro name="thread_block"
+            arg-thread="{$featuredThread.Thread}"
+            arg-post="{$featuredThread.Thread.FirstPost}"
+            arg-featuredThread="{$featuredThread}"
+        />
+    </xf:foreach>
 <xf:else />
-	<div class="blockMessage">No threads have been featured yet.</div>
+    <div class="blockMessage">No threads have been featured yet.</div>
 </xf:if>
 
 <xf:macro name="thread_block" arg-thread="!" arg-post="!" arg-featuredThread="!">
-	<xf:css src="message.less" />
+    <xf:css src="message.less" />
 
-	<div class="block">
-		<div class="block-container" data-xf-init="lightbox">
-			<h4 class="block-header"><a href="{{ link('threads', $thread) }}">{$thread.title}</a></h4>
-			<div class="block-body">
-				<xf:macro name="message"
-					arg-post="{$post}"
-					arg-thread="{$thread}"
-					arg-featuredThread="{$featuredThread}"
-				/>
-			</div>
-			<div class="block-footer">
-				<a href="{{ link('threads', $thread) }}">Continue reading...</a>
-			</div>
-		</div>
-	</div>
+    <div class="block">
+        <div class="block-container" data-xf-init="lightbox">
+            <h4 class="block-header"><a href="{{ link('threads', $thread) }}">{$thread.title}</a></h4>
+            <div class="block-body">
+                <xf:macro name="message"
+                    arg-post="{$post}"
+                    arg-thread="{$thread}"
+                    arg-featuredThread="{$featuredThread}"
+                />
+            </div>
+            <div class="block-footer">
+                <a href="{{ link('threads', $thread) }}">Continue reading...</a>
+            </div>
+        </div>
+    </div>
 </xf:macro>
 
 <xf:macro name="message" arg-post="!" arg-thread="!" arg-featuredThread="!">
-	<div class="message message--post message--simple">
-		<div class="message-inner">
-			<div class="message-cell message-cell--main">
-				<div class="message-content js-messageContent">
-					<div class="message-attribution">
-						<div class="contentRow contentRow--alignMiddle">
-							<div class="contentRow-figure">
-								<xf:avatar user="{$post.User}" size="xxs" defaultname="{$post.username}" href="" />
-							</div>
-							<div class="contentRow-main contentRow-main--close">
-								<ul class="listInline listInline--bullet u-muted">
-									<li><xf:username user="{$thread.User}" /></li>
-									<li><xf:date time="{$featuredThread.featured_date}" /></li>
-									<li><a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a></li>
-									<li>{{ phrase('replies:') }} {$thread.reply_count|number}</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="message-userContent lbContainer js-lbContainer"
-						 data-lb-id="post-{$post.post_id}"
-						 data-lb-caption-desc="{{ $post.User ? $post.User.username : $post.username }} &middot; {{ date_time($post.post_date) }}"
-					>
-						<blockquote class="message-body">
-							{{ bb_code($post.message, 'post', $post.User, {
-								'attachments': $post.attach_count ? $post.Attachments : [],
-								'viewAttachments': $thread.canViewAttachments()
-							}) }}
-						</blockquote>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="message message--post message--simple">
+        <div class="message-inner">
+            <div class="message-cell message-cell--main">
+                <div class="message-content js-messageContent">
+                    <div class="message-attribution">
+                        <div class="contentRow contentRow--alignMiddle">
+                            <div class="contentRow-figure">
+                                <xf:avatar user="{$post.User}" size="xxs" defaultname="{$post.username}" href="" />
+                            </div>
+                            <div class="contentRow-main contentRow-main--close">
+                                <ul class="listInline listInline--bullet u-muted">
+                                    <li><xf:username user="{$thread.User}" /></li>
+                                    <li><xf:date time="{$featuredThread.featured_date}" /></li>
+                                    <li><a href="{{ link('forums', $thread.Forum) }}">{$thread.Forum.title}</a></li>
+                                    <li>{{ phrase('replies:') }} {$thread.reply_count|number}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-userContent lbContainer js-lbContainer"
+                         data-lb-id="post-{$post.post_id}"
+                         data-lb-caption-desc="{{ $post.User ? $post.User.username : $post.username }} &middot; {{ date_time($post.post_date) }}"
+                    >
+                        <blockquote class="message-body">
+                            {{ bb_code($post.message, 'post', $post.User, {
+                                'attachments': $post.attach_count ? $post.Attachments : [],
+                                'viewAttachments': $thread.canViewAttachments()
+                            }) }}
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </xf:macro>
 ```
 
@@ -691,7 +691,7 @@ The code for this new method should be fairly simple:
 ```php title="src/addons/Demo/Portal/Listener.php"
 public static function homePageUrl(&$homePageUrl, \XF\Mvc\Router $router)
 {
-	$homePageUrl = $router->buildLink('canonical:portal');
+    $homePageUrl = $router->buildLink('canonical:portal');
 }
 ```
 
@@ -716,14 +716,14 @@ In the "Replace" field add:
 
 ```html title="Replace"
 <xf:if is="($thread.isInsert() AND !$thread.Forum.demo_portal_auto_feature AND $thread.canFeatureUnfeature())
-	OR ($thread.isUpdate() && $thread.canFeatureUnfeature())"
+    OR ($thread.isUpdate() && $thread.canFeatureUnfeature())"
 >
-	<xf:option label="{{ phrase('demo_portal_featured') }}" name="featured" value="1" selected="{$thread.demo_portal_featured}">
-		<xf:hint>{{ phrase('demo_portal_featured_hint') }}</xf:hint>
-		<xf:afterhtml>
-			<xf:hiddenval name="_xfSet[featured]" value="1" />
-		</xf:afterhtml>
-	</xf:option>
+    <xf:option label="{{ phrase('demo_portal_featured') }}" name="featured" value="1" selected="{$thread.demo_portal_featured}">
+        <xf:hint>{{ phrase('demo_portal_featured_hint') }}</xf:hint>
+        <xf:afterhtml>
+            <xf:hiddenval name="_xfSet[featured]" value="1" />
+        </xf:afterhtml>
+    </xf:option>
 </xf:if>
 $0
 ```
@@ -747,10 +747,10 @@ namespace Demo\Portal\XF\Entity;
 
 class Thread extends XFCP_Thread
 {
-	public function canFeatureUnfeature()
-	{
-		return true;
-	}
+    public function canFeatureUnfeature()
+    {
+        return true;
+    }
 }
 ```
 
@@ -769,42 +769,42 @@ namespace Demo\Portal\XF\Service\Thread;
 
 class Editor extends XFCP_Editor
 {
-	protected $featureThread;
+    protected $featureThread;
 
-	public function setFeatureThread($featureThread)
-	{
-		$this->featureThread = $featureThread;
-	}
+    public function setFeatureThread($featureThread)
+    {
+        $this->featureThread = $featureThread;
+    }
 
-	protected function _save()
-	{
-		$thread = parent::_save();
+    protected function _save()
+    {
+        $thread = parent::_save();
 
-		if ($this->featureThread !== null && $thread->discussion_state == 'visible')
-		{
-			/** @var \Demo\Portal\Entity\FeaturedThread $featuredThread */
-			$featuredThread = $thread->getRelationOrDefault('FeaturedThread', false);
+        if ($this->featureThread !== null && $thread->discussion_state == 'visible')
+        {
+            /** @var \Demo\Portal\Entity\FeaturedThread $featuredThread */
+            $featuredThread = $thread->getRelationOrDefault('FeaturedThread', false);
 
-			if ($this->featureThread)
-			{
-				if (!$featuredThread->exists())
-				{
-					$featuredThread->save();
-					$thread->fastUpdate('demo_portal_featured', true);
-				}
-			}
-			else
-			{
-				if ($featuredThread->exists())
-				{
-					$featuredThread->delete();
-					$thread->fastUpdate('demo_portal_featured', false);
-				}
-			}
-		}
+            if ($this->featureThread)
+            {
+                if (!$featuredThread->exists())
+                {
+                    $featuredThread->save();
+                    $thread->fastUpdate('demo_portal_featured', true);
+                }
+            }
+            else
+            {
+                if ($featuredThread->exists())
+                {
+                    $featuredThread->delete();
+                    $thread->fastUpdate('demo_portal_featured', false);
+                }
+            }
+        }
 
-		return $thread;
-	}
+        return $thread;
+    }
 }
 ```
 
@@ -821,19 +821,19 @@ namespace Demo\Portal\XF\Pub\Controller;
 
 class Thread extends XFCP_Thread
 {
-	public function setupThreadEdit(\XF\Entity\Thread $thread)
-	{
-		/** @var \Demo\Portal\XF\Service\Thread\Editor $editor */
-		$editor = parent::setupThreadEdit($thread);
+    public function setupThreadEdit(\XF\Entity\Thread $thread)
+    {
+        /** @var \Demo\Portal\XF\Service\Thread\Editor $editor */
+        $editor = parent::setupThreadEdit($thread);
 
-		$canFeatureUnfeature = $thread->canFeatureUnfeature();
-		if ($canFeatureUnfeature)
-		{
-			$editor->setFeatureThread($this->filter('featured', 'bool'));
-		}
+        $canFeatureUnfeature = $thread->canFeatureUnfeature();
+        if ($canFeatureUnfeature)
+        {
+            $editor->setFeatureThread($this->filter('featured', 'bool'));
+        }
 
-		return $editor;
-	}
+        return $editor;
+    }
 }
 ```
 
@@ -846,18 +846,18 @@ We just need to add the following code below the `setupThreadEdit()` method we a
 ```php title="src/addons/Demo/Portal/XF/Pub/Controller/Thread.php"
 public function finalizeThreadReply(\XF\Service\Thread\Replier $replier)
 {
-	parent::finalizeThreadReply($replier);
+    parent::finalizeThreadReply($replier);
 
-	$setOptions = $this->filter('_xfSet', 'array-bool');
-	if ($setOptions)
-	{
-		$thread = $replier->getThread();
+    $setOptions = $this->filter('_xfSet', 'array-bool');
+    if ($setOptions)
+    {
+        $thread = $replier->getThread();
 
-		if ($thread->canFeatureUnfeature() && isset($setOptions['featured']))
-		{
-			$replier->setFeatureThread($this->filter('featured', 'bool'));
-		}
-	}
+        if ($thread->canFeatureUnfeature() && isset($setOptions['featured']))
+        {
+            $replier->setFeatureThread($this->filter('featured', 'bool'));
+        }
+    }
 }
 ```
 
@@ -868,7 +868,7 @@ For the final step in manually featuring/unfeaturing a thread, we need to go bac
 ```php title="src/addons/Demo/Portal/XF/Pub/Controller/Thread.php"
 if ($forum->demo_portal_auto_feature)
 {
-	$creator->setFeatureThread(true);
+    $creator->setFeatureThread(true);
 }
 ```
 
@@ -877,20 +877,20 @@ With this:
 ```php title="src/addons/Demo/Portal/XF/Pub/Controller/Thread.php"
 if ($forum->demo_portal_auto_feature)
 {
-	$creator->setFeatureThread(true);
+    $creator->setFeatureThread(true);
 }
 else
 {
-	$setOptions = $this->filter('_xfSet', 'array-bool');
-	if ($setOptions)
-	{
-		$thread = $creator->getThread();
+    $setOptions = $this->filter('_xfSet', 'array-bool');
+    if ($setOptions)
+    {
+        $thread = $creator->getThread();
 
-		if ($thread->canFeatureUnfeature() && isset($setOptions['featured']))
-		{
-			$creator->setFeatureThread($this->filter('featured', 'bool'));
-		}
-	}
+        if ($thread->canFeatureUnfeature() && isset($setOptions['featured']))
+        {
+            $creator->setFeatureThread($this->filter('featured', 'bool'));
+        }
+    }
 }
 ```
 
@@ -922,14 +922,14 @@ To this:
 
 ```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 $finder = $repo->findFeaturedThreadsForPortalView()
-	->limitByPage($page, $perPage);
+    ->limitByPage($page, $perPage);
 ```
 
 This changes our query so that it will limit by the page / per page values we defined above. This will automatically calculate the correct limit (`$perPage`) and offset (`($page - 1) * $perPage`) for the current page. Next, we need to pass a few more params into our view params so change:
 
 ```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 $viewParams = [
-	'featuredThreads' => $finder->fetch()
+    'featuredThreads' => $finder->fetch()
 ];
 ```
 
@@ -937,10 +937,10 @@ To:
 
 ```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 $viewParams = [
-	'featuredThreads' => $finder->fetch(),
-	'total' => $finder->total(),
-	'page' => $page,
-	'perPage' => $perPage
+    'featuredThreads' => $finder->fetch(),
+    'total' => $finder->total(),
+    'page' => $page,
+    'perPage' => $perPage
 ];
 ```
 
@@ -971,25 +971,25 @@ For the sake of simplicity, we'll just duplicate the widgets that are currently 
 ```php title="src/addons/Demo/Portal/Setup.php"
 public function installStep4()
 {
-	$this->createWidget('demo_portal_view_members_online', 'members_online', [
-		'positions' => ['demo_portal_view_sidebar' => 10]
-	]);
+    $this->createWidget('demo_portal_view_members_online', 'members_online', [
+        'positions' => ['demo_portal_view_sidebar' => 10]
+    ]);
 
-	$this->createWidget('demo_portal_view_new_posts', 'new_posts', [
-		'positions' => ['demo_portal_view_sidebar' => 20]
-	]);
+    $this->createWidget('demo_portal_view_new_posts', 'new_posts', [
+        'positions' => ['demo_portal_view_sidebar' => 20]
+    ]);
 
-	$this->createWidget('demo_portal_view_new_profile_posts', 'new_profile_posts', [
-		'positions' => ['demo_portal_view_sidebar' => 30]
-	]);
+    $this->createWidget('demo_portal_view_new_profile_posts', 'new_profile_posts', [
+        'positions' => ['demo_portal_view_sidebar' => 30]
+    ]);
 
-	$this->createWidget('demo_portal_view_forum_statistics', 'forum_statistics', [
-		'positions' => ['demo_portal_view_sidebar' => 40]
-	]);
+    $this->createWidget('demo_portal_view_forum_statistics', 'forum_statistics', [
+        'positions' => ['demo_portal_view_sidebar' => 40]
+    ]);
 
-	$this->createWidget('demo_portal_view_share_page', 'share_page', [
-		'positions' => ['demo_portal_view_sidebar' => 50]
-	]);
+    $this->createWidget('demo_portal_view_share_page', 'share_page', [
+        'positions' => ['demo_portal_view_sidebar' => 50]
+    ]);
 }
 ```
 
@@ -1020,11 +1020,11 @@ And below that, add:
 
 ```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
 $featuredThreads = $finder->fetch()
-	->filter(function(\Demo\Portal\Entity\FeaturedThread $featuredThread)
-	{
-		return ($featuredThread->Thread->canView());
-	})
-	->sliceToPage($page, $perPage);
+    ->filter(function(\Demo\Portal\Entity\FeaturedThread $featuredThread)
+    {
+        return ($featuredThread->Thread->canView());
+    })
+    ->sliceToPage($page, $perPage);
 ```
 
 Finally change:
@@ -1113,21 +1113,21 @@ use XF\Mvc\Entity\Finder;
 
 class FeaturedThread extends Finder
 {
-	public function applyFeaturedOrder($direction = 'ASC')
-	{
-		$options = \XF::options();
+    public function applyFeaturedOrder($direction = 'ASC')
+    {
+        $options = \XF::options();
 
-		if ($options->demoPortalDefaultSort == 'featured_date')
-		{
-			$this->setDefaultOrder('featured_date', $direction);
-		}
-		else
-		{
-			$this->setDefaultOrder('Thread.post_date', $direction);
-		}
+        if ($options->demoPortalDefaultSort == 'featured_date')
+        {
+            $this->setDefaultOrder('featured_date', $direction);
+        }
+        else
+        {
+            $this->setDefaultOrder('Thread.post_date', $direction);
+        }
 
-		return $this;
-	}
+        return $this;
+    }
 }
 ```
 
@@ -1157,11 +1157,11 @@ To:
 
 ```html title="src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html"
 <li>
-	<xf:if is="$xf.options.demoPortalDefaultSort == 'featured_date'">
-		<xf:date time="{$featuredThread.featured_date}" />
-	<xf:else />
-		<xf:date time="{$thread.post_date}" />
-	</xf:if>
+    <xf:if is="$xf.options.demoPortalDefaultSort == 'featured_date'">
+        <xf:date time="{$featuredThread.featured_date}" />
+    <xf:else />
+        <xf:date time="{$thread.post_date}" />
+    </xf:if>
 </li>
 ```
 
@@ -1184,16 +1184,16 @@ The contents of this function are fairly simple, let's look at that:
 ```php title="src/addons/Demo/Portal/Listener.php"
 if ($entity->isUpdate())
 {
-	$visibilityChange = $entity->isStateChanged('discussion_state', 'visible');
-	if ($visibilityChange == 'leave')
-	{
-		$featuredThread = $entity->FeaturedThread;
-		if ($featuredThread)
-		{
-			$featuredThread->delete();
-			$entity->fastUpdate('demo_portal_featured', false);
-		}
-	}
+    $visibilityChange = $entity->isStateChanged('discussion_state', 'visible');
+    if ($visibilityChange == 'leave')
+    {
+        $featuredThread = $entity->FeaturedThread;
+        if ($featuredThread)
+        {
+            $featuredThread->delete();
+            $entity->fastUpdate('demo_portal_featured', false);
+        }
+    }
 }
 ```
 
@@ -1208,11 +1208,11 @@ For this, we need another listener, this time for the `entity_post_delete` event
 ```php title="src/addons/Demo/Portal/Listener.php"
 public static function threadEntityPostDelete(\XF\Mvc\Entity\Entity $entity)
 {
-	$featuredThread = $entity->FeaturedThread;
-	if ($featuredThread)
-	{
-		$featuredThread->delete();
-	}
+    $featuredThread = $entity->FeaturedThread;
+    if ($featuredThread)
+    {
+        $featuredThread->delete();
+    }
 }
 ```
 
@@ -1226,23 +1226,23 @@ We're going to create 3 new methods which correspond to our first 3 install step
 ```php title="src/addons/Demo/Portal/Setup.php"
 public function uninstallStep1()
 {
-	$this->schemaManager()->alterTable('xf_forum', function(Alter $table)
-	{
-		$table->dropColumns('demo_portal_auto_feature');
-	});
+    $this->schemaManager()->alterTable('xf_forum', function(Alter $table)
+    {
+        $table->dropColumns('demo_portal_auto_feature');
+    });
 }
 
 public function uninstallStep2()
 {
-	$this->schemaManager()->alterTable('xf_thread', function(Alter $table)
-	{
-		$table->dropColumns('demo_portal_featured');
-	});
+    $this->schemaManager()->alterTable('xf_thread', function(Alter $table)
+    {
+        $table->dropColumns('demo_portal_featured');
+    });
 }
 
 public function uninstallStep3()
 {
-	$this->schemaManager()->dropTable('xf_demo_portal_featured_thread');
+    $this->schemaManager()->dropTable('xf_demo_portal_featured_thread');
 }
 ```
 

@@ -1,0 +1,4 @@
+* text=auto
+*.md linguist-detectable
+.github/*.md -linguist-detectable
+README.md -linguist-detectable

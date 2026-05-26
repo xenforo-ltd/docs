@@ -85,7 +85,7 @@ Disables all code event listeners in XenForo. This will largely turn off all add
 Disables the ability of template modifications to perform their operation using a PHP callback. Similarly to `enableListeners`, this switch can be used to regain access to a system rendered inoperable by a broken callback.
 
 #### enableGzip
-By default, XenForo will compress the final HTML and CSS output of pages it generates using the *gzip* compression system, which is then invisibly decompressed by your visitors' browsers when the data is received. This can significantly speed up page loading times, but if you want to disable this feature and have the HTML and CSS sent as uncompressed plain text, disable this setting. 
+By default, XenForo will compress the final HTML and CSS output of pages it generates using the *gzip* compression system, which is then invisibly decompressed by your visitors' browsers when the data is received. This can significantly speed up page loading times, but if you want to disable this feature and have the HTML and CSS sent as uncompressed plain text, disable this setting.
 
 #### enableContentLength
 Normally, XenForo will send a Content-Length HTTP header. In some server configurations, the content may be modified between XenForo sending it and it being received by the end user. In this situation, the Content-Length header may not be updated correctly so it should be disabled.
@@ -136,10 +136,10 @@ Using the default value of `/`, cookies set by XenForo will be available in all 
 - `'/'` XenForo cookies are available to all areas of your website.
 - `'/forum/'` XenForo cookies can only be read by pages located within the `forum` directory, which resides at *'http://example.com/forum'*, where *example.com* is your site address.
 - `'/path/to/other/folder/'` XenForo cookies can only be read by pages located in the *path/to/other/folder* directory, located at *http://example.com/path/to/other/folder*.
-	- Cookies can **not** be read by pages located in folders above this location, ie:
-	- `http://example.com/path`
-	- `http://example.com/path/to`
-	- `http://example.com/path/to/other`
+    - Cookies can **not** be read by pages located in folders above this location, ie:
+    - `http://example.com/path`
+    - `http://example.com/path/to`
+    - `http://example.com/path/to/other`
 
 :::warning
 If you specify a cookie path that does not allow cookies to be set within the XenForo root directory, XenForo will be unable to read the cookies it sets, and critical operations like logging in will fail.
@@ -150,7 +150,7 @@ If you specify a cookie path that does not allow cookies to be set within the Xe
 
 Similiar to the cookie path setting, this allows you to specify a domain upon which your cookies can be read. It is unusual to need to set this value to anything other than the default, but as with the cookie path, you should be very careful if you change it, because entering a value that prevents XenForo from reading its own cookies will break important functionality, like the ability to stay logged in.
 
-The reason for setting this value would be to allow cookies to be shared on multiple subdomains, for example a setting of `.example.com` would allow cookies to be accessed on all subdomains of *example.com*, such as `www.example.com` and `other.example.com`. In most instances, this setting can be left with its default setting. 
+The reason for setting this value would be to allow cookies to be shared on multiple subdomains, for example a setting of `.example.com` would allow cookies to be accessed on all subdomains of *example.com*, such as `www.example.com` and `other.example.com`. In most instances, this setting can be left with its default setting.
 
 #### Example values
 - `''` allows cookies to be read **only** on the domain on which they were set
@@ -188,7 +188,7 @@ Variables whose name ends with **Url** refer to a the path relative to your XenF
 You may use a full URL, including the domain name, such as:
 
 - `http://example.com/xenforo/data`
-- `//example.com/xenforo/data` 
+- `//example.com/xenforo/data`
 
 :::warning
 Directories specified as paths **must** be writeable by the web server (chmod 777) or data will not be able to be stored in these locations by XenForo.
@@ -311,7 +311,7 @@ The `enabled` setting switches designer mode on and off, and the `basePath` valu
 A more extensive discussion of [Designer mode](https://xenforo.com/xf2-docs/dev/designing-styles/) can be found in the [XenForo 2 Developer Documentation](https://xenforo.com/xf2-docs/dev/designing-styles/)
 
 ### Development mode
-Developer mode is another advanced feature, this time for XenForo add-on developers. 
+Developer mode is another advanced feature, this time for XenForo add-on developers.
 
 - `$config['development']['enabled']` = `false`;
 - `$config['development']['defaultAddOn']` = `''`;
@@ -332,6 +332,6 @@ Controls whether the system should run using the standard *minified* and *rolled
 
 Setting the value to `true` will cause XenForo to request the full javascript files. The resulting functionality will be the same, but the full, unminified files are easier to step through when debugging any problems you may have when developing your add-ons.
 
-Using the full javascript files will cause your site to generate more HTTP requests and to consume more bandwidth, which will result in a slower experience for your visiting users, so we don't recommend using `fullJs` on live production sites. 
+Using the full javascript files will cause your site to generate more HTTP requests and to consume more bandwidth, which will result in a slower experience for your visiting users, so we don't recommend using `fullJs` on live production sites.
 
 A full explanation of [Developer mode](https://xenforo.com/xf2-docs/dev/development-tools/) is available in the [XenForo 2 Developer Documentation](https://xenforo.com/xf2-docs/dev/development-tools/).

@@ -68,18 +68,18 @@ To enable friendly URLs in Nginx, you must put the following in your server conf
 
 ```
 location /xf/ {
-	try_files $uri $uri/ /xf/index.php?$uri&$args;
-	index index.php index.html;
+    try_files $uri $uri/ /xf/index.php?$uri&$args;
+    index index.php index.html;
 }
 
 location ^~ /xf/install/data/ {
-	internal;
+    internal;
 }
 location ^~ /xf/install/templates/ {
-	internal;
+    internal;
 }
 location ^~ /xf/internal_data/ {
-	internal;
+    internal;
 }
 location ^~ /xf/library/ { #legacy
     internal;
@@ -89,10 +89,10 @@ location ^~ /xf/src/ {
 }
 
 location ~ \.php$ {
-	try_files $uri =404;
-	fastcgi_pass    127.0.0.1:9000;
-	fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
-	include         fastcgi_params;
+    try_files $uri =404;
+    fastcgi_pass    127.0.0.1:9000;
+    fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include         fastcgi_params;
 }
 ```
 
@@ -105,9 +105,9 @@ To enable friendly URLs in Lighttpd, ensure that you have the mod_rewrite module
 
 ```
 url.rewrite = (
-	"^/(data|install|js|styles)/(.*)$" => "$0",
-	"^/(.*\.php)(.*)$" => "$0",
-	"^/.*(\?.*)" => "/index.php$1",
-	"" => "/index.php"
+    "^/(data|install|js|styles)/(.*)$" => "$0",
+    "^/(.*\.php)(.*)$" => "$0",
+    "^/.*(\?.*)" => "/index.php$1",
+    "" => "/index.php"
 )
 ```

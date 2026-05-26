@@ -147,22 +147,22 @@ Aside from just creating the release ZIP there may be additional files you wish 
 
 ```json title="build.json"
 {
-	"additional_files": [
-		"js/demo/portal"
-	],
-	"minify": [
-		"js/demo/portal/a.js",
-		"js/demo/portal/b.js"
-	],
-	"rollup": {
-		"js/demo/portal/ab-rollup.js": [
-			"js/demo/portal/a.min.js",
-			"js/demo/portal/b.min.js"
-		]
-	},
-	"exec": [
-		"echo '{title} version {version_string} ({version_id}) has been built successfully!' > 'src/addons/Demo/Portal/_build/built.txt'"
-	]
+    "additional_files": [
+        "js/demo/portal"
+    ],
+    "minify": [
+        "js/demo/portal/a.js",
+        "js/demo/portal/b.js"
+    ],
+    "rollup": {
+        "js/demo/portal/ab-rollup.js": [
+            "js/demo/portal/a.min.js",
+            "js/demo/portal/b.min.js"
+        ]
+    },
+    "exec": [
+        "echo '{title} version {version_string} ({version_id}) has been built successfully!' > 'src/addons/Demo/Portal/_build/built.txt'"
+    ]
 }
 ```
 

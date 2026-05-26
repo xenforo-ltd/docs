@@ -90,8 +90,8 @@ $fooCriteriaInput = $this->filter('foo_criteria', 'array');
 $barCriteriaInput = $this->filter('bar_criteria', 'array');
 
 $form->basicEntitySave($bazEntity, [
-	'foo_criteria' => $fooCriteriaInput,
-	'bar_criteria' => $barCriteriaInput
+    'foo_criteria' => $fooCriteriaInput,
+    'bar_criteria' => $barCriteriaInput
 ]);
 ```
 
@@ -273,19 +273,19 @@ Tabs in `helper_criteria` are grouped under criteria types macros:
 
 ```html
 <xf:macro name="foo_tabs" arg-container="" arg-active="">
-	<xf:set var="$tabs">
-		<a class="tabs-tab{{ $active == 'foo' ? ' is-active' : '' }}"
-			role="tab" tabindex="0" aria-controls="{{ unique_id('criteriaFoo') }}">Foo criteria</a>
+    <xf:set var="$tabs">
+        <a class="tabs-tab{{ $active == 'foo' ? ' is-active' : '' }}"
+            role="tab" tabindex="0" aria-controls="{{ unique_id('criteriaFoo') }}">Foo criteria</a>
         <a class="tabs-tab{{ $active == 'foo_extra' ? ' is-active' : '' }}"
            role="tab" tabindex="0" aria-controls="{{ unique_id('criteriaFooExtra') }}">Foo criteria extra</a>
-	</xf:set>
-	<xf:if is="$container">
-		<div class="tabs" role="tablist">
-			{$tabs|raw}
-		</div>
-	<xf:else />
-		{$tabs|raw}
-	</xf:if>
+    </xf:set>
+    <xf:if is="$container">
+        <div class="tabs" role="tablist">
+            {$tabs|raw}
+        </div>
+    <xf:else />
+        {$tabs|raw}
+    </xf:if>
 </xf:macro>
 ```
 
@@ -298,29 +298,29 @@ Just like tabs, panes in `helper_criteria` are grouped under criteria types macr
 
 ```html
 <xf:macro name="foo_panes" arg-container="" arg-active="" arg-criteria="!" arg-data="!">
-	<xf:set var="$panes">
-		<li class="{{ $active == 'foo' ? ' is-active' : '' }}" role="tabpanel" id="{{ unique_id('criteriaFoo') }}">
+    <xf:set var="$panes">
+        <li class="{{ $active == 'foo' ? ' is-active' : '' }}" role="tabpanel" id="{{ unique_id('criteriaFoo') }}">
 
-			<xf:checkboxrow label="Criteria group 1">
-				<xf:option name="foo_criteria[criterion_1_rule][rule]" value="criterion_1_rule" ... />
-			    <xf:option name="foo_criteria[criterion_2_rule][rule]" value="criterion_2_rule" ... />
-			</xf:checkboxrow>
+            <xf:checkboxrow label="Criteria group 1">
+                <xf:option name="foo_criteria[criterion_1_rule][rule]" value="criterion_1_rule" ... />
+                <xf:option name="foo_criteria[criterion_2_rule][rule]" value="criterion_2_rule" ... />
+            </xf:checkboxrow>
 
-			<xf:checkboxrow label="Criteria group 2">
+            <xf:checkboxrow label="Criteria group 2">
                 <xf:option name="foo_criteria[criterion_3_rule][rule]" value="criterion_3_rule" ... />
                 <xf:option name="foo_criteria[criterion_4_rule][rule]" value="criterion_4_rule" ... />
             </xf:checkboxrow>
 
-		</li>
-	</xf:set>
+        </li>
+    </xf:set>
 
-	<xf:if is="$container">
-		<ul class="tabPanes">
-			{$panes|raw}
-		</ul>
-	<xf:else />
-		{$panes|raw}
-	</xf:if>
+    <xf:if is="$container">
+        <ul class="tabPanes">
+            {$panes|raw}
+        </ul>
+    <xf:else />
+        {$panes|raw}
+    </xf:if>
 </xf:macro>
 ```
 
@@ -366,34 +366,34 @@ In order to use criteria tabs, you will need to organise the page. Stick to the 
 
 ```html
 <xf:form ... class="block">
-	<div class="block-container">
+    <div class="block-container">
 
-	    <!-- Tabs -->
-		<h2 class="block-tabHeader tabs hScroller" data-xf-init="h-scroller tabs" role="tablist">
-			<span class="hScroller-scroll">
-			    <!-- Main tab where fields/options are located -->
-				<a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="MAIN_TAB_ID">Main tab title</a>
+        <!-- Tabs -->
+        <h2 class="block-tabHeader tabs hScroller" data-xf-init="h-scroller tabs" role="tablist">
+            <span class="hScroller-scroll">
+                <!-- Main tab where fields/options are located -->
+                <a class="tabs-tab is-active" role="tab" tabindex="0" aria-controls="MAIN_TAB_ID">Main tab title</a>
 
-				<!-- Criteria tabs -->
-				<xf:macro template="helper_criteria" name="page_tabs" arg-userTabTitle="Custom tab name (optionally)" />
-			</span>
-		</h2>
+                <!-- Criteria tabs -->
+                <xf:macro template="helper_criteria" name="page_tabs" arg-userTabTitle="Custom tab name (optionally)" />
+            </span>
+        </h2>
 
         <!-- Panes -->
-		<ul class="block-body tabPanes">
-		    <!-- Main pane -->
-			<li class="is-active" role="tabpanel" id="MAIN_TAB_ID">
-				<!-- Fields and options -->
-			</li>
+        <ul class="block-body tabPanes">
+            <!-- Main pane -->
+            <li class="is-active" role="tabpanel" id="MAIN_TAB_ID">
+                <!-- Fields and options -->
+            </li>
 
             <!-- Criteria panes -->
-			<xf:macro template="helper_criteria" name="page_panes"
-				arg-criteria="{$criteria}"
-				arg-data="{$criteriaData}" />
-		</ul>
+            <xf:macro template="helper_criteria" name="page_panes"
+                arg-criteria="{$criteria}"
+                arg-data="{$criteriaData}" />
+        </ul>
 
-		<xf:submitrow sticky="true" icon="save" />
-	</div>
+        <xf:submitrow sticky="true" icon="save" />
+    </div>
 </xf:form>
 ```
 
@@ -412,45 +412,45 @@ Finally, add the tab and the pane macros code in "Replace" field. Example:
 
 ```html
 <xf:macro name="foo_tabs" arg-container="" arg-active="">
-	<xf:set var="$tabs">
-		<a class="tabs-tab{{ $active == 'foo' ? ' is-active' : '' }}"
-			role="tab" tabindex="0" aria-controls="{{ unique_id('criteriaFoo') }}">Foo criteria</a>
+    <xf:set var="$tabs">
+        <a class="tabs-tab{{ $active == 'foo' ? ' is-active' : '' }}"
+            role="tab" tabindex="0" aria-controls="{{ unique_id('criteriaFoo') }}">Foo criteria</a>
         <a class="tabs-tab{{ $active == 'foo_extra' ? ' is-active' : '' }}"
            role="tab" tabindex="0" aria-controls="{{ unique_id('criteriaFooExtra') }}">Foo criteria extra</a>
-	</xf:set>
-	<xf:if is="$container">
-		<div class="tabs" role="tablist">
-			{$tabs|raw}
-		</div>
-	<xf:else />
-		{$tabs|raw}
-	</xf:if>
+    </xf:set>
+    <xf:if is="$container">
+        <div class="tabs" role="tablist">
+            {$tabs|raw}
+        </div>
+    <xf:else />
+        {$tabs|raw}
+    </xf:if>
 </xf:macro>
 
 <xf:macro name="foo_panes" arg-container="" arg-active="" arg-criteria="!" arg-data="!">
-	<xf:set var="$panes">
-		<li class="{{ $active == 'foo' ? ' is-active' : '' }}" role="tabpanel" id="{{ unique_id('criteriaFoo') }}">
+    <xf:set var="$panes">
+        <li class="{{ $active == 'foo' ? ' is-active' : '' }}" role="tabpanel" id="{{ unique_id('criteriaFoo') }}">
 
-			<xf:checkboxrow label="Criteria group 1">
-				<xf:option name="foo_criteria[criterion_1_rule][rule]" value="criterion_1_rule" ... />
-			    <xf:option name="foo_criteria[criterion_2_rule][rule]" value="criterion_2_rule" ... />
-			</xf:checkboxrow>
+            <xf:checkboxrow label="Criteria group 1">
+                <xf:option name="foo_criteria[criterion_1_rule][rule]" value="criterion_1_rule" ... />
+                <xf:option name="foo_criteria[criterion_2_rule][rule]" value="criterion_2_rule" ... />
+            </xf:checkboxrow>
 
-			<xf:checkboxrow label="Criteria group 2">
+            <xf:checkboxrow label="Criteria group 2">
                 <xf:option name="foo_criteria[criterion_3_rule][rule]" value="criterion_3_rule" ... />
                 <xf:option name="foo_criteria[criterion_4_rule][rule]" value="criterion_4_rule" ... />
             </xf:checkboxrow>
 
-		</li>
-	</xf:set>
+        </li>
+    </xf:set>
 
-	<xf:if is="$container">
-		<ul class="tabPanes">
-			{$panes|raw}
-		</ul>
-	<xf:else />
-		{$panes|raw}
-	</xf:if>
+    <xf:if is="$container">
+        <ul class="tabPanes">
+            {$panes|raw}
+        </ul>
+    <xf:else />
+        {$panes|raw}
+    </xf:if>
 </xf:macro>
 ```
 
@@ -475,7 +475,7 @@ Our criterion is about likes on messages. This means it should be under "Content
 
 ```html
 <xf:option name="user_criteria[likes_on_single][rule]" value="likes_on_single" selected="{$criteria.likes_on_single}"  label="Likes on single message:">
-	<xf:numberbox name="user_criteria[likes_on_single][data][likes]" value="{$criteria.likes_on_single.likes}" size="5" min="0" step="1" />
+    <xf:numberbox name="user_criteria[likes_on_single][data][likes]" value="{$criteria.likes_on_single.likes}" size="5" min="0" step="1" />
 </xf:option>
 
 $0
@@ -729,27 +729,27 @@ Leaving the process of adding an admin route, writing a controller and doing oth
 <xf:title>Posts Remover</xf:title>
 
 <xf:form action="{{ link('posts-remover/remove') }}" ajax="true" class="block">
-	<div class="block-container">
-		<xf:checkboxrow label="Post criteria">
+    <div class="block-container">
+        <xf:checkboxrow label="Post criteria">
 
-			<xf:option label="Post has at least X likes" name="post_criteria[like_count][rule]" value="like_count">
-				<xf:numberbox name="post_criteria[like_count][data][likes]" size="5" min="0" step="1" />
-			</xf:option>
+            <xf:option label="Post has at least X likes" name="post_criteria[like_count][rule]" value="like_count">
+                <xf:numberbox name="post_criteria[like_count][data][likes]" size="5" min="0" step="1" />
+            </xf:option>
 
-			<xf:option label="Post author has an X username" name="post_criteria[username][rule]" value="username">
-				<xf:textbox name="post_criteria[username][data][name]" ac="true" />
-			</xf:option>
+            <xf:option label="Post author has an X username" name="post_criteria[username][rule]" value="username">
+                <xf:textbox name="post_criteria[username][data][name]" ac="true" />
+            </xf:option>
 
-			<xf:option label="Post was edited at least X times" name="post_criteria[edited_count][rule]" value="edited_count">
-				<xf:numberbox name="post_criteria[edited_count][data][count]" size="5" min="0" step="1" />
-			</xf:option>
+            <xf:option label="Post was edited at least X times" name="post_criteria[edited_count][rule]" value="edited_count">
+                <xf:numberbox name="post_criteria[edited_count][data][count]" size="5" min="0" step="1" />
+            </xf:option>
 
-		</xf:checkboxrow>
+        </xf:checkboxrow>
 
-		<!-- Template code for other criteria -->
+        <!-- Template code for other criteria -->
 
-		<xf:submitrow sticky="true" icon="delete"/>
-	</div>
+        <xf:submitrow sticky="true" icon="delete"/>
+    </div>
 </xf:form>
 ```
 
