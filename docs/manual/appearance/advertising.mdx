@@ -1,3 +1,7 @@
+---
+sidebar_position: 30
+---
+
 # Advertising
 
 It is easy to deploy advertising to a XenForo site without having to customize any templates.
@@ -22,7 +26,7 @@ Make sure your HTML is valid to prevent unexpected layout breakage.
 ### Display criteria
 If you check either of the *Display criteria* checkboxes, you may restrict the display of your ad to only members of specific user groups that you choose, or you may exclude members of groups from seeing your ad.
 
-This can be useful when used in conjunction with a [paid user upgrade](../users/user-upgrades.mdx) in which users may pay to view a version of your site with all ads hidden.
+This can be useful when used in conjunction with a [paid user upgrade](../users/paid-upgrades/index.mdx) in which users may pay to view a version of your site with all ads hidden.
 
 ### Display order
 If you have multiple ads deployed to the same position, they will be displayed according to the [display order](../common-concepts/display-order.mdx) that you define.
@@ -31,11 +35,10 @@ If you have multiple ads deployed to the same position, they will be displayed a
 You may quickly disable an ad without completely removing it by un-checking the *Advertisement is active* checkbox.
 
 ## Advert positions
-The XenForo [templates](templates.mdx) are preconfigured with numerous locations in which ads can be placed with minimal effort. Within the template code, these appear as follows:
+The XenForo [templates](theming/templates.mdx) are preconfigured with numerous locations in which ads can be placed with minimal effort. Within the template code, these appear as follows:
 
 ```html
 <xf:ad position="advert_location_name" />
 ```
 
 It is important not to remove these snippets of code from the templates when customizing, otherwise the location will not work as expected.
-

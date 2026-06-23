@@ -1,16 +1,20 @@
+---
+sidebar_position: 20
+---
+
 # Viewing and editing user profile data
 
-After you have [listed users](index.mdx#searching-and-listing), either as a result of a search or by selecting _List all users_, you may click on any user to access the administrator's view of their user profile data. 
+After you have [listed users](index.mdx#searching-and-listing), either as a result of a search or by selecting _List all users_, you may click on any user to access the administrator's view of their user profile data.
 
 This profile data includes the values of any [custom user fields](user-fields.mdx) you may have defined.
 
 The page is divided into several sections:
 
-- [User details](user-profile.mdx#user-details)
-- [Extra](user-profile.mdx#extra)
-- [IP addresses](user-profile.mdx#ip-addresses)
-- [Change log](user-profile.mdx#change-log)
-- [Permissions](user-profile.mdx#permissions)
+- [User details](#user-details)
+- [Extra](#extra)
+- [IP addresses](#ip-addresses)
+- [Change log](#change-log)
+- [Permissions](#permissions)
 
 :::note
 If you edit a user who is an [administrator](../access-privileges/staff.mdx#administrators), you will be prompted to enter your own password to confirm any changes to their user profile.
@@ -45,7 +49,7 @@ Set one of the [security lock](user-security.mdx#security-lock) options to prote
 [Security lock details](user-security.mdx#security-lock)
 
 #### Discouraged
-Enable this option to apply the dreaded [discourager](discouragement.mdx) to the current user.
+Enable this option to apply the dreaded [discourager](discipline/discouragement.mdx) to the current user.
 
 ### Personal details
 The personal details section includes fields that are more for information purposes than forum functionality, including the user's location and website URL if provided.
@@ -54,13 +58,13 @@ The free-form _About_ text field is also included here, where users may write a 
 
 ### Profile info
 #### Custom title
-When this box contains text, it will be used instead of any _user title_ that would normally be attached to members of specific user groups, or earned via the [user title ladder](user-title-ladder.mdx). Regular users are usually unable to edit this field themselves.
+When this box contains text, it will be used instead of any _user title_ that would normally be attached to members of specific user groups, or earned via the [user title ladder](gamification/user-title-ladder.mdx). Regular users are usually unable to edit this field themselves.
 
 #### Signature
 This free-form text box contains anything the user would like to display as part of their signature - a snippet of BB code text that is appended to the end of messages they post on the forum.
 
 #### Counters
-The total number of messages posted, [trophy points](user-trophies.mdx) awarded and the total [reaction score](../content/reactions.mdx) for the user are displayed and editable here.
+The total number of messages posted, [trophy points](gamification/user-trophies.mdx) awarded and the total [reaction score](../content/attributes/reactions.mdx) for the user are displayed and editable here.
 
 ### Additional contact
 The values of any [custom user fields](user-fields.mdx) relating to contact details are shown here. These usually take the form of handles or user names.
@@ -69,10 +73,10 @@ The values of any [custom user fields](user-fields.mdx) relating to contact deta
 The user's preferences for how the forum should operate are displayed here. You may edit the preferences, but the user whose preferences you change may not be entirely impressed that you did so!
 
 ### Privacy
-As with [preferences](user-profile.mdx#preferences), these are the user's own choices. Do not change privacy settings without consent, as this would constitute a clear breach of the user's privacy.
+As with [preferences](#preferences), these are the user's own choices. Do not change privacy settings without consent, as this would constitute a clear breach of the user's privacy.
 
 ## Extra
-This section displays any active [user upgrades](user-upgrades.mdx), and any [connected accounts](../configuration/connected-accounts/index.mdx) in use by the current user.
+This section displays any active [user upgrades](paid-upgrades/index.mdx), and any [connected accounts](../configuration/connected-accounts/index.mdx) in use by the current user.
 
 Third party add-ons may also display their data here.
 
@@ -81,7 +85,7 @@ A complete log of all IP addresses recorded for this user is available here.
 
 Using the _More users_ control associated with each IP address, you may check to see if any other users have also used that IP address, if you suspect that individuals may be visiting your forum using multiple identities.
 
-You may also [ban](banning.mdx#banning-by-ip-address) or [discourage](discouragement.mdx#discouraging-by-ip-address) any IP address listed. 
+You may also [ban](discipline/banning.mdx#banning-by-ip-address) or [discourage](discipline/discouragement.mdx#discouraging-by-ip-address) any IP address listed.
 
 ## Change log
 The change log section shows the [user change log](../maintenance/logs.mdx#user-change-log) filtered to show only changed logged against this user.
@@ -94,4 +98,4 @@ This ability is rarely required, as the majority of permission assignments may b
 With regard to inheritance, user permissions have no greater precedence than user group permissions, in fact it can be useful to consider that all users belong to a primary user group, multiple secondary user groups and a final single user group that has only one member (themselves, with their user permissions). Inheritance for user permissions therefore works in the same way as user group permissions:
 
 - A **Yes** in any of the groups to which the user belongs, or in their user permissions, will override any **No** from any other group or their user permissions.
-- A **Never** in any of the user's groups or in their user permissions will override any **Yes** and deny the user from ever being granted that permission. 
+- A **Never** in any of the user's groups or in their user permissions will override any **Yes** and deny the user from ever being granted that permission.

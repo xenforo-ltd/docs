@@ -1,3 +1,7 @@
+---
+sidebar_position: 20
+---
+
 # Logs
 
 In addition to the essential logs recorded by your server(s), XenForo itself maintains a variety of logs.
@@ -23,7 +27,7 @@ Clicking on any logged error here will reveal the full stack trace, with as much
 If the Server error log grows very large as a result of a persistent problem, you may use the **Clear** button to empty the log and start again from scratch when the problem is identified and resolved.
 
 #### Email bounce log
-If [configured](../configuration/email.mdx) to do so, XenForo will log attempts to send email to addresses that bounce the message back due to errors such as the address not existing, the mailbox being full etc.
+If [configured](../configuration/options-list/email.mdx) to do so, XenForo will log attempts to send email to addresses that bounce the message back due to errors such as the address not existing, the mailbox being full etc.
 
 No action is required on your part, but it may be useful to note any user accounts whose associated email addresses are now bouncing.
 
@@ -34,7 +38,7 @@ Whenever a user profile is edited, either by the user themselves or by a forum s
 The original and edited version of the data is also recorded for your reference.
 
 #### Username change log
-The most dramatic change to a user profile is when a user [changes their username](../users/user-name-change.mdx). 
+The most dramatic change to a user profile is when a user [changes their username](../users/user-name-change.mdx).
 
 All username changes are logged with the original and new usernames along with the change reason if applicable.
 
@@ -64,21 +68,21 @@ Whenever the spam cleaner is executed, its use is logged along with the user who
 You may reverse the effects of the spam cleaner, un-banning the posting user and un-deleting their content, by using the **Restore** control if you have reason to believe that the spam cleaner was run in error.
 
 #### Rejected user log
-Similar to the [spam trigger log](logs.mdx#spam-trigger-log), you may review the profiles of users whose registration was automatically rejected as being at high risk of posting spam.
+Similar to the [spam trigger log](#spam-trigger-log), you may review the profiles of users whose registration was automatically rejected as being at high risk of posting spam.
 
 ### Content
 #### Image proxy log
-When the [image proxy](../configuration/proxy.mdx) is enabled, its use is logged in the _Image proxy log_. From here, you can see the original URL and properties of all proxied images, along with a count of how many times they have been viewed by users through the proxy.
+When the [image proxy](../configuration/options-list/proxy.mdx) is enabled, its use is logged in the _Image proxy log_. From here, you can see the original URL and properties of all proxied images, along with a count of how many times they have been viewed by users through the proxy.
 
 #### Link proxy log
-As with the image proxy log, any URLs passed through the [link proxy](../configuration/proxy.mdx) are logged here together with their hits counter.
+As with the image proxy log, any URLs passed through the [link proxy](../configuration/options-list/proxy.mdx) are logged here together with their hits counter.
 
 #### oEmbed log
-When [media is embedded in content](../content/bbcode-media-sites.mdx) and its containing HTML is fetched via [oEmbed](../content/bbcode-media-sites.mdx#oembed), statistics about the request and the number of hits on the media is recorded as part of the _oEmbed log_.
+When [media is embedded in content](../content/embeds/bbcode-media-sites.mdx) and its containing HTML is fetched via [oEmbed](../content/embeds/bbcode-media-sites.mdx#oembed), statistics about the request and the number of hits on the media is recorded as part of the _oEmbed log_.
 
 ### Miscellaneous
 #### Payment provider log
 Any interactions with your [configured payment providers](../configuration/payments.mdx) are recorded in the _Payment provider log_. This log can be particularly useful in determining a cause in the event that payments are failing, as a full copy of each request is stored.
 
 #### Sitemap log
-When XenForo rebuilds your [XML sitemap](../configuration/sitemap.mdx), its completion is noted in the _Sitemap log_. The log also notes across how many files the sitemap is spread, and how many URLs are recorded within the complete sitemap.
+When XenForo rebuilds your [XML sitemap](../configuration/options-list/seo.mdx#xml-sitemap-generation-and-submission), its completion is noted in the _Sitemap log_. The log also notes across how many files the sitemap is spread, and how many URLs are recorded within the complete sitemap.

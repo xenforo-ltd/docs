@@ -1,3 +1,7 @@
+---
+sidebar_position: 10
+---
+
 # Config.php options
 
 All of the information XenForo needs to connect to your database server is located in the `src/config.php` file.
@@ -220,7 +224,7 @@ Defines the location of the 'js' folder, in which XenForo expects to find the Ja
 The name of the PHP class that is used to connect to your database. If you use a MySQL server, there is little reason to change this setting.
 
 ### HTTP client settings
-These settings control the behavior of the internal XenForo HTTP client, which is used to fetch resources from across the internet, such as images and web pages when using the [Image and link proxy](../configuration/proxy.mdx).
+These settings control the behavior of the internal XenForo HTTP client, which is used to fetch resources from across the internet, such as images and web pages when using the [Image and link proxy](../configuration/options-list/proxy.mdx).
 
 - `$config['http']['sslVerify']` = `null`;
 - `$config['http']['proxy']` = `null`;
@@ -258,7 +262,7 @@ If this value is non-zero, all files created by XenForo will be automatically ch
 
 - `$config['proxyUrlFormat']` = `'proxy.php?{type}={url}&hash={hash}'`;
 
-Defines the format for links using the [Image and link proxy](../configuration/proxy.mdx).
+Defines the format for links using the [Image and link proxy](../configuration/options-list/proxy.mdx).
 
 The format must include the tokens `{type}`, `{url}` and `{hash}`, and must target `proxy.php` unless you have an alternative script or system to handle the proxy requests.
 

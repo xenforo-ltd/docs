@@ -1,3 +1,7 @@
+---
+sidebar_position: 50
+---
+
 # XenForo PWA
 
 ## No need for a separate mobile app
@@ -16,7 +20,7 @@ Like a native mobile app, the XenForo progressive web app allows your forum to b
 
 When a user installs the PWA for your site, it will appear as an app icon on their device screen like any other app, allowing it to be launched without going via the device's web browser.
 
-Apple mobile devices running iOS 16.4 and newer can install the PWA using the _Add to Home Screen_ feature in Safari. This step is required in order to enable [push notifications](pwa.mdx#push-notifications) on iOS devices.
+Apple mobile devices running iOS 16.4 and newer can install the PWA using the _Add to Home Screen_ feature in Safari. This step is required in order to enable [push notifications](#push-notifications) on iOS devices.
 
 #### Push notifications
 Mobile users are accustomed to receiving notifications that integrate with the built-in notification system of their device.
@@ -29,7 +33,7 @@ The availability of push notifications is dependent upon users' specific devices
 As an installed app, a counter of active notifications will appear as a badge on the app icon.
 
 #### Share sheet integration
-When users click the _share_ controls to share content from your forum, XenForo will trigger the built-in system share sheet for the user's device, providing a familiar native interface. 
+When users click the _share_ controls to share content from your forum, XenForo will trigger the built-in system share sheet for the user's device, providing a familiar native interface.
 
 ## Requirements
 The following are absolute requirements for XenForo to enable its progressive web app functionality:
@@ -50,10 +54,10 @@ If your main _Board title_ is longer than 12 characters, you must enter a shorte
 You may enable push notifications provided your server has PHP 7.1 or newer with the the [gmp](https://secure.php.net/manual/en/book.gmp.php), [mbstring](https://secure.php.net/manual/en/book.mbstring.php) and [openssl](https://secure.php.net/manual/en/book.openssl.php) extensions enabled. XenForo Cloud sites meet and exceed these requirements.
 
 #### Language
-You must choose one of the [languages](../appearance/languages.mdx) installed on your forum to be the primary language for the progressive web app. Options are provided to allow you to make the selection.
+You must choose one of the [languages](../appearance/ui-text/languages.mdx) installed on your forum to be the primary language for the progressive web app. Options are provided to allow you to make the selection.
 
 #### Colors
-While the styling of your progressive web app will be based on the settings of your [default style](../appearance/styles.mdx#setting-the-default-style), you may provide additional styling for the _Meta theme color_, which often colors the device interface itself, and the _Page background color_, upon which all content is placed. 
+While the styling of your progressive web app will be based on the settings of your [default style](../appearance/theming/styles.mdx#setting-the-default-style), you may provide additional styling for the _Meta theme color_, which often colors the device interface itself, and the _Page background color_, upon which all content is placed.
 
 #### Icons
 You must provide the URLs of, or upload using the provided tools, two square icons to be used for the app.

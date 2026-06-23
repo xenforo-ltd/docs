@@ -1,6 +1,10 @@
+---
+sidebar_position: 40
+---
+
 # Template basics
 
-XenForo's template system sits between your controllers and the browser. It combines standard HTML with a lightweight expression language and a library of `<xf:tag>` components that handle everything from conditionals to full form layouts. This guide explains how the system works, what design decisions it makes for you, and when to use each feature. For the complete tag and function reference, see [Template syntax reference](/manual/reference/template-syntax).
+XenForo's template system sits between your controllers and the browser. It combines standard HTML with a lightweight expression language and a library of `<xf:tag>` components that handle everything from conditionals to full form layouts. This guide explains how the system works, what design decisions it makes for you, and when to use each feature. For the complete tag and function reference, see [Template syntax reference](../manual/reference/template-syntax.mdx).
 
 ## Template types
 XenForo has three types of template:
@@ -153,7 +157,7 @@ Most templates need to set a page title and breadcrumb trail. These tags do not 
 
 `<xf:title>` sets both the `<h1>` and the browser tab title. If you need them to differ, use `<xf:h1>` to override the visible heading independently.
 
-See the [Template syntax reference](/manual/reference/template-syntax#navigation-tags) for the full set of page structure tags including `<xf:h1>`, `<xf:description>`, `<xf:head>`, `<xf:page>`, and `<xf:pageaction>`.
+See the [Template syntax reference](../manual/reference/template-syntax.mdx#navigation-tags) for the full set of page structure tags including `<xf:h1>`, `<xf:description>`, `<xf:head>`, `<xf:page>`, and `<xf:pageaction>`.
 
 ## Control structures
 XenForo templates support conditionals with `<xf:if>`, loops with `<xf:foreach>`, and variable assignment with `<xf:set>`.
@@ -189,7 +193,7 @@ public function actionList(): \XF\Mvc\Reply\View
 
 The `<xf:foreach>` tag supports an `<xf:else>` block that renders when the array is empty, similar to an "empty state" fallback. The `i` counter is 1-based, so the first iteration has `$i = 1`.
 
-See the [Template syntax reference](/manual/reference/template-syntax#control-structures) for the full list of supported operators and attributes.
+See the [Template syntax reference](../manual/reference/template-syntax.mdx#control-structures) for the full list of supported operators and attributes.
 
 ## Reusing template code
 XenForo provides several ways to share markup between templates. Choosing the right one depends on what you are trying to achieve.
@@ -285,7 +289,7 @@ Use `<xf:wrap>` when you want to render your template inside a layout wrapper. T
 | **Extends** | Multiple pages share a common layout and each page overrides specific sections. |
 | **Wrap** | A content template needs to declare which layout surrounds it. |
 
-See the [Template syntax reference](/manual/reference/template-syntax#template-inheritance) for full details on `<xf:extends>`, `<xf:extension>`, `<xf:extensionparent>`, `<xf:extensionvalue>`, `<xf:wrap>`, and macro extends.
+See the [Template syntax reference](../manual/reference/template-syntax.mdx#template-inheritance) for full details on `<xf:extends>`, `<xf:extension>`, `<xf:extensionparent>`, `<xf:extensionvalue>`, `<xf:wrap>`, and macro extends.
 
 ## Including CSS and JavaScript
 Add-ons include their own styles and scripts using `<xf:css>` and `<xf:js>`:
@@ -296,7 +300,7 @@ Add-ons include their own styles and scripts using `<xf:css>` and `<xf:js>`:
 <xf:js src="demo/addon/main.js" />
 ```
 
-Both tags also support inline content for small snippets. See the [Template syntax reference](/manual/reference/template-syntax#asset-tags) for the full set of attributes including `prod`, `dev`, and `min` options for `<xf:js>`.
+Both tags also support inline content for small snippets. See the [Template syntax reference](../manual/reference/template-syntax.mdx#asset-tags) for the full set of attributes including `prod`, `dev`, and `min` options for `<xf:js>`.
 
 ## Forms
 XenForo provides a set of form tags that handle the repetitive parts of building forms: label alignment, hint text, error display, accessibility attributes, and consistent styling. Rather than writing this boilerplate in plain HTML for every form field, you use `*row` tags that combine a label, input control, and optional supporting text into a single component:
@@ -334,7 +338,7 @@ When none of the specialized `*row` tags fit, use `<xf:formrow>` to wrap custom 
 
 Every `*row` tag also has a standalone version without the row wrapper. For example, `<xf:textbox />` renders just the input control, which is useful when you need a bare input outside of a form layout (like a search bar or a custom `<xf:formrow>`).
 
-See the [Template syntax reference](/manual/reference/template-syntax#forms) for the full list of form tags, standalone variants, and their attributes.
+See the [Template syntax reference](../manual/reference/template-syntax.mdx#forms) for the full list of form tags, standalone variants, and their attributes.
 
 ## Template callbacks
 The `<xf:callback>` tag lets you call a PHP method directly from a template. This is an escape hatch for cases where computed data cannot cleanly come from the controller, such as a sidebar widget that needs to appear across many pages without modifying each controller.
@@ -347,8 +351,8 @@ The method name must begin with a read-only prefix (like `get`, `render`, `is`, 
 
 Prefer passing data from your controller when possible. Callbacks bypass the normal controller-to-template data flow, which makes templates harder to understand and test.
 
-See the [Template syntax reference](/manual/reference/template-syntax#callback) for the full list of allowed method name prefixes.
+See the [Template syntax reference](../manual/reference/template-syntax.mdx#callback) for the full list of allowed method name prefixes.
 
 ## Next steps
-- [Template syntax reference](/manual/reference/template-syntax) for the complete tag, function, and filter reference.
-- [Let's build an add-on](/devs/lets-build-an-add-on) for a hands-on walkthrough that uses templates in context.
+- [Template syntax reference](../manual/reference/template-syntax.mdx) for the complete tag, function, and filter reference.
+- [Let's build an add-on](lets-build-an-add-on.mdx) for a hands-on walkthrough that uses templates in context.

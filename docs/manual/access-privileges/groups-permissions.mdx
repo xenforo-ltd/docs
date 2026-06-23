@@ -1,3 +1,7 @@
+---
+sidebar_position: 10
+---
+
 # Group permissions
 
 User groups are XenForo's primary method of assigning roles to the users of your forum. This allows you to assign permissions, titles and other customizations to users.
@@ -25,7 +29,7 @@ When a new user registers, they will always be put in the `Registered` group aut
 If you're coming from a different forum software, having your admins and moderators be members of the `Registered` group may seem awkward. However, if you consider user groups to be _roles_, describing characteristics of the users belonging to them, the concepts will begin to make sense:
 
 - Any user account on your forum is, by definition, a registered member and as such should belong to the `Registered` group.
-- A user who is a moderator should **also** be in the `Moderating` group (role). 
+- A user who is a moderator should **also** be in the `Moderating` group (role).
 - Similarly, if a user is an admin and a moderator, they should be in the `Registered`, `Administrative` **and** `Moderating` groups.
 
 Taking this approach allows you to:
@@ -53,8 +57,8 @@ While you can manually add and remove users' membership of secondary groups, the
 
 The two primary systems in XenForo for doing this are:
 
-### [User upgrades](../users/user-upgrades.mdx)
-Users can pay for access to specific content or features, such as [premium content forums](../users/user-upgrade-premium-forum.mdx) or the [ability to upload profile banners](../users/user-upgrade-profile-banners.mdx).
+### [User upgrades](../users/paid-upgrades/index.mdx)
+Users can pay for access to specific content or features, such as [premium content forums](../users/paid-upgrades/examples/user-upgrade-premium-forum.mdx) or the [ability to upload profile banners](../users/paid-upgrades/examples/user-upgrade-profile-banners.mdx).
 
-### [User group promotions](promotions.mdx)
-Users can be added and removed from groups automatically based on criteria you define. For example, you could grant membership of a `Long term users` group that adds a specific user title when users have been registered for over a year, or you could add users to a `Helpful members` group when their [reaction score](../content/reactions.mdx) exceeds 100 points.
+### [User group promotions](promotions/index.mdx)
+Users can be added and removed from groups automatically based on criteria you define. For example, you could grant membership of a `Long term users` group that adds a specific user title when users have been registered for over a year, or you could add users to a `Helpful members` group when their [reaction score](../content/attributes/reactions.mdx) exceeds 100 points.
