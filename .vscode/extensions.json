@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "connor4312.esbuild-problem-matchers",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "github.vscode-github-actions",
+    "github.vscode-pull-request-github",
+    "unifiedjs.vscode-mdx"
+  ]
+}
