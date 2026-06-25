@@ -40,9 +40,7 @@ const sidebars: SidebarsConfig = {
         type: "doc",
         id: "api/xenforo-api",
       },
-      items: [
-        ...rawApi,
-      ],
+      items: rawApi as SidebarsConfig[],
     },
   ],
 };

@@ -178,7 +178,10 @@ const config: Config = {
             from: "/manual/content/reactions",
             to: "/manual/content/attributes/reactions",
           },
-          { from: "/manual/content/tags", to: "/manual/content/attributes/tags" },
+          {
+            from: "/manual/content/tags",
+            to: "/manual/content/attributes/tags",
+          },
           {
             from: "/manual/forums/articles",
             to: "/manual/forums/types/available/articles",
@@ -187,7 +190,10 @@ const config: Config = {
             from: "/manual/forums/discussions",
             to: "/manual/forums/types/available/discussions",
           },
-          { from: "/manual/forums/forum-thread-types", to: "/manual/forums/types" },
+          {
+            from: "/manual/forums/forum-thread-types",
+            to: "/manual/forums/types",
+          },
           {
             from: "/manual/forums/questions",
             to: "/manual/forums/types/available/questions",
@@ -229,7 +235,10 @@ const config: Config = {
             to: "/manual/installing-and-upgrading",
           },
           { from: "/manual/terms-rules", to: "/manual/configuration/terms" },
-          { from: "/manual/terms-rules/terms", to: "/manual/configuration/terms" },
+          {
+            from: "/manual/terms-rules/terms",
+            to: "/manual/configuration/terms",
+          },
           {
             from: "/manual/upgrade",
             to: "/manual/installing-and-upgrading/upgrade",

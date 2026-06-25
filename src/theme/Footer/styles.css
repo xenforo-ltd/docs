@@ -18,11 +18,11 @@
 	}
 }
 
-html[data-theme='light'] .p-footer {
+html[data-theme="light"] .p-footer {
 	background: linear-gradient(0deg, rgb(9 52 83), rgb(15 87 138));
 }
 
-html[data-theme='dark'] .p-footer {
+html[data-theme="dark"] .p-footer {
 	background: linear-gradient(0deg, rgb(22 62 90), rgb(10 28 41));
 }
 
@@ -134,7 +134,9 @@ html[data-theme='dark'] .p-footer {
 	border: 1px solid currentColor;
 	border-radius: 5px;
 	padding: 6px 10px;
-	transition: color 0.2s ease, border-color 0.2s ease;
+	transition:
+		color 0.2s ease,
+		border-color 0.2s ease;
 
 	+ .p-footer-button {
 		margin-left: 10px;
@@ -175,7 +177,6 @@ html[data-theme='dark'] .p-footer {
 		fill: currentColor;
 	}
 }
-
 
 @media (max-width: 850px) {
 	.p-footer-inner {

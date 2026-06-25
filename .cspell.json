@@ -3,11 +3,7 @@
   "version": "0.2",
   "language": "en",
   "name": "XenForo Docs",
-  "files": [
-    "docs/**/*.mdx",
-    "README.md",
-    "CONTRIBUTING.md"
-  ],
+  "files": ["docs/**/*.mdx", "README.md", "CONTRIBUTING.md"],
   "ignorePaths": [
     "node_modules",
     "build",
@@ -368,10 +364,7 @@
   "languageSettings": [
     {
       "languageId": "markdown,mdx",
-      "dictionaries": [
-        "en_US",
-        "softwareTerms"
-      ]
+      "dictionaries": ["en_US", "softwareTerms"]
     }
   ],
   "overrides": [

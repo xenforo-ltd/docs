@@ -24,26 +24,11 @@
         "Documentation": "https://example.com/pages/docs"
       },
       "require": {
-        "php": [
-          "8.5.0",
-          "PHP 8.5+"
-        ],
-        "php-ext/acme": [
-          "*",
-          "Acme PHP extension"
-        ],
-        "database/acme": [
-          "8.0",
-          "Acme Database 8.0+"
-        ],
-        "XF": [
-          2030070,
-          "XenForo 2.3+"
-        ],
-        "Acme/Helper": [
-          1000010,
-          "Acme Helper 1.0+"
-        ]
+        "php": ["8.5.0", "PHP 8.5+"],
+        "php-ext/acme": ["*", "Acme PHP extension"],
+        "database/acme": ["8.0", "Acme Database 8.0+"],
+        "XF": [2030070, "XenForo 2.3+"],
+        "Acme/Helper": [1000010, "Acme Helper 1.0+"]
       },
       "icon": "fa-puzzle-piece",
       "options": "acme-addon/options",
@@ -51,83 +36,61 @@
     }
   ],
   "type": "object",
-  "required": [
-    "title",
-    "version_id",
-    "version_string"
-  ],
+  "required": ["title", "version_id", "version_string"],
   "properties": {
     "legacy_addon_id": {
       "description": "The XenForo 1 add-on ID, for upgrading legacy add-ons",
-      "examples": [
-        "AcmeAddOn"
-      ],
+      "examples": ["AcmeAddOn"],
       "type": "string",
       "minLength": 1
     },
     "title": {
       "description": "The title of the add-on",
-      "examples": [
-        "Acme Add-on"
-      ],
+      "examples": ["Acme Add-on"],
       "type": "string",
       "maxLength": 75,
       "minLength": 1
     },
     "description": {
       "description": "A short summary of what the add-on does",
-      "examples": [
-        "Adds cool new features."
-      ],
+      "examples": ["Adds cool new features."],
       "type": "string",
       "minLength": 1
     },
     "version_id": {
       "description": "The numeric version of the add-on\nhttps://docs.xenforo.com/devs/add-on-structure#recommended-version-id-format",
-      "examples": [
-        1000010
-      ],
+      "examples": [1000010],
       "type": "integer",
       "minimum": 0
     },
     "version_string": {
       "description": "The human-readable version of the add-on\nhttps://docs.xenforo.com/devs/add-on-structure#recommended-version-string-format",
-      "examples": [
-        "1.0.0"
-      ],
+      "examples": ["1.0.0"],
       "type": "string",
       "maxLength": 30,
       "minLength": 1
     },
     "dev": {
       "description": "The developer of the add-on",
-      "examples": [
-        "Acme Inc."
-      ],
+      "examples": ["Acme Inc."],
       "type": "string",
       "minLength": 1
     },
     "dev_url": {
       "description": "The URL of the add-on developer",
-      "examples": [
-        "https://example.com"
-      ],
+      "examples": ["https://example.com"],
       "type": "string",
       "format": "uri"
     },
     "faq_url": {
       "description": "The URL of the add-on frequently asked questions page",
-      "examples": [
-        "https://example.com/pages/faq"
-      ],
+      "examples": ["https://example.com/pages/faq"],
       "type": "string",
       "format": "uri"
     },
     "support_url": {
       "description": "The URL of the add-on support page",
-      "examples": [
-        "https://example.com/pages/support"
-      ],
+      "examples": ["https://example.com/pages/support"],
       "type": "string",
       "format": "uri"
     },
@@ -136,16 +99,12 @@
       "type": "object",
       "minProperties": 1,
       "propertyNames": {
-        "examples": [
-          "Documentation"
-        ],
+        "examples": ["Documentation"],
         "minLength": 1
       },
       "additionalProperties": {
         "description": "An additional URL, keyed by label",
-        "examples": [
-          "https://example.com/pages/docs"
-        ],
+        "examples": ["https://example.com/pages/docs"],
         "type": "string",
         "format": "uri"
       }
@@ -157,12 +116,7 @@
       "patternProperties": {
         "^php$": {
           "description": "The PHP version requirement",
-          "examples": [
-            [
-              "8.5.0",
-              "PHP 8.5+"
-            ]
-          ],
+          "examples": [["8.5.0", "PHP 8.5+"]],
           "type": "array",
           "maxItems": 2,
           "minItems": 2,
@@ -178,12 +132,7 @@
         },
         "^php-ext/": {
           "description": "A PHP extension requirement, keyed by extension name",
-          "examples": [
-            [
-              "*",
-              "Acme PHP extension"
-            ]
-          ],
+          "examples": [["*", "Acme PHP extension"]],
           "type": "array",
           "maxItems": 2,
           "minItems": 2,
@@ -206,12 +155,7 @@
         },
         "^database/": {
           "description": "A database requirement, keyed by database type",
-          "examples": [
-            [
-              "8.0",
-              "Acme Database 8.0+"
-            ]
-          ],
+          "examples": [["8.0", "Acme Database 8.0+"]],
           "type": "array",
           "maxItems": 2,
           "minItems": 2,
@@ -227,12 +171,7 @@
         },
         "^XF$": {
           "description": "The XenForo version requirement",
-          "examples": [
-            [
-              2030070,
-              "XenForo 2.3+"
-            ]
-          ],
+          "examples": [[2030070, "XenForo 2.3+"]],
           "type": "array",
           "maxItems": 2,
           "minItems": 2,
@@ -253,12 +192,7 @@
         },
         "^(?!php$)(?!XF$)(?!mysql$)(?!php-ext/)(?!database/)[A-Za-z][A-Za-z0-9]*(/[A-Za-z][A-Za-z0-9]*)?$": {
           "description": "An add-on requirement, keyed by add-on ID",
-          "examples": [
-            [
-              1000010,
-              "Acme Helper 1.0+"
-            ]
-          ],
+          "examples": [[1000010, "Acme Helper 1.0+"]],
           "type": "array",
           "maxItems": 2,
           "minItems": 2,
@@ -301,17 +235,12 @@
       "description": "The class or relative path of the add-on icon",
       "oneOf": [
         {
-          "examples": [
-            "fa-puzzle-piece",
-            "fas fa-puzzle-piece"
-          ],
+          "examples": ["fa-puzzle-piece", "fas fa-puzzle-piece"],
           "type": "string",
           "pattern": "^(?:fa[bdlrs] )?fa-(?!-)[a-z0-9-]+$"
         },
         {
-          "examples": [
-            "icon.svg"
-          ],
+          "examples": ["icon.svg"],
           "type": "string",
           "not": {
             "pattern": "^(?:fa[bdlrs] )?fa-(?!-)[a-z0-9-]+$"
@@ -322,17 +251,13 @@
     },
     "options": {
       "description": "The route of the add-on options page",
-      "examples": [
-        "custom-options"
-      ],
+      "examples": ["custom-options"],
       "type": "string",
       "format": "uri-reference"
     },
     "composer_autoload": {
       "description": "The relative path to the Composer autoload directory",
-      "examples": [
-        "vendor/composer"
-      ],
+      "examples": ["vendor/composer"],
       "type": "string",
       "format": "uri-reference"
     }
@@ -340,17 +265,13 @@
   "definitions": {
     "requirementVersionString": {
       "description": "The minimum required version",
-      "examples": [
-        "1.0.0"
-      ],
+      "examples": ["1.0.0"],
       "type": "string",
       "pattern": "^\\d+(?:\\.\\d+){0,2}$"
     },
     "requirementVersionId": {
       "description": "The minimum required version ID",
-      "examples": [
-        1000010
-      ],
+      "examples": [1000010],
       "type": "integer",
       "minimum": 0
     },
@@ -360,9 +281,7 @@
     },
     "requirementLabel": {
       "description": "The label for the requirement",
-      "examples": [
-        "Acme 1.0+"
-      ],
+      "examples": ["Acme 1.0+"],
       "type": "string",
       "minLength": 1
     }
