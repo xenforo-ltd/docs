@@ -55,9 +55,9 @@
 
 	.p-footer-inner {
 		width: 100%;
-		max-width: 960px;
 		margin: 0 auto;
-		padding: 0;
+		padding-right: max(20px, env(safe-area-inset-right));
+		padding-left: max(20px, env(safe-area-inset-left));
 	}
 
 	.p-footer-block {
@@ -214,18 +214,7 @@
 		background: transparent;
 	}
 
-	@media (max-width: 980px) {
-		.p-footer-inner {
-			padding-right: max(20px, env(safe-area-inset-right));
-			padding-left: max(20px, env(safe-area-inset-left));
-		}
-	}
-
-	@media (max-width: 850px) {
-		.p-footer-inner {
-			max-width: 600px;
-		}
-
+	@media (max-width: 996px) {
 		.p-footer-blockColumns {
 			flex-wrap: wrap;
 			margin-bottom: -20px;
