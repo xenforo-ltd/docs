@@ -11,7 +11,7 @@ insert_final_newline = true
 indent_style = space
 trim_trailing_whitespace = false
 
-[*.{json,.mustache,ts,tsx,yaml,yml}]
+[*.{json,.mustache,.mjs,ts,tsx,yaml,yml}]
 indent_style = space
 indent_size = 2
 

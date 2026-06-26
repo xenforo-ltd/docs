@@ -1,0 +1,9 @@
+# production
+/build
+
+# generated files
+/.cache-loader/
+/.docusaurus/
+/docs/api/
+/static/api/openapi.json
+/pnpm-*.yaml
