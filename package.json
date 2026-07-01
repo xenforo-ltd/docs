@@ -29,16 +29,16 @@
     "docusaurus-plugin-openapi-docs": "~5.0.2",
     "docusaurus-theme-openapi-docs": "~5.0.2",
     "prism-react-renderer": "^2.4.1",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "~3.10.1",
     "@docusaurus/tsconfig": "~3.10.1",
     "@docusaurus/types": "~3.10.1",
-    "@types/react": "^19.2.14",
-    "cspell": "~10.0.0",
-    "prettier": "~3.8.3",
+    "@types/react": "^19.2.17",
+    "cspell": "~10.0.1",
+    "prettier": "~3.8.4",
     "typescript": "~6.0.3"
   },
   "browserslist": {
