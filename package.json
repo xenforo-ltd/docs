@@ -53,9 +53,16 @@
       "last 5 safari version"
     ]
   },
-  "engines": {
-    "node": ">=22.0",
-    "pnpm": ">=11.2"
-  },
-  "packageManager": "pnpm@11.2.2"
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^12.4.1",
+      "onFail": "download"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "^26.8.2",
+      "onFail": "download"
+    }
+  }
 }
