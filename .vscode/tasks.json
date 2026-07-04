@@ -1,0 +1,212 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "detail": "Build Docusaurus site for production",
+      "icon": {
+        "id": "package"
+      },
+      "command": "pnpm",
+      "args": ["build"],
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "clear",
+      "detail": "Clear Docusaurus build cache",
+      "icon": {
+        "id": "clear-all"
+      },
+      "command": "pnpm",
+      "args": ["clear"],
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "clean-api-docs",
+      "detail": "Clean generated API documentation",
+      "icon": {
+        "id": "eraser"
+      },
+      "command": "pnpm",
+      "args": ["clean-api-docs"],
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "gen-api-docs",
+      "detail": "Generate API documentation",
+      "icon": {
+        "id": "file-code"
+      },
+      "command": "pnpm",
+      "args": ["gen-api-docs"],
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "serve",
+      "detail": "Serve built Docusaurus site locally",
+      "icon": {
+        "id": "server"
+      },
+      "command": "pnpm",
+      "args": ["serve"],
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "start",
+      "detail": "Start Docusaurus development server",
+      "icon": {
+        "id": "play"
+      },
+      "command": "pnpm",
+      "args": ["start"],
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "write-heading-ids",
+      "detail": "Write heading IDs for documentation",
+      "icon": {
+        "id": "link"
+      },
+      "command": "pnpm",
+      "args": ["write-heading-ids"],
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "lint:md",
+      "detail": "Lint Markdown with Remark",
+      "icon": {
+        "id": "lightbulb"
+      },
+      "command": "pnpm",
+      "args": ["lint:md"],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "revealProblems": "always",
+        "clear": false
+      }
+    },
+    {
+      "label": "fix:md",
+      "detail": "Fix Markdown issues with Remark",
+      "icon": {
+        "id": "wrench"
+      },
+      "command": "pnpm",
+      "args": ["fix:md"],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "revealProblems": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "lint:format",
+      "detail": "Check code formatting with Prettier",
+      "icon": {
+        "id": "paintcan"
+      },
+      "command": "pnpm",
+      "args": ["lint:format"],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "fix:format",
+      "detail": "Format code with Prettier",
+      "icon": {
+        "id": "pencil"
+      },
+      "command": "pnpm",
+      "args": ["fix:format"],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "lint:spell",
+      "detail": "Check spelling in documentation files",
+      "icon": {
+        "id": "check"
+      },
+      "command": "pnpm",
+      "args": ["lint:spell"],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "lint:types",
+      "detail": "Check TypeScript types",
+      "icon": {
+        "id": "symbol-interface"
+      },
+      "command": "pnpm",
+      "args": ["lint:types"],
+      "problemMatcher": "$tsc",
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    }
+  ]
+}
