@@ -2,7 +2,13 @@
 *.md
 *.mdx
 
-docs/api/
-static/
-pnpm-lock.yaml
-pnpm-workspace.yaml
+# production
+/build
+
+# generated files
+/.cache-loader/
+/.docusaurus/
+/docs/api/
+/static/api/openapi.json
+/package.json
+/pnpm-*.yaml

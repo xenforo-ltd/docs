@@ -1,14 +1,17 @@
 root = true
 
 [*]
-charset = utf-8
+indent_style = tab
 end_of_line = lf
-insert_final_newline = true
+charset = utf-8
 trim_trailing_whitespace = true
-indent_style = space
-indent_size = 2
+insert_final_newline = true
 
 [*.{md,mdx}]
 trim_trailing_whitespace = false
 indent_style = unset
 indent_size = unset
+
+[*.{json,mustache,mjs,ts,tsx,yaml,yml}]
+indent_style = space
+indent_size = 2

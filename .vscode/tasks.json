@@ -21,13 +21,13 @@
       }
     },
     {
-      "label": "clear",
+      "label": "docusaurus:clear",
       "detail": "Clear Docusaurus build cache",
       "icon": {
         "id": "clear-all"
       },
       "command": "pnpm",
-      "args": ["clear"],
+      "args": ["docusaurus:clear"],
       "problemMatcher": [],
       "group": "build",
       "presentation": {
@@ -37,13 +37,13 @@
       }
     },
     {
-      "label": "clean-api-docs",
+      "label": "docusaurus:api-docs:clean",
       "detail": "Clean generated API documentation",
       "icon": {
         "id": "eraser"
       },
       "command": "pnpm",
-      "args": ["clean-api-docs"],
+      "args": ["docusaurus:api-docs:clean"],
       "problemMatcher": [],
       "group": "build",
       "presentation": {
@@ -53,13 +53,13 @@
       }
     },
     {
-      "label": "gen-api-docs",
+      "label": "docusaurus:api-docs:gen",
       "detail": "Generate API documentation",
       "icon": {
         "id": "file-code"
       },
       "command": "pnpm",
-      "args": ["gen-api-docs"],
+      "args": ["docusaurus:api-docs:gen"],
       "problemMatcher": [],
       "group": "build",
       "presentation": {
@@ -69,13 +69,13 @@
       }
     },
     {
-      "label": "serve",
+      "label": "docusaurus:serve",
       "detail": "Serve built Docusaurus site locally",
       "icon": {
         "id": "server"
       },
       "command": "pnpm",
-      "args": ["serve"],
+      "args": ["docusaurus:serve"],
       "isBackground": true,
       "problemMatcher": [],
       "group": "build",
@@ -103,13 +103,13 @@
       }
     },
     {
-      "label": "write-heading-ids",
+      "label": "docusaurus:write-heading-ids",
       "detail": "Write heading IDs for documentation",
       "icon": {
         "id": "link"
       },
       "command": "pnpm",
-      "args": ["write-heading-ids"],
+      "args": ["docusaurus:write-heading-ids"],
       "problemMatcher": [],
       "group": "build",
       "presentation": {
@@ -119,13 +119,13 @@
       }
     },
     {
-      "label": "lint:md",
+      "label": "lint:remark",
       "detail": "Lint Markdown with Remark",
       "icon": {
         "id": "lightbulb"
       },
       "command": "pnpm",
-      "args": ["lint:md"],
+      "args": ["lint:remark"],
       "problemMatcher": [],
       "presentation": {
         "panel": "dedicated",
@@ -134,13 +134,13 @@
       }
     },
     {
-      "label": "fix:md",
+      "label": "fix:remark",
       "detail": "Fix Markdown issues with Remark",
       "icon": {
         "id": "wrench"
       },
       "command": "pnpm",
-      "args": ["fix:md"],
+      "args": ["fix:remark"],
       "problemMatcher": [],
       "presentation": {
         "panel": "dedicated",
@@ -149,13 +149,13 @@
       }
     },
     {
-      "label": "lint:format",
+      "label": "lint:prettier",
       "detail": "Check code formatting with Prettier",
       "icon": {
         "id": "paintcan"
       },
       "command": "pnpm",
-      "args": ["lint:format"],
+      "args": ["lint:prettier"],
       "problemMatcher": [],
       "presentation": {
         "panel": "dedicated",
@@ -164,13 +164,13 @@
       }
     },
     {
-      "label": "fix:format",
+      "label": "fix:prettier",
       "detail": "Format code with Prettier",
       "icon": {
         "id": "pencil"
       },
       "command": "pnpm",
-      "args": ["fix:format"],
+      "args": ["fix:prettier"],
       "problemMatcher": [],
       "presentation": {
         "panel": "dedicated",
@@ -194,13 +194,13 @@
       }
     },
     {
-      "label": "lint:types",
+      "label": "lint:tsc",
       "detail": "Check TypeScript types",
       "icon": {
         "id": "symbol-interface"
       },
       "command": "pnpm",
-      "args": ["lint:types"],
+      "args": ["lint:tsc"],
       "problemMatcher": "$tsc",
       "presentation": {
         "panel": "dedicated",

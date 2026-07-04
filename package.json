@@ -13,25 +13,27 @@
   },
   "private": true,
   "scripts": {
+    "build": "pn docusaurus:api-docs:clean && pn docusaurus:api-docs:gen && pn docusaurus:build",
+    "start": "pn docusaurus:api-docs:clean && pn docusaurus:api-docs:gen && pn docusaurus:start",
     "docusaurus": "docusaurus",
-    "start": "pnpm clean-api-docs && pnpm gen-api-docs && docusaurus start",
-    "build": "pnpm clean-api-docs && pnpm gen-api-docs && docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids",
-    "gen-api-docs": "docusaurus gen-api-docs all",
-    "clean-api-docs": "docusaurus clean-api-docs all",
-    "lint": "pnpm run --no-bail \"/^lint:/\"",
-    "lint:format": "prettier --check .",
-    "lint:md": "remark docs .github README.md --ext md,mdx --frail --quiet",
+    "docusaurus:api-docs:clean": "docusaurus clean-api-docs all",
+    "docusaurus:api-docs:gen": "docusaurus gen-api-docs all",
+    "docusaurus:build": "docusaurus build",
+    "docusaurus:clear": "docusaurus clear",
+    "docusaurus:serve": "docusaurus serve",
+    "docusaurus:start": "docusaurus start",
+    "docusaurus:swizzle": "docusaurus swizzle",
+    "docusaurus:write-heading-ids": "docusaurus write-heading-ids",
+    "fix": "pn fix:eslint && pn fix:prettier && pn fix:remark",
+    "fix:eslint": "eslint --fix",
+    "fix:prettier": "prettier --write .",
+    "fix:remark": "remark docs .github README.md --ext md,mdx --output --quiet",
+    "lint": "pn run --no-bail \"/^lint:/\"",
+    "lint:eslint": "eslint",
+    "lint:prettier": "prettier --check .",
+    "lint:remark": "remark docs .github README.md --ext md,mdx --frail --quiet",
     "lint:spell": "cspell lint --no-progress",
-    "lint:types": "pnpm gen-api-docs && tsc",
-    "fix": "pnpm fix:format && pnpm fix:md",
-    "fix:format": "prettier --write .",
-    "fix:md": "remark docs .github README.md --ext md,mdx --output --quiet"
+    "lint:tsc": "pn docusaurus:api-docs:gen && tsc"
   },
   "dependencies": {
     "@docusaurus/core": "~3.10.2",
@@ -45,16 +47,24 @@
     "docusaurus-plugin-openapi-docs": "~5.2.0",
     "docusaurus-theme-openapi-docs": "~5.2.0",
     "prism-react-renderer": "^2.4.1",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@docusaurus/eslint-plugin": "^3.10.2",
     "@docusaurus/module-type-aliases": "~3.10.2",
     "@docusaurus/tsconfig": "~3.10.2",
     "@docusaurus/types": "~3.10.2",
+    "@eslint/core": "^1.2.1",
+    "@eslint/css": "^2.0.1",
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^2.1.1",
     "@types/react": "^19.3.0",
-    "cspell": "~10.3.3",
-    "prettier": "~3.9.9",
+    "cspell": "~10.4.0",
+    "eslint": "^10.12.0",
+    "globals": "^17.13.0",
+    "jiti": "^2.7.0",
+    "prettier": "~3.9.10",
     "remark-cli": "^12.0.1",
     "remark-directive": "^4.0.0",
     "remark-frontmatter": "^5.0.0",
@@ -62,12 +72,14 @@
     "remark-lint-file-extension": "^3.0.1",
     "remark-lint-list-item-spacing": "^5.0.1",
     "remark-lint-maximum-line-length": "^4.1.1",
+    "remark-lint-no-file-name-irregular-characters": "^3.0.1",
     "remark-lint-ordered-list-marker-value": "^4.0.1",
     "remark-mdx": "^3.1.1",
     "remark-preset-lint-consistent": "^6.0.1",
     "remark-preset-lint-markdown-style-guide": "^6.0.1",
     "remark-preset-lint-recommended": "^7.0.1",
-    "typescript": "~7.0.2"
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.71.2"
   },
   "browserslist": {
     "production": [
@@ -82,14 +94,14 @@
     ]
   },
   "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "12.8.2",
-      "onFail": "download"
-    },
     "runtime": {
       "name": "node",
-      "version": "^26.8.2",
+      "version": "^26.12.1",
+      "onFail": "download"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^12.15.0",
       "onFail": "download"
     }
   }

@@ -35,10 +35,11 @@ pnpm serve
 Pull requests run these checks in CI. Run them all with `pnpm lint`, or individually:
 
 ```bash
-pnpm lint:format  # Prettier (code and config files)
-pnpm lint:md      # remark (Markdown and MDX)
-pnpm lint:spell   # cspell
-pnpm lint:types   # TypeScript
+pnpm lint:eslint    # ESLint (TypeScript, JSON, CSS)
+pnpm lint:prettier  # Prettier (code and config files)
+pnpm lint:remark    # remark (Markdown and MDX)
+pnpm lint:spell     # cspell
+pnpm lint:tsc       # TypeScript
 ```
 
 Run `pnpm fix` to fix most formatting and Markdown issues automatically.

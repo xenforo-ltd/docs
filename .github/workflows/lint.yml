@@ -43,12 +43,17 @@ jobs:
           require-lockfile: true
 
       # Run every check even if an earlier one fails
+      - name: Lint code
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
+        run: pnpm lint:eslint
+
       - name: Check formatting
-        run: pnpm lint:format
+        if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
+        run: pnpm lint:prettier
 
       - name: Lint Markdown
         if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
-        run: pnpm lint:md
+        run: pnpm lint:remark
 
       - name: Spell check
         if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
@@ -56,4 +61,4 @@ jobs:
 
       - name: Typecheck
         if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
-        run: pnpm lint:types
+        run: pnpm lint:tsc
