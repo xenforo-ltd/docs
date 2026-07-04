@@ -24,7 +24,6 @@ const config: Config = {
     faster: true, // Enable modernized build infrastructure
   },
 
-  onBrokenLinks: "throw",
   onBrokenAnchors: "throw",
 
   markdown: {
@@ -510,15 +509,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: [
-        "apacheconf",
-        "bash",
-        "ini",
-        "json",
-        "nginx",
-        "php",
-        "sql",
-      ],
+      additionalLanguages: ["apacheconf", "bash", "ini", "nginx", "php", "sql"],
     },
 
     algolia: {

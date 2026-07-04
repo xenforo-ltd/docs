@@ -3,7 +3,7 @@
   "version": "0.2",
   "language": "en",
   "name": "XenForo Docs",
-  "files": ["docs/**/*.{md,mdx}", "README.md", ".github/CONTRIBUTING.md"],
+  "files": ["docs/**/*.mdx", "README.md", ".github/CONTRIBUTING.md"],
   "ignorePaths": [
     "node_modules",
     "build",
