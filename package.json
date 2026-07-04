@@ -14,8 +14,8 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
+    "start": "pnpm clean-api-docs && pnpm gen-api-docs && docusaurus start",
+    "build": "pnpm clean-api-docs && pnpm gen-api-docs && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -28,7 +28,7 @@
     "lint:format": "prettier --check .",
     "lint:md": "remark docs .github README.md --ext md,mdx --frail --quiet",
     "lint:spell": "cspell lint --no-progress",
-    "lint:types": "tsc",
+    "lint:types": "pnpm gen-api-docs && tsc",
     "fix": "pnpm fix:format && pnpm fix:md",
     "fix:format": "prettier --write .",
     "fix:md": "remark docs .github README.md --ext md,mdx --output --quiet"

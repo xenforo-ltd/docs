@@ -3,5 +3,4 @@
 .github/*.md -linguist-detectable
 README.md -linguist-detectable
 
-docs/api/** linguist-generated=true
 pnpm-lock.yaml linguist-generated=true

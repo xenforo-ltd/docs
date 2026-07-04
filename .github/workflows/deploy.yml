@@ -82,7 +82,7 @@ jobs:
           echo "Changed files:"
           echo "$CHANGED_FILES"
 
-          if echo "$CHANGED_FILES" | grep -qE '^docs/.*\.(md|mdx)$|^docusaurus\.config\.|^sidebars\.'; then
+          if echo "$CHANGED_FILES" | grep -qE '^docs/.*\.(md|mdx)$|^docusaurus\.config\.|^sidebars\.|^static/api/openapi\.json$|^src/openapi/'; then
             echo "docs_changed=true" >> $GITHUB_OUTPUT
             echo "Documentation changes detected - will trigger recrawl"
           else
