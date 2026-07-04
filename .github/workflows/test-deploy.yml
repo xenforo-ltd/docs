@@ -32,10 +32,10 @@ jobs:
         run: sudo rm -f $(which yarn)
 
       - name: Set up pnpm and Node.js
-        uses: pnpm/setup@a0881977cd8ea73b1ed212236c99ca10dcc80cf4 # v3.1.1
+        uses: pnpm/setup@fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e # v3.1.2
         with:
           cache: true
           require-lockfile: true
 
-      - name: Test build
+      - name: Build website
         run: pnpm build
