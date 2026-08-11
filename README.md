@@ -12,7 +12,7 @@ Welcome to the documentation for XenForo, covering both end-user guides and deve
 
 ### Requirements
 
-- Node.js 20.0 or higher
+- Node.js 22.0 or higher
 
 ### Setup
 
