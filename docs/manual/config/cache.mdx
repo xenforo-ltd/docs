@@ -20,9 +20,13 @@ Many of the cache providers will require software to be explicitly installed on 
 Let's look at how to configure some of these cache providers. All configuration is done within **src/config.php**
 
 ### APC
+:::note
+For XenForo 2.3+, use 'APCu' not 'ApcCache' as the provider
+:::
+
 ```php
 $config['cache']['enabled'] = true;
-$config['cache']['provider'] = 'ApcCache';
+$config['cache']['provider'] = 'APCu';
 ```
 
 This provider has no additional configuration options.
