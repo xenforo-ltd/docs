@@ -1,0 +1,7 @@
+# Prettier's MDX parser corrupts MDX v3 content
+docs/
+*.mdx
+
+static/
+pnpm-lock.yaml
+pnpm-workspace.yaml
