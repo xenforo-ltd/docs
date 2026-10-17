@@ -28,7 +28,7 @@ This will ensure that all the binary files added by Laragon, such as `php` and `
 
 Open a new command prompt window (it must be a new window in order to benefit from the changes to the system PATH variable we just made) and type `php -v`. With a little luck, PHP will return information about its version number.
 
-```
+```text
 C:\Users\Kier>php -v
 PHP 7.2.19 (cli) (built: May 29 2019 13:58:59) ( ZTS MSVC15 (Visual C++ 2017) x64 )
 Copyright (c) 1997-2018 The PHP Group
@@ -45,7 +45,7 @@ It's important to get precisely the correct version of Xdebug to work with the v
 
 In your command prompt window, enter the following:
 
-```
+```text
 php -i > Desktop\info.txt
 ```
 
@@ -63,7 +63,7 @@ You can quickly edit your `php.ini` file with a Laragon shortcut - right click t
 
 At the end of the file, add the following:
 
-```
+```ini
 [xdebug]
 xdebug.remote_enable= 1
 xdebug.remote_autostart = 1
@@ -71,7 +71,7 @@ xdebug.remote_autostart = 1
 
 ... and immediately after that, add the line from the Xdebug wizard that begins `zend_extension = C:\...`. My completed php.ini additions look like this:
 
-```
+```ini
 [xdebug]
 xdebug.remote_enable= 1
 xdebug.remote_autostart = 1
@@ -84,7 +84,7 @@ Save and close the `php.ini` file.
 
 In your command line window, type `php -v` again, and this time we should see output that indicates that Xdebug is properly installed.
 
-```
+```text
 C:\Users\Kier>php -v
 PHP 7.2.19 (cli) (built: May 29 2019 13:58:59) ( ZTS MSVC15 (Visual C++ 2017) x64 )
 Copyright (c) 1997-2018 The PHP Group
@@ -107,5 +107,3 @@ Check out our section on [Visual Studio Code and how to use it with Xdebug](vsco
 - [XenForo requirements script](https://xenforo.com/purchase/requirements-zip)
 - [XenForo](https://xenforo.com/purchase/)
 - [Video of this process](https://youtu.be/-1TOCDbmZmg)
-
-{/*test*/}

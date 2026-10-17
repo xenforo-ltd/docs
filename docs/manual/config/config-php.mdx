@@ -155,10 +155,10 @@ Using the default value of `/`, cookies set by XenForo will be available in all 
 - `'/'` XenForo cookies are available to all areas of your website.
 - `'/forum/'` XenForo cookies can only be read by pages located within the `forum` directory, which resides at *'http://example.com/forum'*, where *example.com* is your site address.
 - `'/path/to/other/folder/'` XenForo cookies can only be read by pages located in the *path/to/other/folder* directory, located at *http://example.com/path/to/other/folder*.
- 	- Cookies can **not** be read by pages located in folders above this location, ie:
- 	- `http://example.com/path`
- 	- `http://example.com/path/to`
- 	- `http://example.com/path/to/other`
+  - Cookies can **not** be read by pages located in folders above this location, ie:
+  - `http://example.com/path`
+  - `http://example.com/path/to`
+  - `http://example.com/path/to/other`
 
 :::warning
 If you specify a cookie path that does not allow cookies to be set within the XenForo root directory, XenForo will be unable to read the cookies it sets, and critical operations like logging in will fail.

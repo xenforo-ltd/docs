@@ -51,7 +51,7 @@ The first step is to clone the documentation repository. You can either use a Gi
 
 In the desired directory, simply run the following command:
 
-```
+```bash
 git clone git@github.com:xenforo-ltd/docs.git
 ```
 
@@ -59,13 +59,13 @@ This will create a new directory named `docs` containing the contents of this re
 
 Using the command line, change directory to the new `docs` directory and install the dependencies:
 
-```
+```bash
 pnpm install
 ```
 
 Then start the development server:
 
-```
+```bash
 pnpm start
 ```
 

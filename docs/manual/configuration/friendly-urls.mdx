@@ -18,8 +18,8 @@ By default, XenForo does not enable friendly URLs due to the web server configur
 - **Include content title in URLs** - Disabling this option will make your URLs much shorter, but less friendly to humans as no keywords will be included in them. For example, with this option disabled, the example URL at the beginning of this section would become: `http://www.example.com/threads/12345/`
 
 :::note
-:::
 If you enable friendly URLs but your web server can’t support them, your admin control panel will still be accessible.
+:::
 
 ### Friendly URL web server requirements and setup
 
@@ -39,7 +39,7 @@ LiteSpeed Web Server reads and uses Apache configurations (including .htaccess f
 
 To enable friendly URLs in IIS 7, put the following code into a `web.config` file in your XenForo root directory:
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <system.webServer>
@@ -72,7 +72,7 @@ To enable friendly URLs in IIS 7, put the following code into a `web.config` fil
 
 To enable friendly URLs in Nginx, you must put the following in your server configuration:
 
-```
+```nginx
 location /xf/ {
 	try_files $uri $uri/ /xf/index.php?$uri&$args;
 	index index.php index.html;
@@ -110,7 +110,7 @@ This configuration also helps protect web-based access to directories that aren'
 
 To enable friendly URLs in Lighttpd, ensure that you have the mod_rewrite module loaded and add the following to your server configuration:
 
-```
+```text
 url.rewrite = (
 	"^/(data|install|js|styles)/(.*)$" => "$0",
 	"^/(.*\.php)(.*)$" => "$0",
