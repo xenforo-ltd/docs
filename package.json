@@ -15,6 +15,9 @@
     "typecheck": "tsc",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "lint:md": "markdownlint-cli2",
+    "lint:md:fix": "markdownlint-cli2 --fix",
+    "fix": "pnpm format && pnpm lint:md:fix",
     "gen-api-docs": "docusaurus gen-api-docs all",
     "clean-api-docs": "docusaurus clean-api-docs all",
     "spellcheck": "cspell lint --config cspell.json --no-progress \"docs/**/*.{md,mdx}\" \"README.md\" \"CONTRIBUTING.md\"",
@@ -40,6 +43,7 @@
     "@docusaurus/types": "~3.10.2",
     "@types/react": "^19.3.0",
     "cspell": "~10.3.3",
+    "markdownlint-cli2": "^0.23.3",
     "prettier": "~3.9.9",
     "typescript": "~7.0.2"
   },
