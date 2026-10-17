@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.mp4 binary
+*.zip binary
+
+docs/api/** linguist-generated=true
+pnpm-lock.yaml linguist-generated=true -diff
