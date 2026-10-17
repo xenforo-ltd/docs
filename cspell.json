@@ -347,7 +347,7 @@
     "lcfirst",
     "ucfirst",
     "ucwords",
-    "xcache",
+    "apcu",
     "enabletfa",
     "enableaddonarchiveinstaller"
   ],

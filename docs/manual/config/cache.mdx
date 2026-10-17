@@ -5,31 +5,28 @@ For larger XenForo installations, it can be advantageous to define a **cache** i
 XenForo has the ability to store and retrieve various data from a cache, which can be configured in your **src/config.php** file.
 
 ## Supported providers
-XenForo ships with several popular cache providers including:
+XenForo ships with several popular cache providers:
 
-* APC
+* APCu
 * File system cache
 * Memcached
 * Redis
-* WinCache
-* XCache
-* ... and more!
 
 Many of the cache providers will require software to be explicitly installed on your server. You may wish to inquire with your host as to which options are available.
 
 Let's look at how to configure some of these cache providers. All configuration is done within **src/config.php**
 
-### APC
-:::note
-For XenForo 2.3+, use 'APCu' not 'ApcCache' as the provider
-:::
-
+### APCu
 ```php
 $config['cache']['enabled'] = true;
-$config['cache']['provider'] = 'APCu';
+$config['cache']['provider'] = 'Apcu';
 ```
 
 This provider has no additional configuration options.
+
+:::note
+Prior to XenForo 2.3, the provider was `'Apc'`. It is deprecated in 2.3; use `'Apcu'` instead.
+:::
 
 ### File system cache
 ```php
@@ -76,22 +73,6 @@ Redis has a number of additional configuration options. The following list will 
 'persistent_id' => ''
 ```
 
-### WinCache
-```php
-$config['cache']['enabled'] = true;
-$config['cache']['provider'] = 'WinCache';
-```
-
-This provider has no additional configuration options.
-
-### XCache
-```php
-$config['cache']['enabled'] = true;
-$config['cache']['provider'] = 'XCache';
-```
-
-This provider has no additional configuration options.
-
 ## Session caching
 In addition to various data caches, it is possible to also cache XenForo user sessions. To cache sessions add the following to **src/config.php**:
 
@@ -101,7 +82,7 @@ $config['cache']['sessions'] = true;
 
 
 :::note
-Your cache must have enough space to hold the sessions, or users may not be able to login properly. We do not recommend writing sessions to the cache if you are using APC as your cache provider.
+Your cache must have enough space to hold the sessions, or users may not be able to login properly. We do not recommend writing sessions to the cache if you are using APCu as your cache provider.
 :::
 
 ## Cache contexts
