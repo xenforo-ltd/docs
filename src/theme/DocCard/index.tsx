@@ -1,36 +1,36 @@
-import React, {type ReactNode} from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
+import React, { type ReactNode } from "react";
+import clsx from "clsx";
+import Link from "@docusaurus/Link";
 import {
   useDocById,
   findFirstSidebarItemLink,
-} from '@docusaurus/plugin-content-docs/client';
-import {usePluralForm} from '@docusaurus/theme-common';
-import isInternalUrl from '@docusaurus/isInternalUrl';
-import {translate} from '@docusaurus/Translate';
+} from "@docusaurus/plugin-content-docs/client";
+import { usePluralForm } from "@docusaurus/theme-common";
+import isInternalUrl from "@docusaurus/isInternalUrl";
+import { translate } from "@docusaurus/Translate";
 
-import type {Props} from '@theme/DocCard';
-import Heading from '@theme/Heading';
+import type { Props } from "@theme/DocCard";
+import Heading from "@theme/Heading";
 import type {
   PropSidebarItemCategory,
   PropSidebarItemLink,
-} from '@docusaurus/plugin-content-docs';
+} from "@docusaurus/plugin-content-docs";
 
-import styles from './styles.module.css';
+import styles from "./styles.module.css";
 
 function useCategoryItemsPlural() {
-  const {selectMessage} = usePluralForm();
+  const { selectMessage } = usePluralForm();
   return (count: number) =>
     selectMessage(
       count,
       translate(
         {
-          message: '1 item|{count} items',
-          id: 'theme.docs.DocCard.categoryDescription.plurals',
+          message: "1 item|{count} items",
+          id: "theme.docs.DocCard.categoryDescription.plurals",
           description:
-            'The default description for a category card in the generated index about how many items this category includes',
+            "The default description for a category card in the generated index about how many items this category includes",
         },
-        {count},
+        { count },
       ),
     );
 }
@@ -47,7 +47,8 @@ function CardContainer({
   return (
     <Link
       href={href}
-      className={clsx('card padding--lg', styles.cardContainer, className)}>
+      className={clsx("card padding--lg", styles.cardContainer, className)}
+    >
       {children}
     </Link>
   );
@@ -70,14 +71,16 @@ function CardLayout({
     <CardContainer href={href} className={className}>
       <Heading
         as="h2"
-        className={clsx('text--truncate', styles.cardTitle)}
-        title={title}>
+        className={clsx("text--truncate", styles.cardTitle)}
+        title={title}
+      >
         {title}
       </Heading>
       {description && (
         <p
-          className={clsx('text--truncate', styles.cardDescription)}
-          title={description}>
+          className={clsx("text--truncate", styles.cardDescription)}
+          title={description}
+        >
           {description}
         </p>
       )}
@@ -85,7 +88,7 @@ function CardLayout({
   );
 }
 
-function CardCategory({item}: {item: PropSidebarItemCategory}): ReactNode {
+function CardCategory({ item }: { item: PropSidebarItemCategory }): ReactNode {
   const href = findFirstSidebarItemLink(item);
   const categoryItemsPlural = useCategoryItemsPlural();
 
@@ -105,8 +108,8 @@ function CardCategory({item}: {item: PropSidebarItemCategory}): ReactNode {
   );
 }
 
-function CardLink({item}: {item: PropSidebarItemLink}): ReactNode {
-  const icon = isInternalUrl(item.href) ? '📄️' : '🔗';
+function CardLink({ item }: { item: PropSidebarItemLink }): ReactNode {
+  const icon = isInternalUrl(item.href) ? "📄️" : "🔗";
   const doc = useDocById(item.docId ?? undefined);
   return (
     <CardLayout
@@ -119,11 +122,11 @@ function CardLink({item}: {item: PropSidebarItemLink}): ReactNode {
   );
 }
 
-export default function DocCard({item}: Props): ReactNode {
+export default function DocCard({ item }: Props): ReactNode {
   switch (item.type) {
-    case 'link':
+    case "link":
       return <CardLink item={item} />;
-    case 'category':
+    case "category":
       return <CardCategory item={item} />;
     default:
       throw new Error(`unknown item type ${JSON.stringify(item)}`);
