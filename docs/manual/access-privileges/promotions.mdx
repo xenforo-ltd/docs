@@ -25,7 +25,7 @@ If a member no longer qualifies for the promotion, due to their status or the pr
 
 ## How promotions are applied
 
-#### Promotions scheduled job
+### Promotions scheduled job
 
 Promotions are governed by a routine [cron](../common-concepts/cron.mdx) task, which runs every hour.
 
@@ -33,11 +33,11 @@ If you need to process promotions immediately, you can do so by manually running
 
 When the job runs, users who match the criteria of each promotion will be added to the user group(s) specified by each promotion. Users who no longer match the criteria will be removed from the applicable user group(s) *unless* their membership of said user group(s) is as a result of being manually added to that group by an administrator editing their user profile, or as the result of another promotion whose criteria they match.
 
-#### Active users only
+### Active users only
 
 By design, user group changes through promotions are applied only to **recently-active users**. Inactive members (who have not logged in an interacted with your forum in some time) will not be processed for promotions, nor will they have promotions removed that have already been applied until they become active.
 
-#### Alternative approach
+### Alternative approach
 
 If you want to apply a group membership via [criteria](../common-concepts/criteria.mdx) to a selection of your entire registered user base regardless of whether or not they have been recently active, the correct way to do so is through [batch updates](../users/user-batch-update.mdx) rather than promotions.
 

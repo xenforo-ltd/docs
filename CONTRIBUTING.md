@@ -10,7 +10,7 @@ There are three important things to note about documentation, generally:
 
 These guidelines aim to set out some of the processes involved in editing our documentation, and some best practices. Feel free to modify these guidelines in a pull request if required.
 
-#### Table of contents
+## Table of contents
 
 - [Getting started with Docusaurus](#getting-started-with-docusaurus)
   - [What is Docusaurus?](#what-is-docusaurus)

@@ -26,7 +26,7 @@ $username = $user['username'];
 :::warning
 Database queries written directly and passed to the database adapter are not automatically "safe". They pose a risk of a SQL injection vulnerability if user input is not sanitised and not passed into the query without being prepared. The way to do that properly is using prepared statements, like in the example above. Parameters are represented in the query itself using the `?` placeholder. These placeholders are then replaced with the values in the next argument after they have been appropriately escaped. If you have the need to use more than a single parameter, that should be passed into the fetch type method as an array. Should the need arise, you can escape or quote values directly using `$db->quote($value)`.
 
-You can find more information about prepared statements [here](http://php.net/manual/en/mysqli.quickstart.prepared-statements.php).
+You can find more information about prepared statements in the [PHP manual](http://php.net/manual/en/mysqli.quickstart.prepared-statements.php).
 
 :::
 
