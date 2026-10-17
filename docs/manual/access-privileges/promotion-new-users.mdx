@@ -7,6 +7,7 @@ After that they will be promoted into a new user group which will allow them to 
 This is a typical use for user group promotions, to allow moderators to vet all initial posts by new members and catch any potential spammers.
 
 ## Restricting permissions
+
 The first step is to configure the Registered user group with the base permissions all members will have. Initially, we want all members to have their content pre-moderated (manually approved) before publication.
 
 1. Edit the *Registered* user group at **Users & groups > User groups > Registered**.
@@ -14,6 +15,7 @@ The first step is to configure the Registered user group with the base permissio
 3. Save the user group.
 
 ## Removing restrictions
+
 The next step is to create a new user group, which we will call `Verified Member`, which grants the permission to post without pre-moderation.
 
 1. Create a new user group using **Groups and permissions > User groups > Add user group**.
@@ -22,6 +24,7 @@ The next step is to create a new user group, which we will call `Verified Member
 4. Save the user group.
 
 ## Creating the promotion
+
 We will now set up a promotion that will automatically promote users to the `Verified member` user group when they have had five messages published.
 
 1. Create a new user group promotion called `Verified`. at **Groups and permissions > User group promotions > Add promotion**.
