@@ -77,10 +77,7 @@ This will load up a local web server accessible from the URL `http://localhost:3
 Pull requests are automatically checked for formatting, Markdown style, spelling and type errors. If you edit on GitHub, these checks run on your pull request. To run them locally:
 
 ```bash
-pnpm format:check
-pnpm lint:md
-pnpm spellcheck
-pnpm typecheck
+pnpm lint
 ```
 
 Most formatting and Markdown issues can be fixed automatically with `pnpm fix`. If the spell checker flags a valid word, such as a XenForo-specific term, add it to the `words` list in `cspell.json`.

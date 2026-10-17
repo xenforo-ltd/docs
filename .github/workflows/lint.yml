@@ -41,7 +41,7 @@ jobs:
 
       # Run every check even if an earlier one fails
       - name: Check formatting
-        run: pnpm format:check
+        run: pnpm lint:format
 
       - name: Lint Markdown
         if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
@@ -49,8 +49,8 @@ jobs:
 
       - name: Spell check
         if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
-        run: pnpm spellcheck
+        run: pnpm lint:spell
 
       - name: Typecheck
         if: ${{ !cancelled() && steps.setup.outcome == 'success' }}
-        run: pnpm typecheck
+        run: pnpm lint:types

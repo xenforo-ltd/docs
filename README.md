@@ -32,13 +32,13 @@ pnpm serve
 
 ### Checks
 
-Pull requests run these checks in CI:
+Pull requests run these checks in CI. Run them all with `pnpm lint`, or individually:
 
 ```bash
-pnpm format:check  # Prettier (code and config files)
-pnpm lint:md       # markdownlint (docs)
-pnpm spellcheck    # cspell
-pnpm typecheck     # TypeScript
+pnpm lint:format  # Prettier (code and config files)
+pnpm lint:md      # markdownlint (docs)
+pnpm lint:spell   # cspell
+pnpm lint:types   # TypeScript
 ```
 
 Run `pnpm fix` to fix most formatting and Markdown issues automatically.
