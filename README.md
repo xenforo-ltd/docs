@@ -12,7 +12,7 @@ Welcome to the documentation for XenForo, covering both end-user guides and deve
 
 ### Requirements
 
-- Node.js 20.0 or higher
+- [pnpm](https://pnpm.io/installation). It downloads the pnpm and Node.js versions this project needs automatically (see `devEngines` in `package.json`).
 
 ### Setup
 
@@ -29,6 +29,19 @@ pnpm build
 # Serve production build locally
 pnpm serve
 ```
+
+### Checks
+
+Pull requests run these checks in CI:
+
+```bash
+pnpm format:check  # Prettier (code and config files)
+pnpm lint:md       # markdownlint (docs)
+pnpm spellcheck    # cspell
+pnpm typecheck     # TypeScript
+```
+
+Run `pnpm fix` to fix most formatting and Markdown issues automatically.
 
 ### API Documentation
 

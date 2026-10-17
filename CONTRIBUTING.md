@@ -17,6 +17,7 @@ These guidelines aim to set out some of the processes involved in editing our do
   - [Great, but what is Markdown?](#great-but-what-is-markdown)
   - [Installing dependencies](#installing-dependencies)
   - [Using Docusaurus](#using-docusaurus)
+  - [Checking your changes](#checking-your-changes)
 - [Documentation structure](#documentation-structure)
 - [Modifying existing pages/sections](#modifying-existing-pagessections)
 - [Adding new pages/sections](#adding-new-pagessections)
@@ -37,11 +38,11 @@ Well, generally awesome is what it is.
 
 > Markdown is a text-to-HTML conversion tool for web writers. Markdown allows you to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML).
 
-To put it another way, it's simply a way to write plain text and later have it converted to HTML. All documentation is written in text files with a `.md` extension. Markdown has become insanely popular over the last few years. If you'd like to learn more about it, GitHub has a [great guide](https://guides.github.com/features/mastering-markdown/) to get you started.
+To put it another way, it's simply a way to write plain text and later have it converted to HTML. All documentation is written in text files with a `.mdx` extension. Markdown has become insanely popular over the last few years. If you'd like to learn more about it, GitHub has a [great guide](https://guides.github.com/features/mastering-markdown/) to get you started.
 
 ### Installing dependencies
 
-You'll need [Node.js](https://nodejs.org/) version 20 or higher installed on your system.
+You'll need [pnpm](https://pnpm.io/installation) installed on your system. It downloads the pnpm and Node.js versions this project needs automatically.
 
 For editing the documentation, installing locally is entirely optional as the documentation can be modified directly via the interface provided on GitHub. If you'd like to preview your changes locally, follow the instructions below.
 
@@ -70,6 +71,19 @@ pnpm start
 ```
 
 This will load up a local web server accessible from the URL `http://localhost:3000/` and it will start watching the documentation for changes and reload automatically.
+
+### Checking your changes
+
+Pull requests are automatically checked for formatting, Markdown style, spelling and type errors. If you edit on GitHub, these checks run on your pull request. To run them locally:
+
+```bash
+pnpm format:check
+pnpm lint:md
+pnpm spellcheck
+pnpm typecheck
+```
+
+Most formatting and Markdown issues can be fixed automatically with `pnpm fix`. If the spell checker flags a valid word, such as a XenForo-specific term, add it to the `words` list in `cspell.json`.
 
 ## Documentation structure
 
