@@ -1,4 +1,4 @@
-import type { InfoPageMetadata } from "docusaurus-plugin-openapi-docs/lib/types";
+import type { InfoPageMetadata } from "docusaurus-plugin-openapi-docs/src/types";
 import type {
   ContactObject,
   LicenseObject,
