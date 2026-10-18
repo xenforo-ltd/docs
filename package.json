@@ -26,12 +26,12 @@
     "clean-api-docs": "docusaurus clean-api-docs all",
     "lint": "pnpm run --no-bail \"/^lint:/\"",
     "lint:format": "prettier --check .",
-    "lint:md": "markdownlint-cli2",
+    "lint:md": "remark docs .github README.md --ext md,mdx --frail --quiet",
     "lint:spell": "cspell lint --no-progress",
     "lint:types": "tsc",
     "fix": "pnpm fix:format && pnpm fix:md",
     "fix:format": "prettier --write .",
-    "fix:md": "markdownlint-cli2 --fix"
+    "fix:md": "remark docs .github README.md --ext md,mdx --output --quiet"
   },
   "dependencies": {
     "@docusaurus/core": "~3.10.2",
@@ -49,32 +49,25 @@
     "react-dom": "^19.3.0"
   },
   "devDependencies": {
-    "@docusaurus/eslint-plugin": "~3.10.2",
     "@docusaurus/module-type-aliases": "~3.10.2",
     "@docusaurus/tsconfig": "~3.10.2",
     "@docusaurus/types": "~3.10.2",
-    "@eslint/core": "^1.2.1",
-    "@eslint/js": "^10.0.1",
     "@types/react": "^19.3.0",
     "cspell": "~10.3.3",
-    "eslint": "^10.5.0",
-    "eslint-plugin-mdx": "^3.8.1",
-    "globals": "^17.6.0",
-    "jiti": "^2.7.0",
-    "markdownlint-cli2": "^0.23.3",
     "prettier": "~3.9.9",
+    "remark-cli": "^12.0.1",
+    "remark-directive": "^4.0.0",
     "remark-frontmatter": "^5.0.0",
-    "remark-lint": "^10.0.1",
     "remark-lint-emphasis-marker": "^4.0.1",
-    "remark-lint-heading-increment": "^4.0.1",
+    "remark-lint-file-extension": "^3.0.1",
     "remark-lint-list-item-spacing": "^5.0.1",
     "remark-lint-maximum-line-length": "^4.1.1",
+    "remark-lint-ordered-list-marker-value": "^4.0.1",
     "remark-mdx": "^3.1.1",
     "remark-preset-lint-consistent": "^6.0.1",
     "remark-preset-lint-markdown-style-guide": "^6.0.1",
     "remark-preset-lint-recommended": "^7.0.1",
-    "typescript": "~7.0.2",
-    "typescript-eslint": "^8.61.1"
+    "typescript": "~7.0.2"
   },
   "browserslist": {
     "production": [

@@ -36,7 +36,7 @@ Pull requests run these checks in CI. Run them all with `pnpm lint`, or individu
 
 ```bash
 pnpm lint:format  # Prettier (code and config files)
-pnpm lint:md      # markdownlint (docs)
+pnpm lint:md      # remark (Markdown and MDX)
 pnpm lint:spell   # cspell
 pnpm lint:types   # TypeScript
 ```
