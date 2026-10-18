@@ -3,9 +3,14 @@
 *.png binary
 *.jpg binary
 *.gif binary
+*.webp binary
 *.ico binary
 *.mp4 binary
 *.zip binary
+
+*.md linguist-detectable
+.github/*.md -linguist-detectable
+README.md -linguist-detectable
 
 docs/api/** linguist-generated=true
 pnpm-lock.yaml linguist-generated=true -diff

@@ -1,9 +1,5 @@
 import type { InfoPageMetadata } from "docusaurus-plugin-openapi-docs/src/types";
-import type {
-  ContactObject,
-  LicenseObject,
-  SecuritySchemeObject,
-} from "docusaurus-plugin-openapi-docs/lib/openapi/types";
+import type { SecuritySchemeObject } from "docusaurus-plugin-openapi-docs/lib/openapi/types";
 import { render } from "docusaurus-plugin-openapi-docs/lib/markdown/utils";
 import { createAuthentication } from "docusaurus-plugin-openapi-docs/lib/markdown/createAuthentication";
 import { createContactInfo } from "docusaurus-plugin-openapi-docs/lib/markdown/createContactInfo";
@@ -34,15 +30,16 @@ export function createInfoPageMD({
     `import TabItem from "@theme/TabItem";\n`,
     `import Export from "@theme/ApiExplorer/Export";\n\n`,
 
-    // Omit createVersionBadge(version) to hide version badge
     createDownload(downloadUrl),
     createHeading(title),
     createLogo(logo, darkLogo),
     createDescription(description),
-    createAuthentication(securitySchemes as unknown as SecuritySchemeObject),
-    createContactInfo(contact as ContactObject),
+    securitySchemes
+      ? createAuthentication(securitySchemes as unknown as SecuritySchemeObject)
+      : "",
+    contact ? createContactInfo(contact) : "",
     createTermsOfService(termsOfService),
-    createLicense(license as LicenseObject),
+    license ? createLicense(license) : "",
   ]);
 
   const additionalContent = `
@@ -99,5 +96,5 @@ The top level will be an object with an \`errors\` key containing an array with 
 API keys are created via the admin control panel. For detailed information about creating and managing API keys, including the different key types (Guest, User, and Super user keys) and scopes, see the [REST API manual](/manual/reference/rest-api).
 `;
 
-  return defaultContent + additionalContent;
+  return additionalContent + defaultContent;
 }

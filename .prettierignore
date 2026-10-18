@@ -1,7 +1,8 @@
-# Prettier's MDX parser corrupts MDX v3 content
-docs/
+# Markdown is formatted by remark
+*.md
 *.mdx
 
+docs/api/
 static/
 pnpm-lock.yaml
 pnpm-workspace.yaml

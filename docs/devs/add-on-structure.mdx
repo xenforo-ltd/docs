@@ -1,3 +1,7 @@
+---
+sidebar_position: 10
+---
+
 # Add-on structure
 
 In previous versions of XF, there were very few standards and conventions surrounding add-on development. We have done
@@ -179,29 +183,29 @@ namespace Demo;
 
 class Setup extends \XF\AddOn\AbstractSetup
 {
-	public function install(array $stepParams = [])
-	{
-		$this->schemaManager()->createTable('xf_demo', function(\XF\Db\Schema\Create $table)
-		{
-			$table->addColumn('demo_id', 'int');
-		});
-	}
+    public function install(array $stepParams = [])
+    {
+        $this->schemaManager()->createTable('xf_demo', function(\XF\Db\Schema\Create $table)
+        {
+            $table->addColumn('demo_id', 'int');
+        });
+    }
 
-	public function upgrade(array $stepParams = [])
-	{
-		if ($this->addOn->version_id < 1000170)
-		{
-			$this->schemaManager()->alterTable('xf_demo', function(\XF\Db\Schema\Alter $table)
-			{
-				$table->addColumn('foo', 'varchar', 10)->setDefault('');
-			});
-		}
-	}
+    public function upgrade(array $stepParams = [])
+    {
+        if ($this->addOn->version_id < 1000170)
+        {
+            $this->schemaManager()->alterTable('xf_demo', function(\XF\Db\Schema\Alter $table)
+            {
+                $table->addColumn('foo', 'varchar', 10)->setDefault('');
+            });
+        }
+    }
 
-	public function uninstall(array $stepParams = [])
-	{
-		$this->schemaManager()->dropTable('xf_demo');
-	}
+    public function uninstall(array $stepParams = [])
+    {
+        $this->schemaManager()->dropTable('xf_demo');
+    }
 }
 ```
 

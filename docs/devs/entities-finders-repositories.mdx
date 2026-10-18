@@ -1,3 +1,7 @@
+---
+sidebar_position: 70
+---
+
 # Entities, finders and repositories
 
 There are a number of ways to interact with data within XF2. In XF1 this was mostly geared towards writing out raw SQL statements inside Model files. The approach in XF2 has moved away from this, and we have added a number of new ways in its place. We'll first look at the preferred method for performing database queries - the finder.
@@ -199,7 +203,7 @@ When you first start working with the finder, as intuitive as it is, you may occ
 
 ```php
 $finder = \XF::finder('XF:User')
-	->where('user_id', 1);
+    ->where('user_id', 1);
 
 \XF::dumpSimple($finder->getQuery());
 ```
@@ -223,8 +227,8 @@ Here's an example finder method from that class:
 ```php
 public function isRecentlyActive($days = 180)
 {
-	$this->where('last_activity', '>', time() - ($days * 86400));
-	return $this;
+    $this->where('last_activity', '>', time() - ($days * 86400));
+    return $this;
 }
 ```
 
@@ -365,10 +369,10 @@ One such relation that is defined on the User entity is the `ConnectedAccounts` 
 ```php
 $structure->relations = [
     'ConnectedAccounts' => [
-    	'entity' => 'XF:UserConnectedAccount',
-    	'type' => self::TO_MANY,
-    	'conditions' => 'user_id',
-    	'key' => 'provider'
+        'entity' => 'XF:UserConnectedAccount',
+        'type' => self::TO_MANY,
+        'conditions' => 'user_id',
+        'key' => 'provider'
     ]
 ];
 ```
@@ -386,9 +390,9 @@ $user = $finder->where('user_id', 1)->with('ConnectedAccounts|facebook')->fetchO
 
 ```php
 $structure->options = [
-	'custom_title_disallowed' => preg_split('/\r?\n/', $options->disallowedCustomTitles),
-	'admin_edit' => false,
-	'skip_email_confirm' => false
+    'custom_title_disallowed' => preg_split('/\r?\n/', $options->disallowedCustomTitles),
+    'admin_edit' => false,
+    'skip_email_confirm' => false
 ];
 ```
 
@@ -410,29 +414,29 @@ Let's look at some real examples of these methods in action, in the User entity.
 ```php
  protected function _preSave()
  {
- 	if ($this->isChanged('user_group_id') || $this->isChanged('secondary_group_ids'))
- 	{
- 		$groupRepo = $this->getUserGroupRepo();
- 		$this->display_style_group_id = $groupRepo->getDisplayGroupIdForUser($this);
- 	}
+     if ($this->isChanged('user_group_id') || $this->isChanged('secondary_group_ids'))
+     {
+         $groupRepo = $this->getUserGroupRepo();
+         $this->display_style_group_id = $groupRepo->getDisplayGroupIdForUser($this);
+     }
 
- 	// ...
+     // ...
  }
 
  protected function _postSave()
  {
     // ...
 
- 	if ($this->isUpdate() && $this->isChanged('username') && $this->getExistingValue('username') != null)
- 	{
- 		$this->app()->jobManager()->enqueue('XF:UserRenameCleanUp', [
- 			'originalUserId' => $this->user_id,
- 			'originalUserName' => $this->getExistingValue('username'),
- 			'newUserName' => $this->username
- 		]);
- 	}
+     if ($this->isUpdate() && $this->isChanged('username') && $this->getExistingValue('username') != null)
+     {
+         $this->app()->jobManager()->enqueue('XF:UserRenameCleanUp', [
+             'originalUserId' => $this->user_id,
+             'originalUserName' => $this->getExistingValue('username'),
+             'newUserName' => $this->username
+         ]);
+     }
 
- 	// ...
+     // ...
 ```
 
 In the `_preSave()` example we fetch and cache the new display group ID for a user based on their changed user groups. In the `_postSave()` example, we trigger a job to run after a user's name has been changed.

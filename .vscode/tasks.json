@@ -1,0 +1,212 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "docusaurus:build",
+      "detail": "Build Docusaurus site for production",
+      "icon": {
+        "id": "package"
+      },
+      "command": "pnpm",
+      "args": ["docusaurus:build"],
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "docusaurus:clear",
+      "detail": "Clear Docusaurus build cache",
+      "icon": {
+        "id": "clear-all"
+      },
+      "command": "pnpm",
+      "args": ["docusaurus:clear"],
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "docusaurus:clean-api-docs",
+      "detail": "Clean generated API documentation",
+      "icon": {
+        "id": "eraser"
+      },
+      "command": "pnpm",
+      "args": ["docusaurus:clean-api-docs"],
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "docusaurus:gen-api-docs",
+      "detail": "Generate API documentation",
+      "icon": {
+        "id": "file-code"
+      },
+      "command": "pnpm",
+      "args": ["docusaurus:gen-api-docs"],
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "docusaurus:serve",
+      "detail": "Serve built Docusaurus site locally",
+      "icon": {
+        "id": "server"
+      },
+      "command": "pnpm",
+      "args": ["docusaurus:serve"],
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "docusaurus:start",
+      "detail": "Start Docusaurus development server",
+      "icon": {
+        "id": "play"
+      },
+      "command": "pnpm",
+      "args": ["docusaurus:start"],
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "docusaurus:write-heading-ids",
+      "detail": "Write heading IDs for documentation",
+      "icon": {
+        "id": "link"
+      },
+      "command": "pnpm",
+      "args": ["docusaurus:write-heading-ids"],
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "eslint",
+      "detail": "Perform static analysis with ESLint",
+      "icon": {
+        "id": "lightbulb"
+      },
+      "command": "pnpm",
+      "args": ["eslint"],
+      "problemMatcher": "$eslint-stylish",
+      "presentation": {
+        "panel": "dedicated",
+        "revealProblems": "always",
+        "clear": false
+      }
+    },
+    {
+      "label": "eslint:fix",
+      "detail": "Fix ESLint issues automatically",
+      "icon": {
+        "id": "wrench"
+      },
+      "command": "pnpm",
+      "args": ["eslint:fix"],
+      "problemMatcher": "$eslint-stylish",
+      "presentation": {
+        "panel": "dedicated",
+        "revealProblems": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "prettier:check",
+      "detail": "Check code formatting with Prettier",
+      "icon": {
+        "id": "paintcan"
+      },
+      "command": "pnpm",
+      "args": ["prettier:check"],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "prettier:write",
+      "detail": "Format code with Prettier",
+      "icon": {
+        "id": "pencil"
+      },
+      "command": "pnpm",
+      "args": ["prettier:write"],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "spellcheck",
+      "detail": "Check spelling in documentation files",
+      "icon": {
+        "id": "check"
+      },
+      "command": "pnpm",
+      "args": ["spellcheck"],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      "label": "spellcheck:changed",
+      "detail": "Check spelling in changed files only",
+      "icon": {
+        "id": "diff"
+      },
+      "command": "pnpm",
+      "args": ["spellcheck:changed"],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    }
+  ]
+}

@@ -1,3 +1,7 @@
+---
+sidebar_position: 10
+---
+
 # Config.php options
 
 All of the information XenForo needs to connect to your database server is located in the `src/config.php` file.
@@ -93,7 +97,6 @@ Disables all code event listeners in XenForo. This will largely turn off all add
 Disables the ability of template modifications to perform their operation using a PHP callback. Similarly to `enableListeners`, this switch can be used to regain access to a system rendered inoperable by a broken callback.
 
 #### enableGzip
-
 By default, XenForo will compress the final HTML and CSS output of pages it generates using the *gzip* compression system, which is then invisibly decompressed by your visitors' browsers when the data is received. This can significantly speed up page loading times, but if you want to disable this feature and have the HTML and CSS sent as uncompressed plain text, disable this setting.
 
 #### enableContentLength
@@ -155,10 +158,10 @@ Using the default value of `/`, cookies set by XenForo will be available in all 
 - `'/'` XenForo cookies are available to all areas of your website.
 - `'/forum/'` XenForo cookies can only be read by pages located within the `forum` directory, which resides at *'http://example.com/forum'*, where *example.com* is your site address.
 - `'/path/to/other/folder/'` XenForo cookies can only be read by pages located in the *path/to/other/folder* directory, located at *http://example.com/path/to/other/folder*.
-  - Cookies can **not** be read by pages located in folders above this location, ie:
-  - `http://example.com/path`
-  - `http://example.com/path/to`
-  - `http://example.com/path/to/other`
+    - Cookies can **not** be read by pages located in folders above this location, ie:
+    - `http://example.com/path`
+    - `http://example.com/path/to`
+    - `http://example.com/path/to/other`
 
 :::warning
 If you specify a cookie path that does not allow cookies to be set within the XenForo root directory, XenForo will be unable to read the cookies it sets, and critical operations like logging in will fail.
@@ -249,8 +252,7 @@ Defines the location of the 'js' folder, in which XenForo expects to find the Ja
 The name of the PHP class that is used to connect to your database. If you use a MySQL server, there is little reason to change this setting.
 
 ### HTTP client settings
-
-These settings control the behavior of the internal XenForo HTTP client, which is used to fetch resources from across the internet, such as images and web pages when using the [Image and link proxy](../configuration/proxy.mdx).
+These settings control the behavior of the internal XenForo HTTP client, which is used to fetch resources from across the internet, such as images and web pages when using the [Image and link proxy](../configuration/options-list/proxy.mdx).
 
 - `$config['http']['sslVerify']` = `null`;
 - `$config['http']['proxy']` = `null`;
@@ -289,7 +291,7 @@ If this value is non-zero, all files created by XenForo will be automatically ch
 
 - `$config['proxyUrlFormat']` = `'proxy.php?{type}={url}&hash={hash}'`;
 
-Defines the format for links using the [Image and link proxy](../configuration/proxy.mdx).
+Defines the format for links using the [Image and link proxy](../configuration/options-list/proxy.mdx).
 
 The format must include the tokens `{type}`, `{url}` and `{hash}`, and must target `proxy.php` unless you have an alternative script or system to handle the proxy requests.
 
@@ -347,7 +349,6 @@ The `enabled` setting switches designer mode on and off, and the `basePath` valu
 A more extensive discussion of [Designer mode](https://xenforo.com/xf2-docs/dev/designing-styles/) can be found in the [XenForo 2 Developer Documentation](https://xenforo.com/xf2-docs/dev/designing-styles/)
 
 ### Development mode
-
 Developer mode is another advanced feature, this time for XenForo add-on developers.
 
 - `$config['development']['enabled']` = `false`;

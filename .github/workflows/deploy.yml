@@ -2,6 +2,7 @@ name: Deploy
 
 on:
   workflow_dispatch:
+
   push:
     branches:
       - main
@@ -24,7 +25,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-          fetch-depth: 2
+          fetch-depth: 0
 
       # related to postmanlabs/postman-code-generators#792
       - name: Uninstall yarn
@@ -46,17 +47,15 @@ jobs:
 
   deploy:
     name: Deploy
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     needs: build
-
     permissions:
       pages: write # required to deploy to GitHub Pages
       id-token: write # required to verify deployment source
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - name: Deploy
         id: deployment
@@ -64,8 +63,8 @@ jobs:
 
   recrawl:
     name: Algolia recrawl
-    needs: deploy
     runs-on: blacksmith-4vcpu-ubuntu-2404
+    needs: deploy
     permissions:
       contents: read
 

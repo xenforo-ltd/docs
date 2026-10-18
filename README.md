@@ -54,6 +54,6 @@ pnpm clean-api-docs && pnpm gen-api-docs
 
 ## Contributing
 
-Please feel free to post any [issues](https://github.com/xenforo-ltd/docs/issues) you may find with the documentation. If you'd like to contribute changes to our documentation, then you should first read our guidelines and other useful information in [CONTRIBUTING.md](https://github.com/xenforo-ltd/docs/blob/main/CONTRIBUTING.md).
+Please feel free to post any [issues](https://github.com/xenforo-ltd/docs/issues) you may find with the documentation. If you'd like to contribute changes to our documentation, then you should first read our guidelines and other useful information in [CONTRIBUTING.md](https://github.com/xenforo-ltd/docs/blob/main/.github/CONTRIBUTING.md).
 
 Please also use the main [XenForo community](https://xenforo.com/community) for help with XenForo development, providing feedback on XenForo, and reporting bugs with the software.

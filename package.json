@@ -1,6 +1,16 @@
 {
-  "name": "docs",
-  "version": "1.0.0",
+  "name": "@xenforo-ltd/docs",
+  "description": "XenForo Documentation",
+  "author": "XenForo Ltd",
+  "homepage": "https://docs.xenforo.com",
+  "bugs": {
+    "url": "https://github.com/xenforo-ltd/docs/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xenforo-ltd/docs.git"
+  },
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -17,7 +27,7 @@
     "lint": "pnpm run --no-bail \"/^lint:/\"",
     "lint:format": "prettier --check .",
     "lint:md": "markdownlint-cli2",
-    "lint:spell": "cspell lint --config cspell.json --no-progress \"docs/**/*.{md,mdx}\" \"README.md\" \"CONTRIBUTING.md\"",
+    "lint:spell": "cspell lint --no-progress",
     "lint:types": "tsc",
     "fix": "pnpm fix:format && pnpm fix:md",
     "fix:format": "prettier --write .",
@@ -26,6 +36,7 @@
   "dependencies": {
     "@docusaurus/core": "~3.10.2",
     "@docusaurus/faster": "~3.10.2",
+    "@docusaurus/plugin-client-redirects": "~3.10.2",
     "@docusaurus/plugin-content-docs": "~3.10.2",
     "@docusaurus/preset-classic": "~3.10.2",
     "@docusaurus/theme-common": "~3.10.2",
@@ -38,14 +49,32 @@
     "react-dom": "^19.3.0"
   },
   "devDependencies": {
+    "@docusaurus/eslint-plugin": "~3.10.2",
     "@docusaurus/module-type-aliases": "~3.10.2",
     "@docusaurus/tsconfig": "~3.10.2",
     "@docusaurus/types": "~3.10.2",
+    "@eslint/core": "^1.2.1",
+    "@eslint/js": "^10.0.1",
     "@types/react": "^19.3.0",
     "cspell": "~10.3.3",
+    "eslint": "^10.5.0",
+    "eslint-plugin-mdx": "^3.8.1",
+    "globals": "^17.6.0",
+    "jiti": "^2.7.0",
     "markdownlint-cli2": "^0.23.3",
     "prettier": "~3.9.9",
-    "typescript": "~7.0.2"
+    "remark-frontmatter": "^5.0.0",
+    "remark-lint": "^10.0.1",
+    "remark-lint-emphasis-marker": "^4.0.1",
+    "remark-lint-heading-increment": "^4.0.1",
+    "remark-lint-list-item-spacing": "^5.0.1",
+    "remark-lint-maximum-line-length": "^4.1.1",
+    "remark-mdx": "^3.1.1",
+    "remark-preset-lint-consistent": "^6.0.1",
+    "remark-preset-lint-markdown-style-guide": "^6.0.1",
+    "remark-preset-lint-recommended": "^7.0.1",
+    "typescript": "~7.0.2",
+    "typescript-eslint": "^8.61.1"
   },
   "browserslist": {
     "production": [

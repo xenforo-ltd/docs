@@ -1,3 +1,7 @@
+---
+sidebar_position: 30
+---
+
 # Cache
 
 For larger XenForo installations, it can be advantageous to define a **cache** in order to save on processing time and database queries.
@@ -62,8 +66,8 @@ It is also possible to configure an array of servers, if required.
 $config['cache']['enabled'] = true;
 $config['cache']['provider'] = 'Redis';
 $config['cache']['config'] = [
-	'host' => '127.0.0.1',
-	'password' => 'password'
+    'host' => '127.0.0.1',
+    'password' => 'password'
 ];
 ```
 
