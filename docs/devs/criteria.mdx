@@ -48,7 +48,7 @@ Every criterion consists of two parts: **rule** and (optionally) **data**.
 
 ### Rule
 
-The criterion rule is simply a string in [snake case](https://en.wikipedia.org/wiki/Snake_case) (words_are_separated_with_underscore_character).
+The criterion rule is simply a string in [snake case](https://en.wikipedia.org/wiki/Snake_case) (words\_are\_separated\_with\_underscore\_character).
 
 It has two essential purposes:
 
@@ -89,7 +89,6 @@ As you can see, criterion is simply a checkbox with optional input fields inside
 
 :::note
 Keep in mind that `criterion_1/2_rule` in `name` attributes may not have to be criteria rules! These are just names for input containers. You can easily write `<xf:option name="foo[bar][rule]" value="criterion_rule" />` and it will work correctly. The criterion rule will be `criterion_rule`, not `bar`.
-
 :::
 
 ### (Optionally) Storing selected criteria
@@ -270,7 +269,7 @@ public static function criteriaTemplateData(array &$templateData)
 }
 ```
 
-## "helper_criteria" template
+## "helper\_criteria" template
 
 Whenever you as addon maker want to get a target user/admin a way to select User/Page/other addon's criteria (or even all at once), you can simply use `helper_criteria`.
 
@@ -344,9 +343,9 @@ Just like tabs, panes in `helper_criteria` are grouped under criteria types macr
 </xf:macro>
 ```
 
-### Using "helper_criteria"
+### Using "helper\_criteria"
 
-To use "helper_criteria" functionality, you need to include its macros.
+To use "helper\_criteria" functionality, you need to include its macros.
 
 #### Preparing data
 
@@ -423,7 +422,7 @@ In order to use criteria tabs, you will need to organise the page. Stick to the 
 
 Again, if you don't have any saved or even don't suppose to have it, pass `{{ [] }}` to an `arg-criteria` attribute.
 
-### Adding custom criteria type to "helper_criteria"
+### Adding custom criteria type to "helper\_criteria"
 
 If you want to add a custom criteria type to `helper_criteria` template, you will need to create a template modification of `helper_criteria` template.
 
@@ -479,7 +478,7 @@ Finally, add the tab and the pane macros code in "Replace" field. Example:
 </xf:macro>
 ```
 
-Now, you can use your criteria everywhere (see ["Using helper_criteria"](#using-helper_criteria)).
+Now, you can use your criteria everywhere (see ["Using helper\_criteria"](#using-helper_criteria)).
 
 ## Custom User/Page criterion example
 
@@ -493,7 +492,6 @@ First of all, we need to add our criterion to User criteria list. Go to "Templat
 
 :::warning
 If there is no "Admin" tab make sure you have enabled the [development mode](development-tools.mdx#enabling-development-mode)!
-
 :::
 
 We will be modifying the `helper_criteria` template so write it to the "Template" field. In this example I will be using `likes_on_single_message` "Modification key" for this template modification.
@@ -614,7 +612,6 @@ Nice!
 
 :::warning
 If you are not awarded with "All for one" trophy, try to sign out, sign in and re-running "Update user trophies" cron.
-
 :::
 
 ### Testing (notice)
@@ -865,13 +862,11 @@ public function actionRemove()
 
 :::note
 Keep in mind that we use `isMatchedPost($post)` method for XenForo versions below 2.1!
-
 :::
 
 :::warning
 It is generally a bad practice to retrieve all entities from database at once (`$this->finder('XF:Post')->fetch();` in the code above). There could be millions of forum posts and selecting them all at once is going to be a very long process, which might end up with an error.
 Consider using a Job system for working with dozens (100+) of database items.
-
 :::
 
 ### Testing

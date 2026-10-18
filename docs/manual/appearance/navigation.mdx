@@ -6,13 +6,13 @@ sidebar_position: 10
 
 On all pages of your XenForo installation, underneath the logo image in the header, you will find a strip of links, each of which navigate to another area of the site, or open up into a menu containing additional links.
 
-This strip of links is called the *Public navigation*, and is controlled with the tools provided in the *Setup* section of your control panel.
+This strip of links is called the _Public navigation_, and is controlled with the tools provided in the _Setup_ section of your control panel.
 
 ## Public navigation
 
 ### Concepts
 
-The navigation is divided into *top-level navigation* and *sub-navigation*. Top level navigation items will appear in the top strip of links in your site header, while sub-navigation links will be shown below when their parent top-level navigation item is selected.
+The navigation is divided into _top-level navigation_ and _sub-navigation_. Top level navigation items will appear in the top strip of links in your site header, while sub-navigation links will be shown below when their parent top-level navigation item is selected.
 
 Visiting different areas of the site will automatically switch the selected top-level item, so that the displayed sub-navigation items are contextually correct for the area of the site you are viewing.
 
@@ -26,7 +26,7 @@ When you first access the public navigation tools, you will find the default nav
 
 Within each of these are links that are appropriate for that area of the site, for example, within **Forums** are links to find threads containing your posts, or threads that you started yourself.
 
-The **Home** top-level navigation item is different, in that it has no sub-navigation and acts solely as a link to the URL you specify in the *Home page URL* option of the main XenForo options.
+The **Home** top-level navigation item is different, in that it has no sub-navigation and acts solely as a link to the URL you specify in the _Home page URL_ option of the main XenForo options.
 
 :::note
 The default top-level navigation items control important XenForo functionality, so while you may rename and reorder them, and reorganise their sub-navigation items, it is not advised that you should remove them or change their type.
@@ -60,6 +60,6 @@ The [display order](../common-concepts/display-order.mdx) is a number of your ch
 
 Altering the **type** of a navigation item will change the editor to show the appropriate controls for the selected type.
 
-- **Basic**: a basic navigation item is a simple link, or a parent of other links. A text box labelled *Link* will be shown, and the link should be entered either as a full `http://example.com/path/to/my-page.html` style URL, or as a `{{ link('whats-new/posts') }}` style expression if the target page is an internal XenForo page.
-- **Node**: this special navigation type will show the node that you select in the *Node* menu, along with a pop-up menu showing the nodes contained within that selected node. It can be useful for providing direct links to nodes/forums that might otherwise not be readily discovered. Note that permissions are applied, and users who can not normally view the selected node or any of its children will not see the node(s) in the navigation item either.
-- **Callback**: this advanced option will call the PHP class and method specified in the *Callback* fields. This one is best left for add-on developers.
+- **Basic**: a basic navigation item is a simple link, or a parent of other links. A text box labelled _Link_ will be shown, and the link should be entered either as a full `http://example.com/path/to/my-page.html` style URL, or as a `{{ link('whats-new/posts') }}` style expression if the target page is an internal XenForo page.
+- **Node**: this special navigation type will show the node that you select in the _Node_ menu, along with a pop-up menu showing the nodes contained within that selected node. It can be useful for providing direct links to nodes/forums that might otherwise not be readily discovered. Note that permissions are applied, and users who can not normally view the selected node or any of its children will not see the node(s) in the navigation item either.
+- **Callback**: this advanced option will call the PHP class and method specified in the _Callback_ fields. This one is best left for add-on developers.

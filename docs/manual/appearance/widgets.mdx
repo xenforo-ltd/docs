@@ -13,16 +13,16 @@ XenForo ships with a selection of useful widgets and installs with a collection 
 Standard widgets included with XenForo include, amongst many others:
 
 1. New posts
-1. Online statistics
-1. Newest members
-1. Today's birthdays
+2. Online statistics
+3. Newest members
+4. Today's birthdays
 
 Widgets consist of four components:
 
 1. The widget definition
-1. A unique identifier, or *widget key*
-1. The position to which the widget is attached
-1. The parameters for the data to be displayed within the widget
+2. A unique identifier, or _widget key_
+3. The position to which the widget is attached
+4. The parameters for the data to be displayed within the widget
 
 The widget manager displays a list of all widgets that are configured on your site, grouped by their defined positions.
 
@@ -32,7 +32,7 @@ From here, you can add new widgets, or delete existing ones using the delete gad
 
 Widgets definitions are usually created by developers, who build a widget that can take a number of parameters in order to show dynamic content.
 
-When you hit *Add widget* from the widget manager, the first thing you will be asked to decide is which widget definition you would like to use for your new widget deployment.
+When you hit _Add widget_ from the widget manager, the first thing you will be asked to decide is which widget definition you would like to use for your new widget deployment.
 
 For the most part, widget definitions have fairly self-explanatory names, so you can just choose the most appropriate one from the menu.
 
@@ -66,14 +66,14 @@ XenForo also comes with a two special widget definitions, which are designed spe
 
 ### HTML widget
 
-The HTML widget doesn't do any extra PHP processing behind the scenes, nor does it fetch any data. Its sole purpose is to be a vehicle for an HTML snippet that you enter into the *Template* field of the widget editor.
+The HTML widget doesn't do any extra PHP processing behind the scenes, nor does it fetch any data. Its sole purpose is to be a vehicle for an HTML snippet that you enter into the _Template_ field of the widget editor.
 
-You can include any HTML, and you may also use XenForo *template syntax* if you wish.
+You can include any HTML, and you may also use XenForo _template syntax_ if you wish.
 
-There is also an *Advanced mode* option, which will omit the usual block container for the widget HTML. If you use this mode, it is entirely your responsibility to ensure that the widget HTML is properly contained and appropriately styled to fit with your site.
+There is also an _Advanced mode_ option, which will omit the usual block container for the widget HTML. If you use this mode, it is entirely your responsibility to ensure that the widget HTML is properly contained and appropriately styled to fit with your site.
 
 ### PHP callback widget
 
-The PHP callback widget does not include a box for you to define HTML, it offers only a *Class* and *Method* controls, which allow you to have the widget call custom PHP code, which will be responsible both for fetching any data and for rendering the final HTML.
+The PHP callback widget does not include a box for you to define HTML, it offers only a _Class_ and _Method_ controls, which allow you to have the widget call custom PHP code, which will be responsible both for fetching any data and for rendering the final HTML.
 
 This is an advanced developer option.

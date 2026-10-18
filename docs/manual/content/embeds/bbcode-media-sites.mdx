@@ -20,7 +20,7 @@ Clicking the title of a BB code media site will load the editor for that site.
 
 BB code media sites work by extracting data from the URL posted by the user and translating that into a snippet of HTML that can be used to embed the referenced media in a message. In some cases, this is a simple case of taking a piece of the URL and inserting it into the HTML, and in other cases further steps are required to convert the URL into usable HTML.
 
-This can be a complex process, but for the purpose of this document we will look at a relatively simple example: *Pinterest*, which is simple because Pinterest URLs contain all the information we need to create the embedded HTML.
+This can be a complex process, but for the purpose of this document we will look at a relatively simple example: _Pinterest_, which is simple because Pinterest URLs contain all the information we need to create the embedded HTML.
 
 ### Match URLs
 
@@ -28,7 +28,7 @@ In this box, we define all the URLs that we would like to have converted into em
 
 In the case of Pinterest, the data is always a number, so we extend `{id}` to `{id:digits}`, which will force the pattern to only match whole numbers. The other available extension is `{id:alphanum}`, which limits the match to numbers and letters only. You may use a `*` as a wildcard in the match URLs to match anything.
 
-Under *Advanced options* is a setting that allows these match URLs to be regular expressions. If you use regular expressions, each line must define delimiters and switches.
+Under _Advanced options_ is a setting that allows these match URLs to be regular expressions. If you use regular expressions, each line must define delimiters and switches.
 
 ### Embed template
 

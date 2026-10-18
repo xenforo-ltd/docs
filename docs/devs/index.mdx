@@ -39,8 +39,8 @@ The recommended requirements are as follows:
 It's often more convenient to set up a local web server for development. There are generally two approaches for this:
 
 1. Install Apache (or nginx), MySQL or MariaDB, and PHP yourself.
-1. Install a pre-built virtual machine
-1. Install a pre-built stack.
+2. Install a pre-built virtual machine
+3. Install a pre-built stack.
 
 Setting things up yourself is more complicated, but tends to give you more control over how everything is set up.
 
@@ -66,7 +66,6 @@ If using the CLI to install XenForo, you will need to create the config.php file
 
 :::note
 Make sure you create the config file in within the `src` directory. The `library` directory is only used for legacy purposes.
-
 :::
 
 Once finished, it should look like the following:
@@ -104,7 +103,6 @@ XenForo files.
 
 :::warning
 To eliminate file permission problems, we recommend running the installer as the same user that PHP runs as via your web server. If you don't do this, you should take steps to ensure that permissions are set correctly. See the above section for more details.
-
 :::
 
 To start the install, just enter the below command:
@@ -138,7 +136,6 @@ If you have been developing add-ons, and you have chosen to keep or backup your 
 Be careful if you choose to back up and restore your `src/addons` directory. The `XF` directory within contains the XenForo master data, and should not be restored from a backup to ensure you always have the most up to date version of the files.
 
 Performing a reinstall in this way is a destructive operation and it will remove all data you have created. Additionally, bear in mind that only tables with the `xf_` prefix are cleared. This is a significant reason for the recommendation that all tables, even for add-ons, should be prefixed with `xf_`.
-
 :::
 
 ## Verifying file integrity

@@ -11,12 +11,12 @@ All controls for creating and managing promotions are located in the Admin Contr
 
 ## Utility
 
-While this system is called *promotions*, its utility is far more broad. You can *promote* users to additional user groups to achieve all manner of results. Here are just a few examples:
+While this system is called _promotions_, its utility is far more broad. You can _promote_ users to additional user groups to achieve all manner of results. Here are just a few examples:
 
-* Membership segmentation for A/B testing
-* Identification of users whose birthday is today
-* Special badges for users who have contributed a lot
-* Username styling to identify new users
+- Membership segmentation for A/B testing
+- Identification of users whose birthday is today
+- Special badges for users who have contributed a lot
+- Username styling to identify new users
 
 ## Creating a promotion
 
@@ -29,18 +29,21 @@ Once the promotion has been saved, any members active recently, who match all of
 If a member no longer qualifies for the promotion, due to their status or the promotion criteria changing, then they will be demoted and removed from the user groups(s).
 
 ## How promotions are applied
+
 ### Promotions scheduled job
+
 Promotions are governed by a routine [cron](../../common-concepts/cron.mdx) task, which runs every hour.
 
-If you need to process promotions immediately, you can do so by manually running the *User group promotions* [cron](../../common-concepts/cron.mdx) entry at **Tools > Cron entries > User group promotions**
+If you need to process promotions immediately, you can do so by manually running the _User group promotions_ [cron](../../common-concepts/cron.mdx) entry at **Tools > Cron entries > User group promotions**
 
-When the job runs, users who match the criteria of each promotion will be added to the user group(s) specified by each promotion. Users who no longer match the criteria will be removed from the applicable user group(s) *unless* their membership of said user group(s) is as a result of being manually added to that group by an administrator editing their user profile, or as the result of another promotion whose criteria they match.
+When the job runs, users who match the criteria of each promotion will be added to the user group(s) specified by each promotion. Users who no longer match the criteria will be removed from the applicable user group(s) _unless_ their membership of said user group(s) is as a result of being manually added to that group by an administrator editing their user profile, or as the result of another promotion whose criteria they match.
 
 ### Active users only
 
 By design, user group changes through promotions are applied only to **recently-active users**. Inactive members (who have not logged in an interacted with your forum in some time) will not be processed for promotions, nor will they have promotions removed that have already been applied until they become active.
 
 ### Alternative approach
+
 If you want to apply a group membership via [criteria](../../common-concepts/criteria.mdx) to a selection of your entire registered user base regardless of whether or not they have been recently active, the correct way to do so is through [batch updates](../../users/user-batch-update.mdx) rather than promotions.
 
 ## Managing promotions
@@ -52,7 +55,7 @@ Clicking the title of each promotion will allow you to view, edit, and delete it
 Promotions can be disabled and re-enabled via the checkbox.
 
 :::note
-Disabling an active promotion will prevent the promotion from being applied to any additional users. It will *not* demote any users that have already been promoted.
+Disabling an active promotion will prevent the promotion from being applied to any additional users. It will _not_ demote any users that have already been promoted.
 :::
 
 ## Managing promoted users
@@ -87,7 +90,7 @@ Manual promotions can be removed in the same way as automatic promotions, via th
 
 Occasionally, you may want to undo the user group assignments done by an active promotion, either because you made a mistake or because the promotion is no longer relevant.
 
-*Deleting* or *deactivating* the promotion will **not** undo any user group assignments made as a result of the promotion, but there are a number of ways to do so:
+_Deleting_ or _deactivating_ the promotion will **not** undo any user group assignments made as a result of the promotion, but there are a number of ways to do so:
 
 1. If the promotion was set to add users to a specific user group, the sole purpose of which was related to the promotion, you may simply delete the user group, followed by the promotion definition itself.
 2. Alternatively, if you don't want to delete the user group but you want to remove all users from it, you may use [batch updates](../../users/user-batch-update.mdx) to identify all members of a specific group, and then remove their membership. You can then delete the promotion definition.

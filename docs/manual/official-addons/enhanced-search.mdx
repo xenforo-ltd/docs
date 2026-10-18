@@ -20,9 +20,9 @@ Once installed, XenForo Enhanced Search is configured via **Setup > Enhanced Sea
 
 Initially, you will need to enter the details of your Elasticsearch server. Once you have entered the Elasticsearch details, you will be able to configure elements about your index:
 
-* **Stop words**: stop words allow you to control whether any words won't be included in the index. This can reduce the size of the index.
-* **Word stemming**: if enabled, this can improve results by considering different forms of the root word to be identical. For example, searching for "tests" would also match "test", "testing" and "tested".
-* **Accent removal and character simplification**: if enabled, accents and other characters will be simplified before indexing. This can improve results by allowing you to match a word (such as esta/está), regardless of whether the post or the search included the accent.
+- **Stop words**: stop words allow you to control whether any words won't be included in the index. This can reduce the size of the index.
+- **Word stemming**: if enabled, this can improve results by considering different forms of the root word to be identical. For example, searching for "tests" would also match "test", "testing" and "tested".
+- **Accent removal and character simplification**: if enabled, accents and other characters will be simplified before indexing. This can improve results by allowing you to match a word (such as esta/está), regardless of whether the post or the search included the accent.
 
 :::note
 Once the index has been created, you must [rebuild the search index](../maintenance/rebuild-caches.mdx#rebuild-search-index) in the control panel for all existing documents to be found. If you change your index configuration later, you will need to rebuild the search index again.

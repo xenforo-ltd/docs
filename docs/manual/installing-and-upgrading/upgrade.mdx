@@ -29,7 +29,7 @@ If possible, we strongly recommend that you perform a test upgrade of your site 
 It is vital that you backup your site before upgrading to XenForo 2. You **cannot** downgrade after the upgrade starts. The **only** method of downgrading will be to restore from a backup.
 :::
 
-<span id="upgrading-in-xenforo-21"></span>
+<span id="upgrading-in-xenforo-21" />
 
 ## One-click upgrades
 
@@ -80,11 +80,13 @@ Additionally, if you'd like to add emoji support see our [Emoji support](https:/
 :::
 
 ## 4. Post-upgrade checks
+
 When you upgrade XenForo, we will not automatically overwrite any template or phrase customizations you have made. You should check if there are any outdated entries here under **Appearance > Outdated templates** and **Appearance > Outdated phrases**. You can use the template merging tools to attempt to automatically incorporate the core changes into your customizations. [Customized phrases](../appearance/ui-text/phrases.mdx#upgrading-with-customized-phrases) are unlikely to have an negative impact upon the version of XenForo to which you are upgrading.
 
 If you are using a third-party provided style or language, you may wish to see if they have a release that is designed for the version of XenForo you are now running.
 
 ## Upgrading with customized templates
+
 When you customize a [template](../appearance/theming/templates.mdx), the changes are saved and will not be overwritten unless you specifically instruct the system to do so.
 
 While this can prevent unwanted changes, it also means that your customized templates may become outdated when it comes time to upgrade XenForo to a newer version, if that newer version contains an updated version of the template you have customized.
@@ -95,14 +97,15 @@ There are two tools available to help you avoid this.
 
 After you run a XenForo upgrade, the system will alert you to any templates that you have customized that have become outdated.
 
-A list of these templates will be displayed, along with a *Merge* option, which will compare your customized template to the new version and attempt to merge your customizations into the newly updated version of the template.
+A list of these templates will be displayed, along with a _Merge_ option, which will compare your customized template to the new version and attempt to merge your customizations into the newly updated version of the template.
 
 However, if you made custom changes to a section that also changed in the new version of the template, this creates a conflict that you will have to manually resolve. You need to choose which version of the conflicting section to use (or both versions).
 
-When you select the *Merge* link for a template that is listed as being outdated, you will see what the final, merged version of the template will be. Successfully merged sections will be highlighted in blue. Conflicting sections will be highlighted in yellow with buttons to help you resolve the conflict. Once you have resolved any conflict, you may click on the text to edit it to fit your exact needs.
+When you select the _Merge_ link for a template that is listed as being outdated, you will see what the final, merged version of the template will be. Successfully merged sections will be highlighted in blue. Conflicting sections will be highlighted in yellow with buttons to help you resolve the conflict. Once you have resolved any conflict, you may click on the text to edit it to fit your exact needs.
 
 :::note
 :::
+
 After running a XenForo upgrade, you should check **immediately** to ensure that your templates are not outdated, because important or new functionality may be broken or missing if an outdated template remains unmanaged.
 
 ## Common upgrading problems

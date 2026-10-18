@@ -24,7 +24,7 @@ $finder = \XF::finder('XF:User');
 $users = $finder->limit(10)->fetch();
 ```
 
-This example will query 10 records from the xf_user table, and it will return them as an `ArrayCollection` object. This is a special object which acts similarly to an array, in that it is traversable (you can loop through it) and it has some special methods that can tell you the total number of entries it has, grouping by certain values, or other array like operations such as filtering, merging, getting the first or last entry etc.
+This example will query 10 records from the xf\_user table, and it will return them as an `ArrayCollection` object. This is a special object which acts similarly to an array, in that it is traversable (you can loop through it) and it has some special methods that can tell you the total number of entries it has, grouping by certain values, or other array like operations such as filtering, merging, getting the first or last entry etc.
 
 Finder queries generally should be expected to retrieve all columns from a table, so there's no specific equivalent to fetch only certain values certain columns.
 
@@ -110,7 +110,7 @@ $finder = \XF::finder('XF:Thread');
 $thread = $finder->with('Forum', true)->where('thread_id', 123)->fetchOne();
 ```
 
-This query will fetch the Thread entity where the `thread_id = 123` but it will also do a join with the xf_forum table, behind the scenes. In terms of controlling how to do an `INNER JOIN` rather than a `LEFT JOIN`, that is what the second argument is for. In this case we've set the "must exist" argument to true, so it will flip the join syntax to using `INNER` rather than the default `LEFT`.
+This query will fetch the Thread entity where the `thread_id = 123` but it will also do a join with the xf\_forum table, behind the scenes. In terms of controlling how to do an `INNER JOIN` rather than a `LEFT JOIN`, that is what the second argument is for. In this case we've set the "must exist" argument to true, so it will flip the join syntax to using `INNER` rather than the default `LEFT`.
 
 We'll go into more detail about how to access the data fetched from this join in the next section.
 
@@ -121,7 +121,7 @@ $finder = \XF::finder('XF:Thread');
 $thread = $finder->with(['Forum', 'User'], true)->where('thread_id', 123)->fetchOne();
 ```
 
-This would join to the xf_user table to get the thread author too. However, with the second argument there still being `true`, we might not need to do an `INNER` join for the user join, so, we could just chain the methods instead:
+This would join to the xf\_user table to get the thread author too. However, with the second argument there still being `true`, we might not need to do an `INNER` join for the user join, so, we could just chain the methods instead:
 
 ```php
 $finder = \XF::finder('XF:Thread');
@@ -142,7 +142,6 @@ $users = $finder->order('message_count', 'DESC')->limit(10);
 :::note
 Now is probably a good time to mention that finder methods can mostly be called in any order. For example: `$threads = $finder->limit(10)->where('thread_id', '>', 123)->order('post_date')->with('User')->fetch();`
 Although if you wrote a MySQL query in that order you'd certainly encounter some syntax issues, the Finder system will still build it all in the correct order and the above code, although odd looking and probably not recommended, is perfectly valid.
-
 :::
 
 As with a standard MySQL query, it is possible to order a result set on multiple columns. To do that, you can just call the order method again. It's also possible to pass multiple order clauses into the order method using an array.
@@ -320,7 +319,7 @@ $structure->getters = [
 ];
 ```
 
-Getter methods are automatically called when the named fields are called. For example, if we request `is_super_admin` from a User entity, this will automatically check for, and use the `getIsSuperAdmin()` method. The interesting thing to note about this is that the `xf_user` table doesn't actually have a field named `is_super_admin`. This actually exists on the Admin entity, but we have added it as a getter method as a shorthand way of accessing that value. Getter methods can also be used to override the values of existing fields directly, which is the case for the `last_activity` value here. `last_activity` is actually a cached value which is updated usually when a user logs out. However, we store the user's latest activity date in the xf_session_activity table, so we can use this `getLastActivity` method to return that value instead of the cached last activity value. Should you ever have a need to bypass the getter method entirely, and just get the true entity value, just suffix the column name with an underscore, e.g. `$user->last_activity\_`.
+Getter methods are automatically called when the named fields are called. For example, if we request `is_super_admin` from a User entity, this will automatically check for, and use the `getIsSuperAdmin()` method. The interesting thing to note about this is that the `xf_user` table doesn't actually have a field named `is_super_admin`. This actually exists on the Admin entity, but we have added it as a getter method as a shorthand way of accessing that value. Getter methods can also be used to override the values of existing fields directly, which is the case for the `last_activity` value here. `last_activity` is actually a cached value which is updated usually when a user logs out. However, we store the user's latest activity date in the xf\_session\_activity table, so we can use this `getLastActivity` method to return that value instead of the cached last activity value. Should you ever have a need to bypass the getter method entirely, and just get the true entity value, just suffix the column name with an underscore, e.g. `$user->last_activity\_`.
 
 Because an entity is just like any other PHP object, you can add more methods to them. A common use case for this is for adding things like permission check methods that can be called on the entity itself.
 
@@ -344,7 +343,7 @@ $finder = \XF::finder('XF:User');
 $user = $finder->where('user_id', 1)->with('Admin')->fetchOne();
 ```
 
-This will use the information defined in the user entity for the `Admin` relation and the details of the `XF:Admin` entity structure to know that this user query should perform a `LEFT JOIN` on the xf_admin table and the `user_id` column. To access the admin last login date from the user entity:
+This will use the information defined in the user entity for the `Admin` relation and the details of the `XF:Admin` entity structure to know that this user query should perform a `LEFT JOIN` on the xf\_admin table and the `user_id` column. To access the admin last login date from the user entity:
 
 ```php
 $lastLogin = $user->Admin->last_login; // returns timestamp of the last admin login
@@ -377,7 +376,7 @@ $structure->relations = [
 ];
 ```
 
-This relation is able to return the records from the xf_user_connected_account table that match the current user ID as a `FinderCollection`. This is similar to the `ArrayCollection` object we mentioned in [The Finder](#the-finder) section above. The relation definition specifies that the collection should be keyed by the `provider` field.
+This relation is able to return the records from the xf\_user\_connected\_account table that match the current user ID as a `FinderCollection`. This is similar to the `ArrayCollection` object we mentioned in [The Finder](#the-finder) section above. The relation definition specifies that the collection should be keyed by the `provider` field.
 
 Although it isn't possible to fetch multiple records while performing a finder query, it is possible to use a `TO_MANY` relation to fetch a **single** record from that relation. As an example, if we wanted to see if the user was associated to a specific connected account provider, we can at least fetch that while querying:
 

@@ -30,13 +30,14 @@ Each row has three columns:
 
 For example, the post content type registers its attachment handler like this:
 
-| content_type | field_name | field_value |
+| content\_type | field\_name | field\_value |
 |---|---|---|
 | `post` | `attachment_handler_class` | `XF\Attachment\PostHandler` |
 
 A single content type can register handlers for many different systems. The `post` content type, for instance, has handler registrations for attachments, alerts, reactions, reports, bookmarks, tags, and more.
 
 ### Registering a handler
+
 Content type fields are managed through the Admin control panel at **Development > Execution manipulation > Content types**. This area is only available when [development mode](development-tools.mdx#enabling-development-mode) is enabled.
 
 From here you can add a new content type field by specifying the content type, field name, and the fully qualified class name of the handler. You will also need to associate the content type field with your add-on.

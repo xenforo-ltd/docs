@@ -7,11 +7,17 @@ sidebar_position: 10
 ## Setup notes
 
 [import-vb-avatars]: /img/manual/import-vb-avatars.webp
+
 [import-vb-faq]: /img/manual/import-vb-faq.webp
+
 [import-vb-notices]: /img/manual/import-vb-notices.webp
+
 [import-vb-smilies]: /img/manual/import-vb-smilies.webp
+
 [import-vb-smilies-after]: /img/manual/import-vb-smilies-after.webp
+
 [import-vb-forums-vb5]: /img/manual/import-vb-forums-vb5.webp
+
 [import-vb-log-table]: /img/manual/import-vb-log-table.webp
 
 The following notes are common to all of the vBulletin importer systems. There are also version-specific notes to follow, which describe preparatory steps that you can perform for individual vBulletin versions.
@@ -28,6 +34,7 @@ If the importer detects that your attachments and or avatars are stored in the d
 ![Entering the full path to avatars, attachments etc.][import-vb-avatars]
 
 ### Custom FAQ pages
+
 Any custom FAQ pages that exist within your vBulletin installation can be imported either as XenForo [_help pages_](../../communication/help.mdx), or as [_page nodes_](../../forums/nodes-forums.mdx#node-types).
 
 :::note
@@ -39,6 +46,7 @@ If you decide to import these as page nodes, you may also choose to import them 
 ![Choosing a parent node for FAQ pages when importing as page nodes][import-vb-faq]
 
 ### Notices
+
 vBulletin notices will be imported as XenForo [notices](../../communication/notices.mdx). Notices are divided into persistent and non-persistent notices, depending on the options with which they were configured in vBulletin.
 
 The import system will allow you to import each notice type as either [Block, Scrolling or Floating](../../communication/notices.mdx#notice-types) mode.
@@ -66,6 +74,7 @@ Individual users' blogs will be imported as a forum-type node containing threads
 You **must** specify a node name in which these blog forums will be created during the import configuration stage.
 
 #### Blog attachments
+
 As with [attachments and avatars](#avatars-and-attachments), if your blog attachments are stored in the filesystem rather than the database, you must provide the full file system path to your blog attachments folder during the import configuration process.
 
 ### vBulletin 4 with Blog
@@ -138,7 +147,7 @@ For example:
 `$dir = '/users/example-user/htdocs/new-forums';`
 
 :::note
-The use of .htaccess here assumes that your webserver is running Apache, or some other system that understands Apache's mod_redirect syntax. If you are using Nginx or another system, you simply need to replicate whatever configuration you have in place for [XenForo's own friendly URLs](../../configuration/options-list/friendly-urls.mdx) and apply it to your vBulletin directory.
+The use of .htaccess here assumes that your webserver is running Apache, or some other system that understands Apache's mod\_redirect syntax. If you are using Nginx or another system, you simply need to replicate whatever configuration you have in place for [XenForo's own friendly URLs](../../configuration/options-list/friendly-urls.mdx) and apply it to your vBulletin directory.
 :::
 
 ### Testing redirects

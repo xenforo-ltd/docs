@@ -57,7 +57,7 @@ Version IDs for add-ons are basic integers which are used for internal version c
 - `d` represents the state, e.g. `1` for alpha releases, `3` for beta releases, `5` for release candidates and `7` for stable releases
 - `e` represents the state version
 
-For example, an add-on with version string of 1.7.3 release candidate 4 would have an ID of `1070354`. The stable version of XF 2.0.0 had an ID of `2000070` while version 1.5.0 Beta 3 had an ID of `1050033`. Stable version 99.99.99 would have an ID of `99999970`... and maybe you should slow down a bit :wink:
+For example, an add-on with version string of 1.7.3 release candidate 4 would have an ID of `1070354`. The stable version of XF 2.0.0 had an ID of `2000070` while version 1.5.0 Beta 3 had an ID of `1050033`. Stable version 99.99.99 would have an ID of `99999970`... and maybe you should slow down a bit \:wink:
 
 ## Common add-on files and directories
 
@@ -90,7 +90,7 @@ Including a valid `addon.json` file is mandatory for your addon to be recognized
 | `description`       | A description of the addon. This will show in the Admin Panel.                                                                                                                                                                                                                                                                                                            |
 | `version_id`        | The internal ID used by XenForo to track updates to your addon. This must be incremented every release.                                                                                                                                                                                                                                                                   |
 | `version_string`    | The human-readable addon version. This will show in the Admin Panel instead of the `version_id` property.                                                                                                                                                                                                                                                                 |
-| `composer_autoload` | If your add-on uses [Composer](https://getcomposer.org/) to manage dependencies, this property should contain the relative path (from the add-on root) to the directory containing the Composer vendor files (specifically where autoload_psr4.php, etc., are located). XenForo will then automatically register these with its own autoloader when the add-on is active. |
+| `composer_autoload` | If your add-on uses [Composer](https://getcomposer.org/) to manage dependencies, this property should contain the relative path (from the add-on root) to the directory containing the Composer vendor files (specifically where autoload\_psr4.php, etc., are located). XenForo will then automatically register these with its own autoloader when the add-on is active. |
 | `dev`               | The name of the developer of the addon. This will show in the Admin Panel.                                                                                                                                                                                                                                                                                                |
 | `dev_url`           | If set, the developer's name will show in the Admin Panel as a hyperlink, with this as the target (href).                                                                                                                                                                                                                                                                 |
 | `faq_url`           | If set, an FAQ hyperlink will show in the Admin Panel, with this as the target (href).                                                                                                                                                                                                                                                                                    |
@@ -156,7 +156,7 @@ The `_output` directory is not required for a successful installation of an add-
 
 Each item of add-on data is stored in a separate file. Mostly they are stored as JSON files, but in the case of phrases they are stored as TXT files and for templates they are stored as HTML/CSS/LESS files. All template types are editable in the filesystem directly, and changes made to these files are written back to the database automatically on load.
 
-### \_no_upload directory
+### \_no\_upload directory
 
 If your add-on directory contains a `_no_upload` directory, any files within it will be included in the built release ZIP but placed alongside the `upload` directory and therefore not uploaded to the XenForo installation.
 
@@ -164,9 +164,9 @@ This is useful for bundling files like README, CHANGELOG, LICENSE, or other docu
 
 ### \_stubs directory
 
-The `_stubs` directory contains customized "stub" templates used by XenForo's xf-make:* commands when generating new classes for your add-on.
+The `_stubs` directory contains customized "stub" templates used by XenForo's xf-make:\* commands when generating new classes for your add-on.
 
-When you run a make command (e.g. xf-make:entity), XenForo first checks for a matching stub file in your add-on's _stubs/ directory before falling back to the core stubs. This allows you to customize the boilerplate code generated for entities, controllers, services, and other class types.
+When you run a make command (e.g. xf-make:entity), XenForo first checks for a matching stub file in your add-on's \_stubs/ directory before falling back to the core stubs. This allows you to customize the boilerplate code generated for entities, controllers, services, and other class types.
 
 Use `php cmd.php xf-make:stub-publish` to copy core stub templates into your add-on for customization. For example, `php cmd.php xf-make:stub-publish entity --addon=Vendor/AddOn` publishes the entity stub, which you can then modify to include your preferred code style, default methods, or documentation blocks.
 

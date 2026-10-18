@@ -44,11 +44,11 @@ In some cases, some steps will require additional configuration before the impor
 
 If the system imports users, you will usually be asked if you want to automatically merge users with the same email address, and if you want to merge users with the same user name. These options are particularly important if you are importing into a XenForo installation that is already live and has a collection of users.
 
-It is usually a good idea to enable these user-merge options, particularly the *same email* option, as it is highly likely that two users with the same email address are in fact the same person. Whether or not you enable the *same user name* option depends on whether or not you know that some of the users in your source database share names with users in your XenForo database, and are in fact the same user.
+It is usually a good idea to enable these user-merge options, particularly the _same email_ option, as it is highly likely that two users with the same email address are in fact the same person. Whether or not you enable the _same user name_ option depends on whether or not you know that some of the users in your source database share names with users in your XenForo database, and are in fact the same user.
 
 For example, if your XenForo installation has a user called 'Admin', and so does your source database, the merge option will import all data belonging to 'Admin' in the source system as data belonging to 'Admin' in your XenForo installation, rather than creating an 'Admin2' user and attributing all the threads and posts to them.
 
-Depending on the source system, other steps may need configuration. For example, the *vBulletin* importers need you to verify the location of your *avatar* and *attachment* files if they are not stored in the database.
+Depending on the source system, other steps may need configuration. For example, the _vBulletin_ importers need you to verify the location of your _avatar_ and _attachment_ files if they are not stored in the database.
 
 Sometimes, the system will make a best-guess, based on the information it can retrieve from the database, but this often needs to be double-checked in order to ensure that the information is correct before starting the import. Most importers will do as much error-checking as is necessary to ensure a successful import before allowing you to proceed.
 

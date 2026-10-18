@@ -35,7 +35,6 @@ The addon.json file was successfully written out to /var/www/src/addons/Demo/Por
 **Does your Setup need to support running multiple steps? (y/n)** y
 
 The Setup.php file was successfully written out to /var/www/src/addons/Demo/Portal/Setup.php
-
 :::
 
 The add-on has now been created, you will now find that you have a new directory in the `src/addons` directory, and you will find the add-on in the "Installed add-ons" list of the Admin CP.
@@ -200,7 +199,6 @@ So far we've added a column to the `xf_forum` table, it's now time to extend the
 
 :::note
 The following steps will require [Development mode](development-tools.mdx#enabling-development-mode) to be enabled. Remember to set `Demo/Portal` as the `defaultAddOn` value in `config.php`.
-
 :::
 
 The first step in this process is to create a "Code event listener". This can be done in the Admin CP under Development, click the "Code event listeners" link and click the "Add code event listener" button.
@@ -261,7 +259,7 @@ The forum entity is now aware of our new column, but there are a few more steps 
 
 ## Extending the thread entity
 
-Again, as we have added a new column to the xf_thread table, we should make the Thread entity aware of that. This is very similar to what we did above.
+Again, as we have added a new column to the xf\_thread table, we should make the Thread entity aware of that. This is very similar to what we did above.
 
 Head back to "Add code event listener" and listen to `entity_structure` again. The "Event hint" this time will be `XF\Entity\Thread`. We can use the same callback class as before (`Demo\Portal\Listener`) but this time the method will be named `threadEntityStructure`. Add a description similar to before. Before saving, we should add the code, directly below the `forumEntityStructure` function:
 
@@ -334,11 +332,11 @@ The list of columns is probably self explanatory based on the MySQL we wrote ear
 
 We now need a way to modify the `forum_edit` template to add a new checkbox there which can ultimately write back to the new column we have now created. We'll do this by creating a template modification. This is done from the Admin CP under Appearance and then click Template modifications. Click the "Admin" tab followed by the "Add template modification" button.
 
-In the "Template" field, type "forum_edit". This is the template we need to modify.
+In the "Template" field, type "forum\_edit". This is the template we need to modify.
 
-In the "Modification key" field, type "demo_portal_forum_edit". This is a unique key which identifies your template modification. The preferred convention for this is, at minimum, to mention the add-on followed by the template name being modified.
+In the "Modification key" field, type "demo\_portal\_forum\_edit". This is a unique key which identifies your template modification. The preferred convention for this is, at minimum, to mention the add-on followed by the template name being modified.
 
-The "Description" field should contain some text to help you identify the purpose of this modification when looking down the template modifications list. Something like "Adds auto feature checkbox to the forum_edit template" should suffice.
+The "Description" field should contain some text to help you identify the purpose of this modification when looking down the template modifications list. Something like "Adds auto feature checkbox to the forum\_edit template" should suffice.
 
 When you entered the template name in the "Template" field, you may notice that a preview of the template contents was displayed. We need to use this to identify the preferred place for our checkbox. While viewing the forum edit page, you may notice there's a series of checkboxes and this looks like a reasonable location.
 
@@ -365,7 +363,6 @@ We can use the "Test" button to check the replacement is working as expected. Wh
 
 :::note
 This is a fairly simple replacement. For more advanced matching, you can also use the "Regular expression" type. A detailed explanation of working with regular expressions is beyond the scope for this guide, but there are lots of resources online which may help.
-
 :::
 
 Finally, click save to save your template modification. If all has gone well, when you return to the template modifications list, you will see the log summary is displaying **1** / 0 / **0** therefore indicating that the modification successfully applied one time. An even better indicator that it has worked as planned is to go to the "Nodes" page listed under "Forums" in the Admin CP, and edit an existing forum. Our newly added template modification should now appear.
@@ -402,7 +399,6 @@ protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Ent
 
 :::info
 This particular method's argument list assumes that we have a `use` declaration which aliases the full `\XF\Mvc\FormAction` class to simply `FormAction`. You will therefore need to add that use declaration yourself. Add `use XF\Mvc\FormAction;` between the `namespace` and `class` lines.
-
 :::
 
 So, right now, we've extended that method, and our extension should be called, but right now it isn't doing anything other than calling its parent method. We now need to get the value of the input from the forum edit page and apply that to the `$data` entity (which in this case is the Forum entity).
@@ -421,7 +417,7 @@ protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Ent
 
 Using the `FormAction` object allows us to have various extension points into the process that runs during the course of a typical form submission. It isn't available for all controller actions. It is much more prevalent in the Admin CP, for example, which often follow a simple CRUD model (Create, Read, Update, Delete). A lot of other processes within XF happen inside a service object, which usually has specific extension points related to the service that is running. This particular usage of the `FormAction` object is somewhat different to what you would usually encounter. Saving a node is a somewhat different process, because as well as working with the node entity, you'll also be working with an associated type of node, e.g. a forum entity. We do have access to the form action object in this method, though, so we should use it. We've used it here to add a specific behaviour to the "setup" phase of the process. Namely, when the `FormAction` object's `run()` method is called, it will run through the various phases in a specific order. It doesn't matter which order those behaviors were added to the object in, they will still run in the order `setup`, `validate`, `apply`, `complete`.
 
-The code we added above lets us set our `demo_portal_auto_feature` column in the forum entity to whatever value is stored for the `demo_portal_auto_feature` input which we added to the forum edit page. It should now be possible to test that all of this works. Simply edit a forum of your choice and check the checkbox. You should be able to observe two things. First, when you go back into edit that forum, the checkbox should now be checked. Second, if you look in the xf_forum table for the forum you just edited, the `demo_portal_auto_feature` field should now be set to 1. Keep this value enabled for this forum, as we will eventually be automatically featuring threads from that forum.
+The code we added above lets us set our `demo_portal_auto_feature` column in the forum entity to whatever value is stored for the `demo_portal_auto_feature` input which we added to the forum edit page. It should now be possible to test that all of this works. Simply edit a forum of your choice and check the checkbox. You should be able to observe two things. First, when you go back into edit that forum, the checkbox should now be checked. Second, if you look in the xf\_forum table for the forum you just edited, the `demo_portal_auto_feature` field should now be set to 1. Keep this value enabled for this forum, as we will eventually be automatically featuring threads from that forum.
 
 ## Setting a thread to be featured automatically
 
@@ -613,7 +609,7 @@ $viewParams = [
 ];
 ```
 
-At this stage, we're not going to worry about modifying the base finder we've retrieved from the repo. Instead, let's start to actually see some results, and update the demo_portal_view template as follows (after the `<xf:title>` tags):
+At this stage, we're not going to worry about modifying the base finder we've retrieved from the repo. Instead, let's start to actually see some results, and update the demo\_portal\_view template as follows (after the `<xf:title>` tags):
 
 ```html title="src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html"
 <xf:if is="$featuredThreads is not empty">
@@ -749,7 +745,7 @@ A quick "Test" should show this additional code will be inserted just above the 
 
 We have had to use template code directly within the modification here, because including a template (like we did before) won't work within an existing input or row tag in this way. We'll also need to create the phrases now for the label and hint, because it won't be possible to detect those later.
 
-Under "Appearance" go to "Phrases" and click "Add phrase". Make sure your add-on is selected. The "Title" of the first phrase will be "demo_portal_featured" and the text will be simply "Featured". Click "Save and Exit". Click "Add phrase" again. The "Title" for the second phrase will be "demo_portal_featured_hint" and the text will be "Featured threads will appear on the Portal page."
+Under "Appearance" go to "Phrases" and click "Add phrase". Make sure your add-on is selected. The "Title" of the first phrase will be "demo\_portal\_featured" and the text will be simply "Featured". Click "Save and Exit". Click "Add phrase" again. The "Title" for the second phrase will be "demo\_portal\_featured\_hint" and the text will be "Featured threads will appear on the Portal page."
 
 Back to the template code we just added to the modification; you may have noticed something. We have called a method on the thread entity, `canFeatureUnfeature()`, and this method does not exist, yet. We are going to use this eventually to do a permission check that will control whether a user can manually feature a thread or not.
 
@@ -1056,7 +1052,7 @@ To:
 'featuredThreads' => $featuredThreads,
 ```
 
-You may have spotted earlier in the demo_portal_view template that each post we render also specifies its attachments:
+You may have spotted earlier in the demo\_portal\_view template that each post we render also specifies its attachments:
 
 ```html title="src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html"
 'attachments': $post.attach_count ? $post.Attachments : [],
@@ -1165,7 +1161,7 @@ And change to:
 
 Finally, it probably makes sense to update our portal view to display the appropriate time stamp - either the featured date or the post date, depending on our option value.
 
-In the demo_portal_view template change:
+In the demo\_portal\_view template change:
 
 ```html title="src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html"
 <li><xf:date time="{$featuredThread.featured_date}" /></li>
@@ -1235,7 +1231,7 @@ public static function threadEntityPostDelete(\XF\Mvc\Entity\Entity $entity)
 }
 ```
 
-After clicking "Save" to save the listener, it will be worth giving this a test. To test this, you might actually be better off keeping an eye on the xf_demo_portal_featured_thread table, as so far the code will already not display non-visible threads, but it's always important not to leave orphaned data. All being well, we're very nearly finished...
+After clicking "Save" to save the listener, it will be worth giving this a test. To test this, you might actually be better off keeping an eye on the xf\_demo\_portal\_featured\_thread table, as so far the code will already not display non-visible threads, but it's always important not to leave orphaned data. All being well, we're very nearly finished...
 
 ## Some final loose ends
 
@@ -1281,18 +1277,17 @@ php cmd.php xf-addon:build-release Demo/Portal
 :::info[Terminal output]
 **Performing add-on export.**
 
-**Exporting data for Demo - Portal to ../src/addons/Demo/Portal/_data.**
+**Exporting data for Demo - Portal to ../src/addons/Demo/Portal/\_data.**
 
-10/10 [============================] 100%
+10/10 \[============================] 100%
 
 **Written successfully.**
 
 **Building release ZIP.**
 
-**Writing release ZIP to ../src/addons/Demo/Portal/_releases.**
+**Writing release ZIP to ../src/addons/Demo/Portal/\_releases.**
 
 **Release written successfully.**
-
 :::
 
 So, with that, that concludes our demo add-on! If you would like to download the source code for this add-on, built using the very commands demonstrated above, click here: [Demo-Portal-1.0.0 Alpha.zip](/files/Demo-Portal-1.0.0%20Alpha.zip).
