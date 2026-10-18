@@ -93,6 +93,9 @@ const config: Config = {
       {
         createRedirects: () => [],
         redirects: [
+          { from: "/devs/appendix/linux-dev", to: "/devs" },
+          { from: "/devs/appendix/macos-dev", to: "/devs" },
+          { from: "/devs/appendix/windows-dev", to: "/devs" },
           { from: "/manual", to: "/" },
           {
             from: "/manual/access-privileges/promotion-birthday",
