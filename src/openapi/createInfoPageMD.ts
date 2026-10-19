@@ -1,9 +1,5 @@
-import type { InfoPageMetadata } from "docusaurus-plugin-openapi-docs/lib/types";
-import type {
-  ContactObject,
-  LicenseObject,
-  SecuritySchemeObject,
-} from "docusaurus-plugin-openapi-docs/lib/openapi/types";
+import type { InfoPageMetadata } from "docusaurus-plugin-openapi-docs/src/types";
+import type { SecuritySchemeObject } from "docusaurus-plugin-openapi-docs/lib/openapi/types";
 import { render } from "docusaurus-plugin-openapi-docs/lib/markdown/utils";
 import { createAuthentication } from "docusaurus-plugin-openapi-docs/lib/markdown/createAuthentication";
 import { createContactInfo } from "docusaurus-plugin-openapi-docs/lib/markdown/createContactInfo";
@@ -34,15 +30,16 @@ export function createInfoPageMD({
     `import TabItem from "@theme/TabItem";\n`,
     `import Export from "@theme/ApiExplorer/Export";\n\n`,
 
-    // Omit createVersionBadge(version) to hide version badge
     createDownload(downloadUrl),
     createHeading(title),
     createLogo(logo, darkLogo),
     createDescription(description),
-    createAuthentication(securitySchemes as unknown as SecuritySchemeObject),
-    createContactInfo(contact as ContactObject),
+    securitySchemes
+      ? createAuthentication(securitySchemes as unknown as SecuritySchemeObject)
+      : "",
+    contact ? createContactInfo(contact) : "",
     createTermsOfService(termsOfService),
-    createLicense(license as LicenseObject),
+    license ? createLicense(license) : "",
   ]);
 
   const additionalContent = `

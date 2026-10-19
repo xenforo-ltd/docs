@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "connor4312.esbuild-problem-matchers",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "github.vscode-github-actions",
+    "github.vscode-pull-request-github",
+    "streetsidesoftware.code-spell-checker",
+    "unifiedjs.vscode-mdx",
+    "unifiedjs.vscode-remark"
+  ]
+}

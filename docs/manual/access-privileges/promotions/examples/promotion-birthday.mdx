@@ -1,0 +1,21 @@
+---
+sidebar_position: 20
+---
+
+# Example birthday promotion
+
+## Birthday user group
+
+1. Create a new [user group](../../groups-permissions.mdx) called `Birthday today` at **Groups & permissions > User groups > Add user group**.
+2. Set its _Display styling priority_ to a very high number so that it overrides styling from any other user groups to which its members belong.
+3. Set the _User banner text_ to `It's my birthday today!` and choose a _User banner style_ you like.
+4. Save the user group without editing any of its permissions.
+
+## Birthday promotion
+
+1. Create a new user group promotion called `Birthday promotion`. at **Groups and permissions > User group promotions > Add promotion**.
+2. Use the checkboxes to _Add user to user groups_ `Birthday today`.
+3. Select the _Apply this promotion while..._ tab and check the box for _User's birthday is today_.
+4. Save the user group promotion.
+
+The next time the _User group promotions_ [cron job](../../../common-concepts/cron.mdx) runs, any users whose birthday is today will be added to the `Birthday today` group and will have _It's my birthday today_ as a banner added underneath their name in any messages they have posted.

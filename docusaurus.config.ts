@@ -5,9 +5,18 @@ import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 import { createInfoPageMD } from "./src/openapi/createInfoPageMD";
 
 const config: Config = {
-  title: "XenForo",
+  title: "XenForo Documentation",
   tagline: "Documentation for XenForo",
   favicon: "img/favicon.png",
+
+  url: "https://docs.xenforo.com",
+  baseUrl: "/",
+  trailingSlash: false,
+
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en"],
+  },
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -15,45 +24,35 @@ const config: Config = {
     faster: true, // Enable modernized build infrastructure
   },
 
-  url: "https://docs.xenforo.com",
-  baseUrl: "/",
-
-  organizationName: "xenforo-ltd",
-  projectName: "docs",
-  deploymentBranch: "main",
-  trailingSlash: false,
-
   onBrokenLinks: "throw",
-  onBrokenAnchors: "warn",
+  onBrokenAnchors: "throw",
 
   markdown: {
     hooks: {
-      onBrokenMarkdownLinks: "warn",
+      onBrokenMarkdownLinks: "throw",
     },
-  },
-
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
   },
 
   presets: [
     [
-      "classic",
+      "@docusaurus/preset-classic",
       {
-        docs: {
-          sidebarPath: "./sidebars.ts",
-          routeBasePath: "/",
-          editUrl: "https://github.com/xenforo-ltd/docs/edit/main/",
-          docItemComponent: "@theme/ApiItem",
-        },
         blog: false,
+        pages: false,
+
         theme: {
           customCss: ["./src/css/custom.css"],
         },
+
+        docs: {
+          routeBasePath: "/",
+          sidebarPath: "./sidebars.ts",
+          editUrl: "https://github.com/xenforo-ltd/docs/edit/main/",
+          docItemComponent: "@theme/ApiItem",
+        },
+
         sitemap: {
-          // https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#additional-notes-about-xml-sitemaps
-          lastmod: "date",
+          lastmod: "datetime",
           changefreq: null,
           priority: null,
         },
@@ -67,6 +66,7 @@ const config: Config = {
       {
         id: "api",
         docsPluginId: "classic",
+
         config: {
           xenforo: {
             specPath: "static/api/openapi.json",
@@ -74,16 +74,220 @@ const config: Config = {
             infoTemplate: "./src/openapi/infoTemplate.mustache",
             downloadUrl: "https://docs.xenforo.com/api/openapi.json",
             hideSendButton: true,
+            showSchemas: true,
+
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
             },
+
             markdownGenerators: {
               createInfoPageMD,
             },
-            showSchemas: true,
           } satisfies OpenApiPlugin.Options,
         },
+      },
+    ],
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        createRedirects: () => [],
+        redirects: [
+          { from: "/devs/appendix/linux-dev", to: "/devs" },
+          { from: "/devs/appendix/macos-dev", to: "/devs" },
+          { from: "/devs/appendix/windows-dev", to: "/devs" },
+          { from: "/manual", to: "/" },
+          {
+            from: "/manual/access-privileges/promotion-birthday",
+            to: "/manual/access-privileges/promotions/examples/promotion-birthday",
+          },
+          {
+            from: "/manual/access-privileges/promotion-new-users",
+            to: "/manual/access-privileges/promotions/examples/promotion-new-users",
+          },
+          {
+            from: "/manual/appearance/languages",
+            to: "/manual/appearance/ui-text/languages",
+          },
+          {
+            from: "/manual/appearance/phrases",
+            to: "/manual/appearance/ui-text/phrases",
+          },
+          {
+            from: "/manual/appearance/style-properties",
+            to: "/manual/appearance/theming/style-properties",
+          },
+          {
+            from: "/manual/appearance/styles",
+            to: "/manual/appearance/theming/styles",
+          },
+          {
+            from: "/manual/appearance/template-modifications",
+            to: "/manual/appearance/theming/template-modifications",
+          },
+          {
+            from: "/manual/appearance/templates",
+            to: "/manual/appearance/theming/templates",
+          },
+          {
+            from: "/manual/configuration/captcha",
+            to: "/manual/configuration/options-list/captcha",
+          },
+          {
+            from: "/manual/configuration/closing",
+            to: "/manual/configuration/options-list/closing",
+          },
+          {
+            from: "/manual/configuration/email",
+            to: "/manual/configuration/options-list/email",
+          },
+          {
+            from: "/manual/configuration/friendly-urls",
+            to: "/manual/configuration/options-list/friendly-urls",
+          },
+          {
+            from: "/manual/configuration/index-page",
+            to: "/manual/configuration/options-list/index-page",
+          },
+          {
+            from: "/manual/configuration/options",
+            to: "/manual/configuration/options-list",
+          },
+          {
+            from: "/manual/configuration/proxy",
+            to: "/manual/configuration/options-list/proxy",
+          },
+          {
+            from: "/manual/configuration/seo",
+            to: "/manual/configuration/options-list/seo",
+          },
+          {
+            from: "/manual/configuration/sitemap",
+            to: "/manual/configuration/options-list/seo#xml-sitemap-generation-and-submission",
+          },
+          {
+            from: "/manual/content/attachments",
+            to: "/manual/content/embeds/attachments",
+          },
+          {
+            from: "/manual/content/bbcode-images",
+            to: "/manual/content/embeds/bbcode-images",
+          },
+          {
+            from: "/manual/content/bbcode-media-sites",
+            to: "/manual/content/embeds/bbcode-media-sites",
+          },
+          {
+            from: "/manual/content/content-voting",
+            to: "/manual/content/attributes/content-voting",
+          },
+          {
+            from: "/manual/content/giphy",
+            to: "/manual/content/embeds/giphy",
+          },
+          { from: "/manual/content/overview", to: "/manual/content" },
+          {
+            from: "/manual/content/reactions",
+            to: "/manual/content/attributes/reactions",
+          },
+          {
+            from: "/manual/content/tags",
+            to: "/manual/content/attributes/tags",
+          },
+          {
+            from: "/manual/forums/articles",
+            to: "/manual/forums/types/available/articles",
+          },
+          {
+            from: "/manual/forums/discussions",
+            to: "/manual/forums/types/available/discussions",
+          },
+          {
+            from: "/manual/forums/forum-thread-types",
+            to: "/manual/forums/types",
+          },
+          {
+            from: "/manual/forums/questions",
+            to: "/manual/forums/types/available/questions",
+          },
+          {
+            from: "/manual/forums/suggestions",
+            to: "/manual/forums/types/available/suggestions",
+          },
+          {
+            from: "/manual/forums/thread-batch-update",
+            to: "/manual/forums/threads/thread-batch-update",
+          },
+          {
+            from: "/manual/forums/thread-fields",
+            to: "/manual/forums/threads/thread-fields",
+          },
+          {
+            from: "/manual/forums/thread-prefixes",
+            to: "/manual/forums/threads/thread-prefixes",
+          },
+          {
+            from: "/manual/forums/thread-prompts",
+            to: "/manual/forums/threads/thread-prompts",
+          },
+          {
+            from: "/manual/forums/thread-type-tools",
+            to: "/manual/forums/types/thread-type-tools",
+          },
+          {
+            from: "/manual/importing/import-notes-vbulletin",
+            to: "/manual/importing/notes/import-notes-vbulletin",
+          },
+          {
+            from: "/manual/importing/import-spec-vbulletin",
+            to: "/manual/importing/notes/import-spec-vbulletin",
+          },
+          {
+            from: "/manual/installing-and-upgrading/install-upgrade",
+            to: "/manual/installing-and-upgrading",
+          },
+          { from: "/manual/terms-rules", to: "/manual/configuration/terms" },
+          {
+            from: "/manual/terms-rules/terms",
+            to: "/manual/configuration/terms",
+          },
+          {
+            from: "/manual/upgrade",
+            to: "/manual/installing-and-upgrading/upgrade",
+          },
+          {
+            from: "/manual/users/banning",
+            to: "/manual/users/discipline/banning",
+          },
+          {
+            from: "/manual/users/discouragement",
+            to: "/manual/users/discipline/discouragement",
+          },
+          {
+            from: "/manual/users/user-title-ladder",
+            to: "/manual/users/gamification/user-title-ladder",
+          },
+          {
+            from: "/manual/users/user-trophies",
+            to: "/manual/users/gamification/user-trophies",
+          },
+          {
+            from: "/manual/users/user-upgrade-premium-forum",
+            to: "/manual/users/paid-upgrades/examples/user-upgrade-premium-forum",
+          },
+          {
+            from: "/manual/users/user-upgrade-profile-banners",
+            to: "/manual/users/paid-upgrades/examples/user-upgrade-profile-banners",
+          },
+          {
+            from: "/manual/users/user-upgrades",
+            to: "/manual/users/paid-upgrades",
+          },
+          {
+            from: "/manual/users/warnings",
+            to: "/manual/users/discipline/warnings",
+          },
+        ],
       },
     ],
   ],
@@ -91,87 +295,105 @@ const config: Config = {
   themes: ["docusaurus-theme-openapi-docs"],
 
   themeConfig: {
-    image: "img/xenforo-social-card.jpg",
+    image: "img/xenforo-social-card.png",
+
     colorMode: {
-      defaultMode: "light",
       respectPrefersColorScheme: true,
-      disableSwitch: false,
     },
-    navbar: {
-      title: "Documentation",
-      logo: {
-        alt: "XenForo",
-        src: "img/logo.svg",
-      },
-      items: [
-        {
-          type: "docSidebar",
-          sidebarId: "manualSidebar",
-          position: "left",
-          label: "Manual",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "developersSidebar",
-          position: "left",
-          label: "Developers",
-        },
-        {
-          type: "docSidebar",
-          sidebarId: "apiSidebar",
-          position: "left",
-          label: "API",
-        },
-        {
-          href: "https://xenforo.com/community",
-          label: "Community",
-          position: "right",
-        },
-        {
-          href: "https://github.com/xenforo-ltd/docs",
-          label: "GitHub",
-          position: "right",
-        },
-      ],
-    },
+
     docs: {
       sidebar: {
         autoCollapseCategories: true,
       },
     },
-    footer: {
-      style: "dark",
-      copyright: `Documentation for XenForo® © 2010-${new Date().getFullYear()} XenForo Ltd.`,
+
+    navbar: {
+      title: "Documentation",
+
+      logo: {
+        src: "img/logo.svg",
+        alt: "XenForo",
+        width: 124,
+        height: 26,
+      },
+
+      items: [
+        {
+          type: "docSidebar",
+          sidebarId: "manual",
+          label: "Manual",
+          position: "left",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "developers",
+          label: "Developers",
+          position: "left",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "api",
+          label: "API",
+          position: "left",
+        },
+
+        {
+          label: "Community",
+          href: "https://xenforo.com/community/",
+          position: "right",
+        },
+        {
+          label: "GitHub",
+          href: "https://github.com/xenforo-ltd/docs",
+          position: "right",
+        },
+      ],
     },
+
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ["php", "bash", "json", "sql", "apacheconf", "ini"],
+      additionalLanguages: [
+        "apacheconf",
+        "bash",
+        "ini",
+        "json",
+        "nginx",
+        "php",
+        "sql",
+      ],
     },
+
     algolia: {
       appId: "YW6LXZMEKF",
       apiKey: "80cdb7d3922b3717ceec76c4d13ca2d6",
       indexName: "XenForo Documentation",
     },
+
     languageTabs: [
       {
         language: "curl",
+        highlight: "bash",
         variants: ["curl"],
       },
       {
         language: "php",
+        highlight: "php",
         variants: ["guzzle"],
       },
       {
         language: "javascript",
+        highlight: "javascript",
         variants: ["fetch"],
       },
       {
         language: "go",
+        highlight: "go",
         variants: ["native"],
       },
       {
         language: "python",
+        highlight: "python",
         variants: ["requests"],
       },
     ],
