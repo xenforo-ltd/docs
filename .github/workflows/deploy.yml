@@ -16,7 +16,7 @@ permissions: {}
 jobs:
   build:
     name: Build
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    runs-on: blacksmith-4vcpu-ubuntu-2604
     permissions:
       contents: read
 
@@ -47,7 +47,7 @@ jobs:
 
   deploy:
     name: Deploy
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    runs-on: blacksmith-4vcpu-ubuntu-2604
     needs: build
     permissions:
       pages: write # required to deploy to GitHub Pages
@@ -63,7 +63,7 @@ jobs:
 
   recrawl:
     name: Algolia recrawl
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    runs-on: blacksmith-4vcpu-ubuntu-2604
     needs: deploy
     permissions:
       contents: read
