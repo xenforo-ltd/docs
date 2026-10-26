@@ -72,12 +72,19 @@ Let's fill in some of these details:
     "faq_url": "",
     "support_url": "",
     "extra_urls": [],
-    "require": [],
+    "require": {
+        "XF": [
+            2030070,
+            "XenForo 2.3.0"
+        ]
+    },
     "icon": "fa-home"
 }
 ```
 
 We have now added a `description`, the developer's name (`dev`) and specified that we want to display an icon (`icon`). The icon can either be a path (relative to your add-on root) or the name of a [Font Awesome icon](http://fontawesome.io/icons/) as we've done here.
+
+We have also added a `require` property. This prevents the add-on from being installed or upgraded unless XenForo 2.3.0 or later is available. The demo relies on XenForo 2.3, so that is the minimum version we support. The first value, `2030070`, is the version ID for the stable release of XenForo 2.3.0. The second value is the text that XenForo displays when the requirement is not met. Refer to [the requirements property](add-on-structure.mdx#the-requirements-property) for the other requirements you can set.
 
 As we're not superceding a XenForo 1 addon, we can disregard `legacy_addon_id`. For a full explanation of all of the properties in the `addon.json` file, refer to the [Add-on structure section](add-on-structure.mdx#addonjson-file).
 
@@ -423,9 +430,9 @@ The code we added above lets us set our `demo_portal_auto_feature` column in the
 
 We've added a new column to the forum entity which will allow us to automatically feature a thread when it is newly created in this forum, so now it's time to add the code which will do this.
 
-In XenForo, we make heavy use of Service objects. These typically take a "setup and go" type approach; you setup your configuration and then call a method to complete the action. We use a service object to setup and perform the thread creation, so this is a perfect place to add the code we need. It all starts with another class extension, so go to the "Add class extension" page.
+In XenForo, we make heavy use of Service objects. These typically take a "setup and go" type approach; you setup your configuration and then call a method to complete the action. We use a service object to setup and perform the thread creation, so this is a perfect place to add the code we need. It all starts with another class extension.
 
-This time, the base class will be `XF\Service\Thread\CreatorService` and the extension class will be `Demo\Portal\XF\Service\Thread\CreatorService` and, as usual, this new class will look something like the code below. Create that code in the path `src/addons/Demo/Portal/XF/Service/Thread/CreatorService.php` then click "Save" to create the extension.
+Create the class first, at the path `src/addons/Demo/Portal/XF/Service/Thread/CreatorService.php`. As usual, this new class will look something like the code below:
 
 ```php title="src/addons/Demo/Portal/XF/Service/Thread/CreatorService.php"
 <?php
@@ -438,7 +445,9 @@ class CreatorService extends XFCP_CreatorService
 }
 ```
 
-While we're here we will also create another extension. The base will be `XF\Pub\Controller\ForumController` and the extension class will be `Demo\Portal\XF\Pub\Controller\ForumController`. Creating the following code in the path `src/addons/Demo/Portal/XF/Pub/Controller/ForumController.php` and click "Save":
+Now go to the "Add class extension" page and add an extension with `XF\Service\Thread\CreatorService` as the base class and `Demo\Portal\XF\Service\Thread\CreatorService` as the extension class. Then click "Save".
+
+While we're here, we will also create another extension. The base will be `XF\Pub\Controller\ForumController` and the extension class will be `Demo\Portal\XF\Pub\Controller\ForumController`. Create the following code in the path `src/addons/Demo/Portal/XF/Pub/Controller/ForumController.php`:
 
 ```php title="src/addons/Demo/Portal/XF/Pub/Controller/ForumController.php"
 <?php
@@ -450,6 +459,8 @@ class ForumController extends XFCP_ForumController
 
 }
 ```
+
+Then add that extension in the same way and click "Save".
 
 We're ultimately going to extend the `_save()` method in our extended thread creator object so we can feature our thread after it has been created. To fit in with the "setup and go" approach, we will create a method which can be used to indicate whether the thread should be created as featured, or not. For this, we need two things; a class property to store the value (it defaults to null) and a public method to allow that property to be set.
 
@@ -596,11 +607,9 @@ We also have a special join here that fetches the current visitor's permissions 
 
 This doesn't return the results of this query. This returns the finder object itself. This enables a clear extension point in case another add-on needs to extend our code, and also allows us to make further changes before fetching that data (such as for setting a limit/offset for pagination, or setting a different order).
 
-Let's now use that in our `actionIndex()` method inside our portal controller. Change the existing `$viewParams = [];` line to the following:
+Let's now use that in our `actionIndex()` method inside our portal controller. Add `use Demo\Portal\Repository\FeaturedThread;` to the top of the controller file, then change the existing `$viewParams = [];` line to the following:
 
 ```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
-use Demo\Portal\Repository\FeaturedThread;
-
 $repo = $this->repository(FeaturedThread::class);
 
 $finder = $repo->findFeaturedThreadsForPortalView();
@@ -727,8 +736,8 @@ First step then is a new template modification. So go to "Add template modificat
 In the "Replace" field add:
 
 ```html title="Replace"
-<xf:if is="($thread.isInsert() AND !$thread.Forum.demo_portal_auto_feature AND $thread.canFeatureUnfeature())
-    OR ($thread.isUpdate() && $thread.canFeatureUnfeature())"
+<xf:if is="($thread.isInsert() AND !$thread.Forum.demo_portal_auto_feature AND $thread.canFeatureUnfeaturePortalThread())
+    OR ($thread.isUpdate() && $thread.canFeatureUnfeaturePortalThread())"
 >
     <xf:option label="{{ phrase('demo_portal_featured') }}" name="featured" value="1" selected="{$thread.demo_portal_featured}">
         <xf:hint>{{ phrase('demo_portal_featured_hint') }}</xf:hint>
@@ -748,9 +757,9 @@ We have had to use template code directly within the modification here, because 
 
 Under "Appearance" go to "Phrases" and click "Add phrase". Make sure your add-on is selected. The "Title" of the first phrase will be "demo\_portal\_featured" and the text will be simply "Featured". Click "Save and Exit". Click "Add phrase" again. The "Title" for the second phrase will be "demo\_portal\_featured\_hint" and the text will be "Featured threads will appear on the Portal page."
 
-Back to the template code we just added to the modification; you may have noticed something. We have called a method on the thread entity, `canFeatureUnfeature()`, and this method does not exist, yet. We are going to use this eventually to do a permission check that will control whether a user can manually feature a thread or not.
+Back to the template code we just added to the modification; you may have noticed something. We have called a method on the thread entity, `canFeatureUnfeaturePortalThread()`, and this method does not exist, yet. We are going to use this eventually to do a permission check that will control whether a user can manually feature a thread or not. The name is deliberately specific to this add-on because `XF\Entity\Thread` already has a core `canFeatureUnfeature()` method, which we must not override.
 
-To add this method, we need a new class extension for the `XF\Entity\Thread` entity. So, do that now similar to how we've done it before. The extended class will be `Demo\Portal\XF\Entity\Thread` so create that in the path `src/addons/Demo/Portal/XF/Entity/Thread.php` with the contents:
+To add this method, we need a new class extension for the `XF\Entity\Thread` entity. The extended class will be `Demo\Portal\XF\Entity\Thread`, so create that in the path `src/addons/Demo/Portal/XF/Entity/Thread.php` with the contents:
 
 ```php title="src/addons/Demo/Portal/XF/Entity/Thread.php"
 <?php
@@ -759,20 +768,22 @@ namespace Demo\Portal\XF\Entity;
 
 class Thread extends XFCP_Thread
 {
-    public function canFeatureUnfeature(&$error = null): bool
+    public function canFeatureUnfeaturePortalThread(&$error = null): bool
     {
         return true;
     }
 }
 ```
 
-Ok, so, we haven't exactly done much here of value, yet. All the `canFeatureUnfeature()` method does is return `true` right now. Later on, we will implement some proper permissions and add them here.
+With that file in place, go to the "Add class extension" page and add an extension with `XF\Entity\Thread` as the base class and `Demo\Portal\XF\Entity\Thread` as the extension class. Then click "Save".
+
+Ok, so, we haven't exactly done much here of value, yet. All the `canFeatureUnfeaturePortalThread()` method does is return `true` right now. Later on, we will implement some proper permissions and add them here.
 
 To test this works so far, open one of the threads you previously featured, and select "Edit thread" from the tools menu. We should see the "Set thread status" checkbox row has the "Featured" checkbox we added, and it should be checked, indicating that this thread is indeed featured.
 
-We can now move on to changing the thread editor service to look for this value and feature or unfeature accordingly. We are going to need two new class extensions for this. Go back to the "Add class extensions" page. The first one will have a base class of `XF\Pub\Controller\ThreadController` and extension class of `Demo\Portal\XF\Pub\Controller\ThreadController`. The second one will have a base class of `XF\Service\Thread\EditorService` and an extension class of `Demo\Portal\XF\Service\Thread\EditorService`.
+We can now move on to changing the thread editor service to look for this value and feature or unfeature accordingly. We are going to need three new class extensions for this, extending `XF\Pub\Controller\ThreadController`, `XF\Service\Thread\EditorService` and `XF\Service\Thread\ReplierService`. Create the three classes first, then register the extensions.
 
-The editor service is actually going to be very similar to the extended creator service we created earlier, so create that in the relevant location. Here is all of the code for the extended class:
+The editor service is actually going to be very similar to the extended creator service we created earlier, so create that in the relevant location. Here is all the code for the extended class:
 
 ```php title="src/addons/Demo/Portal/XF/Service/Thread/EditorService.php"
 <?php
@@ -824,22 +835,75 @@ This is a little bit more involved than the code in the creator service. For exa
 
 In the case of unfeaturing, we actually just delete the featured thread entity by calling the `delete()` method. In both cases we use the `fastUpdate()` method again to update the cached value in the thread entity to represent the current featured state.
 
-Before we finish the process of editing, we need to add code to our extended thread controller, and specifically extend the `setupThreadEdit()` method. The entire extended thread controller code will look like this:
+Replying to a thread uses a different service, `XF\Service\Thread\ReplierService`, so we need the same handling there. Create the extended class in the path `src/addons/Demo/Portal/XF/Service/Thread/ReplierService.php`. It mirrors the editor service, but `_save()` returns the new post rather than the thread, so we get the thread from the `getThread()` method instead. Here is all the code for the extended class:
+
+```php title="src/addons/Demo/Portal/XF/Service/Thread/ReplierService.php"
+<?php
+
+namespace Demo\Portal\XF\Service\Thread;
+
+class ReplierService extends XFCP_ReplierService
+{
+    protected $featureThread;
+
+    public function setFeatureThread($featureThread)
+    {
+        $this->featureThread = $featureThread;
+    }
+
+    protected function _save()
+    {
+        $post = parent::_save();
+
+        $thread = $this->getThread();
+
+        if ($this->featureThread !== null && $thread->discussion_state == 'visible')
+        {
+            /** @var \Demo\Portal\Entity\FeaturedThread $featuredThread */
+            $featuredThread = $thread->getRelationOrDefault('FeaturedThread', false);
+
+            if ($this->featureThread)
+            {
+                if (!$featuredThread->exists())
+                {
+                    $featuredThread->save();
+                    $thread->fastUpdate('demo_portal_featured', true);
+                }
+            }
+            else
+            {
+                if ($featuredThread->exists())
+                {
+                    $featuredThread->delete();
+                    $thread->fastUpdate('demo_portal_featured', false);
+                }
+            }
+        }
+
+        return $post;
+    }
+}
+```
+
+Before we finish the process of editing, we need to add code to our extended thread controller, and specifically extend the `setupThreadEdit()` method. The extended thread controller code will look like this so far:
 
 ```php title="src/addons/Demo/Portal/XF/Pub/Controller/ThreadController.php"
 <?php
 
 namespace Demo\Portal\XF\Pub\Controller;
 
+use Demo\Portal\XF\Service\Thread\EditorService;
+use XF\Entity\Thread;
+
 class ThreadController extends XFCP_ThreadController
 {
-    public function setupThreadEdit(\XF\Entity\Thread $thread)
+    protected function setupThreadEdit(Thread $thread)
     {
-        /** @var \Demo\Portal\XF\Service\Thread\EditorService $editor */
+        /** @var EditorService $editor */
         $editor = parent::setupThreadEdit($thread);
 
-        $canFeatureUnfeature = $thread->canFeatureUnfeature();
-        if ($canFeatureUnfeature)
+        $canFeaturePortalThread = $thread->canFeatureUnfeaturePortalThread();
+        if ($canFeaturePortalThread)
         {
             $editor->setFeatureThread($this->filter('featured', 'bool'));
         }
@@ -849,31 +913,37 @@ class ThreadController extends XFCP_ThreadController
 }
 ```
 
+Now that all three class files exist, go back to the "Add class extensions" page and add these extensions:
+
+- Base class `XF\Pub\Controller\ThreadController`, extension class `Demo\Portal\XF\Pub\Controller\ThreadController`
+- Base class `XF\Service\Thread\EditorService`, extension class `Demo\Portal\XF\Service\Thread\EditorService`
+- Base class `XF\Service\Thread\ReplierService`, extension class `Demo\Portal\XF\Service\Thread\ReplierService`
+
+Click "Save" after adding each one.
+
 This should be enough to be able to edit a thread, and set the status to featured (or unfeatured). If you try this out now, you should be able to see threads appearing and disappearing from your portal page accordingly.
 
 We need to extend another method in the thread controller to handle a situation whereby the thread status controls are shown on some thread reply forms, too.
 
-We just need to add the following code below the `setupThreadEdit()` method we added above:
+We just need to add the following code below the `setupThreadEdit()` method we added above. Add `use Demo\Portal\XF\Service\Thread\ReplierService;` to the top of the controller file first:
 
 ```php title="src/addons/Demo/Portal/XF/Pub/Controller/ThreadController.php"
-public function finalizeThreadReply(\XF\Service\Thread\ReplierService $replier)
+protected function setupThreadReply(Thread $thread)
 {
-    parent::finalizeThreadReply($replier);
+    /** @var ReplierService $replier */
+    $replier = parent::setupThreadReply($thread);
 
     $setOptions = $this->filter('_xfSet', 'array-bool');
-    if ($setOptions)
+    if ($thread->canFeatureUnfeaturePortalThread() && isset($setOptions['featured']))
     {
-        $thread = $replier->getThread();
-
-        if ($thread->canFeatureUnfeature() && isset($setOptions['featured']))
-        {
-            $replier->setFeatureThread($this->filter('featured', 'bool'));
-        }
+        $replier->setFeatureThread($this->filter('featured', 'bool'));
     }
+
+    return $replier;
 }
 ```
 
-Note that we haven't actually returned anything in this method because it isn't expected to return anything.
+The method returns the replier service, as the parent method does. This runs before the reply is saved, so the extended `ReplierService` can apply the featured state when it saves.
 
 For the final step in manually featuring/unfeaturing a thread, we need to go back to the forum controller and slightly change our existing code so that if featuring isn't automatic, we can handle it manually, instead. This should be fairly straight forward. Head into your extended forum controller, and replace this:
 
@@ -898,7 +968,7 @@ else
     {
         $thread = $creator->getThread();
 
-        if ($thread->canFeatureUnfeature() && isset($setOptions['featured']))
+        if ($thread->canFeatureUnfeaturePortalThread() && isset($setOptions['featured']))
         {
             $creator->setFeatureThread($this->filter('featured', 'bool'));
         }
@@ -1059,11 +1129,9 @@ You may have spotted earlier in the demo\_portal\_view template that each post w
 'attachments': $post.attach_count ? $post.Attachments : [],
 ```
 
-Right now, this is going to generate an additional query for each post. So, we should instead try to do a single query for all of the posts we are displaying and add them to the posts in advance. It probably sounds more complicated than it is. Just add the below code beneath the `->sliceToPage($page, $perPage);` line.
+Right now, this is going to generate an additional query for each post. So, we should instead try to do a single query for all of the posts we are displaying and add them to the posts in advance. It probably sounds more complicated than it is. Add `use XF\Repository\AttachmentRepository;` to the top of the controller file, then add the below code beneath the `->sliceToPage($page, $perPage);` line.
 
 ```php title="src/addons/Demo/Portal/Pub/Controller/Portal.php"
-use XF\Repository\AttachmentRepository;
-
 $threads = $featuredThreads->pluckNamed('Thread');
 $posts = $threads->pluckNamed('FirstPost', 'first_post_id');
 
@@ -1075,7 +1143,7 @@ We use the `pluckNamed()` method first to get a collection of threads, then agai
 
 The final permission related thing to finish up is to create a new permission to control who can feature / unfeature threads manually. To do this, in the Admin CP under "Development" click "Permission definitions" and click "Add permission". The "Permission group" will be `forum`, "Permission ID" will be `demoPortalFeature`, "Title" should be `Can feature / unfeature threads`, set "Interface group" to `Forum moderator permissions` and after choosing an appropriate display order and ensuring your add-on is selected, click "Save".
 
-To actually use this permission, we need to go back to our extended thread entity to modify the `canFeatureUnfeature()` method. Replace `return true;` with:
+To actually use this permission, we need to go back to our extended thread entity to modify the `canFeatureUnfeaturePortalThread()` method. Replace `return true;` with:
 
 ```php title="src/addons/Demo/Portal/XF/Entity/Thread.php"
 return \XF::visitor()->hasNodePermission($this->node_id, 'demoPortalFeature');
