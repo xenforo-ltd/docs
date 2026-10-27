@@ -1,0 +1,194 @@
+---
+sidebar_position: 10
+---
+
+# Thread and forum types
+
+Custom thread and forum types let add-ons change how threads and forums behave. This page shows how to register a type, create its handler, and add the phrases it needs.
+
+## Registering types
+
+XenForo stores thread types in the `xf_thread_type` table and forum types in the `xf_forum_type` table. The `insertThreadType()` and `insertForumType()` helpers in `\XF\Install\InstallHelperTrait` add the row and rebuild the type cache.
+
+```php title="Setup.php"
+<?php
+
+namespace Vendor\Addon;
+
+use XF\AddOn\AbstractSetup;
+use XF\AddOn\StepRunnerInstallTrait;
+use XF\AddOn\StepRunnerUninstallTrait;
+use XF\AddOn\StepRunnerUpgradeTrait;
+
+class Setup extends AbstractSetup
+{
+    use StepRunnerInstallTrait;
+    use StepRunnerUpgradeTrait;
+    use StepRunnerUninstallTrait;
+
+    public function installStep1(): void
+    {
+        $this->insertThreadType('thread_type_identifier', 'Vendor\Addon:ExampleHandler', 'Vendor/Addon');
+    }
+
+    public function installStep2(): void
+    {
+        $this->insertForumType('forum_type_identifier', 'Vendor\Addon:ExampleHandler', 'Vendor/Addon');
+    }
+}
+```
+
+Each call inserts a row with the type identifier, handler class, and add-on ID, and rebuilds the `threadTypes` or `forumTypes` cache unless you pass `false` as the fourth argument.
+
+| Parameter      | Description |
+| -------------- | ----------- |
+| `type`         | The identifier of the thread or forum type. You use this string to refer to the type in your code. |
+| `handlerClass` | The handler class for the type. Use the `Vendor\Addon:ClassName` format, which resolves relative to the `ThreadType` or `ForumType` namespace, or use the fully qualified class name. |
+| `addOnId`      | The ID of the add-on that the type belongs to. |
+| `rebuildCache` | Whether to rebuild the type cache. Defaults to `true`. |
+
+## Creating type handlers
+
+A handler contains the type-specific logic for a thread or forum. Always extend `\XF\ThreadType\AbstractHandler` or `\XF\ForumType\AbstractHandler`; XenForo's default handlers are in those namespaces.
+
+### Thread type handlers
+
+Create a handler that extends `\XF\ThreadType\AbstractHandler`. In your add-on, put it in a `ThreadType` directory, for example `ThreadType/ExampleHandler.php`.
+
+```php title="ThreadType/ExampleHandler.php"
+<?php
+
+namespace Vendor\Addon\ThreadType;
+
+use XF\Entity\Thread;
+use XF\ThreadType\AbstractHandler;
+
+class ExampleHandler extends AbstractHandler
+{
+    public function getTypeIconClass(): string
+    {
+        return 'fa-user';
+    }
+}
+```
+
+Thread type handlers must implement `getTypeIconClass()`, which returns the Font Awesome class for the type's icon.
+
+Override handler methods to add behavior. For example, `onThreadPreSave()` runs before a thread of this type is saved:
+
+```php title="ThreadType/ExampleHandler.php"
+public function onThreadPreSave(Thread $thread, bool $isTypeEnter): void
+{
+    parent::onThreadPreSave($thread, $isTypeEnter);
+
+    // Add type-specific behavior here.
+}
+```
+
+See the `\XF\ThreadType\AbstractHandler` class for the available methods.
+
+### Forum type handlers
+
+Create a handler that extends `\XF\ForumType\AbstractHandler`. In your add-on, put it in a `ForumType` directory, for example `ForumType/ExampleHandler.php`.
+
+```php title="ForumType/ExampleHandler.php"
+<?php
+
+namespace Vendor\Addon\ForumType;
+
+use XF\Entity\Forum;
+use XF\ForumType\AbstractHandler;
+
+class ExampleHandler extends AbstractHandler
+{
+    public function getDefaultThreadType(Forum $forum): string
+    {
+        return 'thread_type_identifier';
+    }
+
+    public function getDisplayOrder(): int
+    {
+        return 1;
+    }
+
+    public function getTypeIconClass(): string
+    {
+        return 'fa-user';
+    }
+}
+```
+
+Forum type handlers must implement `getDefaultThreadType()`, `getDisplayOrder()`, and `getTypeIconClass()`. The default thread type is used when a thread has no explicit type, and the display order sets the type's position when an administrator creates a node.
+
+Override handler methods to add behavior. For example, `getExtraAllowedThreadTypes()` returns additional thread types that the forum allows:
+
+```php title="ForumType/ExampleHandler.php"
+public function getExtraAllowedThreadTypes(Forum $forum): array
+{
+    return ['discussion'];
+}
+```
+
+This allows discussion threads in addition to the default type.
+
+See the `\XF\ForumType\AbstractHandler` class for the available methods.
+
+## Phrases
+
+Each type needs phrases for its title and description. If a phrase is missing, the UI shows the phrase key instead of a label.
+
+Thread type handlers resolve `thread_type.<id>` and `thread_type_plural.<id>` through `getTypeTitle()` and `getTypeTitlePlural()`. Forum type handlers resolve `forum_type.<id>` and `forum_type_desc.<id>` through `getTypeTitle()` and `getTypeDescription()`.
+
+For the identifiers on this page, add these phrases:
+
+| Phrase title                                | Phrase text                  |
+| ------------------------------------------- | ---------------------------- |
+| `thread_type.thread_type_identifier`        | Example thread               |
+| `thread_type_plural.thread_type_identifier` | Example threads              |
+| `forum_type.forum_type_identifier`          | Example forum                |
+| `forum_type_desc.forum_type_identifier`     | A forum for example threads. |
+
+With development mode enabled, create them in the master language with `xf-make:phrase`, for example:
+
+```sh title="Terminal"
+php cmd.php xf-make:phrase thread_type.thread_type_identifier --text="Example thread" --addon=Vendor/Addon
+```
+
+Repeat for the other titles in the table.
+
+## Uninstalling types
+
+XenForo does not provide a remove helper, so delete the row and rebuild the cache. The type lists are cached in the registry, so the rebuild is required.
+
+Add these imports to the top of `Setup.php`:
+
+```php title="Setup.php"
+use XF\Repository\ForumTypeRepository;
+use XF\Repository\ThreadTypeRepository;
+```
+
+Then add the uninstall steps:
+
+```php title="Setup.php"
+public function uninstallStep1(): void
+{
+    $this->db()->delete('xf_thread_type', 'thread_type_id = ?', 'thread_type_identifier');
+
+    \XF::runOnce('rebuildThreadTypeCache', function ()
+    {
+        $this->app->repository(ThreadTypeRepository::class)->rebuildThreadTypeCache();
+    });
+}
+
+public function uninstallStep2(): void
+{
+    $this->db()->delete('xf_forum_type', 'forum_type_id = ?', 'forum_type_identifier');
+
+    \XF::runOnce('rebuildForumTypeCache', function ()
+    {
+        $this->app->repository(ForumTypeRepository::class)->rebuildForumTypeCache();
+    });
+}
+```
+
+This removes the rows and rebuilds the caches.
