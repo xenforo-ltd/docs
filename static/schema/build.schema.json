@@ -1,0 +1,154 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://docs.xenforo.com/schema/build.schema.json",
+  "title": "XenForo add-on build configuration",
+  "description": "A configuration describing how to build a XenForo add-on release\nhttps://docs.xenforo.com/devs/development-tools#customizing-the-build-process",
+  "examples": [
+    {
+      "blacklist": ["tests/**"],
+      "additional_files": ["js/acme/addon/"],
+      "rollup": {
+        "js/acme/addon/bundle.js": [
+          "js/acme/addon/core.js",
+          "js/acme/addon/features.js"
+        ]
+      },
+      "minify": ["js/acme/addon/bundle.js"],
+      "exec": [["php", "build.php", "{version_string}"]]
+    }
+  ],
+  "type": "object",
+  "minProperties": 1,
+  "properties": {
+    "root": {
+      "description": "The build root relative to the add-on directory",
+      "examples": ["../.."],
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "pattern": "^/|:|\\\\|\\u0000"
+      }
+    },
+    "whitelist": {
+      "description": "Paths or glob patterns to include, relative to the build root",
+      "examples": [["src/addons/Acme/AddOn/**", ".htaccess"]],
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/filePattern"
+      }
+    },
+    "blacklist": {
+      "description": "Paths or glob patterns to exclude, relative to the build root",
+      "examples": [["tests/**", "composer.lock"]],
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/filePattern"
+      }
+    },
+    "additional_files": {
+      "description": "Additional paths or glob patterns to include, looked up in the _files subdirectory before the build root",
+      "examples": [["js/acme/**", "styles/acme/addon"]],
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/filePattern"
+      }
+    },
+    "hash_exclude": {
+      "description": "Paths or glob patterns to omit from the hash manifest but retain in the release archive",
+      "examples": [["**/index.html"]],
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/filePattern"
+      }
+    },
+    "rollup": {
+      "description": "JavaScript files to concatenate, keyed by output path",
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "description": "The relative path of the output file",
+        "examples": ["js/acme/addon/bundle.js"],
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\.js$",
+        "not": {
+          "pattern": "^/|:|\\\\|\\u0000|(^|/)\\.\\.(/|$)|[*?[{]"
+        }
+      },
+      "additionalProperties": {
+        "description": "Input paths or glob patterns in concatenation order",
+        "examples": [["js/acme/addon/core.js", "js/acme/addon/features.js"]],
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/definitions/filePattern"
+        }
+      }
+    },
+    "minify": {
+      "description": "JavaScript files to minify, or * for all files",
+      "oneOf": [
+        {
+          "description": "Minify all JavaScript files",
+          "const": "*"
+        },
+        {
+          "description": "Paths or glob patterns to minify",
+          "examples": [["js/acme/addon/bundle.js"]],
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/filePattern"
+          }
+        }
+      ]
+    },
+    "exec": {
+      "description": "Commands to run in the add-on directory before creating the release archive",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "description": "A command string split on whitespace",
+            "examples": ["php build.php {version_string}"],
+            "type": "string",
+            "pattern": "\\S"
+          },
+          {
+            "description": "A command and its arguments with spaces preserved",
+            "examples": [["php", "build.php", "{title}", "{version_string}"]],
+            "type": "array",
+            "minItems": 1,
+            "items": [
+              {
+                "description": "The executable to run",
+                "type": "string",
+                "pattern": "\\S"
+              }
+            ],
+            "additionalItems": {
+              "description": "An argument to the executable",
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "filePattern": {
+      "description": "A relative path or glob pattern",
+      "examples": ["js/acme/addon/**/*.js"],
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "pattern": "^/|:|\\u0000|(^|/)\\.\\.(/|$)|^(\\./)*!"
+      }
+    }
+  }
+}
