@@ -1,0 +1,317 @@
+---
+sidebar_position: 20
+---
+
+# Webhooks and events
+
+Webhooks send data about activity in XenForo to external services. XenForo includes webhook support for posts, profile posts, profile post comments, reports, threads, users, and user upgrades.
+
+If your add-on has its own content type, you can add webhook support to it. This page builds a `Note` content type: table and entity, content type registration, events, and a custom event.
+
+## Before you start
+
+- Webhooks are queued, not sent immediately. Queueing a webhook adds one `XF\Job\WebhookSend` job for each active webhook that includes the content type; the job queue sends the request later.
+- `queueWebhook()` returns `false` without queueing anything if no active webhook includes the content type. This is expected when webhooks are not configured.
+- The request body contains `content_type`, `event`, `content_id`, and `data`. The `data` value is rendered from the entity or array that you pass to `queueWebhook()`.
+
+## Standard events
+
+Every content type supports `insert`, `update`, and `delete`.
+
+The `XF:Webhook` entity behavior queues these events when you save or delete an entity; direct database queries do not trigger them. Queue other events in your code and register them with `getWebhookEvents()`, so administrators can select them.
+
+## Create the table
+
+Add an install step to `Setup.php`:
+
+```php title="Setup.php"
+<?php
+
+namespace Vendor\Addon;
+
+use XF\AddOn\AbstractSetup;
+use XF\AddOn\StepRunnerInstallTrait;
+use XF\AddOn\StepRunnerUninstallTrait;
+use XF\Db\Schema\Create;
+
+class Setup extends AbstractSetup
+{
+    use StepRunnerInstallTrait;
+    use StepRunnerUninstallTrait;
+
+    public function installStep1(): void
+    {
+        $this->schemaManager()->createTable('xf_note', function (Create $table)
+        {
+            $table->addColumn('note_id', 'int')->autoIncrement();
+            $table->addColumn('title', 'varchar', 100);
+            $table->addColumn('content', 'text');
+            $table->addColumn('user_id', 'int')->nullable();
+            $table->addColumn('created_date', 'int')->setDefault(0);
+
+            $table->addPrimaryKey('note_id');
+        });
+    }
+
+    public function uninstallStep1(): void
+    {
+        $this->schemaManager()->dropTable('xf_note');
+    }
+}
+```
+
+This creates an `xf_note` table with these columns:
+
+| Column | Type | Description |
+| --- | --- | --- |
+| `note_id` | `int`, auto-increment | The primary key. |
+| `title` | `varchar(100)` | The title of the note. |
+| `content` | `text` | The body of the note. |
+| `user_id` | `int`, nullable | The user who created the note. |
+| `created_date` | `int` | When the note was created, as a Unix timestamp. |
+
+## Create the entity
+
+Create the entity with `xf-make:entity` (development mode required):
+
+```sh title="Terminal"
+php cmd.php xf-make:entity Vendor/Addon:Note
+```
+
+The finished entity looks like this:
+
+```php title="Entity/Note.php"
+<?php
+
+namespace Vendor\Addon\Entity;
+
+use XF\Entity\User;
+use XF\Mvc\Entity\Entity;
+use XF\Mvc\Entity\Structure;
+
+/**
+ * COLUMNS
+ * @property int $note_id
+ * @property string $title
+ * @property string $content
+ * @property int|null $user_id
+ * @property int $created_date
+ *
+ * RELATIONS
+ * @property-read User|null $User
+ */
+class Note extends Entity
+{
+    public static function getStructure(Structure $structure): Structure
+    {
+        $structure->table = 'xf_note';
+        $structure->shortName = 'Vendor\Addon:Note';
+        $structure->primaryKey = 'note_id';
+        $structure->columns = [
+            'note_id' => ['type' => self::UINT, 'autoIncrement' => true, 'nullable' => true],
+            'title' => ['type' => self::STR, 'maxLength' => 100, 'required' => true],
+            'content' => ['type' => self::STR, 'default' => ''],
+            'user_id' => ['type' => self::UINT, 'nullable' => true],
+            'created_date' => ['type' => self::UINT, 'default' => \XF::$time],
+        ];
+
+        $structure->relations = [
+            'User' => [
+                'entity' => 'XF:User',
+                'type' => self::TO_ONE,
+                'conditions' => 'user_id',
+                'primary' => true,
+            ],
+        ];
+
+        return $structure;
+    }
+}
+```
+
+`user_id` is nullable, so the `User` relation can be null when a note has no user.
+
+## Register the content type
+
+Register `vendor_addon_notes` in the admin control panel under **Development → Content types**, and set **Add-on** to `Vendor/Addon`. Add these fields:
+
+| Field | Value | Description |
+| --- | --- | --- |
+| `entity` | `Vendor\Addon:Note` | The short class name of the entity. |
+| `webhook_handler_class` | `Vendor\Addon\Webhook\Event\NoteHandler` | The handler that lists the available events. |
+| `phrase_plural` | `vendor_addon_notes` | The phrase title used for the content type. Add it with `xf-make:phrase`. |
+
+In development mode, the control panel writes these fields to `_output/content_type_fields/`. You can also create them with `xf-make:content-type-field`, for example:
+
+```sh title="Terminal"
+php cmd.php xf-make:content-type-field vendor_addon_notes entity 'Vendor\Addon:Note' --addon=Vendor/Addon
+```
+
+Repeat for `webhook_handler_class` and `phrase_plural`.
+
+## Create the webhook handler
+
+Create `Webhook/Event/NoteHandler.php` relative to your add-on root:
+
+```php title="Webhook/Event/NoteHandler.php"
+<?php
+
+namespace Vendor\Addon\Webhook\Event;
+
+use XF\Webhook\Event\AbstractHandler;
+
+class NoteHandler extends AbstractHandler
+{
+    public static function getWebhookEvents(): array
+    {
+        return ['report'];
+    }
+
+    public function getEventHint(string $event): string
+    {
+        switch ($event)
+        {
+            case 'insert':
+                return 'When a new note is created';
+            case 'update':
+                return 'When an existing note is updated';
+            case 'delete':
+                return 'When a note is deleted';
+            case 'report':
+                return 'When a note activity report is generated';
+            default:
+                return '';
+        }
+    }
+}
+```
+
+Do not override `getEvents()`. `AbstractHandler::getEvents()` returns `insert`, `update`, and `delete`, then merges the result of `getWebhookEvents()` from the content type handlers. The static method here registers the custom `report` event.
+
+`getEventHint()` returns the description that the admin control panel shows for each event.
+
+## Enable webhooks on the entity
+
+Add these lines after the relations, before the existing `return $structure;`:
+
+```php
+$structure->behaviors['XF:Webhook'] = [];
+$structure->contentType = 'vendor_addon_notes';
+```
+
+- `$structure->behaviors['XF:Webhook']` queues the standard events.
+- `$structure->contentType` must match the content type you registered. The behavior uses it to find the webhook handler and to set `content_type` in the payload.
+
+## Define the payload
+
+Add a `setupApiResultData()` method to the entity class to control what a webhook receives. This example includes all columns and a summary of the related user:
+
+```php title="Entity/Note.php"
+protected function setupApiResultData(
+    \XF\Api\Result\EntityResult $result,
+    $verbosity = self::VERBOSITY_NORMAL,
+    array $options = []
+)
+{
+    $result->includeColumn(['note_id', 'title', 'content', 'user_id', 'created_date']);
+
+    $user = $this->User;
+    if ($user)
+    {
+        $result->includeExtra([
+            'User' => [
+                'user_id' => $user->user_id,
+                'username' => $user->username,
+                'custom_title' => $user->custom_title,
+            ],
+        ]);
+    }
+}
+```
+
+- `includeColumn()` adds the columns that you list.
+- `includeExtra()` adds data that is not a column of the entity, such as relations.
+- The `User` relation can be null when the note has no user or the relation cannot be loaded, such as after the entity is deleted, so check it first.
+
+## Trigger standard events
+
+Saving or deleting an entity triggers the events that the behavior queues:
+
+```php
+// Queues the insert event.
+$note = \XF::em()->create('Vendor\Addon:Note');
+$note->title = 'A new note';
+$note->content = 'This note is new.';
+$note->user_id = \XF::visitor()->user_id;
+$note->save();
+
+// Queues the update event.
+$note->content = 'This note has changed.';
+$note->save();
+
+// Queues the delete event.
+$note->delete();
+```
+
+## Send a custom event
+
+To send an event that the behavior does not queue, call `queueWebhook()` in your own code. Register the event with `getWebhookEvents()`; otherwise it is only sent to webhooks configured to send all events.
+
+This repository method queues a `report` event with statistics about recent notes:
+
+```php title="Repository/NoteRepository.php"
+<?php
+
+namespace Vendor\Addon\Repository;
+
+use XF\Mvc\Entity\Repository;
+use XF\Repository\WebhookRepository;
+
+class NoteRepository extends Repository
+{
+    public function sendActivityReport(): void
+    {
+        $stats = $this->db()->fetchRow("
+            SELECT COUNT(*) AS total_notes,
+                MAX(note_id) AS newest_note_id,
+                MIN(created_date) AS oldest_note_date,
+                MAX(created_date) AS newest_note_date,
+                COUNT(DISTINCT user_id) AS unique_users
+            FROM xf_note
+            WHERE created_date > ?
+        ", [\XF::$time - (7 * 86400)]);
+
+        if (!$stats['newest_note_id'])
+        {
+            return;
+        }
+
+        $this->repository(WebhookRepository::class)->queueWebhook(
+            'vendor_addon_notes',
+            (int) $stats['newest_note_id'],
+            'report',
+            [
+                'report_date' => \XF::$time,
+                'stats' => [
+                    'total_notes' => (int) $stats['total_notes'],
+                    'oldest_note_date' => (int) $stats['oldest_note_date'],
+                    'newest_note_date' => (int) $stats['newest_note_date'],
+                    'unique_users' => (int) $stats['unique_users'],
+                ],
+            ]
+        );
+    }
+}
+```
+
+`queueWebhook()` takes the following arguments:
+
+| Argument | Type | Description |
+| --- | --- | --- |
+| `contentType` | `string` | The content type that you registered. |
+| `contentId` | `int` | The ID of the content that the event relates to. Use a non-zero ID, because the send job throws an exception for a falsy content ID. This example uses the newest note. |
+| `event` | `string` | The event name. It must match the name that `getWebhookEvents()` returns. |
+| `entityOrData` | `\XF\Mvc\Entity\Entity` or `array` | An entity to use its webhook result, or an array to send a fixed payload. |
+| `extraData` | `array` | Optional. Merged into the top level of the payload. |
+
+Call `sendActivityReport()` from a cron entry or another service when you want to send the event.
