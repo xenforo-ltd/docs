@@ -19,6 +19,12 @@ updates:
     schedule:
       interval: "monthly"
 
+    # typescript-eslint does not support TypeScript 7 yet, so hold TypeScript
+    # at the current major until it does.
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+
     groups:
       npm:
         patterns:
