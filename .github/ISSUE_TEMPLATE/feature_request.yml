@@ -1,0 +1,56 @@
+name: Improvement request
+description: Suggest missing or clearer documentation or a site improvement
+type: Feature
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting an improvement. Please search [existing issues](https://github.com/xenforo-ltd/docs/issues) first.
+        For help questions, see [support](https://github.com/xenforo-ltd/docs/blob/main/.github/SUPPORT.md).
+        Report vulnerabilities through a [private security report](https://github.com/xenforo-ltd/docs/security/advisories/new).
+
+  - id: problem
+    type: textarea
+    attributes:
+      label: Problem
+      description: What problem should this solve?
+      placeholder: I want to be able to...
+    validations:
+      required: true
+
+  - id: proposal
+    type: textarea
+    attributes:
+      label: Proposed solution
+      description: Describe the documentation or site improvement you want.
+      placeholder: I propose that...
+    validations:
+      required: true
+
+  - id: location
+    type: input
+    attributes:
+      label: Related page or section
+      description: Provide a page URL, file path, or section if relevant.
+
+  - id: alternatives
+    type: textarea
+    attributes:
+      label: Alternatives considered
+      description:
+        Describe any alternative solutions or features you considered.
+      placeholder: I also considered...
+
+  - id: terms
+    type: checkboxes
+    attributes:
+      label: Code of Conduct
+      description:
+        By submitting this issue, you agree to follow our [Code of
+        Conduct](https://github.com/xenforo-ltd/docs/blob/main/.github/CODE_OF_CONDUCT.md).
+      options:
+        - label:
+            I agree to follow the [Code of
+            Conduct](https://github.com/xenforo-ltd/docs/blob/main/.github/CODE_OF_CONDUCT.md).
+          required: true

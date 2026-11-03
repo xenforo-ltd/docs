@@ -2,23 +2,18 @@
 
 ## Getting help
 
-If you need help with this documentation, or want to report a problem:
-
-1. **Check existing issues** - Search
-   [GitHub Issues](https://github.com/xenforo-ltd/docs/issues) to see if your
-   question has already been answered.
-2. **Open an issue** - If you cannot find an answer, open a
-   [new issue](https://github.com/xenforo-ltd/docs/issues/new) and include the
-   page URL, what you expected, and what you saw instead.
+- Read the [XenForo documentation](https://docs.xenforo.com/).
+- Use the [XenForo community](https://xenforo.com/community/) for help, product bugs, and feature requests. For developer questions, use the [development discussions forum](https://xenforo.com/community/forums/xenforo-development-discussions.34/).
+- For documentation errors, site problems, or improvements, search [existing issues](https://github.com/xenforo-ltd/docs/issues), then open a [new issue](https://github.com/xenforo-ltd/docs/issues/new) if needed.
 
 ## Reporting bugs
 
-Please include:
+For a content problem, include the page URL or file path and the expected or
+correct information. For a site or build problem, include the steps to
+reproduce, expected and actual behavior, and relevant browser and operating
+system details or build command, output, and tool versions.
 
-- The page URL
-- Expected and actual behaviour
-- Screenshots or browser console output, if relevant
-- Your browser and operating system
+Do not include private site data, tokens, or passwords in reports.
 
 ## Security issues
 
@@ -27,4 +22,4 @@ described in [SECURITY.md](SECURITY.md).
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for how to propose documentation changes.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to propose changes.

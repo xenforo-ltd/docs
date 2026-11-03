@@ -2,24 +2,26 @@
 
 ## Scope
 
-This repository contains the documentation site. It does not publish a package,
-but reports about the site content or its build are welcome.
+This policy covers the current published documentation, site, and build,
+including unsafe guidance in the documentation.
 
 ## Reporting a vulnerability
 
-Please do not open public issues for security vulnerabilities.
+Do not open public issues or disclose vulnerability details publicly.
 
-Send a
-[private report](https://github.com/xenforo-ltd/docs/security/advisories/new)
-with:
+Open a [private report](https://github.com/xenforo-ltd/docs/security/advisories/new) with:
 
-1. Affected page or repository area
-2. Impact summary
-3. Reproduction steps or proof of concept
-4. Suggested remediation (if available)
+1. A short summary of the problem.
+2. Complete details, including the affected page or source code and revision.
+3. A proof of concept, including reproduction instructions.
+4. Impact details.
+5. Suggested remediation, if available.
+
+For dependency CVEs, include evidence that the issue is exploitable in the site
+or build, such as a reachable vulnerable call chain or a proof of concept showing
+impact. A dependency version and CVE identifier alone are not sufficient.
 
 ## Response expectations
 
-1. Initial acknowledgement within 3 business days.
-2. Triage and severity assessment after reproduction.
-3. Coordinated disclosure once a fix is available.
+1. Triage and severity assessment after reproduction.
+2. Coordinated disclosure once a fix is available.

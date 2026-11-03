@@ -1,0 +1,69 @@
+name: Bug report
+description: Report a documentation, site, or build problem
+type: Bug
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug. Please search [existing issues](https://github.com/xenforo-ltd/docs/issues) first.
+        For help questions, see [support](https://github.com/xenforo-ltd/docs/blob/main/.github/SUPPORT.md).
+        Report vulnerabilities through a [private security report](https://github.com/xenforo-ltd/docs/security/advisories/new).
+        Do not include passwords, tokens, or private data in your report or output.
+
+  - id: summary
+    type: textarea
+    attributes:
+      label: Summary
+      description: Describe the expected and actual behavior or information.
+      placeholder: The documentation says... but it should say...
+    validations:
+      required: true
+
+  - id: location
+    type: input
+    attributes:
+      label: Affected page or area
+      description:
+        Provide a page URL, file path, or repository area, including for build
+        problems.
+    validations:
+      required: true
+
+  - id: steps
+    type: textarea
+    attributes:
+      label: Reproduction and context
+      description:
+        For site or build problems, include relevant steps, commands, and
+        output.
+
+  - id: environment
+    type: input
+    attributes:
+      label: Environment
+      description:
+        If relevant, provide your browser and operating system, or Node and pnpm
+        versions for build problems.
+
+  - id: screenshots
+    type: upload
+    attributes:
+      label: Upload screenshots
+      description: Add screenshots if they help explain the problem.
+    validations:
+      required: false
+      accept: ".png,.jpg,.jpeg,.gif,.webp"
+
+  - id: terms
+    type: checkboxes
+    attributes:
+      label: Code of Conduct
+      description:
+        By submitting this issue, you agree to follow our [Code of
+        Conduct](https://github.com/xenforo-ltd/docs/blob/main/.github/CODE_OF_CONDUCT.md).
+      options:
+        - label:
+            I agree to follow the [Code of
+            Conduct](https://github.com/xenforo-ltd/docs/blob/main/.github/CODE_OF_CONDUCT.md).
+          required: true
