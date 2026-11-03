@@ -5,6 +5,3 @@ contact_links:
     url: https://xenforo.com/community/
     about:
       Use the XenForo community for help, product bugs, and feature requests.
-  - name: Report a security vulnerability
-    url: https://github.com/xenforo-ltd/docs/security/advisories/new
-    about: Report security vulnerabilities privately.
