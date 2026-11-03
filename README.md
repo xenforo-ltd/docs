@@ -1,74 +1,71 @@
 # XenForo Documentation
 
-Welcome to the documentation for XenForo, covering both end-user guides and
-developer resources.
+<img src="static/img/icon-rounded.svg" width="96" hspace="16" vspace="4" align="left" alt="XenForo Documentation icon" />
 
-## Contents
+[![XenForo](https://img.shields.io/badge/XenForo-%230F578A)](https://xenforo.com)
+[![License](https://img.shields.io/github/license/xenforo-ltd/docs)](https://github.com/xenforo-ltd/docs/blob/main/LICENSE)
+[![Status](https://img.shields.io/github/check-runs/xenforo-ltd/docs/main?label=status)](https://github.com/xenforo-ltd/docs/actions)
 
-- **Manual** - End-user documentation for installing, configuring, and managing
-  XenForo
-- **Developers** - Add-on development documentation including entities, finders,
-  repositories, and a full portal tutorial
-- **API** - REST API reference documentation generated from an OpenAPI spec
+Documentation for XenForo administrators and developers. The
+[manual](https://docs.xenforo.com/) covers installation, configuration, and
+managing your community, while the [developer guides](https://docs.xenforo.com/devs)
+explain how to build add-ons and extend XenForo. The
+[API reference](https://docs.xenforo.com/api) documents the REST API for
+integrating XenForo with other applications.
 
-## Building Locally
+## Prerequisites
 
-### Requirements
+Install [pnpm](https://pnpm.io/installation). It automatically downloads the
+required Node.js and pnpm versions.
 
-- [pnpm](https://pnpm.io/installation). It downloads the pnpm and Node.js
-  versions this project needs automatically (see `devEngines` in
-  `package.json`).
-
-### Setup
+## Quick start
 
 ```bash
-# Install dependencies
 pnpm install
-
-# Start development server (http://localhost:3000)
 pnpm start
+```
 
-# Build for production
+The development server previews the site at [localhost:3000](http://localhost:3000).
+To build and preview the production site locally:
+
+```bash
 pnpm build
-
-# Serve production build locally
 pnpm docusaurus:serve
 ```
 
-### Checks
+## Checks
 
-Pull requests run these checks in CI. Run them all with `pnpm lint`, or
-individually:
+Run `pnpm lint` to run the checks used in CI. Run `pnpm fix` to fix formatting
+and lint issues automatically.
 
-```bash
-pnpm lint:eslint    # ESLint (TypeScript, JSON, CSS)
-pnpm lint:prettier  # Prettier (code and config files)
-pnpm lint:remark    # remark (Markdown and MDX)
-pnpm lint:spell     # cspell
-pnpm lint:tsc       # TypeScript
-```
+## API documentation
 
-Run `pnpm fix` to fix formatting and lint issues automatically.
+The API reference is generated from `static/api/openapi.json`. Edit that file
+instead of the generated files in `docs/api/`. The `pnpm start` and `pnpm build`
+commands regenerate the reference automatically.
 
-### API Documentation
+## Security
 
-The API reference is generated from an OpenAPI spec using
-[docusaurus-openapi-docs](https://github.com/PaloAltoNetworks/docusaurus-openapi-docs).
-To regenerate the API docs after modifying `static/api/openapi.json`:
+Do not report security vulnerabilities in public issues.
 
-```bash
-# Clean and regenerate API docs
-pnpm docusaurus:api-docs:clean && pnpm docusaurus:api-docs:gen
-```
+See [SECURITY.md](.github/SECURITY.md) for vulnerability reporting instructions.
+
+## Support
+
+Use the [XenForo community](https://xenforo.com/community/) for product help,
+bugs, and feature requests. For documentation errors, site problems, or
+improvements, use this repository's [GitHub Issues](https://github.com/xenforo-ltd/docs/issues).
+
+For support guidance, see [SUPPORT.md](.github/SUPPORT.md).
 
 ## Contributing
 
-Please feel free to post any
-[issues](https://github.com/xenforo-ltd/docs/issues) you may find with the
-documentation. If you'd like to contribute changes to our documentation, then
-you should first read our guidelines and other useful information in
-[CONTRIBUTING.md](https://github.com/xenforo-ltd/docs/blob/main/.github/CONTRIBUTING.md).
+See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for development and contribution
+guidelines.
 
-Please also use the main [XenForo community](https://xenforo.com/community) for
-help with XenForo development, providing feedback on XenForo, and reporting bugs
-with the software.
+## License
+
+Copyright (c) XenForo Ltd. All rights reserved.
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for
+details.
