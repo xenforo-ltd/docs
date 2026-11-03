@@ -9,9 +9,9 @@
 Documentation for XenForo administrators and developers. The
 [manual](https://docs.xenforo.com/) covers installation, configuration, and
 managing your community, while the [developer guides](https://docs.xenforo.com/devs)
-explain how to build add-ons and extend XenForo. The
+explain how to build add-ons. The
 [API reference](https://docs.xenforo.com/api) documents the REST API for
-integrating XenForo with other applications.
+integrating with other applications.
 
 ## Prerequisites
 
