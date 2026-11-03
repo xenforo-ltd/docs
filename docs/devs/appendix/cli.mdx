@@ -1,0 +1,33 @@
+---
+sidebar_position: 5
+---
+
+# XenForo CLI
+
+The [XenForo CLI](https://github.com/xenforo-ltd/cli) (`xf`) helps XenForo license holders create and manage local development environments and build add-on releases. It handles the environment around XenForo so you can develop and test changes without setting up a web server, PHP, and database separately for each project.
+
+## Create development environments
+
+The CLI can download a XenForo release available to your license, set up a local environment, and run the installer. This is useful when you need a clean board to develop an add-on or reproduce a problem. You can also create installations of different available XenForo releases to check how your add-on behaves across versions, including older or pre-release versions when your account has access to them.
+
+The environment uses containers for the web server, PHP, and database, while your source files remain on your computer. You can edit those files with your usual editor, and the running board sees your changes. Work that runs in the container uses its PHP version, so you do not need a matching PHP installation on your computer. You can vary the environment's PHP version or include services such as Redis to test cache integration.
+
+XenForo's development and debug modes are enabled by default, and outgoing email is captured in a local test mailbox. The environment also includes Xdebug support for pausing PHP execution and inspecting your code in a debugger.
+
+Your normal XenForo development workflow still applies. The CLI can run XenForo's built-in commands through the environment's PHP, and also provides access to PHP and Composer. The [development tools](../development-tools.mdx) available through XenForo's own `cmd.php` interface remain the tools you use to create add-ons, import development output, and run install or upgrade steps.
+
+:::warning
+The supplied environments are configured for development and use predictable credentials. They are not intended for production hosting. Do not expose them publicly.
+:::
+
+## Work on changes independently
+
+When you need to investigate a bug or try a database schema change, the CLI can create a second checkout of your project with its own containers and database. You can start with a fresh board or copy the database and public and private attachments from your existing development board.
+
+This gives the new checkout its own board to work with, so a schema experiment does not change the original development board's database. The source checkout remains available while you investigate the issue in the separate workspace.
+
+## Build add-on releases
+
+An add-on release may need more than a copy of its PHP files: it can also contain exported data, Composer dependencies, and built JavaScript. The CLI can bring these tasks into a release build that generates file hashes and assembles the release ZIP, including any additional build tasks defined for the add-on. Release data is generated from the add-on's prepared development output rather than exported from the running board's database.
+
+You can also build JavaScript without creating a release. While you work on an add-on's JavaScript, the CLI can watch its configured sources and rebuild them as they change, so you can test the result in your development board without repeating the full release build.
